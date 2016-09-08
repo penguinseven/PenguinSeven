@@ -82,8 +82,11 @@
 DAO 目录，当安装程序运行在 Windows 95/NT 4+ 上时，它被等效为 {cf}\Microsoft Shared\DAO，当运行于 Windows NT 3.51 时，它被等效为 {win}\MSAPPS\DAO。
 
 > ###3.常见问题
+
+---
+
 修改ini文件
----------------------------------------
+----------
 ```pascal
 ;用于在用户系统中创建，修改或删除ini文件健值
 [INI]
@@ -94,7 +97,7 @@ Filename: "{app}\cfg.ini"; Section: "Startup Options"; Key: "server port"; Strin
 ```
 
 安装、卸载判断进程(窗口名称)
---------------------------------
+------------------------
 ```pascal
 [Code]
 // 判断进程
