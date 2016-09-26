@@ -542,3 +542,134 @@ begin
 end;
 
 ```
+完全删除
+------
+```pascal
+
+[UninstallRun]
+Filename: "{cmd}"; Parameters: "/c rd /s /q ""{app}"""; Flags: hidewizard runhidden
+
+
+[UninstallDelete]
+Name: {app}; Type: filesandordirs
+
+```
+
+
+设置环境变量
+-----
+一、在[setup]段添加
+
+ 
+
+```pascal
+ChangesEnvironment=true
+```
+
+ 
+
+说明：让安装包在结束后，通知系统环境变量已经改变。
+
+ 
+
+ 
+
+二、在[code]段添加
+
+ ```pascal
+
+//环境变量名、值、是否安装（删除）、是否所有用户有效
+
+procedure SetEnv(aEnvName, aEnvValue: string; aIsInstall: Boolean);//设置环境变量函数
+
+var
+
+sOrgValue: string;
+
+x,len: integer;
+
+begin
+
+    //得到以前的值
+
+    RegQueryStringValue(HKEY_LOCAL_MACHINE, 'SYSTEM/CurrentControlSet/Control/Session Manager/Environment', aEnvName, sOrgValue)
+
+    sOrgValue := Trim(sOrgValue);
+
+    begin
+
+      x := pos( Uppercase(aEnvValue),Uppercase(sOrgValue));
+
+      len := length(aEnvValue);
+
+      if aIsInstall then//是安装还是反安装
+
+      begin
+
+          if length(sOrgValue)>0 then aEnvValue := ';'+ aEnvValue;
+
+          if x = 0 then Insert(aEnvValue,sOrgValue,length(sOrgValue) +1);
+
+      end
+
+      else
+
+      begin
+
+         if x>0 then Delete(sOrgValue,x,len);
+
+         if length(sOrgValue)=0 then
+
+         begin
+
+           RegDeleteValue(HKEY_LOCAL_MACHINE, 'SYSTEM/CurrentControlSet/Control/Session Manager/Environment',aEnvName);
+
+           exit;
+
+         end;
+
+      end;
+
+      StringChange(sOrgValue,';;',';');
+
+      RegWriteStringValue(HKEY_LOCAL_MACHINE, 'SYSTEM/CurrentControlSet/Control/Session Manager/Environment', aEnvName, sOrgValue)
+
+    end;
+
+end;
+
+ 
+
+ 
+
+procedure CurStepChanged(CurStep: TSetupStep);//添加环境变量
+
+begin
+
+if CurStep = ssInstall then
+
+	begin
+
+   		SetEnv('path',ExpandConstant('{app}/PlatformDLL'),true); //在这儿调用,一定在这儿调用,安装完无须重启,立即生效
+
+	end;
+
+end;
+
+ 
+
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);//删除环境变量
+
+begin
+
+if CurUninstallStep = usUninstall then
+
+	begin
+
+		SetEnv('path',ExpandConstant('{app}/PlatformDLL'),false);
+
+	end;
+
+end;
+```
+ 
