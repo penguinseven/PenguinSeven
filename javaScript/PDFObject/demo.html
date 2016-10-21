@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+    <title></title>
+    <style>
+        html,body{
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+
+        #container{
+            min-width:320px;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>
+<script src="/js/jquery/1.9.1.js"></script>
+<script src="/js/pdfobject/pdfobject.js"></script>
+
+<script>
+    var url = "/public/cc.pdf";
+</script>
+<_v name="var_pass"></_v>
+<script>
+
+    var options = {
+        pdfOpenParams: {
+            pagemode: "thumbs",
+            navpanes: 0,
+            toolbar: 1,
+            statusbar: 0,
+            view: "FitV"
+        }
+    };
+
+    var myPDF = PDFObject.embed("/public/cc.pdf", "#container", options);
+
+</script>
