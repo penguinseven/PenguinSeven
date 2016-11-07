@@ -90,10 +90,10 @@ $machine = win_machine ();
 ```
 
 /**
-* @parame string $machine 机械码
-* @parame int $terminal 终端数 0 - 255
-* @parame int $start 起始日期 （20100101 后第多少天）
-* @parame int $day 天数 0-255
+* @param string $machine 机械码
+* @param int $terminal 终端数 0 - 255
+* @param int $start 起始日期 （20100101 后第多少天）
+* @param int $day 天数 0-255
 *
 */
 
