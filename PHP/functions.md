@@ -142,3 +142,48 @@ JOIN information_schema.TABLES b ON a.table_schema = b.table_schema AND a.table_
 WHERE a.table_name = 'question';
 
 ```
+
+> zip函数
+```php
+       
+       /**
+        * @param $name string 文件名称
+        * @param $save_path string 文件保存路径
+        * @param $datalist Array 文件路径数组
+        * @return boole
+        */
+        
+    public function download_batch($name, $save_path, $datalist) {
+    
+        $zip = new \ZipArchive();
+    
+        $filename = realpath($save_path) . "\\" . $name; //最终生成的文件名（含路径）
+    
+        if(file_exists($filename)){
+            @unlink($filename);
+        }
+    
+        if ($zip->open($filename, \ZIPARCHIVE::CREATE)!==TRUE) {
+            
+            return false;
+        }
+    
+        foreach( $datalist as $path){
+    
+            if(file_exists($path)){
+                $zip->addFile( $path, trim(basename($val['filename']), "_"));
+                //第二个参数是放在压缩包中的文件名称，如果文件可能会有重复，就需要注意一下
+            }
+        }
+    
+        $zip->close();//关闭
+    
+        if(!file_exists($filename)){
+    
+            return false;
+        }      
+        
+        return true;
+    }
+  
+```
