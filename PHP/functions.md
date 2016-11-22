@@ -52,7 +52,7 @@ function async_task($ip, $url, $port = 80, $time = 30){
 
 3. 不卸载修改系统时间 （保存时间到redis， 1小时 1次 ）
 
-4. 
+4. 混淆注册码
 
 
 > 判断视频文件
