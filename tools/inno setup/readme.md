@@ -90,6 +90,35 @@ DAO 目录，当安装程序运行在 Windows 95/NT 4+ 上时，它被等效为 
 
 ---
 
+多语言安装包
+----------
+```pascal
+[Languages]
+Name: "en"; MessagesFile: "compiler:Default.isl" ; LicenSeFile :"E:\upupw\doc\readme_en.txt"
+Name: "chs"; MessagesFile: "compiler:Languages\china.isl"; LicenSeFile :"E:\upupw\doc\readme_chs.txt"
+
+[Messages]
+en.BeveledLabel=English
+chs.BeveledLabel=Chineses
+
+
+[CustomMessages]
+en.MyAppName          = Intelligent paperless conference management server
+en.Uninstall          = Uninstall
+
+
+chs.MyAppName         = 智能无纸化会议管理服务器
+chs.Uninstall         = 卸载
+
+; 调用
+
+[code]
+
+ExpandConstant('{cm:MyAppName}')
+
+```
+    
+
 修改ini文件
 ----------
 ```pascal
