@@ -6,7 +6,7 @@
 > window 下
 
 
-```
+```php
 
       // 机器码生成
 function win_machine (){
@@ -37,7 +37,7 @@ function win_machine (){
 
 > 机器码： md5(cpu系列号 +硬盘uuid)
 
-```
+```php
 $machine = win_machine ();
 ```
 
@@ -48,7 +48,7 @@ $machine = win_machine ();
 
 > 机器码  =》 int  =》 “4,1，2,1”格式打包 =》 字节数组 =》 base64
 
-```
+```php
         function make($machine,$terminal,$start,$day){
 
                 $str = str_replace("-", "", $machine); //去除中间“-”
@@ -87,7 +87,7 @@ $machine = win_machine ();
 
 > 注册码：
 
-```
+```php
 
 /**
 * @param string $machine 机械码
@@ -108,7 +108,7 @@ $register = make($machine,$terminal,$start,$day);
 
 > base64解密 =》字节数组转字节流 =》 “4,1,2,1”格式解包 =》 验证机器码
 
-```
+```php
 
       // 解析注册码
 function list_register($register, $salt){
@@ -147,7 +147,7 @@ function list_register($register, $salt){
 
 * 公共
 
-```
+```php
  // 字符串生成字节数组
 function getBytes($string)
 {
