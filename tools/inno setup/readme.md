@@ -721,4 +721,104 @@ begin
   SetEnv('path',ExpandConstant('{app}'),false,true);
 end;
 ```
+
+ 自定义界面保存xml文件
+----
+```pascal
+
+var
+  CustomEdit: TEdit;
+  CustomPageID: Integer;
+
+function LoadValueFromXML(const AFileName, APath: string): string;
+var
+  XMLNode: Variant;
+  XMLDocument: Variant;  
+begin
+  Result := '';
+  XMLDocument := CreateOleObject('Msxml2.DOMDocument.6.0');
+  try
+    XMLDocument.async := False;
+    XMLDocument.load(AFileName);
+    if (XMLDocument.parseError.errorCode <> 0) then
+      MsgBox('The XML file could not be parsed. ' + 
+        XMLDocument.parseError.reason, mbError, MB_OK)
+    else
+    begin
+      XMLDocument.setProperty('SelectionLanguage', 'XPath');
+      XMLNode := XMLDocument.selectSingleNode(APath);
+      Result := XMLNode.text;
+    end;
+  except
+    MsgBox('An error occured!' + #13#10 + GetExceptionMessage, mbError, MB_OK);
+  end;
+end;
+
+procedure SaveValueToXML(const AFileName, APath, AValue: string);
+var
+  XMLNode: Variant;
+  XMLDocument: Variant;  
+begin
+  XMLDocument := CreateOleObject('Msxml2.DOMDocument.6.0');
+  try
+    XMLDocument.async := False;
+    XMLDocument.load(AFileName);
+    if (XMLDocument.parseError.errorCode <> 0) then
+      MsgBox('The XML file could not be parsed. ' + 
+        XMLDocument.parseError.reason, mbError, MB_OK)
+    else
+    begin
+      XMLDocument.setProperty('SelectionLanguage', 'XPath');
+      XMLNode := XMLDocument.selectSingleNode(APath);
+      XMLNode.text := AValue;
+      XMLDocument.save(AFileName);
+    end;
+  except
+    MsgBox('An error occured!' + #13#10 + GetExceptionMessage, mbError, MB_OK);
+  end;
+end;
+
+procedure InitializeWizard;
+var  
+  CustomPage: TWizardPage;
+begin
+  CustomPage := CreateCustomPage(wpWelcome, 'Custom Page', 
+    'Enter the new value that will be saved into the XML file');
+  CustomPageID := CustomPage.ID;
+  CustomEdit := TEdit.Create(WizardForm);
+  CustomEdit.Parent := CustomPage.Surface;
+end;
+
+procedure CurPageChanged(CurPageID: Integer);
+begin
+  if CurPageID = CustomPageID then
+    CustomEdit.Text := LoadValueFromXML( 'C:\Program Files\Inno Setup 5\test\config.xml', '//ServerConf/CMSIP');
+end;
+
+function NextButtonClick(CurPageID: Integer): Boolean;
+begin
+  Result := True;
+  if CurPageID = CustomPageID then
+    SaveValueToXML( 'C:\Program Files\Inno Setup 5\test\config.xml', '//ServerConf/CMSIP', CustomEdit.Text);
+end;
+
+
+
+```
+
+ini文件修改字段 (获取安装包语言)
+---
+```pascal
+
+[Code]
+
+function MyLangName(Param:String): String;      
+begin               
+  Result := ActiveLanguage();
+end;
+
+[INI]  
+Filename: "lan.ini"; Section: "settings"; Key: "language"; String: "{code:MyLangName}";
  
+```
+
