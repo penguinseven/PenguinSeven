@@ -724,6 +724,8 @@ end;
 
  自定义界面保存xml文件
 ----
+> 1. 读取xml 文件
+
 ```pascal
 
 var
@@ -754,6 +756,12 @@ begin
   end;
 end;
 
+```
+
+> 2.修改xml文件
+
+```pascal
+
 procedure SaveValueToXML(const AFileName, APath, AValue: string);
 var
   XMLNode: Variant;
@@ -778,7 +786,12 @@ begin
   end;
 end;
 
-procedure InitializeWizard;
+```
+
+> 3.自定义修改xml界面
+
+```pascal
+procedure CreatOnEditIpPage;
 var  
   CustomPage: TWizardPage;
 begin
@@ -789,12 +802,19 @@ begin
   CustomEdit.Parent := CustomPage.Surface;
 end;
 
+```
+> 4. 使用
+
+```pascal
+
+// 系统过程，判断pageID，读取xml文件
 procedure CurPageChanged(CurPageID: Integer);
 begin
   if CurPageID = CustomPageID then
     CustomEdit.Text := LoadValueFromXML( 'C:\Program Files\Inno Setup 5\test\config.xml', '//ServerConf/CMSIP');
 end;
 
+// 系统函数，根据pageID，判断点击下一步图标，保存xml文件
 function NextButtonClick(CurPageID: Integer): Boolean;
 begin
   Result := True;
@@ -802,9 +822,8 @@ begin
     SaveValueToXML( 'C:\Program Files\Inno Setup 5\test\config.xml', '//ServerConf/CMSIP', CustomEdit.Text);
 end;
 
-
-
 ```
+
 
 ini文件修改字段 (获取安装包语言)
 ---
@@ -818,6 +837,8 @@ begin
 end;
 
 [INI]  
+
+// 使用pascal 获取语言类型修改ini文件
 Filename: "lan.ini"; Section: "settings"; Key: "language"; String: "{code:MyLangName}";
  
 ```
