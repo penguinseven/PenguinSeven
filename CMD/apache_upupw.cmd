@@ -1,4 +1,3 @@
-??
 cls
 @echo off
 rem -- http://www.upupw.net
@@ -8,7 +7,7 @@ if exist "%CD%\upcore\upc.cmd" pushd . && goto cfg
 goto :eof
 
 :cfg
-title  UPUPWÂÌÉ«·şÎñÆ÷Æ½Ì¨
+title  UPUPWç»¿è‰²æœåŠ¡å™¨å¹³å°
 color 0A
 mode con cols=80 lines=29 >nul 2>nul
 call "%CD%\upcore\upc.cmd"
@@ -20,16 +19,16 @@ if not "%1"=="" (
 )
 
 prompt -$g
-title  UPUPW APACHE PHP7.0ÏµÁĞÕıÊ½°æ
+title  UPUPW APACHE PHP7.0ç³»åˆ—æ­£å¼ç‰ˆ
 color 0A
 mode con cols=80 lines=29 >nul 2>nul
 goto menu
 
 :start_Apache
 echo.
-echo   Apache·şÎñÕıÔÚÆô¶¯...
+echo   ApacheæœåŠ¡æ­£åœ¨å¯åŠ¨...
 if not exist %CD%\%apache_dir%\logs\*.pid goto start_A
-echo   Apache·şÎñÒÑ¾­ÔËĞĞÎŞĞèÖØ¸´²Ù×÷£¬¿É·µ»ØÖ÷½çÃækkºóÔÙ´Î¿ªÆô¡£
+echo   ApacheæœåŠ¡å·²ç»è¿è¡Œæ— éœ€é‡å¤æ“ä½œï¼Œå¯è¿”å›ä¸»ç•Œé¢kkåå†æ¬¡å¼€å¯ã€‚
 echo.
 %pause%
 goto menu
@@ -39,56 +38,56 @@ goto menu
 %CD%\%apache_dir%\bin\%apache_exe% -k start -n %apache_vc% >nul 2>nul
 if exist %CD%\%apache_dir%\logs\*.pid goto start_A_OK
 echo.
-echo   Æô¶¯ApacheÊ§°Ü£¡¿ÉÄÜµÄÔ­ÒòÈçÏÂ£º
-echo   1¡¢%apache_port%¶Ë¿Ú±»Õ¼ÓÃ   2¡¢httpd-vhosts.confÅäÖÃÎÄ¼ş´íÎó
-echo   3¡¢VCÔËĞĞ¿âÎ´×°   4¡¢³ÌĞòÂ·¾¶º¬ÓĞÖĞÎÄ»ò¿Õ¸ñ
-echo   ¾ßÌå´íÎóÇë²é¿´Apache2\logs\apache.logÎÄ¼ş[error]ÌõÄ¿
+echo   å¯åŠ¨Apacheå¤±è´¥ï¼å¯èƒ½çš„åŸå› å¦‚ä¸‹ï¼š
+echo   1ã€%apache_port%ç«¯å£è¢«å ç”¨   2ã€httpd-vhosts.confé…ç½®æ–‡ä»¶é”™è¯¯
+echo   3ã€VCè¿è¡Œåº“æœªè£…   4ã€ç¨‹åºè·¯å¾„å«æœ‰ä¸­æ–‡æˆ–ç©ºæ ¼
+echo   å…·ä½“é”™è¯¯è¯·æŸ¥çœ‹Apache2\logs\apache.logæ–‡ä»¶[error]æ¡ç›®
 echo.
 %pause%
 goto menu
 :start_A_OK
-echo   Apache·şÎñÆô¶¯³É¹¦!
+echo   ApacheæœåŠ¡å¯åŠ¨æˆåŠŸ!
 echo.
 goto :eof
 
 :stop_Apache
 echo.
-echo   Apache·şÎñÕıÔÚÍ£Ö¹...
+echo   ApacheæœåŠ¡æ­£åœ¨åœæ­¢...
 %CD%\%apache_dir%\bin\%apache_exe% -k stop -n %apache_vc% >nul 2>nul
 %CD%\%apache_dir%\bin\%apache_exe% -k uninstall -n %apache_vc% >nul 2>nul
 del /f/s/q %CD%\%apache_dir%\logs\*.pid /q >nul 2>nul
-echo   Apache·şÎñÒÑ¾­Í£Ö¹!
+echo   ApacheæœåŠ¡å·²ç»åœæ­¢!
 goto :eof
 
 :restart_Apache
 echo.
-echo   ApacheÅäÖÃÕıÔÚÖØĞÂ¼ÓÔØ...
+echo   Apacheé…ç½®æ­£åœ¨é‡æ–°åŠ è½½...
 if exist %CD%\%apache_dir%\logs\*.pid goto restart_A
-echo   Apache·şÎñÎ´Æô¶¯²»ÄÜ¼ÓÔØÅäÖÃ£¬¿É·µ»ØÖ÷½çÃæs2Æô¶¯ºóÉúĞ§¡£
+echo   ApacheæœåŠ¡æœªå¯åŠ¨ä¸èƒ½åŠ è½½é…ç½®ï¼Œå¯è¿”å›ä¸»ç•Œé¢s2å¯åŠ¨åç”Ÿæ•ˆã€‚
 echo.
 %pause%
 goto menu
 :restart_A
 %php% upcfg(); || %pause% && goto menu
 %CD%\%apache_dir%\bin\%apache_exe% -k restart -n %apache_vc% 2>nul
-echo   ApacheÅäÖÃ¼ÓÔØÍê±Ï£¡
+echo   Apacheé…ç½®åŠ è½½å®Œæ¯•ï¼
 echo.
 goto :eof
 
 :sa_updaemon
 echo.
-echo   ApacheÊØ»¤½ø³ÌÕıÔÚÆô¶¯...
+echo   Apacheå®ˆæŠ¤è¿›ç¨‹æ­£åœ¨å¯åŠ¨...
 %CD%\%guard_dir%\winsw.exe install >nul 2>nul
 %net% start %updaemon_vc% >nul 2>nul
 tasklist|findstr /i updaemon.exe >nul 2>nul && goto start_U_OK || goto start_U_ERROR
 :start_U_ERROR
 echo.
-echo   ApacheÊØ»¤½ø³ÌÎ´ÄÜÆô¶¯£¡
-echo   Çë¼ì²é.NET2.0/3.5ÊÇ·ñ°²×°»ò±»·À»¤Èí¼ş½ûÖ¹¡£
+echo   Apacheå®ˆæŠ¤è¿›ç¨‹æœªèƒ½å¯åŠ¨ï¼
+echo   è¯·æ£€æŸ¥.NET2.0/3.5æ˜¯å¦å®‰è£…æˆ–è¢«é˜²æŠ¤è½¯ä»¶ç¦æ­¢ã€‚
 echo.
 goto :eof
 :start_U_OK
-echo   ApacheÊØ»¤½ø³ÌÆô¶¯³É¹¦!
+echo   Apacheå®ˆæŠ¤è¿›ç¨‹å¯åŠ¨æˆåŠŸ!
 echo.
 goto :eof
 
@@ -96,78 +95,78 @@ goto :eof
 tasklist|findstr /i updaemon.exe >nul 2>nul && goto stop_U_OK || goto stop_U_NO
 :stop_U_OK
 echo.
-echo   ApacheÊØ»¤½ø³ÌÕıÔÚÍ£Ö¹...
+echo   Apacheå®ˆæŠ¤è¿›ç¨‹æ­£åœ¨åœæ­¢...
 set taskkill=%Sys32%\taskkill.exe
 if not exist %taskkill% (
-echo   # È±ÉÙ %taskkill%, ÎŞ·¨½øĞĞ. & %pause% & goto menu
+echo   # ç¼ºå°‘ %taskkill%, æ— æ³•è¿›è¡Œ. & %pause% & goto menu
 )
 %taskkill% /fi "SERVICES eq %updaemon_vc%" /f /t >nul 2>nul
 %CD%\%guard_dir%\winsw.exe uninstall >nul 2>nul
-echo   ApacheÊØ»¤½ø³ÌÒÑ¾­Í£Ö¹!
+echo   Apacheå®ˆæŠ¤è¿›ç¨‹å·²ç»åœæ­¢!
 goto :eof
 :stop_U_NO
 goto :eof
 
 :start_MySQL
-echo   Êı¾İ¿â·şÎñÕıÔÚÆô¶¯...
+echo   æ•°æ®åº“æœåŠ¡æ­£åœ¨å¯åŠ¨...
 %CD%\%database_dir%\bin\%database_exe% --install %database_vc% --defaults-file="%CD%\%database_dir%\my.ini" >nul 2>nul
 %net% start %database_vc% >nul 2>nul
 tasklist|findstr /i mysqld.exe >nul 2>nul && goto start_M_OK || goto start_M_ERROR
 :start_M_ERROR
 echo.
-echo   Æô¶¯Êı¾İ¿âÊ§°Ü£¡¿ÉÄÜµÄÔ­ÒòÈçÏÂ£º
-echo   1¡¢%database_port%¶Ë¿Ú±»Õ¼ÓÃ   2¡¢Ê£ÓàÄÚ´æ²»×ã200MB
-echo   3¡¢my.iniÅäÖÃ³ö´í   4¡¢Êı¾İ±íÈ±Ê§»ò³ö´í
-echo   ¾ßÌå´íÎóÇë²é¿´Êı¾İ¿âdataÄ¿Â¼%COMPUTERNAME%.errÎÄ¼ş[error]ÌõÄ¿
+echo   å¯åŠ¨æ•°æ®åº“å¤±è´¥ï¼å¯èƒ½çš„åŸå› å¦‚ä¸‹ï¼š
+echo   1ã€%database_port%ç«¯å£è¢«å ç”¨   2ã€å‰©ä½™å†…å­˜ä¸è¶³200MB
+echo   3ã€my.inié…ç½®å‡ºé”™   4ã€æ•°æ®è¡¨ç¼ºå¤±æˆ–å‡ºé”™
+echo   å…·ä½“é”™è¯¯è¯·æŸ¥çœ‹æ•°æ®åº“dataç›®å½•%COMPUTERNAME%.erræ–‡ä»¶[error]æ¡ç›®
 echo.
 %pause%
 goto menu
 :start_M_OK
-echo   Êı¾İ¿â·şÎñÆô¶¯³É¹¦!
+echo   æ•°æ®åº“æœåŠ¡å¯åŠ¨æˆåŠŸ!
 echo.
 goto :eof
 
 :stop_MySQL
 echo.
-echo   Êı¾İ¿â·şÎñÕıÔÚÍ£Ö¹...
+echo   æ•°æ®åº“æœåŠ¡æ­£åœ¨åœæ­¢...
 %net% stop %database_vc% >nul 2>nul
 %CD%\%database_dir%\bin\%database_exe% --remove %database_vc% >nul 2>nul
-echo   Êı¾İ¿â·şÎñÒÑ¾­Í£Ö¹!
+echo   æ•°æ®åº“æœåŠ¡å·²ç»åœæ­¢!
 goto :eof
 
 :start_redis
-echo   Redis·şÎñÕıÔÚÆô¶¯...
+echo   RedisæœåŠ¡æ­£åœ¨å¯åŠ¨...
 %CD%\%redis_dir%\redis-server.exe --service-install %CD%\%redis_conf% --service-name %redis_vc% >nul 2>nul
 %CD%\%redis_dir%\redis-server.exe --service-start --service-name %redis_vc% >nul 2>nul
 tasklist|findstr /i redis-server.exe >nul 2>nul && goto start_C_OK || goto start_C_ERROR
 :start_C_ERROR
 echo.
-echo   Redis·şÎñÎ´ÄÜÆô¶¯£¡
-echo   Çë¼ì²é%redis_port%¶Ë¿ÚÕ¼ÓÃ»ò±»·À»¤Èí¼ş½ûÖ¹¡£
+echo   RedisæœåŠ¡æœªèƒ½å¯åŠ¨ï¼
+echo   è¯·æ£€æŸ¥%redis_port%ç«¯å£å ç”¨æˆ–è¢«é˜²æŠ¤è½¯ä»¶ç¦æ­¢ã€‚
 goto :eof
 :start_C_OK
-echo   Redis·şÎñÆô¶¯³É¹¦!
+echo   RedisæœåŠ¡å¯åŠ¨æˆåŠŸ!
 goto :eof
 
 :stop_redis
 echo.
-echo   Redis·şÎñÕıÔÚÍ£Ö¹...
+echo   RedisæœåŠ¡æ­£åœ¨åœæ­¢...
 %CD%\%redis_dir%\redis-server.exe --service-stop --service-name %redis_vc% >nul 2>nul
 %CD%\%redis_dir%\redis-server.exe --service-uninstall --service-name %redis_vc% >nul 2>nul
-echo   Redis·şÎñÒÑ¾­Í£Ö¹!
+echo   RedisæœåŠ¡å·²ç»åœæ­¢!
 goto :eof
 
 :restart_redis
 echo.
-echo   Redis·şÎñÕıÔÚÖØÆô...
+echo   RedisæœåŠ¡æ­£åœ¨é‡å¯...
 %CD%\%redis_dir%\redis-server.exe --service-stop --service-name %redis_vc% >nul 2>nul
 %CD%\%redis_dir%\redis-server.exe --service-start --service-name %redis_vc% >nul 2>nul
-echo   Redis·şÎñÒÑ¾­ÖØÆô!
+echo   RedisæœåŠ¡å·²ç»é‡å¯!
 goto :eof
 
 :start_upupw
 echo.
-echo   ÕıÔÚÒ»¼üÆô¶¯UPUPWÈ«²¿·şÎñ...
+echo   æ­£åœ¨ä¸€é”®å¯åŠ¨UPUPWå…¨éƒ¨æœåŠ¡...
 call :start_Apache
 call :start_MySQL
 call :start_redis
@@ -177,7 +176,7 @@ goto menu
 
 :stop_upupw
 echo.
-echo   ÕıÔÚÒ»¼üÍ£Ö¹UPUPWÈ«²¿·şÎñ...
+echo   æ­£åœ¨ä¸€é”®åœæ­¢UPUPWå…¨éƒ¨æœåŠ¡...
 call :sd_updaemon
 call :stop_Apache
 call :stop_MySQL
@@ -189,7 +188,7 @@ goto menu
 :execmd
 if exist %1 call %1 && goto :eof
 if exist %upcore%\%1 call %upcore%\%1 && goto :eof
-echo   # Î´ÕÒµ½ %1 !
+echo   # æœªæ‰¾åˆ° %1 !
 %pause%
 goto :eof
 
@@ -197,32 +196,32 @@ goto :eof
 mode con cols=80 lines=29 >nul 2>nul
 cls
 echo.
-echo     ¨X¨T¨T¨T¨T¨T¨T¨T¨T UPUPW APACHE°æPHP7.0ÏµÁĞÕıÊ½°æ1512.1 ¨T¨T¨T¨T¨T¨T¨T¨[
-echo     ¨U                                                                    ¨U
-echo     ¨U                                                                    ¨U
-echo     ¨U            1 - Ìí¼Ó ĞéÄâÖ÷»ú        5 - Ìí¼Ó ´úÀíĞéÄâÖ÷»ú          ¨U
-echo     ¨U            2 - É¾³ı ĞéÄâÖ÷»ú        6 - É¾³ı ´úÀíĞéÄâÖ÷»ú          ¨U
-echo     ¨U            3 - ĞŞ¸Ä ĞéÄâÖ÷»ú        7 - ÖØÉè Êı¾İ¿âÃÜÂë            ¨U
-echo     ¨U            4 - ¼ì²â ¶Ë¿Ú×´Ì¬        8 - Éı¼¶ Êı¾İ¿âĞÂÌØĞÔ          ¨U
-echo     ¨U                                                                    ¨U
-echo     ¨U           09 - ¸ü¸Ä ·şÎñ¶Ë¿Ú       14 - ¹ÜÀí MySQL/MariaDB         ¨U
-echo     ¨U           10 - ÉèÖÃ Apache¹¦ÄÜ     15 - ÉèÖÃ PHP¹¦ÄÜ×é¼ş           ¨U
-echo     ¨U           11 - Ìí¼Ó ±¾µØÓòÃû½âÎö   16 - ÅäÖÃ °²È«·À»¤¹¦ÄÜ          ¨U
-echo     ¨U           12 - ÅäÖÃ ±¸·İ»ò»¹Ô­     17 - ÊÊÅä Ö÷»úĞÔÄÜ              ¨U
-echo     ¨U           13 - FTP·şÎñ¶Ë¹ÜÀí       18 - Éú²ú¿ª·¢»·¾³Ñ¡Ïî           ¨U
-echo     ¨U           up - ¼ì²éĞÂ°æ±¾          qa - ¼¼ÊõÖ§³ÖÓë½»Á÷             ¨U
-echo     ¨U                                                                    ¨U
-echo     ¨U           s1 - ¿ªÆôÈ«²¿·şÎñ        s5 - ¹Ø±ÕÈ«²¿·şÎñ               ¨U
-echo     ¨U           s2 - ¿ªÆôApache·şÎñ      s6 - ¹Ø±ÕApache·şÎñ             ¨U
-echo     ¨U           s3 - ¿ªÆôÊı¾İ¿â·şÎñ      s7 - ¹Ø±ÕÊı¾İ¿â·şÎñ             ¨U
-echo     ¨U           s4 - ¿ªÆôRedis·şÎñ       s8 - ¹Ø±ÕRedis·şÎñ              ¨U
-echo     ¨U           rr - ÖØÆôApache·şÎñ      kk - Ç¿ÖÆĞ¶ÔØ·şÎñ½ø³Ì           ¨U
-echo     ¨U           ex - ¶¨ÖÆ·şÎñÀ©Õ¹´°¿Ú    uc - ¸ß¼¶·şÎñÇåÀí¹¤¾ß           ¨U
-echo     ¨U                                                                    ¨U
-echo     ¨^¨T¨T¨T¨T¨T¨T¨T¨T¨T ÈÎºÎÎ»ÖÃÊäÈë q  ·µ»ØÖ÷½çÃæ ¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨a
+echo     â•”â•â•â•â•â•â•â•â• UPUPW APACHEç‰ˆPHP7.0ç³»åˆ—æ­£å¼ç‰ˆ1512.1 â•â•â•â•â•â•â•â•—
+echo     â•‘                                                                    â•‘
+echo     â•‘                                                                    â•‘
+echo     â•‘            1 - æ·»åŠ  è™šæ‹Ÿä¸»æœº        5 - æ·»åŠ  ä»£ç†è™šæ‹Ÿä¸»æœº          â•‘
+echo     â•‘            2 - åˆ é™¤ è™šæ‹Ÿä¸»æœº        6 - åˆ é™¤ ä»£ç†è™šæ‹Ÿä¸»æœº          â•‘
+echo     â•‘            3 - ä¿®æ”¹ è™šæ‹Ÿä¸»æœº        7 - é‡è®¾ æ•°æ®åº“å¯†ç             â•‘
+echo     â•‘            4 - æ£€æµ‹ ç«¯å£çŠ¶æ€        8 - å‡çº§ æ•°æ®åº“æ–°ç‰¹æ€§          â•‘
+echo     â•‘                                                                    â•‘
+echo     â•‘           09 - æ›´æ”¹ æœåŠ¡ç«¯å£       14 - ç®¡ç† MySQL/MariaDB         â•‘
+echo     â•‘           10 - è®¾ç½® ApacheåŠŸèƒ½     15 - è®¾ç½® PHPåŠŸèƒ½ç»„ä»¶           â•‘
+echo     â•‘           11 - æ·»åŠ  æœ¬åœ°åŸŸåè§£æ   16 - é…ç½® å®‰å…¨é˜²æŠ¤åŠŸèƒ½          â•‘
+echo     â•‘           12 - é…ç½® å¤‡ä»½æˆ–è¿˜åŸ     17 - é€‚é… ä¸»æœºæ€§èƒ½              â•‘
+echo     â•‘           13 - FTPæœåŠ¡ç«¯ç®¡ç†       18 - ç”Ÿäº§å¼€å‘ç¯å¢ƒé€‰é¡¹           â•‘
+echo     â•‘           up - æ£€æŸ¥æ–°ç‰ˆæœ¬          qa - æŠ€æœ¯æ”¯æŒä¸äº¤æµ             â•‘
+echo     â•‘                                                                    â•‘
+echo     â•‘           s1 - å¼€å¯å…¨éƒ¨æœåŠ¡        s5 - å…³é—­å…¨éƒ¨æœåŠ¡               â•‘
+echo     â•‘           s2 - å¼€å¯ApacheæœåŠ¡      s6 - å…³é—­ApacheæœåŠ¡             â•‘
+echo     â•‘           s3 - å¼€å¯æ•°æ®åº“æœåŠ¡      s7 - å…³é—­æ•°æ®åº“æœåŠ¡             â•‘
+echo     â•‘           s4 - å¼€å¯RedisæœåŠ¡       s8 - å…³é—­RedisæœåŠ¡              â•‘
+echo     â•‘           rr - é‡å¯ApacheæœåŠ¡      kk - å¼ºåˆ¶å¸è½½æœåŠ¡è¿›ç¨‹           â•‘
+echo     â•‘           ex - å®šåˆ¶æœåŠ¡æ‰©å±•çª—å£    uc - é«˜çº§æœåŠ¡æ¸…ç†å·¥å…·           â•‘
+echo     â•‘                                                                    â•‘
+echo     â•šâ•â•â•â•â•â•â•â•â• ä»»ä½•ä½ç½®è¾“å…¥ q  è¿”å›ä¸»ç•Œé¢ â•â•â•â•â•â•â•â•â•â•â•â•
 echo.
 set input=
-set /p input=-^>ÇëÑ¡Ôñ:
+set /p input=-^>è¯·é€‰æ‹©:
 cls
 if /i "%input%"=="s1"  call :start_upupw
 if /i "%input%"=="s2"  call :start_Apache
@@ -274,26 +273,26 @@ goto menu
 :port
 cls
 echo.
-echo   p1 - ¸ü¸Ä Apache¶Ë¿Ú       p2 - ¸ü¸Ä Êı¾İ¿â¶Ë¿Ú
+echo   p1 - æ›´æ”¹ Apacheç«¯å£       p2 - æ›´æ”¹ æ•°æ®åº“ç«¯å£
 echo.
 set input=
-set /p input=-^>ÇëÑ¡Ôñ:
+set /p input=-^>è¯·é€‰æ‹©:
 cls
 echo.
 if /i "%input%"=="p1" goto apache_port
 if /i "%input%"=="p2" goto mysql_port
 if /i "%input%"=="q" goto menu
 echo.
-echo   ÊäÈëÓĞÎóÇë·µ»Ø£¡
+echo   è¾“å…¥æœ‰è¯¯è¯·è¿”å›ï¼
 echo.
 %pause%
 goto port
 
 :apache_port
-echo   µ±Apache¶Ë¿ÚĞŞ¸ÄÎª·Ç80¶Ë¿ÚÊ±ĞèÒªÓÃHTTP://ÓòÃû:¶Ë¿ÚµÄĞÎÊ½·ÃÎÊ£¡
+echo   å½“Apacheç«¯å£ä¿®æ”¹ä¸ºé80ç«¯å£æ—¶éœ€è¦ç”¨HTTP://åŸŸå:ç«¯å£çš„å½¢å¼è®¿é—®ï¼
 echo.
 set nport=
-set /p nport=-^>ÊäÈëĞÂµÄApache¶Ë¿Ú(1-65535) Ä¿Ç°Îª%apache_port%:
+set /p nport=-^>è¾“å…¥æ–°çš„Apacheç«¯å£(1-65535) ç›®å‰ä¸º%apache_port%:
 if /i "%nport%"=="" goto menu
 if /i "%nport%"=="q" goto menu
 %php% "$p = env('nport'); if ($p !== ''.ceil($p) || 1 > $p || $p > 65535) exit(1);" || goto apache_port
@@ -302,16 +301,16 @@ set apache_port=%nport%
 if "%1"=="noRestart" goto end
 call :restart_Apache
 echo.
-echo   ApacheÒÑĞŞ¸ÄÎª %nport% ¶Ë¿Ú£¡
+echo   Apacheå·²ä¿®æ”¹ä¸º %nport% ç«¯å£ï¼
 echo.
 %pause%
 goto menu
 
 :mysql_port
-echo   µ±Êı¾İ¿â¶Ë¿ÚĞŞ¸ÄÎª·Ç3306¶Ë¿ÚÊ±Ö´ĞĞPHP³ÌĞò°²×°²Ù×÷ÇëÌîÈëĞŞ¸ÄºóµÄ¶Ë¿ÚºÅ£¡
+echo   å½“æ•°æ®åº“ç«¯å£ä¿®æ”¹ä¸ºé3306ç«¯å£æ—¶æ‰§è¡ŒPHPç¨‹åºå®‰è£…æ“ä½œè¯·å¡«å…¥ä¿®æ”¹åçš„ç«¯å£å·ï¼
 echo.
 set nport=
-set /p nport=-^>ÊäÈëĞÂµÄÊı¾İ¿â¶Ë¿Ú(1-65535) Ä¿Ç°Îª%database_port%:
+set /p nport=-^>è¾“å…¥æ–°çš„æ•°æ®åº“ç«¯å£(1-65535) ç›®å‰ä¸º%database_port%:
 if /i "%nport%"=="" goto menu
 if /i "%nport%"=="q" goto menu
 %php% "$p = env('nport'); if ($p !== ''.ceil($p) || 1 > $p || $p > 65535) exit(1);" || goto mysql_port
@@ -323,7 +322,7 @@ call :stop_MySQL
 echo.
 call :start_MySQL
 echo.
-echo   Êı¾İ¿âÒÑĞŞ¸ÄÎª %nport% ¶Ë¿Ú£¡
+echo   æ•°æ®åº“å·²ä¿®æ”¹ä¸º %nport% ç«¯å£ï¼
 echo.
 %pause%
 goto menu
@@ -331,37 +330,37 @@ goto menu
 :vhost_add
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ĞéÄâÖ÷»úÁĞ±í:(ÈçÁĞ±íÏÔÊ¾²»È«ÇëÖ±½Ó²é¿´»òĞŞ¸ÄApache2\conf\httpd-vhosts.conf)
+echo   è™šæ‹Ÿä¸»æœºåˆ—è¡¨:(å¦‚åˆ—è¡¨æ˜¾ç¤ºä¸å…¨è¯·ç›´æ¥æŸ¥çœ‹æˆ–ä¿®æ”¹Apache2\conf\httpd-vhosts.conf)
 %php% "showvhs();" || %pause% && goto menu
 echo.
-echo   ĞéÄâÖ÷»úµÄÖ÷ÓòÃûºÍ±êÊ¶. Àı test.com »ò blog.test.com
+echo   è™šæ‹Ÿä¸»æœºçš„ä¸»åŸŸåå’Œæ ‡è¯†. ä¾‹ test.com æˆ– blog.test.com
 echo.
 set hName=
-set /p hName=-^>ÇëÊäÈëÒ»¸öÖ÷ÓòÃû:
+set /p hName=-^>è¯·è¾“å…¥ä¸€ä¸ªä¸»åŸŸå:
 if /i "%hName%"=="" goto vhost_add
 if /i "%hName%"=="q" goto menu
 echo.
-echo   °ó¶¨¶îÍâÓòÃû¶à¸öÇëÓÃ"¿Õ¸ñ"¸ô¿ªÈçtest.com www.test.com *.test.com(Ö§³Ö·º½âÎö)
+echo   ç»‘å®šé¢å¤–åŸŸåå¤šä¸ªè¯·ç”¨"ç©ºæ ¼"éš”å¼€å¦‚test.com www.test.com *.test.com(æ”¯æŒæ³›è§£æ)
 echo.
 set hAlias=
-set /p hAlias=-^>¶îÍâÓòÃû(¿ÉÑ¡):
+set /p hAlias=-^>é¢å¤–åŸŸå(å¯é€‰):
 if /i "%hAlias%"=="" goto vhost_add_htdocs
 if /i "%hAlias%"=="q" goto menu
 :vhost_add_htdocs
 echo.
-echo   Ö¸¶¨ÍøÕ¾Ä¿Â¼(ÀıX:\websites\site1). Áô¿ÕÔòÄ¬ÈÏ½¨Á¢ÔÚ upupw/vhosts/%hName%
+echo   æŒ‡å®šç½‘ç«™ç›®å½•(ä¾‹X:\websites\site1). ç•™ç©ºåˆ™é»˜è®¤å»ºç«‹åœ¨ upupw/vhosts/%hName%
 echo.
 set htdocs=
-set /p htdocs=-^>ÍøÕ¾Ä¿Â¼(¿ÉÑ¡):
+set /p htdocs=-^>ç½‘ç«™ç›®å½•(å¯é€‰):
 if /i "%htdocs%"=="q" goto menu
 if /i "%htdocs%"=="" goto vhost_add_2
-%php% "$d = rpl('/', '\\\\', $_ENV['htdocs']); if (is_dir($d)) exit(0); if (file_exists($d)) exit(1); if (!@mkdir($d, 0, 1)) exit(2);" || echo   Â·¾¶²»ÕıÈ·»ò´´½¨Ä¿Â¼Ê§°Ü! && %pause% && goto vhost_add_htdocs
+%php% "$d = rpl('/', '\\\\', $_ENV['htdocs']); if (is_dir($d)) exit(0); if (file_exists($d)) exit(1); if (!@mkdir($d, 0, 1)) exit(2);" || echo   è·¯å¾„ä¸æ­£ç¡®æˆ–åˆ›å»ºç›®å½•å¤±è´¥! && %pause% && goto vhost_add_htdocs
 :vhost_add_2
 echo.
-echo   %hName%ĞéÄâÖ÷»ú´´½¨Íê±Ï£¡
+echo   %hName%è™šæ‹Ÿä¸»æœºåˆ›å»ºå®Œæ¯•ï¼
 %php% "vhost_add(env('hName'), env('htdocs'), env('apache_port'), env('hAlias'), env('p'));" && call :restart_Apache && goto vhost_add_3
 :vhost_add_3
-set /p sure=-^>È«²¿Íê³É!ÊÇ·ñÁ¢¼´²é¿´%hName%µÄÄ¬ÈÏÒ³Ãæ?(y/n)
+set /p sure=-^>å…¨éƒ¨å®Œæˆ!æ˜¯å¦ç«‹å³æŸ¥çœ‹%hName%çš„é»˜è®¤é¡µé¢?(y/n)
 if /i "%sure%"=="n" goto vhost_add
 if /i "%sure%"=="y" goto vhost_add_4
 if /i "%sure%"=="q" goto menu
@@ -371,13 +370,13 @@ goto vhost_add
 
 :vhost_del
 mode con cols=80 lines=45 >nul 2>nul
-echo   ĞéÄâÖ÷»úÁĞ±í:(ÈçÁĞ±íÏÔÊ¾²»È«ÇëÖ±½Ó²é¿´»òĞŞ¸ÄApache2\conf\httpd-vhosts.conf)
+echo   è™šæ‹Ÿä¸»æœºåˆ—è¡¨:(å¦‚åˆ—è¡¨æ˜¾ç¤ºä¸å…¨è¯·ç›´æ¥æŸ¥çœ‹æˆ–ä¿®æ”¹Apache2\conf\httpd-vhosts.conf)
 %php% "showvhs();" || %pause% && goto menu
 echo.
-echo   ÒªÉ¾³ıĞéÄâÖ÷»ú, ÇëÊäÈëĞòºÅ»òÖ÷ÓòÃû.
+echo   è¦åˆ é™¤è™šæ‹Ÿä¸»æœº, è¯·è¾“å…¥åºå·æˆ–ä¸»åŸŸå.
 echo.
 set hName=
-set /p hName=-^>ÇëÑ¡ÔñÒªÉ¾³ıµÄĞéÄâÖ÷»ú:
+set /p hName=-^>è¯·é€‰æ‹©è¦åˆ é™¤çš„è™šæ‹Ÿä¸»æœº:
 if /i "%hName%"=="" goto menu
 if /i "%hName%"=="q" goto menu
 %php% "vhost_del(env('hName'));" && call :restart_Apache
@@ -387,82 +386,82 @@ goto vhost_del
 
 :vhost_mod
 mode con cols=80 lines=45 >nul 2>nul
-echo   ĞéÄâÖ÷»úÁĞ±í:(ÈçÁĞ±íÏÔÊ¾²»È«ÇëÖ±½Ó²é¿´»òĞŞ¸ÄApache2\conf\httpd-vhosts.conf)
+echo   è™šæ‹Ÿä¸»æœºåˆ—è¡¨:(å¦‚åˆ—è¡¨æ˜¾ç¤ºä¸å…¨è¯·ç›´æ¥æŸ¥çœ‹æˆ–ä¿®æ”¹Apache2\conf\httpd-vhosts.conf)
 %php% "showvhs();" || %pause% && goto menu
 echo.
-echo   ÒªĞŞ¸ÄĞéÄâÖ÷»ú, ÇëÊäÈëĞòºÅ»òÖ÷ÓòÃû.
+echo   è¦ä¿®æ”¹è™šæ‹Ÿä¸»æœº, è¯·è¾“å…¥åºå·æˆ–ä¸»åŸŸå.
 echo.
 set hName=
-set /p hName=-^>ÇëÑ¡ÔñÒªĞŞ¸ÄµÄĞéÄâÖ÷»ú:
+set /p hName=-^>è¯·é€‰æ‹©è¦ä¿®æ”¹çš„è™šæ‹Ÿä¸»æœº:
 if /i "%hName%"=="" goto menu
 if /i "%hName%"=="q" goto menu
 %php% "vhost_mod(env('hName'), env('hAlias'));" || %pause% && goto menu
 echo.
-echo   ÇëÊäÈëĞÂµÄ¶îÍâÓòÃû, Ô­ÓĞÊı¾İ½«±»¸²¸Ç! ¶à¸öÓòÃûÒÔ¿Õ¸ñ¸ô¿ª£¬Áô¿Õ²»×öĞŞ¸Ä.
+echo   è¯·è¾“å…¥æ–°çš„é¢å¤–åŸŸå, åŸæœ‰æ•°æ®å°†è¢«è¦†ç›–! å¤šä¸ªåŸŸåä»¥ç©ºæ ¼éš”å¼€ï¼Œç•™ç©ºä¸åšä¿®æ”¹.
 echo.
 set hAlias=
-set /p hAlias=-^>ÇëÊäÈëÒª°ó¶¨µÄÓòÃû:
+set /p hAlias=-^>è¯·è¾“å…¥è¦ç»‘å®šçš„åŸŸå:
 if /i "%hAlias%"=="q" goto menu
 %php% "vhost_mod(env('hName'), env('hAlias'));" || %pause% && goto menu
 call :restart_Apache
 echo.
-echo   %hName%ĞéÄâÖ÷»úĞŞ¸ÄÍê±Ï£¡
+echo   %hName%è™šæ‹Ÿä¸»æœºä¿®æ”¹å®Œæ¯•ï¼
 echo.
 %pause%
 goto vhost_mod
 
 :vProxy_add
 mode con cols=80 lines=45
-echo   Ìí¼ÓÒ»¸öĞéÄâÖ÷»ú£¬´úÀíµ½ÆäËûÍøÖ·»òº¬¶Ë¿ÚºÅµÄIPµØÖ·
+echo   æ·»åŠ ä¸€ä¸ªè™šæ‹Ÿä¸»æœºï¼Œä»£ç†åˆ°å…¶ä»–ç½‘å€æˆ–å«ç«¯å£å·çš„IPåœ°å€
 echo.
-echo   ÏÖÓĞµÄĞéÄâÖ÷»úÁĞ±í£º
+echo   ç°æœ‰çš„è™šæ‹Ÿä¸»æœºåˆ—è¡¨ï¼š
 %php% "showvhs();" || %pause% && goto menu
 :vProxy_add_hN
 echo.
-echo   Ìí¼ÓĞÂµÄÖ÷ÓòÃû. Èç test.com »ò blog.test.com
+echo   æ·»åŠ æ–°çš„ä¸»åŸŸå. å¦‚ test.com æˆ– blog.test.com
 echo.
 set hName=
-set /p hName=-^>ÇëÊäÈëÒ»¸öÖ÷ÓòÃû:
+set /p hName=-^>è¯·è¾“å…¥ä¸€ä¸ªä¸»åŸŸå:
 if /i "%hName%"=="" goto vProxy_add
 if /i "%hName%"=="q" goto menu
 %php% "if (regrpl('[\w\d\.\-]+', '', env('hName'))) exit(1);" && goto vProxy_add_hA
-echo   Ö÷ÓòÃûÖ»ÄÜÓÉ "a-z0-9.-" ×é³É!
+echo   ä¸»åŸŸååªèƒ½ç”± "a-z0-9.-" ç»„æˆ!
 %pause% && goto vProxy_add_hN
 :vProxy_add_hA
 echo.
-echo   °ó¶¨¶îÍâÓòÃû. Èç www.test.com »ò *.test.com(·º½âÎö); ¶à¸öÇëÓÃ¿Õ¸ñ¸ô¿ª
+echo   ç»‘å®šé¢å¤–åŸŸå. å¦‚ www.test.com æˆ– *.test.com(æ³›è§£æ); å¤šä¸ªè¯·ç”¨ç©ºæ ¼éš”å¼€
 echo.
 set hAlias=
-set /p hAlias=-^>¶îÍâÓòÃû(¿ÉÑ¡):
+set /p hAlias=-^>é¢å¤–åŸŸå(å¯é€‰):
 if /i "%hAlias%"=="" goto vProxy_add_hP
 if /i "%hAlias%"=="q" goto menu
 %php% "if (regrpl('[\w\d\.\- *]+', '', env('hAlias'))) exit(1);" && goto vProxy_add_hP
-echo   ¶îÍâÓòÃûÖ»ÄÜÓÉ "a-z0-9.-* " ×é³É!
+echo   é¢å¤–åŸŸååªèƒ½ç”± "a-z0-9.-* " ç»„æˆ!
 %pause% && goto proxy_add_hA
 :vProxy_add_hP
 echo.
-echo   ´úÀíÄ¿±ê. Èç test.com:8080, 192.168.1.3:81 »ò www.example.com
+echo   ä»£ç†ç›®æ ‡. å¦‚ test.com:8080, 192.168.1.3:81 æˆ– www.example.com
 echo.
 set hPass=
-set /p hPass=-^>´úÀíÄ¿±ê:
+set /p hPass=-^>ä»£ç†ç›®æ ‡:
 if /i "%hPass%"=="" goto vProxy_add_hP
 if /i "%hPass%"=="q" goto menu
 %php% "if (regrpl('[a-z0-9\.\-_:\/]+', '', env('hPass'))) exit(1);" && goto vProxy_add_go
-echo   Ä¿±êµØÖ·Ö»ÄÜÓÉ "a-z0-9.-_:/" ×é³É!
+echo   ç›®æ ‡åœ°å€åªèƒ½ç”± "a-z0-9.-_:/" ç»„æˆ!
 %pause% && goto vProxy_add_hP
 :vProxy_add_go
 %php% "vProxy_add(env('hName'), env('hAlias'), env('hPass'));"
 call :restart_Apache
 echo.
-echo   %hName%´úÀíĞéÄâÖ÷»úÌí¼ÓÍê±Ï£¡
+echo   %hName%ä»£ç†è™šæ‹Ÿä¸»æœºæ·»åŠ å®Œæ¯•ï¼
 echo.
 %pause%
 goto vProxy_add
 
 :vProxy_dis
-echo   ¼ÌĞø½«É¾³ıËùÓĞ´úÀíÖ÷»ú¼ÇÂ¼!
+echo   ç»§ç»­å°†åˆ é™¤æ‰€æœ‰ä»£ç†ä¸»æœºè®°å½•!
 echo.
-set /p sure=-^>È·ÈÏ? (y/n)
+set /p sure=-^>ç¡®è®¤? (y/n)
 if /i "%sure%"=="n" goto menu
 if /i "%sure%"=="y" goto un_proxy_1
 if /i "%sure%"=="q" goto menu
@@ -470,7 +469,7 @@ if /i "%sure%"=="q" goto menu
 %php% "vProxy_dis();" || %pause% && goto menu
 call :restart_Apache
 echo.
-echo   ´úÀíĞéÄâÖ÷»úÉ¾³ıÍê±Ï£¡
+echo   ä»£ç†è™šæ‹Ÿä¸»æœºåˆ é™¤å®Œæ¯•ï¼
 echo.
 %pause%
 goto menu
@@ -478,20 +477,20 @@ goto menu
 :apache_package
 cls
 echo.
-echo     ========= Apache¹¦ÄÜÄ£¿é¿ªÆô×´Ì¬ÉèÖÃ ÒÔÏÂÄ£¿éÄ¬ÈÏÒÑÈ«²¿[¿ªÆô] ==========
+echo     ========= ApacheåŠŸèƒ½æ¨¡å—å¼€å¯çŠ¶æ€è®¾ç½® ä»¥ä¸‹æ¨¡å—é»˜è®¤å·²å…¨éƒ¨[å¼€å¯] ==========
 echo.
-echo            k1 - ¿ªÆô ApacheÈÕÖ¾±¨¸æ      g1 - ¹Ø±Õ ApacheÈÕÖ¾±¨¸æ
-echo            k2 - ¿ªÆô rewriteÎ±¾²Ì¬       g2 - ¹Ø±Õ rewriteÎ±¾²Ì¬
-echo            k3 - ¿ªÆô GzipÍøÒ³Ñ¹Ëõ´«Êä    g3 - ¹Ø±Õ GzipÍøÒ³Ñ¹Ëõ´«Êä
+echo            k1 - å¼€å¯ Apacheæ—¥å¿—æŠ¥å‘Š      g1 - å…³é—­ Apacheæ—¥å¿—æŠ¥å‘Š
+echo            k2 - å¼€å¯ rewriteä¼ªé™æ€       g2 - å…³é—­ rewriteä¼ªé™æ€
+echo            k3 - å¼€å¯ Gzipç½‘é¡µå‹ç¼©ä¼ è¾“    g3 - å…³é—­ Gzipç½‘é¡µå‹ç¼©ä¼ è¾“
 echo.
-echo     ========= Apache¹¦ÄÜÄ£¿é¿ªÆô×´Ì¬ÉèÖÃ ÒÔÏÂÄ£¿éÄ¬ÈÏÒÑÈ«²¿[¹Ø±Õ] ==========
+echo     ========= ApacheåŠŸèƒ½æ¨¡å—å¼€å¯çŠ¶æ€è®¾ç½® ä»¥ä¸‹æ¨¡å—é»˜è®¤å·²å…¨éƒ¨[å…³é—­] ==========
 echo.
-echo            k4 - ¿ªÆô ExpiresÒ³Ãæ»º´æ     g4 - ¹Ø±Õ ExpiresÒ³Ãæ»º´æ
-echo            k5 - ¿ªÆô HTTP2Ğ­ÒéÄ£¿é       g5 - ¹Ø±Õ HTTP2Ğ­ÒéÄ£¿é
+echo            k4 - å¼€å¯ Expiresé¡µé¢ç¼“å­˜     g4 - å…³é—­ Expiresé¡µé¢ç¼“å­˜
+echo            k5 - å¼€å¯ HTTP2åè®®æ¨¡å—       g5 - å…³é—­ HTTP2åè®®æ¨¡å—
 echo.
-echo     ======================== ÊäÈëSS ²é¿´Apache×´Ì¬ =========================
+echo     ======================== è¾“å…¥SS æŸ¥çœ‹ApacheçŠ¶æ€ =========================
 echo.
-set /p input=-^>ÇëÑ¡Ôñ:
+set /p input=-^>è¯·é€‰æ‹©:
 cls
 echo.
 if /i "%input%"=="k1" goto k_logs
@@ -507,7 +506,7 @@ if /i "%input%"=="g5" goto g_http2
 if /i "%input%"=="ss" goto apache_status
 if /i "%input%"=="q" goto menu
 echo.
-echo   ÊäÈëÓĞÎóÇë·µ»Ø£¡
+echo   è¾“å…¥æœ‰è¯¯è¯·è¿”å›ï¼
 echo.
 %pause%
 goto apache_package
@@ -516,7 +515,7 @@ goto apache_package
 %php% "frpl($vhosts_conf, '^[#](.*ErrorLog.*\r\n)', '$1');" || %pause% && goto menu
 %php% "frpl($vhosts_conf, '^[#](.*CustomLog.*\r\n)', '$1');" || %pause% && goto menu
 call :restart_Apache
-echo   ApacheÈÕÖ¾±¨¸æ¿ªÆô³É¹¦£¡
+echo   Apacheæ—¥å¿—æŠ¥å‘Šå¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
@@ -524,7 +523,7 @@ goto apache_package
 %php% "frpl($vhosts_conf, '^(.*ErrorLog.*\r\n)', '#$1');" || %pause% && goto menu
 %php% "frpl($vhosts_conf, '^(.*CustomLog.*\r\n)', '#$1');" || %pause% && goto menu
 call :restart_Apache
-echo   ApacheÈÕÖ¾±¨¸æ¹Ø±Õ³É¹¦£¡
+echo   Apacheæ—¥å¿—æŠ¥å‘Šå…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
@@ -532,14 +531,14 @@ goto apache_package
 :k_rewrite
 %php% "frpl($httpd_conf, '^[#]*(LoadModule).*rewrite.*(\r\n)', '$1 rewrite_module modules/mod_rewrite.so$2');" || %pause% && goto menu
 call :restart_Apache
-echo   rewriteÎ±¾²Ì¬Ä£¿é¿ªÆô³É¹¦£¡
+echo   rewriteä¼ªé™æ€æ¨¡å—å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
 :g_rewrite
 %php% "frpl($httpd_conf, '^(LoadModule.*rewrite.*\r\n)', '#$1');" || %pause% && goto menu
 call :restart_Apache
-echo   rewriteÎ±¾²Ì¬Ä£¿é¹Ø±Õ³É¹¦£¡
+echo   rewriteä¼ªé™æ€æ¨¡å—å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
@@ -547,14 +546,14 @@ goto apache_package
 :k_Gzip
 %php% "frpl($httpd_conf, '^[#]*(LoadModule).*deflate.*(\r\n)', '$1 deflate_module modules/mod_deflate.so$2');" || %pause% && goto menu
 call :restart_Apache
-echo   GzipÍøÒ³Ñ¹Ëõ´«ÊäÄ£¿é¿ªÆô³É¹¦£¡
+echo   Gzipç½‘é¡µå‹ç¼©ä¼ è¾“æ¨¡å—å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
 :g_Gzip
 %php% "frpl($httpd_conf, '^(LoadModule.*deflate.*\r\n)', '#$1');" || %pause% && goto menu
 call :restart_Apache
-echo   GzipÍøÒ³Ñ¹Ëõ´«ÊäÄ£¿é¹Ø±Õ³É¹¦£¡
+echo   Gzipç½‘é¡µå‹ç¼©ä¼ è¾“æ¨¡å—å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
@@ -562,14 +561,14 @@ goto apache_package
 :k_Expires
 %php% "frpl($httpd_conf, '^[#]*(LoadModule).*expires.*(\r\n)', '$1 expires_module modules/mod_expires.so$2');" || %pause% && goto menu
 call :restart_Apache
-echo   ExpiresÒ³Ãæ»º´æÄ£¿é¿ªÆô³É¹¦£¡
+echo   Expiresé¡µé¢ç¼“å­˜æ¨¡å—å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
 :g_Expires
 %php% "frpl($httpd_conf, '^(LoadModule.*expires.*\r\n)', '#$1');" || %pause% && goto menu
 call :restart_Apache
-echo   ExpiresÒ³Ãæ»º´æÄ£¿é¹Ø±Õ³É¹¦£¡
+echo   Expiresé¡µé¢ç¼“å­˜æ¨¡å—å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
@@ -577,14 +576,14 @@ goto apache_package
 :k_http2
 %php% "frpl($httpd_conf, '^[#]*(LoadModule).*http2.*(\r\n)', '$1 http2_module modules/mod_http2.so$2');" || %pause% && goto menu
 call :restart_Apache
-echo   HTTP2Ğ­ÒéÄ£¿é¿ªÆô³É¹¦£¡
+echo   HTTP2åè®®æ¨¡å—å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
 :g_http2
 %php% "frpl($httpd_conf, '^(LoadModule.*http2.*\r\n)', '#$1');" || %pause% && goto menu
 call :restart_Apache
-echo   HTTP2Ğ­ÒéÄ£¿é¹Ø±Õ³É¹¦£¡
+echo   HTTP2åè®®æ¨¡å—å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto apache_package
@@ -596,22 +595,22 @@ goto menu
 :php_package
 cls
 echo.
-echo     ============= PHP¹¦ÄÜ×é¼ş¿ªÆô×´Ì¬Ò» ÒÔÏÂ×é¼şÄ¬ÈÏÒÑ[¿ªÆô] ===============
+echo     ============= PHPåŠŸèƒ½ç»„ä»¶å¼€å¯çŠ¶æ€ä¸€ ä»¥ä¸‹ç»„ä»¶é»˜è®¤å·²[å¼€å¯] ===============
 echo.
-echo          k1   - ¿ªÆô Opcache¼ÓËÙ»º´æ        g1  - ¹Ø±Õ Opcache¼ÓËÙ»º´æ
-echo          k2   - ¿ªÆô RedisÊı¾İ»º´æ          g2  - ¹Ø±Õ RedisÊı¾İ»º´æ
-echo          k3   - ¿ªÆô exif                   g3  - ¹Ø±Õ exif
-echo          k4   - ¿ªÆô openssl                g4  - ¹Ø±Õ openssl
+echo          k1   - å¼€å¯ OpcacheåŠ é€Ÿç¼“å­˜        g1  - å…³é—­ OpcacheåŠ é€Ÿç¼“å­˜
+echo          k2   - å¼€å¯ Redisæ•°æ®ç¼“å­˜          g2  - å…³é—­ Redisæ•°æ®ç¼“å­˜
+echo          k3   - å¼€å¯ exif                   g3  - å…³é—­ exif
+echo          k4   - å¼€å¯ openssl                g4  - å…³é—­ openssl
 echo.
-echo     ============= PHP¹¦ÄÜ×é¼ş¿ªÆô×´Ì¬Ò» ÒÔÏÂ×é¼şÄ¬ÈÏÒÑ[¹Ø±Õ] ===============
+echo     ============= PHPåŠŸèƒ½ç»„ä»¶å¼€å¯çŠ¶æ€ä¸€ ä»¥ä¸‹ç»„ä»¶é»˜è®¤å·²[å…³é—­] ===============
 echo.
-echo          k5   - ¿ªÆô Xdebug                 g5  - ¹Ø±Õ Xdebug
+echo          k5   - å¼€å¯ Xdebug                 g5  - å…³é—­ Xdebug
 echo.
 echo     ========================================================================
 echo.
-echo   ´Ë¹¦ÄÜĞès1¿ªÆôÈ«²¿·şÎñºóÔÙ²Ù×÷£¡¸ü¸Ä¹ıÉú²ú¿ª·¢»·¾³ºÍÖ÷»úĞÔÄÜÊÊÅäºóĞèÖØÉè£¡
+echo   æ­¤åŠŸèƒ½éœ€s1å¼€å¯å…¨éƒ¨æœåŠ¡åå†æ“ä½œï¼æ›´æ”¹è¿‡ç”Ÿäº§å¼€å‘ç¯å¢ƒå’Œä¸»æœºæ€§èƒ½é€‚é…åéœ€é‡è®¾ï¼
 echo.
-set /p input=-^>ÇëÑ¡Ôñ:
+set /p input=-^>è¯·é€‰æ‹©:
 cls
 echo.
 if /i "%input%"=="k1"  goto k_Opcache
@@ -626,7 +625,7 @@ if /i "%input%"=="k5"  goto k_xdebug
 if /i "%input%"=="g5"  goto g_xdebug
 if /i "%input%"=="q"   goto menu
 echo.
-echo   ÊäÈëÓĞÎóÇë·µ»Ø£¡
+echo   è¾“å…¥æœ‰è¯¯è¯·è¿”å›ï¼
 echo.
 %pause%
 goto php_package
@@ -634,14 +633,14 @@ goto php_package
 :k_Opcache
 %php% "frpl($php_ini, '^[;]*(zend_extension.*=).*opcache.*(\r\n)', '$1`X:\upupw\PHP7\ext\php_opcache.dll`$2');" || %pause% && goto menu
 call :restart_Apache
-echo   Opcache¼ÓËÙ×é¼ş¿ªÆô³É¹¦£¡
+echo   OpcacheåŠ é€Ÿç»„ä»¶å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
 :g_Opcache
 %php% "frpl($php_ini, '^(zend_extension.*=.*opcache.*\r\n)', ';$1');" || %pause% && goto menu
 call :restart_Apache
-echo   Opcache¼ÓËÙ×é¼ş¹Ø±Õ³É¹¦£¡
+echo   OpcacheåŠ é€Ÿç»„ä»¶å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
@@ -649,14 +648,14 @@ goto php_package
 :k_redis
 %php% "frpl($php_ini, '^[;]*(extension=).*redis.*(\r\n)', '$1php_redis.dll$2');" || %pause% && goto menu
 call :restart_Apache
-echo   Redis×é¼ş¿ªÆô³É¹¦£¡
+echo   Redisç»„ä»¶å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
 :g_redis
 %php% "frpl($php_ini, '^(extension=.*redis.*\r\n)', ';$1');" || %pause% && goto menu
 call :restart_Apache
-echo   Redis×é¼ş¹Ø±Õ³É¹¦£¡
+echo   Redisç»„ä»¶å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
@@ -664,14 +663,14 @@ goto php_package
 :k_exif
 %php% "frpl($php_ini, '^[;]*(extension=).*exif.*(\r\n)', '$1php_exif.dll$2');" || %pause% && goto menu
 call :restart_Apache
-echo   exif×é¼ş¿ªÆô³É¹¦£¡
+echo   exifç»„ä»¶å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
 :g_exif
 %php% "frpl($php_ini, '^(extension=.*exif.*\r\n)', ';$1');" || %pause% && goto menu
 call :restart_Apache
-echo   exif×é¼ş¹Ø±Õ³É¹¦£¡
+echo   exifç»„ä»¶å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
@@ -679,14 +678,14 @@ goto php_package
 :k_openssl
 %php% "frpl($php_ini, '^[;]*(extension=).*openssl.*(\r\n)', '$1php_openssl.dll$2');" || %pause% && goto menu
 call :restart_Apache
-echo   openssl×é¼ş¿ªÆô³É¹¦£¡
+echo   opensslç»„ä»¶å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
 :g_openssl
 %php% "frpl($php_ini, '^(extension=.*openssl.*\r\n)', ';$1');" || %pause% && goto menu
 call :restart_Apache
-echo   openssl×é¼ş¹Ø±Õ³É¹¦£¡
+echo   opensslç»„ä»¶å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
@@ -695,7 +694,7 @@ goto php_package
 %php% "frpl($php_ini, '^(zend_extension.*=.*opcache.*\r\n)', ';$1');" || %pause% && goto menu
 %php% "frpl($php_ini, '^[;]*(zend_extension.*=).*xdebug.*(\r\n)', '$1`X:\upupw\PHP7\ext\php_xdebug.dll`$2');" || %pause% && goto menu
 call :restart_Apache
-echo   Xdebug×é¼ş¿ªÆô³É¹¦£¡
+echo   Xdebugç»„ä»¶å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
@@ -703,7 +702,7 @@ goto php_package
 %php% "frpl($php_ini, '^(zend_extension.*=.*xdebug.*\r\n)', ';$1');" || %pause% && goto menu
 %php% "frpl($php_ini, '^[;]*(zend_extension.*=).*opcache.*(\r\n)', '$1`X:\upupw\PHP7\ext\php_opcache.dll`$2');" || %pause% && goto menu
 call :restart_Apache
-echo   Xdebug×é¼ş¹Ø±Õ³É¹¦£¡
+echo   Xdebugç»„ä»¶å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto php_package
@@ -711,27 +710,27 @@ goto php_package
 :safe_pz
 cls
 echo.
-echo     ===================== UPUPW°²È«·À»¤¹¦ÄÜÅäÖÃÑ¡Ïî ========================
+echo     ===================== UPUPWå®‰å…¨é˜²æŠ¤åŠŸèƒ½é…ç½®é€‰é¡¹ ========================
 echo    ^|                                                                        ^|
-echo    ^|    k1 - ¿ªÆô ×¢Èë¹¥»÷·À»¤         g1 -(Ä¬ÈÏ) ¹Ø±Õ ×¢Èë¹¥»÷·À»¤         ^|
-echo    ^|    k2 - ¿ªÆô ·À¿çÕ¾Ä¿Â¼ÏŞÖÆ       g2 -(Ä¬ÈÏ) ¹Ø±Õ ·À¿çÕ¾Ä¿Â¼ÏŞÖÆ       ^|
-echo    ^|    k3 - Òş²Ø ApacheÍ·²¿ĞÅÏ¢       g3 -(Ä¬ÈÏ) ÏÔÊ¾ ApacheÍ·²¿ĞÅÏ¢       ^|
-echo    ^|    k4 - Òş²Ø PHPÍ·²¿ĞÅÏ¢          g4 -(Ä¬ÈÏ) ÏÔÊ¾ PHPÍ·²¿ĞÅÏ¢          ^|
-echo    ^|    k5 - ½ûÓÃ Î´°ó¶¨ÓòÃû·ÃÎÊ       g5 -(Ä¬ÈÏ) ÆôÓÃ ËùÓĞÓòÃû·ÃÎÊ         ^|
-echo    ^|    k6 - ½ûÓÃ PHP²»°²È«º¯ÊıÖ´ĞĞ    g6 -(Ä¬ÈÏ) ÆôÓÃ PHPËùÓĞ¿ÉÖ´ĞĞº¯Êı    ^|
-echo    ^|    k7 - ½ûÓÃ ÍâÍø·ÃÎÊphpmyadmin   g7 -(Ä¬ÈÏ) ÆôÓÃ ÍâÍø·ÃÎÊphpmyadmin   ^|
+echo    ^|    k1 - å¼€å¯ æ³¨å…¥æ”»å‡»é˜²æŠ¤         g1 -(é»˜è®¤) å…³é—­ æ³¨å…¥æ”»å‡»é˜²æŠ¤         ^|
+echo    ^|    k2 - å¼€å¯ é˜²è·¨ç«™ç›®å½•é™åˆ¶       g2 -(é»˜è®¤) å…³é—­ é˜²è·¨ç«™ç›®å½•é™åˆ¶       ^|
+echo    ^|    k3 - éšè— Apacheå¤´éƒ¨ä¿¡æ¯       g3 -(é»˜è®¤) æ˜¾ç¤º Apacheå¤´éƒ¨ä¿¡æ¯       ^|
+echo    ^|    k4 - éšè— PHPå¤´éƒ¨ä¿¡æ¯          g4 -(é»˜è®¤) æ˜¾ç¤º PHPå¤´éƒ¨ä¿¡æ¯          ^|
+echo    ^|    k5 - ç¦ç”¨ æœªç»‘å®šåŸŸåè®¿é—®       g5 -(é»˜è®¤) å¯ç”¨ æ‰€æœ‰åŸŸåè®¿é—®         ^|
+echo    ^|    k6 - ç¦ç”¨ PHPä¸å®‰å…¨å‡½æ•°æ‰§è¡Œ    g6 -(é»˜è®¤) å¯ç”¨ PHPæ‰€æœ‰å¯æ‰§è¡Œå‡½æ•°    ^|
+echo    ^|    k7 - ç¦ç”¨ å¤–ç½‘è®¿é—®phpmyadmin   g7 -(é»˜è®¤) å¯ç”¨ å¤–ç½‘è®¿é—®phpmyadmin   ^|
 echo    ^|                                                                        ^|
-echo     ===================== UPUPW½ø³ÌÊØ»¤¹¦ÄÜÅäÖÃÑ¡Ïî ========================
+echo     ===================== UPUPWè¿›ç¨‹å®ˆæŠ¤åŠŸèƒ½é…ç½®é€‰é¡¹ ========================
 echo    ^|                                                                        ^|
-echo    ^|       d1 - ÉèÖÃ ¼ì²âÊ±¼ä¼ä¸ô        d2 - ÉèÖÃ ÕìÌıÄ¿±êÍøÖ·             ^|
-echo    ^|       sa - ¿ªÆô KÊØ»¤½ø³Ì           sd - ¹Ø±Õ KÊØ»¤½ø³Ì                ^|
+echo    ^|       d1 - è®¾ç½® æ£€æµ‹æ—¶é—´é—´éš”        d2 - è®¾ç½® ä¾¦å¬ç›®æ ‡ç½‘å€             ^|
+echo    ^|       sa - å¼€å¯ Kå®ˆæŠ¤è¿›ç¨‹           sd - å…³é—­ Kå®ˆæŠ¤è¿›ç¨‹                ^|
 echo    ^|                                                                        ^|
 echo     ========================================================================
 echo.
-echo   °²È«·À»¤¹¦ÄÜĞès1¿ªÆôÈ«²¿·şÎñºóÔÙ²Ù×÷£¡¸ü¸Ä¹ıÉú²ú¿ª·¢»·¾³ºóĞèÖØÉè£¡
+echo   å®‰å…¨é˜²æŠ¤åŠŸèƒ½éœ€s1å¼€å¯å…¨éƒ¨æœåŠ¡åå†æ“ä½œï¼æ›´æ”¹è¿‡ç”Ÿäº§å¼€å‘ç¯å¢ƒåéœ€é‡è®¾ï¼
 echo.
 set input=
-set /p input=-^>ÇëÑ¡Ôñ:
+set /p input=-^>è¯·é€‰æ‹©:
 cls
 echo.
 if /i "%input%"=="k1" goto k_zhuru
@@ -760,14 +759,14 @@ goto safe_pz
 :k_zhuru
 %php% "frpl($php_ini, '^[;]*(auto_prepend_file.*=).*protect.*(\r\n)', '$1\"X:\upupw\Guard\protect.dll\"$2');" || %pause% && goto menu
 call :restart_Apache
-echo   ×¢Èë¹¥»÷·À»¤¿ªÆô³É¹¦£¡
+echo   æ³¨å…¥æ”»å‡»é˜²æŠ¤å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto safe_pz
 :g_zhuru
 %php% "frpl($php_ini, '^(auto_prepend_file.*=.*protect.*\r\n)', ';$1');" || %pause% && goto menu
 call :restart_Apache
-echo   ×¢Èë¹¥»÷·À»¤¹Ø±Õ³É¹¦£¡
+echo   æ³¨å…¥æ”»å‡»é˜²æŠ¤å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto safe_pz
@@ -775,14 +774,14 @@ goto safe_pz
 :k_cross
 %php% "frpl($vhosts_conf, '^.*[#](php_admin_value).*(open_basedir)', '    $1 $2');" || %pause% && goto menu
 call :restart_Apache
-echo   ·À¿çÕ¾Ä¿Â¼ÏŞÖÆ¿ªÆô³É¹¦£¡
+echo   é˜²è·¨ç«™ç›®å½•é™åˆ¶å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto safe_pz
 :g_cross
 %php% "frpl($vhosts_conf, '^.*(php_admin_value )', '   #$1');" || %pause% && goto menu
 call :restart_Apache
-echo   ·À¿çÕ¾Ä¿Â¼ÏŞÖÆ¹Ø±Õ³É¹¦£¡
+echo   é˜²è·¨ç«™ç›®å½•é™åˆ¶å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto safe_pz
@@ -791,7 +790,7 @@ goto safe_pz
 %php% "frpl($httpd_conf, '.*(ServerTokens).*(\r\n)', '$1 Prod$2');" || %pause% && goto menu
 %php% "frpl($httpd_conf, '.*(ServerSignature).*(\r\n)', '$1 Off$2');" || %pause% && goto menu
 call :restart_Apache
-echo   ApacheÍ·²¿ĞÅÏ¢³É¹¦Òş²Ø£¡
+echo   Apacheå¤´éƒ¨ä¿¡æ¯æˆåŠŸéšè—ï¼
 echo.
 %pause%
 goto safe_pz
@@ -799,7 +798,7 @@ goto safe_pz
 %php% "frpl($httpd_conf, '.*(ServerTokens).*(\r\n)', '$1 Minimal$2');" || %pause% && goto menu
 %php% "frpl($httpd_conf, '.*(ServerSignature).*(\r\n)', '$1 On$2');" || %pause% && goto menu
 call :restart_Apache
-echo   ApacheÍ·²¿ĞÅÏ¢³É¹¦ÏÔÊ¾£¡
+echo   Apacheå¤´éƒ¨ä¿¡æ¯æˆåŠŸæ˜¾ç¤ºï¼
 echo.
 %pause%
 goto safe_pz
@@ -807,14 +806,14 @@ goto safe_pz
 :k_pheader
 %php% "frpl($php_ini, '(expose_php.*=).*O.*(\r\n)', '$1Off$2');" || %pause% && goto menu
 call :restart_Apache
-echo   PHPÍ·²¿ĞÅÏ¢³É¹¦Òş²Ø£¡
+echo   PHPå¤´éƒ¨ä¿¡æ¯æˆåŠŸéšè—ï¼
 echo.
 %pause%
 goto safe_pz
 :g_pheader
 %php% "frpl($php_ini, '(expose_php.*=).*O.*(\r\n)', '$1On$2');" || %pause% && goto menu
 call :restart_Apache
-echo   PHPÍ·²¿ĞÅÏ¢³É¹¦ÏÔÊ¾£¡
+echo   PHPå¤´éƒ¨ä¿¡æ¯æˆåŠŸæ˜¾ç¤ºï¼
 echo.
 %pause%
 goto safe_pz
@@ -822,14 +821,14 @@ goto safe_pz
 :k_saferesolve
 %php% "frpl($httpd_conf, '^[#]*(Include ).*saferesolve.conf(\r\n)', '$1conf/extra/httpd-saferesolve.conf$2');" || %pause% && goto menu
 call :restart_Apache
-echo   ÒÑ³É¹¦½ûÓÃÎ´°ó¶¨ÓòÃû·ÃÎÊÄ¬ÈÏÖ÷»ú£¡
+echo   å·²æˆåŠŸç¦ç”¨æœªç»‘å®šåŸŸåè®¿é—®é»˜è®¤ä¸»æœºï¼
 echo.
 %pause%
 goto safe_pz
 :g_saferesolve
 %php% "frpl($httpd_conf, '^(Include conf\/extra\/httpd\-saferesolve\.conf\r\n)', '#$1');" || %pause% && goto menu
 call :restart_Apache
-echo   ÒÑ¿ª·ÅËùÓĞ½âÎö¹ıÀ´µÄÓòÃû·ÃÎÊÄ¬ÈÏÖ÷»ú£¡
+echo   å·²å¼€æ”¾æ‰€æœ‰è§£æè¿‡æ¥çš„åŸŸåè®¿é—®é»˜è®¤ä¸»æœºï¼
 echo.
 %pause%
 goto safe_pz
@@ -837,14 +836,14 @@ goto safe_pz
 :k_hanshu
 %php% "frpl($php_ini, '^.*[;](disable_functions.*=)', '$1');" || %pause% && goto menu
 call :restart_Apache
-echo   ÒÑ½ûÓÃPHP²»°²È«º¯ÊıÖ´ĞĞ£¡
+echo   å·²ç¦ç”¨PHPä¸å®‰å…¨å‡½æ•°æ‰§è¡Œï¼
 echo.
 %pause%
 goto safe_pz
 :g_hanshu
 %php% "frpl($php_ini, '^.*(disable_functions.*=)', ';$1');" || %pause% && goto menu
 call :restart_Apache
-echo   ÒÑÆôÓÃPHPËùÓĞ¿ÉÖ´ĞĞº¯Êı£¡
+echo   å·²å¯ç”¨PHPæ‰€æœ‰å¯æ‰§è¡Œå‡½æ•°ï¼
 echo.
 %pause%
 goto safe_pz
@@ -854,7 +853,7 @@ if not exist %CD%\phpmyadmin\.htaccess (
 copy /y %CD%\upcore\.ht %CD%\phpmyadmin\.htaccess >nul 2>nul
 )
 call :restart_Apache
-echo   ÒÑ½ûÓÃÍâÍø·ÃÎÊphpmyadmin£¡
+echo   å·²ç¦ç”¨å¤–ç½‘è®¿é—®phpmyadminï¼
 echo.
 %pause%
 goto safe_pz
@@ -863,7 +862,7 @@ if exist %CD%\phpmyadmin\.htaccess (
 del /f/s/q %CD%\phpmyadmin\.htaccess >nul 2>nul
 )
 call :restart_Apache
-echo   ÒÑÆôÓÃÍâÍø·ÃÎÊphpmyadmin£¡
+echo   å·²å¯ç”¨å¤–ç½‘è®¿é—®phpmyadminï¼
 echo.
 %pause%
 goto safe_pz
@@ -872,16 +871,16 @@ goto safe_pz
 cls
 call %CD%\upcore\upd_config.cmd
 echo.
-echo   ÉèÖÃÊØ»¤½ø³Ì¼ì²âºÍµÈ´ı¼ä¸ô,×îÖÕÊ±¼äÎªÄ¿Ç°ÉèÖÃµÄ%upd_timeout%X2Ãë
+echo   è®¾ç½®å®ˆæŠ¤è¿›ç¨‹æ£€æµ‹å’Œç­‰å¾…é—´éš”,æœ€ç»ˆæ—¶é—´ä¸ºç›®å‰è®¾ç½®çš„%upd_timeout%X2ç§’
 echo.
 set timeout=
-set /p timeout=-^>ÇëÉèÖÃ:
+set /p timeout=-^>è¯·è®¾ç½®:
 if /i "%timeout%"=="" goto upd_d1
 if /i "%timeout%"=="q" goto safe_pz
 %php% "frpl($upd_c, '(set upd_timeout=).*[^\r\n]', 'set upd_timeout=%timeout%');" || %pause% && goto menu
 call :sd_UPDaemon
 call :sa_UPDaemon
-echo   ÊØ»¤½ø³Ì¼ì²âºÍµÈ´ı¼ä¸ôÒÑ¸ü¸ÄÎª%timeout%X2Ãë£¡
+echo   å®ˆæŠ¤è¿›ç¨‹æ£€æµ‹å’Œç­‰å¾…é—´éš”å·²æ›´æ”¹ä¸º%timeout%X2ç§’ï¼
 echo.
 %pause%
 goto safe_pz
@@ -889,16 +888,16 @@ goto safe_pz
 cls
 call %CD%\upcore\upd_config.cmd
 echo.
-echo   ÉèÖÃÊØ»¤½ø³Ì¼ì²âÄ¿±ê,µ±Ç°Îª%upd_url%
+echo   è®¾ç½®å®ˆæŠ¤è¿›ç¨‹æ£€æµ‹ç›®æ ‡,å½“å‰ä¸º%upd_url%
 echo.
 set url=
-set /p url=-^>ÇëÉèÖÃ: http://
+set /p url=-^>è¯·è®¾ç½®: http://
 if /i "%url%"=="" goto upd_d2
 if /i "%url%"=="q" goto safe_pz
 %php% "frpl($upd_c, '(set upd_url=).*[^\r\n]', 'set upd_url=http://%url%');" || %pause% && goto menu
 call :sd_UPDaemon
 call :sa_UPDaemon
-echo   ÊØ»¤½ø³Ì¼ì²âÄ¿±êÒÑ¸ü¸ÄÎª%url%
+echo   å®ˆæŠ¤è¿›ç¨‹æ£€æµ‹ç›®æ ‡å·²æ›´æ”¹ä¸º%url%
 echo.
 %pause%
 goto safe_pz
@@ -906,27 +905,27 @@ goto safe_pz
 :reset_mydpwd
 cls
 echo.
-echo   [ e1 ] Ç¿ÖÆĞŞ¸ÄrootÃÜÂë     [ e2 ] ĞŞ¸ÄÈÎÒâÓÃ»§ÃÜÂë
+echo   [ e1 ] å¼ºåˆ¶ä¿®æ”¹rootå¯†ç      [ e2 ] ä¿®æ”¹ä»»æ„ç”¨æˆ·å¯†ç 
 echo.
 set input=
-set /p input=-^>ÇëÑ¡ÔñËùĞè¹¦ÄÜ:
+set /p input=-^>è¯·é€‰æ‹©æ‰€éœ€åŠŸèƒ½:
 if /i "%input%"=="e1"  goto reset_1
 if /i "%input%"=="e2"  goto reset_2
 if /i "%input%"==""    goto reset_mydpwd
 if /i "%input%"=="q"   goto menu
 echo.
-echo   ÊäÈëÓĞÎóÇë·µ»Ø£¡
+echo   è¾“å…¥æœ‰è¯¯è¯·è¿”å›ï¼
 echo.
 %pause%
 goto reset_mydpwd
 :reset_1
 echo.
 set rootps=
-set /p rootps=-^>ÇëÊäÈëĞÂrootÃÜÂë:
+set /p rootps=-^>è¯·è¾“å…¥æ–°rootå¯†ç :
 if /i "%rootps%"=="" goto reset_mydpwd
 if /i "%rootps%"=="q" goto menu
 echo.
-echo   ÇëÉÔºó......
+echo   è¯·ç¨å......
 echo.
 call :stop_MySQL >nul 2>nul
 start %CD%\upcore\rootps.cmd >nul 2>nul
@@ -934,55 +933,55 @@ start %CD%\upcore\rootps.cmd >nul 2>nul
 %CD%\%database_dir%\bin\mysql.exe -uroot -e "flush privileges;" 2>nul
 taskkill /im mysqld.exe /f /t >nul 2>nul
 call :start_MySQL >nul 2>nul
-echo   rootÓÃ»§ÃÜÂëÒÑĞŞ¸ÄÍê³É£¡
+echo   rootç”¨æˆ·å¯†ç å·²ä¿®æ”¹å®Œæˆï¼
 echo.
 %pause%
 goto menu
 :reset_2
 echo.
-echo   Êı¾İ¿âÄ¬ÈÏ¸ß¼¶¹ÜÀíÔ±root,ÃÜÂëroot,Èç·¢ÉúÒì³£ÇëÓÃphpmyadminµÈ¹¤¾ßĞŞ¸Ä£¡
+echo   æ•°æ®åº“é»˜è®¤é«˜çº§ç®¡ç†å‘˜root,å¯†ç root,å¦‚å‘ç”Ÿå¼‚å¸¸è¯·ç”¨phpmyadminç­‰å·¥å…·ä¿®æ”¹ï¼
 echo.
-echo   ´Ë´¦¿ÉĞŞ¸ÄÊı¾İ¿âÈÎÒâÓÃ»§ÃûµÄÃÜÂë£¬ÇëÈ·±£Êı¾İ¿â·şÎñÒÑ¿ªÆôÔÙ½øĞĞÒÔÏÂ²Ù×÷£¡
+echo   æ­¤å¤„å¯ä¿®æ”¹æ•°æ®åº“ä»»æ„ç”¨æˆ·åçš„å¯†ç ï¼Œè¯·ç¡®ä¿æ•°æ®åº“æœåŠ¡å·²å¼€å¯å†è¿›è¡Œä»¥ä¸‹æ“ä½œï¼
 echo.
 set uname=
-set /p uname=-^>Êı¾İ¿âÓÃ»§Ãû:
+set /p uname=-^>æ•°æ®åº“ç”¨æˆ·å:
 if /i "%uname%"=="" goto reset_mydpwd
 if /i "%uname%"=="q" goto menu
 echo.
 goto pwd
 :pwd
 set pwd=
-set /p pwd=-^>Ô­%uname%ÃÜÂë:
+set /p pwd=-^>åŸ%uname%å¯†ç :
 if /i "%pwd%"=="" goto reset_mydpwd
 if /i "%pwd%"=="q" goto menu
 %php% "chk_mysql('%database_port%', env('uname'), env('pwd'));" && goto pwdadmin
 if %errorlevel%==1045 (
 echo.
-echo   ÃÜÂë²»ÕıÈ·, ÇëÖØĞÂÊäÈë.
+echo   å¯†ç ä¸æ­£ç¡®, è¯·é‡æ–°è¾“å…¥.
 echo.
 goto pwd
 )
 if %errorlevel%==2002 (
 echo.
-echo   ³¢ÊÔÁ¬½ÓÊı¾İ¿âÊ§°Ü,ÇëÈ·ÈÏÊı¾İ¿âÔËĞĞÕı³£.
+echo   å°è¯•è¿æ¥æ•°æ®åº“å¤±è´¥,è¯·ç¡®è®¤æ•°æ®åº“è¿è¡Œæ­£å¸¸.
 echo.
 %pause% & goto menu
 )
 if %errorlevel%==2003 (
 echo.
-echo   ³¢ÊÔÁ¬½ÓÊı¾İ¿âÊ§°Ü,ÇëÈ·ÈÏÊı¾İ¿âÔËĞĞÕı³£.
+echo   å°è¯•è¿æ¥æ•°æ®åº“å¤±è´¥,è¯·ç¡®è®¤æ•°æ®åº“è¿è¡Œæ­£å¸¸.
 echo.
 %pause% & goto menu
 )
 :pwdadmin
 echo.
 set newpwd=
-set /p newpwd=-^>ĞÂ%uname%ÃÜÂë:
+set /p newpwd=-^>æ–°%uname%å¯†ç :
 if /i "%newpwd%"=="" goto reset_mydpwd
 if /i "%newpwd%"=="q" goto menu
 echo.
 %CD%\%database_dir%\bin\mysqladmin.exe -u"%uname%" -p"%pwd%" password "%newpwd%" >nul 2>nul
-echo   %uname%ÓÃ»§ÃÜÂëÒÑĞŞ¸ÄÍê³É£¡
+echo   %uname%ç”¨æˆ·å¯†ç å·²ä¿®æ”¹å®Œæˆï¼
 echo.
 %pause%
 goto menu
@@ -991,42 +990,42 @@ goto menu
 cls
 echo.
 mode con cols=80 lines=45 >nul 2>nul
-echo   ´Ë¹¦ÄÜÓÃÓÚÊı¾İ¿â°æ±¾·¢Éú±ä»¯Ê±Éı¼¶Êı¾İ¿âdataÄ¿Â¼µÄÌØĞÔµ½µ±Ç°°æ±¾.
+echo   æ­¤åŠŸèƒ½ç”¨äºæ•°æ®åº“ç‰ˆæœ¬å‘ç”Ÿå˜åŒ–æ—¶å‡çº§æ•°æ®åº“dataç›®å½•çš„ç‰¹æ€§åˆ°å½“å‰ç‰ˆæœ¬.
 echo.
 set uname=
-set /p uname=-^>Êı¾İ¿â³¬¼¶¹ÜÀíÔ±ÓÃ»§Ãû:
+set /p uname=-^>æ•°æ®åº“è¶…çº§ç®¡ç†å‘˜ç”¨æˆ·å:
 if /i "%uname%"=="" goto myd_upgrade
 if /i "%uname%"=="q" goto menu
 echo.
 goto pwd_upgrade
 :pwd_upgrade
 set pwd=
-set /p pwd=-^>%uname%ÃÜÂë:
+set /p pwd=-^>%uname%å¯†ç :
 if /i "%pwd%"=="" goto myd_upgrade
 if /i "%pwd%"=="q" goto menu
 %php% "chk_mysql('%database_port%', env('uname'), env('pwd'));" && goto myd_upgrade_exe
 if %errorlevel%==1045 (
 echo.
-echo   ÃÜÂë²»ÕıÈ·, ÇëÖØĞÂÊäÈë.
+echo   å¯†ç ä¸æ­£ç¡®, è¯·é‡æ–°è¾“å…¥.
 echo.
 goto pwd_upgrade
 )
 if %errorlevel%==2002 (
 echo.
-echo   ³¢ÊÔÁ¬½ÓÊı¾İ¿âÊ§°Ü,ÇëÈ·ÈÏÊı¾İ¿âÔËĞĞÕı³£.
+echo   å°è¯•è¿æ¥æ•°æ®åº“å¤±è´¥,è¯·ç¡®è®¤æ•°æ®åº“è¿è¡Œæ­£å¸¸.
 echo.
 %pause% & goto menu
 )
 if %errorlevel%==2003 (
 echo.
-echo   ³¢ÊÔÁ¬½ÓÊı¾İ¿âÊ§°Ü,ÇëÈ·ÈÏÊı¾İ¿âÔËĞĞÕı³£.
+echo   å°è¯•è¿æ¥æ•°æ®åº“å¤±è´¥,è¯·ç¡®è®¤æ•°æ®åº“è¿è¡Œæ­£å¸¸.
 echo.
 %pause% & goto menu
 )
 :myd_upgrade_exe
 cls
 %CD%\%database_dir%\bin\mysql_upgrade.exe --user="%uname%" --password="%pwd%" --force 2>nul
-echo   Çë¸´²éÉÏÃæµÄÖ´ĞĞ½á¹û, mysql.Êı¾İ±íÈ«²¿OK¼´Éı¼¶³É¹¦!
+echo   è¯·å¤æŸ¥ä¸Šé¢çš„æ‰§è¡Œç»“æœ, mysql.æ•°æ®è¡¨å…¨éƒ¨OKå³å‡çº§æˆåŠŸ!
 echo.
 %pause%
 goto menu
@@ -1035,32 +1034,32 @@ goto menu
 cls
 echo.
 set uname=
-set /p uname=-^>Êı¾İ¿â³¬¼¶¹ÜÀíÔ±ÓÃ»§Ãû:
+set /p uname=-^>æ•°æ®åº“è¶…çº§ç®¡ç†å‘˜ç”¨æˆ·å:
 if /i "%uname%"=="" goto m_database
 if /i "%uname%"=="q" goto menu
 echo.
 goto pwd_m
 :pwd_m
 set pwd=
-set /p pwd=-^>%uname%ÃÜÂë:
+set /p pwd=-^>%uname%å¯†ç :
 if /i "%pwd%"=="" goto m_database
 if /i "%pwd%"=="q" goto menu
 %php% "chk_mysql('%database_port%', env('uname'), env('pwd'));" && goto m_database_lie
 if %errorlevel%==1045 (
 echo.
-echo   ÃÜÂë²»ÕıÈ·, ÇëÖØĞÂÊäÈë.
+echo   å¯†ç ä¸æ­£ç¡®, è¯·é‡æ–°è¾“å…¥.
 echo.
 goto pwd_m
 )
 if %errorlevel%==2002 (
 echo.
-echo   ³¢ÊÔÁ¬½ÓÊı¾İ¿âÊ§°Ü,ÇëÈ·ÈÏÊı¾İ¿âÔËĞĞÕı³£.
+echo   å°è¯•è¿æ¥æ•°æ®åº“å¤±è´¥,è¯·ç¡®è®¤æ•°æ®åº“è¿è¡Œæ­£å¸¸.
 echo.
 %pause% & goto menu
 )
 if %errorlevel%==2003 (
 echo.
-echo   ³¢ÊÔÁ¬½ÓÊı¾İ¿âÊ§°Ü,ÇëÈ·ÈÏÊı¾İ¿âÔËĞĞÕı³£.
+echo   å°è¯•è¿æ¥æ•°æ®åº“å¤±è´¥,è¯·ç¡®è®¤æ•°æ®åº“è¿è¡Œæ­£å¸¸.
 echo.
 %pause% & goto menu
 )
@@ -1069,24 +1068,24 @@ mode con cols=80 lines=29 >nul 2>nul
 cls
 set Ymd=%date:~,4%%date:~5,2%%date:~8,2%
 echo.
-echo   ´Ë´¦ÎªUPUPW³ÌĞòÄ¿Â¼Êı¾İ¿âÖ´ĞĞÃæ°å,µ¼Èëµ¼³öÃüÁî¿É¿ìËÙ´¦ÀíÉÏG´óĞ¡µÄÊı¾İ.
+echo   æ­¤å¤„ä¸ºUPUPWç¨‹åºç›®å½•æ•°æ®åº“æ‰§è¡Œé¢æ¿,å¯¼å…¥å¯¼å‡ºå‘½ä»¤å¯å¿«é€Ÿå¤„ç†ä¸ŠGå¤§å°çš„æ•°æ®.
 echo.
-echo   [ m1 ]ä¯ÀÀ Êı¾İ¿âÁĞ±í
-echo   [ m2 ]´´½¨ Êı¾İ¿â
-echo   [ m3 ]É¾³ı Êı¾İ¿â
+echo   [ m1 ]æµè§ˆ æ•°æ®åº“åˆ—è¡¨
+echo   [ m2 ]åˆ›å»º æ•°æ®åº“
+echo   [ m3 ]åˆ é™¤ æ•°æ®åº“
 echo.
-echo   [ m4 ]ä¯ÀÀ ÓÃ»§ÁĞ±í
-echo   [ m5 ]´´½¨ ÓÃ»§
-echo   [ m6 ]É¾³ı ÓÃ»§
+echo   [ m4 ]æµè§ˆ ç”¨æˆ·åˆ—è¡¨
+echo   [ m5 ]åˆ›å»º ç”¨æˆ·
+echo   [ m6 ]åˆ é™¤ ç”¨æˆ·
 echo.
-echo   [ m7 ]µ¼³ö µ¥¸öÊı¾İ¿â
-echo   [ m8 ]µ¼Èë µ¥¸öÊı¾İ¿â
+echo   [ m7 ]å¯¼å‡º å•ä¸ªæ•°æ®åº“
+echo   [ m8 ]å¯¼å…¥ å•ä¸ªæ•°æ®åº“
 echo.
-echo   [ m9 ]µ¼³ö È«²¿Êı¾İ¿â
-echo   [ m10]µ¼Èë È«²¿Êı¾İ¿â
+echo   [ m9 ]å¯¼å‡º å…¨éƒ¨æ•°æ®åº“
+echo   [ m10]å¯¼å…¥ å…¨éƒ¨æ•°æ®åº“
 echo.
 set input=
-set /p input=-^>ÇëÑ¡ÔñËùĞè¹¦ÄÜ:
+set /p input=-^>è¯·é€‰æ‹©æ‰€éœ€åŠŸèƒ½:
 if /i "%input%"=="m1"  goto mdata_1
 if /i "%input%"=="m2"  goto mdata_2
 if /i "%input%"=="m3"  goto mdata_3
@@ -1100,14 +1099,14 @@ if /i "%input%"=="m10" goto mdata_10
 if /i "%input%"==""    goto m_database_lie
 if /i "%input%"=="q"   goto menu
 echo.
-echo   ÊäÈëÓĞÎóÇë·µ»Ø£¡
+echo   è¾“å…¥æœ‰è¯¯è¯·è¿”å›ï¼
 echo.
 %pause%
 goto m_database_lie
 :mdata_1
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÄÚ²¿¹ÜÀí¿âÎª[information_schema] [mysql] [performance_schema]
+echo   å†…éƒ¨ç®¡ç†åº“ä¸º[information_schema] [mysql] [performance_schema]
 %CD%\%database_dir%\bin\mysqlshow.exe -u"%uname%" -p"%pwd%" 2>nul
 echo.
 %pause%
@@ -1115,40 +1114,40 @@ goto m_database_lie
 :mdata_2
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÄÚ²¿¹ÜÀí¿âÎª[information_schema] [mysql] [performance_schema]
+echo   å†…éƒ¨ç®¡ç†åº“ä¸º[information_schema] [mysql] [performance_schema]
 %CD%\%database_dir%\bin\mysqlshow.exe -u"%uname%" -p"%pwd%" 2>nul
 set db_name=
-set /p db_name=-^>ÇëÊäÈëÒª´´½¨µÄÊı¾İ¿âÃû:
+set /p db_name=-^>è¯·è¾“å…¥è¦åˆ›å»ºçš„æ•°æ®åº“å:
 if /i "%db_name%"==""    goto mdata_2
 if /i "%db_name%"=="q"   goto m_database_lie
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "Create database %db_name%;" 2>nul
 echo.
-echo   Êı¾İ¿â%db_name%ÒÑ´´½¨Íê±Ï!
+echo   æ•°æ®åº“%db_name%å·²åˆ›å»ºå®Œæ¯•!
 echo.
 %pause%
 goto mdata_2
 :mdata_3
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÄÚ²¿¹ÜÀí¿âÎª[information_schema] [mysql] [performance_schema]
+echo   å†…éƒ¨ç®¡ç†åº“ä¸º[information_schema] [mysql] [performance_schema]
 %CD%\%database_dir%\bin\mysqlshow.exe -u"%uname%" -p"%pwd%" 2>nul
 set db_name=
-set /p db_name=-^>ÇëÊäÈëÒªÉ¾³ıµÄÊı¾İ¿âÃû:
-if /i "%db_name%"=="information_schema"   echo.&echo   ÄÚ²¿¹ÜÀí¿â²»ÄÜÉ¾³ı&echo.&%pause%&goto mdata_3
-if /i "%db_name%"=="mysql"                echo.&echo   ÄÚ²¿¹ÜÀí¿â²»ÄÜÉ¾³ı&echo.&%pause%&goto mdata_3
-if /i "%db_name%"=="performance_schema"   echo.&echo   ÄÚ²¿¹ÜÀí¿â²»ÄÜÉ¾³ı&echo.&%pause%&goto mdata_3
+set /p db_name=-^>è¯·è¾“å…¥è¦åˆ é™¤çš„æ•°æ®åº“å:
+if /i "%db_name%"=="information_schema"   echo.&echo   å†…éƒ¨ç®¡ç†åº“ä¸èƒ½åˆ é™¤&echo.&%pause%&goto mdata_3
+if /i "%db_name%"=="mysql"                echo.&echo   å†…éƒ¨ç®¡ç†åº“ä¸èƒ½åˆ é™¤&echo.&%pause%&goto mdata_3
+if /i "%db_name%"=="performance_schema"   echo.&echo   å†…éƒ¨ç®¡ç†åº“ä¸èƒ½åˆ é™¤&echo.&%pause%&goto mdata_3
 if /i "%db_name%"==""    goto mdata_3
 if /i "%db_name%"=="q"   goto m_database_lie
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "Drop database %db_name%;" 2>nul
 echo.
-echo   Êı¾İ¿â%db_name%ÒÑÉ¾³ıÍê±Ï!
+echo   æ•°æ®åº“%db_name%å·²åˆ é™¤å®Œæ¯•!
 echo.
 %pause%
 goto mdata_3
 :mdata_4
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÓÃ»§Ãû  ·şÎñÆ÷µØÖ·  MD5ÃÜÂë
+echo   ç”¨æˆ·å  æœåŠ¡å™¨åœ°å€  MD5å¯†ç 
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "select user,host,password from mysql.user;" 2>nul
 echo.
 %pause%
@@ -1156,26 +1155,26 @@ goto m_database_lie
 :mdata_5
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÓÃ»§Ãû  ·şÎñÆ÷µØÖ·  MD5ÃÜÂë
+echo   ç”¨æˆ·å  æœåŠ¡å™¨åœ°å€  MD5å¯†ç 
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "select user,host,password from mysql.user;" 2>nul
 echo.
 set user_name=
-set /p user_name=-^>ÇëÊäÈëÒª´´½¨µÄÓÃ»§Ãû:
+set /p user_name=-^>è¯·è¾“å…¥è¦åˆ›å»ºçš„ç”¨æˆ·å:
 if /i "%user_name%"==""    goto mdata_5
 if /i "%user_name%"=="q"   goto m_database_lie
 echo.
 set user_pw=
-set /p user_pw=-^>ÇëÊäÈëÒª´´½¨µÄÓÃ»§ÃÜÂë:
+set /p user_pw=-^>è¯·è¾“å…¥è¦åˆ›å»ºçš„ç”¨æˆ·å¯†ç :
 if /i "%user_pw%"==""    goto mdata_5
 if /i "%user_pw%"=="q"   goto m_database_lie
 echo.
 set user_host=
-set /p user_host=-^>ÇëÊäÈëËùÊô·şÎñÆ÷µØÖ·(Ò»°ãÎªlocalhost):
+set /p user_host=-^>è¯·è¾“å…¥æ‰€å±æœåŠ¡å™¨åœ°å€(ä¸€èˆ¬ä¸ºlocalhost):
 if /i "%user_host%"==""    goto mdata_5
 if /i "%user_host%"=="q"   goto m_database_lie
 echo.
 set user_db=
-set /p user_db=-^>ÇëÊäÈëÒªÊÚÈ¨µÄÊı¾İ¿âÃû:
+set /p user_db=-^>è¯·è¾“å…¥è¦æˆæƒçš„æ•°æ®åº“å:
 if /i "%user_db%"==""    goto mdata_5
 if /i "%user_db%"=="q"   goto m_database_lie
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "insert into mysql.user(Host,User,Password) values('%user_host%','%user_name%',password('%user_pw%'));" 2>nul
@@ -1183,104 +1182,104 @@ if /i "%user_db%"=="q"   goto m_database_lie
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "grant all privileges on %user_db%.* to %user_name%@%user_host% identified by '%user_pw%';" 2>nul
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "flush privileges;" 2>nul
 echo.
-echo   ÓÃ»§%user_name%ÒÑ´´½¨Íê±Ï!
+echo   ç”¨æˆ·%user_name%å·²åˆ›å»ºå®Œæ¯•!
 echo.
 %pause%
 goto mdata_5
 :mdata_6
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÓÃ»§Ãû  ·şÎñÆ÷µØÖ·  MD5ÃÜÂë
+echo   ç”¨æˆ·å  æœåŠ¡å™¨åœ°å€  MD5å¯†ç 
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "select user,host,password from mysql.user;" 2>nul
 echo.
 set user_name=
-set /p user_name=-^>ÇëÊäÈëÒªÉ¾³ıµÄÓÃ»§Ãû:
-if /i "%user_name%"=="%uname%" echo.&echo   ²»ÄÜÉ¾³ı×ÔÉíÕÊ»§&echo.&%pause%&goto mdata_6
+set /p user_name=-^>è¯·è¾“å…¥è¦åˆ é™¤çš„ç”¨æˆ·å:
+if /i "%user_name%"=="%uname%" echo.&echo   ä¸èƒ½åˆ é™¤è‡ªèº«å¸æˆ·&echo.&%pause%&goto mdata_6
 if /i "%user_name%"==""        goto mdata_6
 if /i "%user_name%"=="q"       goto m_database_lie
 echo.
 set user_host=
-set /p user_host=-^>ÇëÊäÈëËùÊô·şÎñÆ÷µØÖ·(Ò»°ãÎªlocalhost):
+set /p user_host=-^>è¯·è¾“å…¥æ‰€å±æœåŠ¡å™¨åœ°å€(ä¸€èˆ¬ä¸ºlocalhost):
 if /i "%user_host%"==""    goto mdata_6
 if /i "%user_host%"=="q"   goto m_database_lie
 echo.
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "Drop user '%user_name%'@'%user_host%';" 2>nul
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "flush privileges;" 2>nul
 echo.
-echo   ÓÃ»§%user_name%ÒÑÉ¾³ıÍê±Ï!
+echo   ç”¨æˆ·%user_name%å·²åˆ é™¤å®Œæ¯•!
 echo.
 %pause%
 goto mdata_6
 :mdata_7
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÄÚ²¿¹ÜÀí¿âÎª[information_schema] [mysql] [performance_schema]
+echo   å†…éƒ¨ç®¡ç†åº“ä¸º[information_schema] [mysql] [performance_schema]
 %CD%\%database_dir%\bin\mysqlshow.exe -u"%uname%" -p"%pwd%" 2>nul
 set db_name=
-set /p db_name=-^>ÇëÊäÈëÒªµ¼³öµÄÊı¾İ¿âÃû:
+set /p db_name=-^>è¯·è¾“å…¥è¦å¯¼å‡ºçš„æ•°æ®åº“å:
 if /i "%db_name%"==""    goto mdata_7
 if /i "%db_name%"=="q"   goto m_database_lie
 if not exist %CD%\Backup\Export\%Ymd% (
 md %CD%\Backup\Export\%Ymd%
 )
 echo.
-echo   ÕıÔÚµ¼³ö%db_name%Êı¾İ¿â£¬ËùĞèÊ±¼äÓÉÊı¾İ¿â´óĞ¡¾ö¶¨£¬ÇëÉÔºò...
+echo   æ­£åœ¨å¯¼å‡º%db_name%æ•°æ®åº“ï¼Œæ‰€éœ€æ—¶é—´ç”±æ•°æ®åº“å¤§å°å†³å®šï¼Œè¯·ç¨å€™...
 %CD%\%database_dir%\bin\mysqldump.exe --single-transaction -u"%uname%" -p"%pwd%" --skip-lock-tables "%db_name%" > %CD%\Backup\Export\%Ymd%\%db_name%.sql 2>nul
 echo.
-echo   Êı¾İ¿â%db_name%ÒÑµ¼³öµ½%CD%\Backup\Export\%Ymd%\%db_name%.sql
+echo   æ•°æ®åº“%db_name%å·²å¯¼å‡ºåˆ°%CD%\Backup\Export\%Ymd%\%db_name%.sql
 echo.
 set input=
-set /p input=ÊÇ·ñÒªÁ¢¼´²é¿´µ¼³öÄ¿Â¼? (y/n):
+set /p input=æ˜¯å¦è¦ç«‹å³æŸ¥çœ‹å¯¼å‡ºç›®å½•? (y/n):
 if /i not "%input%"=="y" goto mdata_7
 explorer %CD%\Backup\Export\%Ymd%
 goto mdata_7
 :mdata_8
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÄÚ²¿¹ÜÀí¿âÎª[information_schema] [mysql] [performance_schema]
+echo   å†…éƒ¨ç®¡ç†åº“ä¸º[information_schema] [mysql] [performance_schema]
 %CD%\%database_dir%\bin\mysqlshow.exe -u"%uname%" -p"%pwd%" 2>nul
-echo   Çë×¢Òâ:Èç¹ûÄ¿±êÊı¾İ¿âÓĞÄÚÈİ½«»á±»¸²¸Ç
+echo   è¯·æ³¨æ„:å¦‚æœç›®æ ‡æ•°æ®åº“æœ‰å†…å®¹å°†ä¼šè¢«è¦†ç›–
 echo.
 set db_name=
-set /p db_name=-^>ÇëÊäÈëÒªµ¼ÈëµÄÄ¿±êÊı¾İ¿âÃû:
+set /p db_name=-^>è¯·è¾“å…¥è¦å¯¼å…¥çš„ç›®æ ‡æ•°æ®åº“å:
 if /i "%db_name%"==""    goto mdata_8
 if /i "%db_name%"=="q"   goto m_database_lie
 echo.
-echo   Çë¿½±´SQLÎÄ¼şµ½%CD%\Backup\ImportÎÄ¼ş¼ĞÖĞ
+echo   è¯·æ‹·è´SQLæ–‡ä»¶åˆ°%CD%\Backup\Importæ–‡ä»¶å¤¹ä¸­
 echo.
 set db_dir=
-set /p db_dir=-^>ÇëÊäÈë°üº¬SQLºó×ºµÄÎÄ¼şÃû³Æ:
+set /p db_dir=-^>è¯·è¾“å…¥åŒ…å«SQLåç¼€çš„æ–‡ä»¶åç§°:
 if /i "%db_dir%"==""    goto mdata_8
 if /i "%db_dir%"=="q"   goto m_database_lie
 echo.
-echo   ÕıÔÚµ¼Èë%db_dir%µ½%db_name%Êı¾İ¿â£¬ÇëÉÔºò...
+echo   æ­£åœ¨å¯¼å…¥%db_dir%åˆ°%db_name%æ•°æ®åº“ï¼Œè¯·ç¨å€™...
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" "%db_name%" < %CD%\Backup\Import\%db_dir% 2>nul
 echo.
-echo   %db_dir%ÒÑµ¼Èëµ½%db_name%Êı¾İ¿â£¡
+echo   %db_dir%å·²å¯¼å…¥åˆ°%db_name%æ•°æ®åº“ï¼
 echo.
 %pause%
 goto mdata_8
 :mdata_9
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÄÚ²¿¹ÜÀí¿âÎª[information_schema] [mysql] [performance_schema]
+echo   å†…éƒ¨ç®¡ç†åº“ä¸º[information_schema] [mysql] [performance_schema]
 %CD%\%database_dir%\bin\mysqlshow.exe -u"%uname%" -p"%pwd%" 2>nul
 set input=
-set /p input=ÊÇ·ñÒªÁ¢¼´µ¼³öÒÔÉÏÈ«²¿Êı¾İ¿â? (y/n):
+set /p input=æ˜¯å¦è¦ç«‹å³å¯¼å‡ºä»¥ä¸Šå…¨éƒ¨æ•°æ®åº“? (y/n):
 if /i not "%input%"=="y" goto m_database_lie
 if not exist %CD%\Backup\Export\All_database_%Ymd% (
 md %CD%\Backup\Export\All_database_%Ymd%
 )
 echo.
-echo   ÕıÔÚµ¼³öÈ«²¿Êı¾İ¿â£¬ËùĞèÊ±¼äÓÉÊı¾İ¿â´óĞ¡¾ö¶¨£¬ÇëÉÔºò...
+echo   æ­£åœ¨å¯¼å‡ºå…¨éƒ¨æ•°æ®åº“ï¼Œæ‰€éœ€æ—¶é—´ç”±æ•°æ®åº“å¤§å°å†³å®šï¼Œè¯·ç¨å€™...
 for /f "delims=" %%i in ('dir /b /ad "%CD%\%database_dir%\data"') do (
 %CD%\%database_dir%\bin\mysqldump.exe --single-transaction -u"%uname%" -p"%pwd%" --skip-lock-tables %%i > %CD%\Backup\Export\All_database_%Ymd%\%%i.sql
 ) 2>nul
 echo.
-echo   Êı¾İ¿âÒÑÈ«²¿µ¼³öµ½%CD%\Backup\Export\All_database_%Ymd%
+echo   æ•°æ®åº“å·²å…¨éƒ¨å¯¼å‡ºåˆ°%CD%\Backup\Export\All_database_%Ymd%
 echo.
 set input=
-set /p input=ÊÇ·ñÒªÁ¢¼´²é¿´µ¼³öÄ¿Â¼? (y/n):
+set /p input=æ˜¯å¦è¦ç«‹å³æŸ¥çœ‹å¯¼å‡ºç›®å½•? (y/n):
 if /i not "%input%"=="y" goto mdata_9
 if /i "%input%"=="q" goto m_database_lie
 explorer %CD%\Backup\Export\All_database_%Ymd%
@@ -1288,24 +1287,24 @@ goto m_database_lie
 :mdata_10
 mode con cols=80 lines=45 >nul 2>nul
 cls
-echo   ÄÚ²¿¹ÜÀí¿âÎª[information_schema] [mysql] [performance_schema]
+echo   å†…éƒ¨ç®¡ç†åº“ä¸º[information_schema] [mysql] [performance_schema]
 %CD%\%database_dir%\bin\mysqlshow.exe -u"%uname%" -p"%pwd%" 2>nul
-echo   Çë×¢Òâ:ÅúÁ¿µ¼ÈëÊı¾İ½«»á´´½¨Í¬ÃûÊı¾İ¿â,Èç¹ûÊı¾İ¿âÒÑ´æÔÚ½«»á±»¸²¸Ç
+echo   è¯·æ³¨æ„:æ‰¹é‡å¯¼å…¥æ•°æ®å°†ä¼šåˆ›å»ºåŒåæ•°æ®åº“,å¦‚æœæ•°æ®åº“å·²å­˜åœ¨å°†ä¼šè¢«è¦†ç›–
 echo.
-echo   Çë¿½±´°üº¬SQLÊı¾İ¿âµÄÎÄ¼ş¼Ğµ½%CD%\Backup\ImportÎÄ¼ş¼ĞÖĞ
+echo   è¯·æ‹·è´åŒ…å«SQLæ•°æ®åº“çš„æ–‡ä»¶å¤¹åˆ°%CD%\Backup\Importæ–‡ä»¶å¤¹ä¸­
 echo.
 set db_dir=
-set /p db_dir=-^>ÇëÊäÈë°üº¬SQLÊı¾İµÄÎÄ¼ş¼ĞÃû³Æ:
+set /p db_dir=-^>è¯·è¾“å…¥åŒ…å«SQLæ•°æ®çš„æ–‡ä»¶å¤¹åç§°:
 if /i "%db_dir%"==""    goto mdata_10
 if /i "%db_dir%"=="q"   goto m_database_lie
 echo.
-echo   ÕıÔÚµ¼Èë%db_dir%ÎÄ¼ş¼ĞÖĞ°üº¬µÄÈ«²¿Êı¾İ£¬ÇëÉÔºò...
+echo   æ­£åœ¨å¯¼å…¥%db_dir%æ–‡ä»¶å¤¹ä¸­åŒ…å«çš„å…¨éƒ¨æ•°æ®ï¼Œè¯·ç¨å€™...
 for /f "delims=" %%i in ('dir /b /l "%CD%\Backup\Import\%db_dir%"') do (
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" -e "Create database if not exists %%~ni;"
 %CD%\%database_dir%\bin\mysql.exe -u"%uname%" -p"%pwd%" %%~ni < %CD%\Backup\Import\%db_dir%\%%~ni.sql
 ) 2>nul
 echo.
-echo   %db_dir%ÎÄ¼ş¼ĞÖĞ°üº¬µÄÈ«²¿Êı¾İÒÑ³É¹¦µ¼Èë£¡
+echo   %db_dir%æ–‡ä»¶å¤¹ä¸­åŒ…å«çš„å…¨éƒ¨æ•°æ®å·²æˆåŠŸå¯¼å…¥ï¼
 echo.
 %pause%
 goto mdata_10
@@ -1314,21 +1313,21 @@ goto mdata_10
 cls
 if not exist %Sys32%\tasklist.exe goto chk_port_1
 if not exist %Sys32%\netstat.exe goto chk_port_2
-echo   Õı³£¿ªÆô%apache_port%¶Ë¿Ú±»ApacheÕ¼ÓÃ£¬%database_port%¶Ë¿Ú±»MySQL/MariaDBÕ¼ÓÃ
+echo   æ­£å¸¸å¼€å¯%apache_port%ç«¯å£è¢«Apacheå ç”¨ï¼Œ%database_port%ç«¯å£è¢«MySQL/MariaDBå ç”¨
 echo   --------------------------------------------------------------------------
 %php% "chk_port('%apache_port%');"
-if not errorlevel 1 echo   Ö¸¶¨µÄ Apache ¶Ë¿Ú %apache_port% ÔİÊ±Î´±»Õ¼ÓÃ.
+if not errorlevel 1 echo   æŒ‡å®šçš„ Apache ç«¯å£ %apache_port% æš‚æ—¶æœªè¢«å ç”¨.
 echo.
 %php% "chk_port('%database_port%');"
-if not errorlevel 1 echo   Ö¸¶¨µÄ Êı¾İ¿â ¶Ë¿Ú %database_port% ÔİÊ±Î´±»Õ¼ÓÃ.
+if not errorlevel 1 echo   æŒ‡å®šçš„ æ•°æ®åº“ ç«¯å£ %database_port% æš‚æ—¶æœªè¢«å ç”¨.
 echo.
 %php% "chk_port('%redis_port%');"
-if not errorlevel 1 echo   Ö¸¶¨µÄ Redis ¶Ë¿Ú %redis_port% ÔİÊ±Î´±»Õ¼ÓÃ.
+if not errorlevel 1 echo   æŒ‡å®šçš„ Redis ç«¯å£ %redis_port% æš‚æ—¶æœªè¢«å ç”¨.
 echo.
 %php% "chk_port('%ftp_port%');"
-if not errorlevel 1 echo   Ö¸¶¨µÄ FTP ¶Ë¿Ú %ftp_port% ÔİÊ±Î´±»Õ¼ÓÃ.
+if not errorlevel 1 echo   æŒ‡å®šçš„ FTP ç«¯å£ %ftp_port% æš‚æ—¶æœªè¢«å ç”¨.
 echo   --------------------------------------------------------------------------
-echo   Èç¹ûÒÔÉÏ80¶Ë¿Ú±»PID 4Õ¼ÓÃÇë¸ü»»IIS¶Ë¿Ú»òÖ±½ÓÊäÈëk½â³ıÕ¼ÓÃ£¬ÊäÈëq·µ»ØÖ÷½çÃæ
+echo   å¦‚æœä»¥ä¸Š80ç«¯å£è¢«PID 4å ç”¨è¯·æ›´æ¢IISç«¯å£æˆ–ç›´æ¥è¾“å…¥kè§£é™¤å ç”¨ï¼Œè¾“å…¥qè¿”å›ä¸»ç•Œé¢
 echo.
 set input=
 set /p input=-^>
@@ -1336,7 +1335,7 @@ if /i "%input%"=="k" goto k_iis
 if /i "%input%"=="" goto chk_port
 if /i "%input%"=="q" goto menu
 echo.
-echo   ÊäÈëÓĞÎóÇë·µ»Ø£¡
+echo   è¾“å…¥æœ‰è¯¯è¯·è¿”å›ï¼
 echo.
 %pause%
 goto chk_port
@@ -1349,34 +1348,34 @@ taskkill /fi "SERVICES eq SQL Server Reporting Services (MSSQLSERVER)" /f /t>nul
 echo.
 %pause% & goto chk_port
 :chk_port_1
-echo   # È±ÉÙ %Sys32%\tasklist.exe, ÎŞ·¨½øĞĞ. & %pause% & goto menu
+echo   # ç¼ºå°‘ %Sys32%\tasklist.exe, æ— æ³•è¿›è¡Œ. & %pause% & goto menu
 :chk_port_2
-echo   # È±ÉÙ %Sys32%\netstat.exe, ÎŞ·¨½øĞĞ. & %pause% & goto menu
+echo   # ç¼ºå°‘ %Sys32%\netstat.exe, æ— æ³•è¿›è¡Œ. & %pause% & goto menu
 
 :force_stop
 echo.
-echo   ´Ë¹¦ÄÜ¿É½áÊøUPUPWËù¼ÓÔØµÄÈ«²¿·şÎñºÍ½ø³Ì,³£ÓÃÓÚ´ò°üÒÆÖ²»òÍêÈ«É¾³ıUPUPWÇ°µÄ×¼±¸.
+echo   æ­¤åŠŸèƒ½å¯ç»“æŸUPUPWæ‰€åŠ è½½çš„å…¨éƒ¨æœåŠ¡å’Œè¿›ç¨‹,å¸¸ç”¨äºæ‰“åŒ…ç§»æ¤æˆ–å®Œå…¨åˆ é™¤UPUPWå‰çš„å‡†å¤‡.
 echo.
-echo   ´Ë²Ù×÷²»»áÉ¾³ıÏÖÓĞÄÚÈİÖ»ÇåÀí·şÎñºÍ½ø³Ì,ÊÇ·ñ¼ÌĞø£¿(y/n)
+echo   æ­¤æ“ä½œä¸ä¼šåˆ é™¤ç°æœ‰å†…å®¹åªæ¸…ç†æœåŠ¡å’Œè¿›ç¨‹,æ˜¯å¦ç»§ç»­ï¼Ÿ(y/n)
 echo.
 set input=
-set /p input=-^>ÇëÑ¡Ôñ:
+set /p input=-^>è¯·é€‰æ‹©:
 echo.
 if /i "%input%"=="y" goto force_stop_yes
 if /i "%input%"=="n" goto force_stop_no
 if /i "%input%"=="q" goto menu
 echo.
-echo   ÊäÈëÓĞÎóÇë·µ»Ø£¡
+echo   è¾“å…¥æœ‰è¯¯è¯·è¿”å›ï¼
 echo.
 %pause%
 goto force_stop
 :force_stop_no
 goto menu
 :force_stop_yes
-echo   ÕıÔÚÇå³ıUPUPWËù¼ÓÔØ·şÎñºÍ½ø³Ì£¬ÇëÉÔºó... ...
+echo   æ­£åœ¨æ¸…é™¤UPUPWæ‰€åŠ è½½æœåŠ¡å’Œè¿›ç¨‹ï¼Œè¯·ç¨å... ...
 set taskkill=%Sys32%\taskkill.exe
 if not exist %taskkill% (
-echo   # È±ÉÙ %taskkill%, ÎŞ·¨½øĞĞ. & %pause% & goto menu
+echo   # ç¼ºå°‘ %taskkill%, æ— æ³•è¿›è¡Œ. & %pause% & goto menu
 )
 %net% stop %apache_vc%>nul 2>nul
 %net% stop %database_vc%>nul 2>nul
@@ -1401,7 +1400,7 @@ echo   # È±ÉÙ %taskkill%, ÎŞ·¨½øĞĞ. & %pause% & goto menu
 %taskkill% /im redis-server.exe /f /t>nul 2>nul
 del /f/s/q %CD%\%database_dir%\data\*.pid %CD%\%apache_dir%\logs\*.pid /q>nul 2>nul
 echo.
-echo   UPUPWËù¼ÓÔØ·şÎñºÍ½ø³ÌÈ«²¿ÇåÀíÍê±Ï£¡
+echo   UPUPWæ‰€åŠ è½½æœåŠ¡å’Œè¿›ç¨‹å…¨éƒ¨æ¸…ç†å®Œæ¯•ï¼
 echo.
 %pause%
 goto menu
@@ -1409,19 +1408,19 @@ goto menu
 :cfg_bak
 cls
 echo.
-echo   ±¸·İ»ò»¹Ô­ÒÔÏÂÅäÖÃÎÄ¼ş£º
+echo   å¤‡ä»½æˆ–è¿˜åŸä»¥ä¸‹é…ç½®æ–‡ä»¶ï¼š
 echo.
-echo   ApacheÖ÷ÅäÖÃ :  %apache_dir%\conf\httpd.conf
-echo   ĞéÄâÖ÷»úÅäÖÃ :  %vhosts_conf%
-echo   phpÅäÖÃ      :  %php_dir%\php.ini
-echo   Êı¾İ¿âÅäÖÃ   :  %database_dir%\my.ini
+echo   Apacheä¸»é…ç½® :  %apache_dir%\conf\httpd.conf
+echo   è™šæ‹Ÿä¸»æœºé…ç½® :  %vhosts_conf%
+echo   phpé…ç½®      :  %php_dir%\php.ini
+echo   æ•°æ®åº“é…ç½®   :  %database_dir%\my.ini
 echo.
-echo   ±¸·İ»ò»¹Ô­Ñ¡Ïî£º
+echo   å¤‡ä»½æˆ–è¿˜åŸé€‰é¡¹ï¼š
 echo.
-echo   B - ±¸·İÅäÖÃ    R - »¹Ô­ÅäÖÃ    D - É¾³ı±¸·İ
+echo   B - å¤‡ä»½é…ç½®    R - è¿˜åŸé…ç½®    D - åˆ é™¤å¤‡ä»½
 echo.
 set input=
-set /p input=-^>ÇëÑ¡Ôñ:
+set /p input=-^>è¯·é€‰æ‹©:
 cls
 echo.
 if /i "%input%"=="B" goto cfg_bak_B
@@ -1429,14 +1428,14 @@ if /i "%input%"=="R" goto cfg_bak_R
 if /i "%input%"=="D" goto cfg_bak_D
 if /i "%input%"=="q" goto menu
 echo.
-echo   ÊäÈëÓĞÎóÇë·µ»Ø£¡
+echo   è¾“å…¥æœ‰è¯¯è¯·è¿”å›ï¼
 echo.
 %pause%
 goto goto cfg_bak
 
 :cfg_bak_B
 set input=
-set /p input= ±¸·İÃû³Æ:
+set /p input= å¤‡ä»½åç§°:
 if /i "%input%"=="" goto cfg_bak_B
 if /i "%input%"=="q" goto cfg_bak
 %php% "cfg_bak('backup '.env('input'));"
@@ -1447,17 +1446,17 @@ goto cfg_bak
 :cfg_bak_R
 %php% "cfg_bak('show');" || %pause% && goto menu
 echo.
-echo   »¹Ô­Ö®Ç°ÇëÈ·ÈÏÊÇ·ñĞèÒª¶ÔÏÖÓĞÅäÖÃ½øĞĞ±¸·İ!
+echo   è¿˜åŸä¹‹å‰è¯·ç¡®è®¤æ˜¯å¦éœ€è¦å¯¹ç°æœ‰é…ç½®è¿›è¡Œå¤‡ä»½!
 echo.
 set n=
-set /p n=-^>»¹Ô­µ½´Ë±¸·İĞòºÅ:
-if /i "%n%"=="" echo  Î´Ñ¡Ôñ²Ù×÷»òÊäÈëÓĞÎó Çë·µ»Ø£¡ && %pause% && goto cfg_bak
+set /p n=-^>è¿˜åŸåˆ°æ­¤å¤‡ä»½åºå·:
+if /i "%n%"=="" echo  æœªé€‰æ‹©æ“ä½œæˆ–è¾“å…¥æœ‰è¯¯ è¯·è¿”å›ï¼ && %pause% && goto cfg_bak
 if /i "%n%"=="q" goto cfg_bak
 %php% "$p = env('n'); if ($p !== ''.ceil($p) || 0 > $p) exit(1);" || goto cfg_bak_R
 %php% "cfg_bak('restore '.env('n'));" || %pause% && goto menu
 echo.
 set input=
-set /p input= ÅäÖÃÒÑ»¹Ô­, Á¢¼´ÖØÆô·şÎñ? (y/N):
+set /p input= é…ç½®å·²è¿˜åŸ, ç«‹å³é‡å¯æœåŠ¡? (y/N):
 if /i not "%input%"=="y" goto cfg_bak
 if /i "%input%"=="q" goto menu
 call :restart_Apache
@@ -1471,8 +1470,8 @@ goto cfg_bak
 %php% "cfg_bak('show');" || %pause% && goto menu
 echo.
 set n=
-set /p n=-^>É¾³ı´ËĞòºÅµÄ±¸·İ:
-if /i "%n%"=="" echo  Î´Ñ¡Ôñ²Ù×÷»òÊäÈëÓĞÎó Çë·µ»Ø£¡ && %pause% && goto cfg_bak
+set /p n=-^>åˆ é™¤æ­¤åºå·çš„å¤‡ä»½:
+if /i "%n%"=="" echo  æœªé€‰æ‹©æ“ä½œæˆ–è¾“å…¥æœ‰è¯¯ è¯·è¿”å›ï¼ && %pause% && goto cfg_bak
 if /i "%n%"=="q" goto cfg_bak
 %php% "$p = env('n'); if ($p !== ''.ceil($p) || 0 > $p) exit(1);" || goto cfg_bak_D
 %php% "cfg_bak('delete '.env('n'));"
@@ -1483,30 +1482,30 @@ goto cfg_bak
 :cfg_xnsp
 cls
 echo.
-echo   ×¢:²¢²»ÊÇÅäÖÃ¼¶±ğÔ½¸ßÔ½ºÃÇë¸ù¾İÁ÷Á¿ºÍÊı¾İ´óĞ¡Ñ¡ÔñÅäÖÃ·ñÔòÊÊµÃÆä·´£¡
+echo   æ³¨:å¹¶ä¸æ˜¯é…ç½®çº§åˆ«è¶Šé«˜è¶Šå¥½è¯·æ ¹æ®æµé‡å’Œæ•°æ®å¤§å°é€‰æ‹©é…ç½®å¦åˆ™é€‚å¾—å…¶åï¼
 echo.
-echo   0¼¶ÅäÖÃ£º´¦ÀíÆ÷-1/2Ïß³Ì  ÄÚ´æ-512M  Êı¾İ¿â-256M  ÈÕ·ÃÎÊÁ¿-100/5000PV
-echo   1¼¶ÅäÖÃ£º´¦ÀíÆ÷-2/8Ïß³Ì  ÄÚ´æ-1/4G  Êı¾İ¿â-1/2G  ÈÕ·ÃÎÊÁ¿-5000/50000PV
-echo   2¼¶ÅäÖÃ£º´¦ÀíÆ÷8/16Ïß³Ì  ÄÚ´æ-4/8G  Êı¾İ¿â-2/4G  ÈÕ·ÃÎÊÁ¿-50000/100000PV
-echo   3¼¶ÅäÖÃ£º´¦ÀíÆ÷16/64Ïß³Ì ÄÚ´æ-8/64G Êı¾İ¿â-4/16G ÈÕ·ÃÎÊÁ¿-100000/500000PV
+echo   0çº§é…ç½®ï¼šå¤„ç†å™¨-1/2çº¿ç¨‹  å†…å­˜-512M  æ•°æ®åº“-256M  æ—¥è®¿é—®é‡-100/5000PV
+echo   1çº§é…ç½®ï¼šå¤„ç†å™¨-2/8çº¿ç¨‹  å†…å­˜-1/4G  æ•°æ®åº“-1/2G  æ—¥è®¿é—®é‡-5000/50000PV
+echo   2çº§é…ç½®ï¼šå¤„ç†å™¨8/16çº¿ç¨‹  å†…å­˜-4/8G  æ•°æ®åº“-2/4G  æ—¥è®¿é—®é‡-50000/100000PV
+echo   3çº§é…ç½®ï¼šå¤„ç†å™¨16/64çº¿ç¨‹ å†…å­˜-8/64G æ•°æ®åº“-4/16G æ—¥è®¿é—®é‡-100000/500000PV
 echo.
 %php% "cfg_xnsp('show');" || %pause% && goto menu
 echo.
-echo   ´Ë¹¦ÄÜĞèÒªs1¿ªÆôÈ«²¿·şÎñºóÔÙ½øĞĞ²Ù×÷£¡
+echo   æ­¤åŠŸèƒ½éœ€è¦s1å¼€å¯å…¨éƒ¨æœåŠ¡åå†è¿›è¡Œæ“ä½œï¼
 echo.
-echo   Ñ¡ÔñÇ°ÇëÈ·ÈÏÊÇ·ñĞèÒª¶ÔÏÖÓĞÅäÖÃ½øĞĞ±¸·İ!
+echo   é€‰æ‹©å‰è¯·ç¡®è®¤æ˜¯å¦éœ€è¦å¯¹ç°æœ‰é…ç½®è¿›è¡Œå¤‡ä»½!
 echo.
 set n=
-set /p n=-^>ÇëÑ¡Ôñ:
+set /p n=-^>è¯·é€‰æ‹©:
 cls
 echo.
-if /i "%n%"=="" echo    Î´Ñ¡Ôñ²Ù×÷»òÊäÈëÓĞÎó Çë·µ»Ø£¡ && %pause% && goto cfg_xnsp
+if /i "%n%"=="" echo    æœªé€‰æ‹©æ“ä½œæˆ–è¾“å…¥æœ‰è¯¯ è¯·è¿”å›ï¼ && %pause% && goto cfg_xnsp
 if /i "%n%"=="q" goto menu
 %php% "$p = env('n'); if ($p !== ''.ceil($p) || 0 > $p) exit(1);" || goto cfg_xnsp
 %php% "cfg_xnsp('restore '.env('n'));" || %pause% && goto menu
 echo.
 set input=
-set /p input= Ö÷»úĞÔÄÜÊÊÅäÒÑÍê³É, Á¢¼´ÖØÆô·şÎñ? (y/n):
+set /p input= ä¸»æœºæ€§èƒ½é€‚é…å·²å®Œæˆ, ç«‹å³é‡å¯æœåŠ¡? (y/n):
 if /i not "%input%"=="y" goto menu
 call :restart_Apache
 call :stop_MySQL
@@ -1518,25 +1517,25 @@ goto menu
 :cfg_sckf
 cls
 echo.
-echo   ÇëÑ¡ÔñÉú²ú»ò¿ª·¢»·¾³ÅäÖÃ
+echo   è¯·é€‰æ‹©ç”Ÿäº§æˆ–å¼€å‘ç¯å¢ƒé…ç½®
 echo.
 %php% "cfg_sckf('show');" || %pause% && goto menu
 echo.
-echo   ´Ë¹¦ÄÜĞèÒªs1¿ªÆôÈ«²¿·şÎñºóÔÙ½øĞĞ²Ù×÷£¡
+echo   æ­¤åŠŸèƒ½éœ€è¦s1å¼€å¯å…¨éƒ¨æœåŠ¡åå†è¿›è¡Œæ“ä½œï¼
 echo.
-echo   Ñ¡ÔñÇ°ÇëÈ·ÈÏÊÇ·ñĞèÒª¶ÔÏÖÓĞÅäÖÃ½øĞĞ±¸·İ!
+echo   é€‰æ‹©å‰è¯·ç¡®è®¤æ˜¯å¦éœ€è¦å¯¹ç°æœ‰é…ç½®è¿›è¡Œå¤‡ä»½!
 echo.
 set n=
-set /p n=-^>ÇëÑ¡Ôñ:
+set /p n=-^>è¯·é€‰æ‹©:
 cls
 echo.
-if /i "%n%"=="" echo    Î´Ñ¡Ôñ²Ù×÷»òÊäÈëÓĞÎó Çë·µ»Ø£¡ && %pause% && goto cfg_sckf
+if /i "%n%"=="" echo    æœªé€‰æ‹©æ“ä½œæˆ–è¾“å…¥æœ‰è¯¯ è¯·è¿”å›ï¼ && %pause% && goto cfg_sckf
 if /i "%n%"=="q" goto menu
 %php% "$p = env('n'); if ($p !== ''.ceil($p) || 0 > $p) exit(1);" || goto cfg_sckf
 %php% "cfg_sckf('restore '.env('n'));" || %pause% && goto menu
 echo.
 set input=
-set /p input= ÅäÖÃ»·¾³ÒÑÉè¶¨, Á¢¼´ÖØÆô·şÎñ? (y/n):
+set /p input= é…ç½®ç¯å¢ƒå·²è®¾å®š, ç«‹å³é‡å¯æœåŠ¡? (y/n):
 if /i not "%input%"=="y" goto menu
 if /i "%input%"=="q" goto menu
 call :restart_Apache
@@ -1545,17 +1544,17 @@ goto menu
 :fz_ftp
 cls
 echo.
-echo     ======================= FileZilla FTP ·şÎñ¶Ë¹ÜÀí =======================
+echo     ======================= FileZilla FTP æœåŠ¡ç«¯ç®¡ç† =======================
 echo    ^|                                                                        ^|
-echo    ^|                  f1 - ¿ªÆô FTP·şÎñ                                     ^|
-echo    ^|                  f2 - ¹Ø±Õ FTP·şÎñ                                     ^|
-echo    ^|                  f3 - ´ò¿ª FileZilla¿ØÖÆÌ¨                             ^|
-echo    ^|                  f4 - Ğ¶ÔØ FTPÏµÍ³·şÎñ                                 ^|
+echo    ^|                  f1 - å¼€å¯ FTPæœåŠ¡                                     ^|
+echo    ^|                  f2 - å…³é—­ FTPæœåŠ¡                                     ^|
+echo    ^|                  f3 - æ‰“å¼€ FileZillaæ§åˆ¶å°                             ^|
+echo    ^|                  f4 - å¸è½½ FTPç³»ç»ŸæœåŠ¡                                 ^|
 echo    ^|                                                                        ^|
-echo     =============== ÇëÏÈÓÃf1¿ªÆôFTP·şÎñºóÔÙ´ò¿ªFileZilla¿ØÖÆÌ¨ =============
+echo     =============== è¯·å…ˆç”¨f1å¼€å¯FTPæœåŠ¡åå†æ‰“å¼€FileZillaæ§åˆ¶å° =============
 echo.
 set input=
-set /p input=-^>ÇëÑ¡Ôñ:
+set /p input=-^>è¯·é€‰æ‹©:
 cls
 echo.
 if /i "%input%"=="f1" call :ftp_f1
@@ -1564,35 +1563,35 @@ if /i "%input%"=="f3" call :ftp_f3
 if /i "%input%"=="f4" call :ftp_f4
 if /i "%input%"=="q" goto menu
 echo.
-echo   ÊäÈëÓĞÎóÇë·µ»Ø£¡
+echo   è¾“å…¥æœ‰è¯¯è¯·è¿”å›ï¼
 echo.
 %pause%
 goto fz_ftp
 
 :ftp_f1
 start %CD%\%fz_dir%\%fz_exe%
-echo   FTP·şÎñ¿ªÆô³É¹¦£¡
+echo   FTPæœåŠ¡å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto fz_ftp
 
 :ftp_f2
 start %CD%\%fz_dir%\%fz_exe%
-echo   FTP·şÎñ¹Ø±Õ³É¹¦£¡
+echo   FTPæœåŠ¡å…³é—­æˆåŠŸï¼
 echo.
 %pause%
 goto fz_ftp
 
 :ftp_f3
 start %CD%\%fz_dir%\FileZilla_Server_Interface.exe
-echo   FTP¼°ÏµÍ³·şÎñ¿ªÆô³É¹¦£¡
+echo   FTPåŠç³»ç»ŸæœåŠ¡å¼€å¯æˆåŠŸï¼
 echo.
 %pause%
 goto fz_ftp
 
 :ftp_f4
 %CD%\%fz_dir%\%fz_exe% /uninstall
-echo   FTPÏµÍ³·şÎñĞ¶ÔØ³É¹¦£¡
+echo   FTPç³»ç»ŸæœåŠ¡å¸è½½æˆåŠŸï¼
 echo.
 %pause%
 goto fz_ftp
