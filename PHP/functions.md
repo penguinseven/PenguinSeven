@@ -132,16 +132,6 @@ function ffmpeg_is_mp4($path ,$type = array('h264'))
 
 ```
 
-> 查询表结构
----
-```mysql
-
-SELECT a.table_name,b.TABLE_COMMENT,a.COLUMN_NAME,a.COLUMN_TYPE,a.COLUMN_COMMENT 
-FROM information_schema.COLUMNS a 
-JOIN information_schema.TABLES b ON a.table_schema = b.table_schema AND a.table_name = b.table_name
-WHERE a.table_name = 'question';
-
-```
 
 > zip函数
 ```php
