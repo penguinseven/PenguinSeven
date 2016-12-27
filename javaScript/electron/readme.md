@@ -2,9 +2,9 @@
 
 ### 1. 下载 
   
- windows下载<http://nodejs.cn/>
+ windows下载 <http://nodejs.cn/>
 
-###　2. nodejs window下安装与配置淘宝镜像
+### 2. nodejs window下安装与配置淘宝镜像
 
  - 前往nodejs官网下载安装软件，地址：https://nodejs.org/en/
 
