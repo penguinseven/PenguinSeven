@@ -1,10 +1,10 @@
 ## 安装 node.js
 
- ### 1. 下载 
+### 1. 下载 
   
  windows下载<http://nodejs.cn/>
 
- ###　2. nodejs window下安装与配置淘宝镜像
+###　2. nodejs window下安装与配置淘宝镜像
 
  - 前往nodejs官网下载安装软件，地址：https://nodejs.org/en/
 
@@ -34,7 +34,7 @@
      :: 将 cnpm.bat 路径添加到系统环境变量，就可以使用cnpm命令了
     ```
  
- ### 3. 调试工具  
+### 3. 调试工具  
  
  该工具基于 Electron 
  将 Node.js 和 Chromium 的功能融合在了一起。
@@ -46,7 +46,7 @@
      npm install -g devtool
     ```
  
- ### 4. 实例
+### 4. 实例
  
  1. git检出项目
  
