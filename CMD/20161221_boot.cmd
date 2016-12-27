@@ -1,4 +1,4 @@
-```cmd
+
 @echo off
 
 :: 设置字体颜色
@@ -279,5 +279,4 @@ goto end
 pause
 exit
 
-```
 

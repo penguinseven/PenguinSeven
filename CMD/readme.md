@@ -126,6 +126,115 @@ c:\wamp\apche\bin\httpd.exe -k start -n "Apache Server" >nul 2>nul
 tasklist|findstr /i redis-server.exe >nul 2>nul && goto start_C_OK || goto start_C_ERROR
 ```
 
+> # nginx 相关
+0. nginx 并无默认安装服务方式，使用了“Windows Service Wrapper”，配置文件如下：
+```xml
+<!-- php 部分 -->
+<?xml version="1.0" encoding="utf-8"?>
+<service>  
+<id>UPUPW_PHPFPM</id>  
+<name>UPUPW_PHPFPM</name>  
+<description>用于支持PHP-FastCGI随服务启动</description>  
+<executable>X:/upupw/PHP7/phpfpm.exe</executable> 
+<logpath>X:/upupw/PHP7/phpfpm/</logpath> 
+<logmode>roll</logmode> 
+<depend></depend>  
+<startargument>"X:/upupw/PHP7/php-cgi.exe -c X:/upupw/PHP7/php.ini" -n 8 -i 127.0.0.1 -p 9070</startargument>
+<stopargument></stopargument>
+</service>
+```
+```xml
+
+<!-- nginx 部分 -->
+<?xml version="1.0" encoding="utf-8"?>
+<service>  
+<id>UPUPW_Nginx</id>
+<name>UPUPW_Nginx</name>
+<description>用于支持Nginx随服务启动</description>
+<executable>X:/upupw/Nginx/nginx.exe</executable>
+<logpath>X:/upupw/Nginx/</logpath>
+<logmode>roll</logmode>
+<depend></depend>
+<startargument>-p X:/upupw/Nginx</startargument>
+<stopargument>-p X:/upupw/Nginx -s stop</stopargument>
+</service>
+```
+
+1. 安装服务、启动服务（先起php，后起 nginx）
+```cmd
+:: 初始化配置文件
+%php% upcfg(); || %pause% && goto menu
+:: 安装php服务，
+%CD%\%phpfpm%\winsw.exe install >nul 2>nul
+:: 启动服务
+%net% start %cgi_vc% >nul 2>nul
+:: 验证进程
+tasklist|findstr /i phpfpm.exe >nul 2>nul && goto start_FPM_OK || goto start_FPM_ERROR
+
+:: 安装nginx服务
+%CD%\%nginx_dir%\winsw.exe install >nul 2>nul
+:: 启动nginx服务
+%net% start %nginx_vc% >nul 2>nul
+:: 根据pid文件验证服务是否已启动
+if exist %CD%\%nginx_dir%\logs\*.pid goto start_N_OK
+
+```
+
+2. 停止服务
+```cmd
+
+:: 停止nginx服务
+%net% stop %nginx_vc% >nul 2>nul
+
+:: kill nginx，php 服务
+%taskkill% /fi "SERVICES eq %nginx_vc%" /f /t >nul 2>nul
+%taskkill% /fi "SERVICES eq %cgi_vc%" /f /t >nul 2>nul
+
+:: 卸载nginx，php 服务
+%CD%\%nginx_dir%\winsw.exe uninstall >nul 2>nul
+%CD%\%phpfpm%\winsw.exe uninstall >nul 2>nul
+
+:: kill php进程，删除pid文件
+%taskkill% /im phpfpm.exe /f /t>nul 2>nul
+%taskkill% /im php-cgi.exe /f /t>nul 2>nul
+del /f/s/q %CD%\%nginx_dir%\logs\*.pid /q>nul 2>nul
+
+```
+
+3. 配置文件模版
+```config
+
+server {
+            # 监听端口
+            listen       ' . $port . '; 
+            # 域名 和 别名
+            server_name  ' . $hn . ' alias ' . $hAlias . ';
+            location / {
+                root   ' . $htdocs . ';
+                index  index.html index.htm default.html default.htm index.php default.php app.php u.php;
+                include        ' . $htdocs . '/up-*.conf;
+            }
+            autoindex off;
+            include advanced_settings.conf;
+            #include expires.conf;
+            location ~* .*\/(attachment|attachments|uploadfiles|avatar)\/.*\.(php|PHP7|phps|asp|aspx|jsp)$ {
+            deny all;
+            }
+            location ~ ^.+\.php {
+                root           ' . $htdocs . ';
+                fastcgi_pass   bakend;
+                fastcgi_index  index.php;
+                fastcgi_split_path_info ^((?U).+\.php)(/?.+)$;
+                fastcgi_param  PATH_INFO $fastcgi_path_info;
+                fastcgi_param  PATH_TRANSLATED $document_root$fastcgi_path_info;
+                include        fastcgi.conf;
+            }
+		}
+		
+#server ' . $hn . ' end}
+
+```
+
 > # php 相关
 
 > # FTP 相关

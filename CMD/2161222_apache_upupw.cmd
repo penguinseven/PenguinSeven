@@ -1,4 +1,4 @@
-```cmd
+
 ??
 :: 清屏：CLear Screen
 cls
@@ -1919,4 +1919,3 @@ goto fz_ftp
 
 :end
     prompt
-```
