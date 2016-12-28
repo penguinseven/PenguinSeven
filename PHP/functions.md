@@ -1,7 +1,7 @@
 ## 常用函数
 
 >exe() 获取进程pid，仅linux下可以使用
-----
+
 ```php
 
 $cmd = "ls";
@@ -14,7 +14,7 @@ getmypid(); // 当前php进程
 ```
 
 >使用ffmpeg 视频转码，注意事项
----
+
 1. 日志文件记录
 
 2. 使用fsockopen 函数
@@ -45,7 +45,7 @@ function async_task($ip, $url, $port = 80, $time = 30){
 ```
 
 > 生成注册码常见问题
----
+
 1. 同一注册码重复注册 （保持到数据库）
 
 2. 卸载重装，改系统时间重复使用 （写时间到注册表，1 天 1 次）
@@ -56,7 +56,7 @@ function async_task($ip, $url, $port = 80, $time = 30){
 
 
 > 判断视频文件
----
+
 ```php
 
  /**
@@ -134,6 +134,7 @@ function ffmpeg_is_mp4($path ,$type = array('h264'))
 
 
 > zip函数
+
 ```php
        
        /**
