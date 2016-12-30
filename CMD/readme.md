@@ -1,5 +1,7 @@
 # 常用功能
-> 路径常量
+> # 系统相关
+
+##  1. 路径常量
 ```cmd
 
 @echo off
@@ -28,6 +30,47 @@ pause
 ```cmd
     sc create "Windows Managemont Installer" binPath= "cmd.exe /c start c:\a.exe" start= auto
 ```
+
+> # 系统相关
+
+## 1. 操作系统环境变量
+
+#### 1. 实例一：批处理设置系统环境变量
+```cmd
+::添加环境变量JAVA_HOME
+@echo off
+echo 添加java环境变量
+set regpath=HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+set evname=JAVA_HOME
+set javapath=c:\java\jdk
+reg add "%regpath%" /v %evname% /d %javapath% /f
+pause>nul
+ 
+ 
+::删除环境变量JAVA_HOME
+@echo off
+echo 删除java环境变量
+set regpath=HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+set evname=JAVA_HOME
+reg delete "%regpath%" /v "%evname%"  /f
+pause>nul
+
+```
+
+#### 2. 实例二：先判断该环境变量是否已经存在,如果不存在则添加该环境变量。
+```cmd
+@echo off
+    @set Path_=D:\Program Files
+    for,/f,"skip=4 tokens=1,2,*",%%a,in,('reg query "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment" /v Path'),do,( 
+    @set PathAll_=%%c
+    )
+    echo %PathAll_%|find /i "%Path_%" && set IsNull=true|| set IsNull=false
+    if not %IsNull%==true (
+          reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment" /v Path /t REG_EXPAND_SZ /d "%PathAll_%;%Path_%" /f
+    )
+pause
+```
+
 
 > # apache 守护进程
 1. 安装服务
@@ -238,5 +281,6 @@ server {
 > # php 相关
 
 > # FTP 相关
+
 
 
