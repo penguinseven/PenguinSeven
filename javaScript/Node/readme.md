@@ -8,7 +8,7 @@
     iteblog# sudo apt-get install git-core curl build-essential openssl libssl-dev
 ##　二、安装Node.js
 
-### git安装
+### 1. git安装
 
 首先我们先从github上将Node.js库克隆到本地：
 
@@ -29,7 +29,7 @@
     v0.10.33
 这个命令会输出你安装Node版本信息，如果你电脑上面输出和下面的类似，那恭喜你了，安装Node成功。
 
-### tar安装
+### 2.tar安装
 
 #### 1、在官方网站下载 <http://www.nodejs.org/download/>  
 
@@ -85,7 +85,7 @@
       --disturl=https://npm.taobao.org/dist \
       --userconfig=$HOME/.cnpmrc"
   
-#### Or alias it in .bashrc or .zshrc
+##### Or alias it in .bashrc or .zshrc
 
       $ echo '\n#alias for cnpm\nalias cnpm="npm --registry=https://registry.npm.taobao.org \
         --cache=$HOME/.npm/.cache/cnpm \
