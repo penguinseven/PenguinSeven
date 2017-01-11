@@ -1,9 +1,9 @@
-# penguinseven
 
+## 综合 >>>>
 
-> ## 1. 开发 larvael + vue 项目
+## 1. 开发 larvael + vue 项目
 
-> ## 2. workman 知识点总结
+## 2. workman 知识点总结
 
 - ### 常用名词解释
 
@@ -47,20 +47,20 @@
     1. react/zmp && react/stomp 异步消息队列
     1. react/child-process      进程控制组件
 
-> ## 3. electron 项目
+## 3. electron 项目
 
-> ## 4. upupw 知识点总结  
+## 4. upupw 知识点总结  
     
  - ### apache 优化配置
  - ### nginx 优化配置
  - ### php 优化配置
  
-> ## 5. Linux shell 脚本
+## 5. Linux shell 脚本
  - ### nginx-rtmp
 
-> ## 6. Python 开发
+## 6. Python 开发
 
-> ## 7. 流媒体服务器
+## 7. 流媒体服务器
 
 ### 协议选择
  
@@ -76,7 +76,9 @@
  - ### nginx-rtmp
  - ### red5
  - ### simple rtmp server
- - ### simple rtmp server
+ 
+ 
+
  
  
  

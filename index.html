@@ -235,106 +235,18 @@ display: none;
 </head>
 <body>
 <header>
-<h1 id="penguinseven">penguinseven</h1>
-<blockquote>
-<h2 id="1">1. 开发 larvael + vue 项目</h2>
-<h2 id="2">2. workman 知识点总结</h2>
-</blockquote>
-<ul>
-<li><h3 id="2.1">常用名词解释</h3>
-<ol>
-<li><p>并发连接数  </p>
-<p> 并发连接数是指服务器当前时刻一共维持了多少TCP连接，
- 而这些连接上是否有数据通讯并不关注，
- 例如一台消息推送服务器上可能维持了百万的设备连接，
- 由于连接上很少有数据通讯，所以这台服务器上负载可能几乎为0，
- 只要内存足够，还可以继续接受连接。</p>
-<p> 并发连接数受限于服务器内存，
- 一般24G内存workerman服务器可以支持大概120W并发连接。</p>
-</li>
-<li><p>并发请求数</p>
-<p> 并发请求数一般用QPS（服务器每秒处理多少请求）来衡量，
- 而当前时刻服务器上有多少个tcp连接并不十分关注。
- 例如一台服务器只有10个客户端连接，
- 每个客户端连接上每秒有1W个请求，
- 那么要求服务端需要至少能支撑10*1W=10W每秒的吞吐量（QPS）。
- 假设10W吞吐量每秒是这台服务器的极限，
- 如果每个客户端每秒发送1个请求给服务端，
- 那么这台服务器能够支撑10W个客户端。</p>
-<p> 并发请求数受限于服务器cpu处理能力，
- 一台24核workerman服务器可以达到45W每秒的吞吐量(QPS)，
- 实际值根据业务复杂度以及代码质量有所变化。</p>
-</li>
-<li><p>非阻塞</p>
-</li>
-<li><p>异步</p>
-</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><h3 id="2.2">ReactPHP相关</h3>
-<ol>
-<li>react/mysql</li>
-<li>react/redis</li>
-<li>react/dns  </li>
-<li>react/http-client        http 组件</li>
-<li>react/zmp &amp;&amp; react/stomp 异步消息队列</li>
-<li>react/child-process      进程控制组件</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<h2 id="3">3. electron 项目</h2>
-<h2 id="4">4. upupw 知识点总结</h2>
-</blockquote>
-<ul>
-<li><h3 id="4.1">apache 优化配置</h3>
-</li>
-<li><h3 id="4.2">nginx 优化配置</h3>
-</li>
-<li><h3 id="4.3">php 优化配置</h3>
-</li>
-</ul>
-<blockquote>
-<h2 id="5">5. Linux shell 脚本</h2>
-<ul>
-<li><h3 id="5.1">nginx-rtmp</h3>
-</li>
-</ul>
-<h2 id="6">6. Python 开发</h2>
-<h2 id="7">7. 流媒体服务器</h2>
-</blockquote>
-<h3 id="7.1">协议选择</h3>
-<pre><code>延迟要求，是否要求低于5秒的延迟?如果是硬指标，
-就只能选择RTMP或HTTP-FLV流。移动端需要自己编译FFMPEG支持，无法直接播放。
-
-终端适配，是否要求支持PC和移动端(IOS和Android)?
-如果需要广泛支持移动端，HLS是最好的选择。
-
-节约带宽，是否要求支持WebP2P?如果需要支持FlashP2P，
-或者移动端P2P，选择HLS。</code></pre>
-<ul>
-<li><h3 id="7.2">nginx-rtmp</h3>
-</li>
-<li><h3 id="7.3">red5</h3>
-</li>
-<li><h3 id="7.4">simple rtmp server</h3>
-</li>
-<li><h3 id="7.5">simple rtmp server</h3>
-</li>
-</ul>
+<h1 id="penguinseven">penguinSeven</h1>
 
 </header>
 <nav>
 <ul>
-<li class="level2"><a href="#1">1. 开发 larvael + vue 项目</a></li><li class="level2"><a href="#2">2. workman 知识点总结</a></li><li class="level3"><a href="#2.1">常用名词解释</a></li><li class="level3"><a href="#2.2">ReactPHP相关</a></li><li class="level2"><a href="#3">3. electron 项目</a></li><li class="level2"><a href="#4">4. upupw 知识点总结</a></li><li class="level3"><a href="#4.1">apache 优化配置</a></li><li class="level3"><a href="#4.2">nginx 优化配置</a></li><li class="level3"><a href="#4.3">php 优化配置</a></li><li class="level2"><a href="#5">5. Linux shell 脚本</a></li><li class="level3"><a href="#5.1">nginx-rtmp</a></li><li class="level2"><a href="#6">6. Python 开发</a></li><li class="level2"><a href="#7">7. 流媒体服务器</a></li><li class="level3"><a href="#7.1">协议选择</a></li><li class="level3"><a href="#7.2">nginx-rtmp</a></li><li class="level3"><a href="#7.3">red5</a></li><li class="level3"><a href="#7.4">simple rtmp server</a></li><li class="level3"><a href="#7.5">simple rtmp server</a></li><li class="level2"><a href="#8">CMD 批处理脚步</a></li><li class="level3"><a href="#8.1">1. 系统相关</a></li><li class="level4"><a href="#8.1.1">1. 路径常量</a></li><li class="level4"><a href="#8.1.2">2. 延时3秒</a></li><li class="level4"><a href="#8.1.3">3. 创建服务</a></li><li class="level3"><a href="#8.2">2. 操作系统环境变量</a></li><li class="level4"><a href="#8.2.1">1. 实例一：批处理设置系统环境变量</a></li><li class="level4"><a href="#8.2.2">2. 实例二：先判断该环境变量是否已经存在,如果不存在则添加该环境变量。</a></li><li class="level3"><a href="#8.3">3. apache 守护进程</a></li><li class="level4"><a href="#8.3.1">1. 安装服务</a></li><li class="level4"><a href="#8.3.2">2. 开启服务</a></li><li class="level4"><a href="#8.3.3">3. 判断进程</a></li><li class="level4"><a href="#8.3.4">4. 卸载</a></li><li class="level4"><a href="#8.3.5">5. 详解</a></li><li class="level3"><a href="#8.4">4. 程序控制</a></li><li class="level4"><a href="#8.4.1">apache 相关</a></li><li class="level4"><a href="#8.4.2">mysql 相关</a></li><li class="level4"><a href="#8.4.3">redis 相关</a></li><li class="level4"><a href="#8.4.4">nginx 相关</a></li><li class="level4"><a href="#8.4.5">php 相关</a></li><li class="level4"><a href="#8.4.6">FTP 相关</a></li><li class="level2"><a href="#9">FFMPEG 音视频处理</a></li><li class="level3"><a href="#9.1">常用测试源</a></li><li class="level3"><a href="#9.2">常用命令:</a></li><li class="level4"><a href="#9.2.1">1. 将视频流推送到流媒体服务器</a></li><li class="level4"><a href="#9.2.2">2. 视频文件转MP4</a></li><li class="level4"><a href="#9.2.3">3. 修改文件创建时间</a></li><li class="level2"><a href="#10">Git 版本库</a></li><li class="level3"><a href="#10.1">0. 初始化</a></li><li class="level3"><a href="#10.2">1.  保存用户名，密码</a></li><li class="level3"><a href="#10.3">2. 修改git 源</a></li><li class="level3"><a href="#10.4">3.tag标签</a></li><li class="level4"><a href="#10.4.1">1. 打标签</a></li><li class="level4"><a href="#10.4.2">2. 提交标签到远程仓库</a></li><li class="level4"><a href="#10.4.3">3. 删除标签</a></li><li class="level4"><a href="#10.4.4">4. 删除远程标签</a></li><li class="level4"><a href="#10.4.5">5. 查看标签</a></li><li class="level2"><a href="#11">HTML</a></li><li class="level3"><a href="#11.1">常见问题</a></li><li class="level4"><a href="#11.1.1">1. firfox 提示安装flash</a></li><li class="level2"><a href="#12">JavaScript</a></li><li class="level2"><a href="#13">Mysql 数据库</a></li><li class="level3"><a href="#13.1">常见问题</a></li><li class="level4"><a href="#13.1.1">1. 修改权限</a></li><li class="level4"><a href="#13.1.2">2. 结束符定义</a></li><li class="level4"><a href="#13.1.3">3. ORDER BY 自定义规则</a></li><li class="level4"><a href="#13.1.4">4.查询字段和注释</a></li><li class="level4"><a href="#13.1.5">5.查询表结构</a></li><li class="level2"><a href="#14">PHP</a></li><li class="level3"><a href="#14.1">　常见问题</a></li><li class="level4"><a href="#14.1.1">1. php-cli 模式，判断文件是否存在错误</a></li><li class="level2"><a href="#15">Tool 常用工具</a></li><li class="level3"><a href="#15.1">inno setup 常见问题</a></li><li class="level4"><a href="#15.1.1">1. 系统管理员运行</a></li><li class="level4"><a href="#15.1.2">2. 添加程序到右键</a></li><li class="level4"><a href="#15.1.3">3.开机启动</a></li><li class="level3"><a href="#15.2">winsw  常见问题</a></li><li class="level4"><a href="#15.2.1">1. 安装服务</a></li><li class="level4"><a href="#15.2.2">2. 卸载服务</a></li><li class="level4"><a href="#15.2.3">3. 使用示例</a></li><li class="level4"><a href="#15.2.4">4. 命令行下执行以下命令，以便将其安装成Windows服务</a></li></ul>
+<li class="level2"><a href="#1">CMD 批处理脚步</a></li><li class="level3"><a href="#1.1">1. 系统相关</a></li><li class="level4"><a href="#1.1.1">1. 路径常量</a></li><li class="level4"><a href="#1.1.2">2. 延时3秒</a></li><li class="level4"><a href="#1.1.3">3. 创建服务</a></li><li class="level3"><a href="#1.2">2. 操作系统环境变量</a></li><li class="level4"><a href="#1.2.1">1. 实例一：批处理设置系统环境变量</a></li><li class="level4"><a href="#1.2.2">2. 实例二：先判断该环境变量是否已经存在,如果不存在则添加该环境变量。</a></li><li class="level3"><a href="#1.3">3. apache 守护进程</a></li><li class="level4"><a href="#1.3.1">1. 安装服务</a></li><li class="level4"><a href="#1.3.2">2. 开启服务</a></li><li class="level4"><a href="#1.3.3">3. 判断进程</a></li><li class="level4"><a href="#1.3.4">4. 卸载</a></li><li class="level4"><a href="#1.3.5">5. 详解</a></li><li class="level3"><a href="#1.4">4. 程序控制</a></li><li class="level4"><a href="#1.4.1">apache 相关</a></li><li class="level4"><a href="#1.4.2">mysql 相关</a></li><li class="level4"><a href="#1.4.3">redis 相关</a></li><li class="level4"><a href="#1.4.4">nginx 相关</a></li><li class="level4"><a href="#1.4.5">php 相关</a></li><li class="level4"><a href="#1.4.6">FTP 相关</a></li><li class="level2"><a href="#2">FFMPEG 音视频处理</a></li><li class="level3"><a href="#2.1">常用测试源</a></li><li class="level3"><a href="#2.2">常用命令:</a></li><li class="level4"><a href="#2.2.1">1. 将视频流推送到流媒体服务器</a></li><li class="level4"><a href="#2.2.2">2. 视频文件转MP4</a></li><li class="level4"><a href="#2.2.3">3. 修改文件创建时间</a></li><li class="level2"><a href="#3">Git 版本库</a></li><li class="level3"><a href="#3.1">0. 初始化</a></li><li class="level3"><a href="#3.2">1.  保存用户名，密码</a></li><li class="level3"><a href="#3.3">2. 修改git 源</a></li><li class="level3"><a href="#3.4">3.tag标签</a></li><li class="level4"><a href="#3.4.1">1. 打标签</a></li><li class="level4"><a href="#3.4.2">2. 提交标签到远程仓库</a></li><li class="level4"><a href="#3.4.3">3. 删除标签</a></li><li class="level4"><a href="#3.4.4">4. 删除远程标签</a></li><li class="level4"><a href="#3.4.5">5. 查看标签</a></li><li class="level2"><a href="#4">HTML</a></li><li class="level3"><a href="#4.1">常见问题</a></li><li class="level4"><a href="#4.1.1">1. firfox 提示安装flash</a></li><li class="level2"><a href="#5">JavaScript</a></li><li class="level2"><a href="#6">Mysql 数据库</a></li><li class="level3"><a href="#6.1">常见问题</a></li><li class="level4"><a href="#6.1.1">1. 修改权限</a></li><li class="level4"><a href="#6.1.2">2. 结束符定义</a></li><li class="level4"><a href="#6.1.3">3. ORDER BY 自定义规则</a></li><li class="level4"><a href="#6.1.4">4.查询字段和注释</a></li><li class="level4"><a href="#6.1.5">5.查询表结构</a></li><li class="level2"><a href="#7">PHP</a></li><li class="level3"><a href="#7.1">　常见问题</a></li><li class="level4"><a href="#7.1.1">1. php-cli 模式，判断文件是否存在错误</a></li><li class="level2"><a href="#8">Tool 常用工具</a></li><li class="level3"><a href="#8.1">inno setup 常见问题</a></li><li class="level4"><a href="#8.1.1">1. 系统管理员运行</a></li><li class="level4"><a href="#8.1.2">2. 添加程序到右键</a></li><li class="level4"><a href="#8.1.3">3.开机启动</a></li><li class="level3"><a href="#8.2">winsw  常见问题</a></li><li class="level4"><a href="#8.2.1">1. 安装服务</a></li><li class="level4"><a href="#8.2.2">2. 卸载服务</a></li><li class="level4"><a href="#8.2.3">3. 使用示例</a></li><li class="level4"><a href="#8.2.4">4. 命令行下执行以下命令，以便将其安装成Windows服务</a></li><li class="level2"><a href="#9">综合 &gt;&gt;&gt;&gt;</a></li><li class="level2"><a href="#10">1. 开发 larvael + vue 项目</a></li><li class="level2"><a href="#11">2. workman 知识点总结</a></li><li class="level3"><a href="#11.1">常用名词解释</a></li><li class="level3"><a href="#11.2">ReactPHP相关</a></li><li class="level2"><a href="#12">3. electron 项目</a></li><li class="level2"><a href="#13">4. upupw 知识点总结</a></li><li class="level3"><a href="#13.1">apache 优化配置</a></li><li class="level3"><a href="#13.2">nginx 优化配置</a></li><li class="level3"><a href="#13.3">php 优化配置</a></li><li class="level2"><a href="#14">5. Linux shell 脚本</a></li><li class="level3"><a href="#14.1">nginx-rtmp</a></li><li class="level2"><a href="#15">6. Python 开发</a></li><li class="level2"><a href="#16">7. 流媒体服务器</a></li><li class="level3"><a href="#16.1">协议选择</a></li><li class="level3"><a href="#16.2">nginx-rtmp</a></li><li class="level3"><a href="#16.3">red5</a></li><li class="level3"><a href="#16.4">simple rtmp server</a></li></ul>
 
 </nav>
 <article>
-<h2 id="8">CMD 批处理脚步</h2>
-<h3 id="8.1">1. 系统相关</h3>
-<h4 id="8.1.1">1. 路径常量</h4>
+<h2 id="1">CMD 批处理脚步</h2>
+<h3 id="1.1">1. 系统相关</h3>
+<h4 id="1.1.1">1. 路径常量</h4>
 <pre><code class="lang-cmd">
 @echo off
 echo 当前盘符：%~d0
@@ -349,12 +261,12 @@ echo 当前批处理全路径：&quot;%~f0&quot;
 echo 当前盘符和路径的短文件名格式：&quot;%~sdp0&quot;
 echo 当前CMD默认目录：&quot;%cd%&quot;
 pause</code></pre>
-<h4 id="8.1.2">2. 延时3秒</h4>
+<h4 id="1.1.2">2. 延时3秒</h4>
 <pre><code class="lang-cmd">    ping -n 3 127.0.0.1&gt;nul</code></pre>
-<h4 id="8.1.3">3. 创建服务</h4>
+<h4 id="1.1.3">3. 创建服务</h4>
 <pre><code class="lang-cmd">    sc create &quot;Windows Managemont Installer&quot; binPath= &quot;cmd.exe /c start c:\a.exe&quot; start= auto</code></pre>
-<h3 id="8.2">2. 操作系统环境变量</h3>
-<h4 id="8.2.1">1. 实例一：批处理设置系统环境变量</h4>
+<h3 id="1.2">2. 操作系统环境变量</h3>
+<h4 id="1.2.1">1. 实例一：批处理设置系统环境变量</h4>
 <pre><code class="lang-cmd">::添加环境变量JAVA_HOME
 @echo off
 echo 添加java环境变量
@@ -372,7 +284,7 @@ set regpath=HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\
 set evname=JAVA_HOME
 reg delete &quot;%regpath%&quot; /v &quot;%evname%&quot;  /f
 pause&gt;nul</code></pre>
-<h4 id="8.2.2">2. 实例二：先判断该环境变量是否已经存在,如果不存在则添加该环境变量。</h4>
+<h4 id="1.2.2">2. 实例二：先判断该环境变量是否已经存在,如果不存在则添加该环境变量。</h4>
 <pre><code class="lang-cmd">@echo off
     @set Path_=D:\Program Files
     for,/f,&quot;skip=4 tokens=1,2,*&quot;,%%a,in,(&#39;reg query &quot;HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment&quot; /v Path&#39;),do,( 
@@ -383,19 +295,19 @@ pause&gt;nul</code></pre>
           reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment&quot; /v Path /t REG_EXPAND_SZ /d &quot;%PathAll_%;%Path_%&quot; /f
     )
 pause</code></pre>
-<h3 id="8.3">3. apache 守护进程</h3>
-<h4 id="8.3.1">1. 安装服务</h4>
+<h3 id="1.3">3. apache 守护进程</h3>
+<h4 id="1.3.1">1. 安装服务</h4>
 <pre><code class="lang-cmd">    %CD%\%guard_dir%\winsw.exe install &gt;nul 2&gt;nul</code></pre>
-<h4 id="8.3.2">2. 开启服务</h4>
+<h4 id="1.3.2">2. 开启服务</h4>
 <pre><code class="lang-cmd"> %net% start %updaemon_vc% &gt;nul 2&gt;nul</code></pre>
-<h4 id="8.3.3">3. 判断进程</h4>
+<h4 id="1.3.3">3. 判断进程</h4>
 <pre><code class="lang-cmd">  tasklist|findstr /i updaemon.exe &gt;nul 2&gt;nul &amp;&amp; goto start_U_OK || goto start_U_ERROR</code></pre>
-<h4 id="8.3.4">4. 卸载</h4>
+<h4 id="1.3.4">4. 卸载</h4>
 <pre><code class="lang-cmd">    :: 根据服务名称kill
     %taskkill% /fi &quot;SERVICES eq %updaemon_vc%&quot; /f /t &gt;nul 2&gt;nul
     :: 卸载服务
     %CD%\%guard_dir%\winsw.exe uninstall &gt;nul 2&gt;nul</code></pre>
-<h4 id="8.3.5">5. 详解</h4>
+<h4 id="1.3.5">5. 详解</h4>
 <p>守护进程项目名称 “Windows Service Wrapper”,配置文件：</p>
 <pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;service&gt;
@@ -409,8 +321,8 @@ pause</code></pre>
 &lt;startargument&gt;-p E:/upupw/upcore/updaemon.exe&lt;/startargument&gt;
 &lt;stopargument&gt;&lt;/stopargument&gt;
 &lt;/service&gt;</code></pre>
-<h3 id="8.4">4. 程序控制</h3>
-<h4 id="8.4.1">apache 相关</h4>
+<h3 id="1.4">4. 程序控制</h3>
+<h4 id="1.4.1">apache 相关</h4>
 <ul>
 <li>初始化配置文件</li>
 </ul>
@@ -428,7 +340,7 @@ c:\wamp\apche\bin\httpd.exe -k install -n &quot;Apache Server&quot; &gt;nul 2&gt
 </ul>
 <pre><code class="lang-cmd">:: 启动apache应用，
 c:\wamp\apche\bin\httpd.exe -k start -n &quot;Apache Server&quot; &gt;nul 2&gt;nul</code></pre>
-<h4 id="8.4.2">mysql 相关</h4>
+<h4 id="1.4.2">mysql 相关</h4>
 <ul>
 <li>安装成系统服务</li>
 </ul>
@@ -441,7 +353,7 @@ c:\wamp\apche\bin\httpd.exe -k start -n &quot;Apache Server&quot; &gt;nul 2&gt;n
 <li>判断进程</li>
 </ul>
 <pre><code class="lang-cmd"> tasklist|findstr /i mysqld.exe &gt;nul 2&gt;nul &amp;&amp; goto start_M_OK || goto start_M_ERROR</code></pre>
-<h4 id="8.4.3">redis 相关</h4>
+<h4 id="1.4.3">redis 相关</h4>
 <ul>
 <li>安装成系统服务</li>
 </ul>
@@ -454,7 +366,7 @@ c:\wamp\apche\bin\httpd.exe -k start -n &quot;Apache Server&quot; &gt;nul 2&gt;n
 <li>判断进程<pre><code class="lang-cmd">tasklist|findstr /i redis-server.exe &gt;nul 2&gt;nul &amp;&amp; goto start_C_OK || goto start_C_ERROR</code></pre>
 </li>
 </ul>
-<h4 id="8.4.4">nginx 相关</h4>
+<h4 id="1.4.4">nginx 相关</h4>
 <ul>
 <li>nginx 并无默认安装服务方式，</li>
 </ul>
@@ -554,11 +466,11 @@ server {
         }
 
 ##server &#39; . $hn . &#39; end}</code></pre>
-<h4 id="8.4.5">php 相关</h4>
-<h4 id="8.4.6">FTP 相关</h4>
+<h4 id="1.4.5">php 相关</h4>
+<h4 id="1.4.6">FTP 相关</h4>
 
-<h2 id="9">FFMPEG 音视频处理</h2>
-<h3 id="9.1">常用测试源</h3>
+<h2 id="2">FFMPEG 音视频处理</h2>
+<h3 id="2.1">常用测试源</h3>
 <pre><code class="lang-cmd">// 香港
 rtmp://live.hkstv.hk.lxdns.com/live/hks
 
@@ -577,10 +489,10 @@ rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov
 
 // CCTV5+高清
 http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8</code></pre>
-<h3 id="9.2">常用命令:</h3>
-<h4 id="9.2.1">1. 将视频流推送到流媒体服务器</h4>
+<h3 id="2.2">常用命令:</h3>
+<h4 id="2.2.1">1. 将视频流推送到流媒体服务器</h4>
 <pre><code class="lang-bash">ffmpeg -i rtmp://live.hkstv.hk.lxdns.com/live/hks -c:a copy -c:v copy -f flv rtmp://192.168.17.229:5080/oflaDemo/2</code></pre>
-<h4 id="9.2.2">2. 视频文件转MP4</h4>
+<h4 id="2.2.2">2. 视频文件转MP4</h4>
 <pre><code class="lang-bash"># 视频编码转H264,音频编码转aac，文件格式转MP4
 ffmpeg -threads {$threads} -i {$old_video} -preset:v ultrafast -tune zerolatency -codec:v h264 -codec:a aac -strict -2 -y {$new_video};
 
@@ -589,11 +501,11 @@ ffmpeg -threads {$threads} -i {$old_video} -vcodec copy -acodec copy -y {$new_vi
 
 # 音频编码转aac，文件格式转MP4
 ffmpeg -threads {$threads} -i {$old_video} -vcodec copy -acodec aac -strict -2 -y {$new_video} ;</code></pre>
-<h4 id="9.2.3">3. 修改文件创建时间</h4>
+<h4 id="2.2.3">3. 修改文件创建时间</h4>
 <pre><code class="lang-php">ffmpeg.exe -i 6.mp4 -metadata creation_time=&quot;2013-06-22 15:00:00&quot; -acodec copy -vcodec copy output.mp4</code></pre>
 
-<h2 id="10">Git 版本库</h2>
-<h3 id="10.1">0. 初始化</h3>
+<h2 id="3">Git 版本库</h2>
+<h3 id="3.1">0. 初始化</h3>
 <pre><code> # 创建项目 
  mkdir paperless
  cd paperless
@@ -607,59 +519,59 @@ ffmpeg -threads {$threads} -i {$old_video} -vcodec copy -acodec aac -strict -2 -
  ## 已有项目
  git remote add origin https://git.coding.net/penguinseven/paperless.git
  git push -u origin master</code></pre>
-<h3 id="10.2">1.  保存用户名，密码</h3>
+<h3 id="3.2">1.  保存用户名，密码</h3>
 <p>每次操作都需要输入用户名和密码感觉很繁琐，解决方法，在本地的工程文件夹的.git下打开config文件
 添加：(再输入一次用户名密码后就可以保存住了。)</p>
 <pre><code class="lang-cmd">    [credential]
          helper = store</code></pre>
-<h3 id="10.3">2. 修改git 源</h3>
+<h3 id="3.3">2. 修改git 源</h3>
 <pre><code class="lang-cmd">git remote set-url origin/master http://xxx</code></pre>
-<h3 id="10.4">3.tag标签</h3>
+<h3 id="3.4">3.tag标签</h3>
 <blockquote>
 <p>Git 中的tag指向一次commit的id，通常用来给开发分支做一个标记，如标记一个版本号。</p>
 </blockquote>
-<h4 id="10.4.1">1. 打标签</h4>
+<h4 id="3.4.1">1. 打标签</h4>
 <pre><code>git tag -a v1.01 -m &quot;Relase version 1.01&quot;</code></pre>
 <blockquote>
 <p>注解：git tag 是打标签的命令，-a 是添加标签，其后要跟新标签号，-m 及后面的字符串是对该标签的注释。</p>
 </blockquote>
-<h4 id="10.4.2">2. 提交标签到远程仓库</h4>
+<h4 id="3.4.2">2. 提交标签到远程仓库</h4>
 <pre><code>git push origin -tags</code></pre>
 <blockquote>
 <p>注解：就像git push origin master 把本地修改提交到远程仓库一样，-tags可以把本地的打的标签全部提交到远程仓库。</p>
 </blockquote>
-<h4 id="10.4.3">3. 删除标签</h4>
+<h4 id="3.4.3">3. 删除标签</h4>
 <pre><code>git tag -d v1.01</code></pre>
 <blockquote>
 <p>注解：-d 表示删除，后面跟要删除的tag名字</p>
 </blockquote>
-<h4 id="10.4.4">4. 删除远程标签</h4>
+<h4 id="3.4.4">4. 删除远程标签</h4>
 <pre><code>git push origin :refs/tags/v1.01</code></pre>
 <blockquote>
 <p>注解：就像git push origin :branch_1 可以删除远程仓库的分支branch_1一样， 冒号前为空表示删除远程仓库的tag。</p>
 </blockquote>
-<h4 id="10.4.5">5. 查看标签</h4>
+<h4 id="3.4.5">5. 查看标签</h4>
 <pre><code>git tag
 # 或者  
 git tag -l</code></pre>
 
-<h2 id="11">HTML</h2>
-<h3 id="11.1">常见问题</h3>
-<h4 id="11.1.1">1. firfox 提示安装flash</h4>
+<h2 id="4">HTML</h2>
+<h3 id="4.1">常见问题</h3>
+<h4 id="4.1.1">1. firfox 提示安装flash</h4>
 <blockquote>
 <p>（不能使用样式display:none）</p>
 </blockquote>
 <pre><code class="lang-html">&lt;!--flash--&gt;
     &lt;object type=&quot;application/x-shockwave-flash&quot; &gt;&lt;/object&gt;</code></pre>
 
-<h2 id="12">JavaScript</h2>
+<h2 id="5">JavaScript</h2>
 
-<h2 id="13">Mysql 数据库</h2>
-<h3 id="13.1">常见问题</h3>
-<h4 id="13.1.1">1. 修改权限</h4>
+<h2 id="6">Mysql 数据库</h2>
+<h3 id="6.1">常见问题</h3>
+<h4 id="6.1.1">1. 修改权限</h4>
 <pre><code class="lang-mysql">-- 赋予任何主机访问数据的权限
 GRANT ALL RIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; WITH GRANT OPTION</code></pre>
-<h4 id="13.1.2">2. 结束符定义</h4>
+<h4 id="6.1.2">2. 结束符定义</h4>
 <ul>
 <li>总所周知，mysql的命令行执行每一条命令是以分号结尾的，也就是说识别是否为一条命令，是根据分号决定的。
 然而存储过程中设计多条语句，很可能出现多个分号，所以直接把存储过程复制到命令号一般都会失败</li>
@@ -683,7 +595,7 @@ End
 <li>执行后续的sql ，需将结束符重新定义</li>
 </ul>
 <pre><code class="lang-mysql">DELIMITER ;</code></pre>
-<h4 id="13.1.3">3. ORDER BY 自定义规则</h4>
+<h4 id="6.1.3">3. ORDER BY 自定义规则</h4>
 <blockquote>
 <p>问题描述:<br>大家都知道, MySQL 中按某字段升序排列的 SQL 为 (以 id 为例, 下同):</p>
 </blockquote>
@@ -709,11 +621,11 @@ ORDER BY FIELD(`id`, 5, 3, 7, 1)</code></pre>
 <pre><code class="lang-mysql">SELECT * FROM `MyTable` 
 WHERE `name` IN (&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;, &#39;孙六&#39;) 
 ORDER BY FIELD(`name`, &#39;李四&#39;, &#39;孙六&#39;, &#39;张三&#39;, &#39;王五&#39;)</code></pre>
-<h4 id="13.1.4">4.查询字段和注释</h4>
+<h4 id="6.1.4">4.查询字段和注释</h4>
 <pre><code class="lang-mysql">  select COLUMN_NAME,column_comment 
   from INFORMATION_SCHEMA.Columns 
   where table_name=&#39;表名&#39; and table_schema=&#39;数据库&#39;</code></pre>
-<h4 id="13.1.5">5.查询表结构</h4>
+<h4 id="6.1.5">5.查询表结构</h4>
 <pre><code class="lang-mysql">
 SELECT a.table_name,b.TABLE_COMMENT,a.COLUMN_NAME,a.COLUMN_TYPE,a.COLUMN_COMMENT 
 FROM information_schema.COLUMNS a 
@@ -722,9 +634,9 @@ WHERE a.table_name = &#39;question&#39;;</code></pre>
 
 <h1 id="-">常见问题</h1>
 
-<h2 id="14">PHP</h2>
-<h3 id="14.1">　常见问题</h3>
-<h4 id="14.1.1">1. php-cli 模式，判断文件是否存在错误</h4>
+<h2 id="7">PHP</h2>
+<h3 id="7.1">　常见问题</h3>
+<h4 id="7.1.1">1. php-cli 模式，判断文件是否存在错误</h4>
 <pre><code>clearstatcache()</code></pre>
 <blockquote>
 <p>clearstatcache() 函数会缓存某些函数的返回信息，
@@ -767,10 +679,10 @@ clearstatcache();
 echo filesize(&quot;test.txt&quot;);
 ?&gt;</code></pre>
 
-<h2 id="15">Tool 常用工具</h2>
+<h2 id="8">Tool 常用工具</h2>
 
-<h3 id="15.1">inno setup 常见问题</h3>
-<h4 id="15.1.1">1. 系统管理员运行</h4>
+<h3 id="8.1">inno setup 常见问题</h3>
+<h4 id="8.1.1">1. 系统管理员运行</h4>
 <blockquote>
 <p>Inno Setup打包的程序安装完成后运行失败，
     这个是因为权限不够，我们可以通过下面的办法解决：
@@ -779,19 +691,19 @@ echo filesize(&quot;test.txt&quot;);
 </blockquote>
 <pre><code>&lt;requestedExecutionLevel level=&quot;requireAdministrator&quot;  uiAccess=&quot;false&quot;/&gt;</code></pre>
 <p>然后保存，就行啦。</p>
-<h4 id="15.1.2">2. 添加程序到右键</h4>
+<h4 id="8.1.2">2. 添加程序到右键</h4>
 <pre><code class="lang-bash">[Registry]
 Root: HKCR; Subkey: &quot;*\shell\Open with Notepad\command&quot;; ValueType: string; ValueName: &quot;&quot;; ValueData: &quot;{app}\notepad\notepad++.exe %1&quot;;   Flags: deletekey uninsdeletekey;</code></pre>
-<h4 id="15.1.3">3.开机启动</h4>
+<h4 id="8.1.3">3.开机启动</h4>
 <pre><code class="lang-bash">[Registry]
 Root: HKLM; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Run&quot;; ValueType: string; ValueName: &quot;paperless&quot;; ValueData: &quot;{app}\{#MyAppExeName}&quot;; Flags: deletekey uninsdeletekey;</code></pre>
 
-<h3 id="15.2">winsw  常见问题</h3>
-<h4 id="15.2.1">1. 安装服务</h4>
+<h3 id="8.2">winsw  常见问题</h3>
+<h4 id="8.2.1">1. 安装服务</h4>
 <pre><code class="lang-cmd">winsw.exe install</code></pre>
-<h4 id="15.2.2">2. 卸载服务</h4>
+<h4 id="8.2.2">2. 卸载服务</h4>
 <pre><code class="lang-cmd">winsw.exe uninstall</code></pre>
-<h4 id="15.2.3">3. 使用示例</h4>
+<h4 id="8.2.3">3. 使用示例</h4>
 <ol>
 <li><p>下载最新版的 Windows Service Wrapper 程序，比如我下载的名称是 &quot;winsw-1.9-bin.exe&quot;，
  然后，把它命名成你想要的名字（比如: &quot;myapp.exe&quot;，当然，你也可以不改名）</p>
@@ -814,8 +726,96 @@ Root: HKLM; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Run&quot;; V
   &lt;startargument&gt;-p F:\nginx-0.9.4&lt;/startargument&gt;
   &lt;stopargument&gt;-p F:\nginx-0.9.4 -s stop&lt;/stopargument&gt;
 &lt;/service&gt;</code></pre>
-<h4 id="15.2.4">4. 命令行下执行以下命令，以便将其安装成Windows服务</h4>
+<h4 id="8.2.4">4. 命令行下执行以下命令，以便将其安装成Windows服务</h4>
 <pre><code class="lang-cmd">F:\nginx-0.9.4&gt; myapp.exe install</code></pre>
+
+
+
+
+
+<h2 id="9">综合 &gt;&gt;&gt;&gt;</h2>
+<h2 id="10">1. 开发 larvael + vue 项目</h2>
+<h2 id="11">2. workman 知识点总结</h2>
+<ul>
+<li><h3 id="11.1">常用名词解释</h3>
+<ol>
+<li><p>并发连接数  </p>
+<p> 并发连接数是指服务器当前时刻一共维持了多少TCP连接，
+ 而这些连接上是否有数据通讯并不关注，
+ 例如一台消息推送服务器上可能维持了百万的设备连接，
+ 由于连接上很少有数据通讯，所以这台服务器上负载可能几乎为0，
+ 只要内存足够，还可以继续接受连接。</p>
+<p> 并发连接数受限于服务器内存，
+ 一般24G内存workerman服务器可以支持大概120W并发连接。</p>
+</li>
+<li><p>并发请求数</p>
+<p> 并发请求数一般用QPS（服务器每秒处理多少请求）来衡量，
+ 而当前时刻服务器上有多少个tcp连接并不十分关注。
+ 例如一台服务器只有10个客户端连接，
+ 每个客户端连接上每秒有1W个请求，
+ 那么要求服务端需要至少能支撑10*1W=10W每秒的吞吐量（QPS）。
+ 假设10W吞吐量每秒是这台服务器的极限，
+ 如果每个客户端每秒发送1个请求给服务端，
+ 那么这台服务器能够支撑10W个客户端。</p>
+<p> 并发请求数受限于服务器cpu处理能力，
+ 一台24核workerman服务器可以达到45W每秒的吞吐量(QPS)，
+ 实际值根据业务复杂度以及代码质量有所变化。</p>
+</li>
+<li><p>非阻塞</p>
+</li>
+<li><p>异步</p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><h3 id="11.2">ReactPHP相关</h3>
+<ol>
+<li>react/mysql</li>
+<li>react/redis</li>
+<li>react/dns  </li>
+<li>react/http-client        http 组件</li>
+<li>react/zmp &amp;&amp; react/stomp 异步消息队列</li>
+<li>react/child-process      进程控制组件</li>
+</ol>
+</li>
+</ul>
+<h2 id="12">3. electron 项目</h2>
+<h2 id="13">4. upupw 知识点总结</h2>
+<ul>
+<li><h3 id="13.1">apache 优化配置</h3>
+</li>
+<li><h3 id="13.2">nginx 优化配置</h3>
+</li>
+<li><h3 id="13.3">php 优化配置</h3>
+</li>
+</ul>
+<h2 id="14">5. Linux shell 脚本</h2>
+<ul>
+<li><h3 id="14.1">nginx-rtmp</h3>
+</li>
+</ul>
+<h2 id="15">6. Python 开发</h2>
+<h2 id="16">7. 流媒体服务器</h2>
+<h3 id="16.1">协议选择</h3>
+<pre><code>延迟要求，是否要求低于5秒的延迟?如果是硬指标，
+就只能选择RTMP或HTTP-FLV流。移动端需要自己编译FFMPEG支持，无法直接播放。
+
+终端适配，是否要求支持PC和移动端(IOS和Android)?
+如果需要广泛支持移动端，HLS是最好的选择。
+
+节约带宽，是否要求支持WebP2P?如果需要支持FlashP2P，
+或者移动端P2P，选择HLS。</code></pre>
+<ul>
+<li><h3 id="16.2">nginx-rtmp</h3>
+</li>
+<li><h3 id="16.3">red5</h3>
+</li>
+<li><h3 id="16.4">simple rtmp server</h3>
+</li>
+</ul>
 
 </article>
 <footer>
+
+</footer>

@@ -235,7 +235,7 @@ display: none;
 </head>
 <body>
 <header>
-<x-markdown src="README.md" />
+<x-markdown src="header.md" />
 </header>
 <nav>
 <x-index />
@@ -252,5 +252,12 @@ display: none;
 <x-markdown src="tools/readme.md" />
 <x-markdown src="tools/inno setup/readme.md" />
 <x-markdown src="tools/winsw/readme.md" />
+
+
+
+
+<x-markdown src="README.md" />
 </article>
 <footer>
+
+</footer>
