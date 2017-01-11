@@ -249,5 +249,7 @@ display: none;
 <x-markdown src="Mysql/readme.md" />
 <x-markdown src="Nginx/readme.md" />
 <x-markdown src="PHP/readme.md" />
+<x-markdown src="tools/readme.md" />
+<x-markdown src="tools/inno setup/readme.md" />
 </article>
 <footer>
