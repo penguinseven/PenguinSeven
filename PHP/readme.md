@@ -1,6 +1,9 @@
-# 常见问题
+## PHP 
 
-### 1. php-cli 模式，判断文件是否存在错误
+###　常见问题
+
+#### 1. php-cli 模式，判断文件是否存在错误
+    
     clearstatcache()
     
 
@@ -31,7 +34,8 @@
     fileperms()  
 ```  
 
-example ： 
+example :
+
 ```php
 <?php
 //检查文件大小
@@ -48,5 +52,3 @@ clearstatcache();
 echo filesize("test.txt");
 ?>
 ```
-
-### 2.

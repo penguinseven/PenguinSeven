@@ -65,4 +65,15 @@
 
     net start 'Nginx Rtmp Server'
     net stop 'Nginx Rtmp Server'
+    
+    
+### 5. MP4 修改元数据
+    
+  ```php
+  $str_path = str_replace('\\','/', $res['FILE_PATH']);
+  
+  @exec("MP4Box -brand mp42 {$str_path} 2>&1");
+  ```
+  
+  
    
