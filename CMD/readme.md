@@ -123,6 +123,7 @@ pause
 #### apache 相关
 
 - 0. 初始化配置文件
+
 ```cmd
     :: 执行外部程序，调用upcfg(),为 false 跳转至菜单栏
     set php=%upcore_dir%\upcore.exe -d extension_dir=%upcore_dir% -d date.timezone=UTC -n %upcore_dir%\up.dll
