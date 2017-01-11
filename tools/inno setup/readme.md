@@ -8,7 +8,7 @@
   然后用Resource Hacker软件打开，将Manifest改成
 
 ```
-<requestedExecutionLevel level="requireAdministrator"            uiAccess="false"/>
+<requestedExecutionLevel level="requireAdministrator"  uiAccess="false"/>
 ```
 
 然后保存，就行啦。

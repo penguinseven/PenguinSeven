@@ -251,5 +251,6 @@ display: none;
 <x-markdown src="PHP/readme.md" />
 <x-markdown src="tools/readme.md" />
 <x-markdown src="tools/inno setup/readme.md" />
+<x-markdown src="tools/winsw/readme.md" />
 </article>
 <footer>
