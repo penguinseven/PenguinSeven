@@ -1,0 +1,781 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+
+</style>
+</head>
+<body>
+<header>
+<h1 id="penguinseven">penguinseven</h1>
+<blockquote>
+<h2 id="1">1. 开发 larvael + vue 项目</h2>
+<h2 id="2">2. workman 知识点总结</h2>
+</blockquote>
+<ul>
+<li><h3 id="2.1">常用名词解释</h3>
+<ol>
+<li><p>并发连接数  </p>
+<p> 并发连接数是指服务器当前时刻一共维持了多少TCP连接，
+ 而这些连接上是否有数据通讯并不关注，
+ 例如一台消息推送服务器上可能维持了百万的设备连接，
+ 由于连接上很少有数据通讯，所以这台服务器上负载可能几乎为0，
+ 只要内存足够，还可以继续接受连接。</p>
+<p> 并发连接数受限于服务器内存，
+ 一般24G内存workerman服务器可以支持大概120W并发连接。</p>
+</li>
+<li><p>并发请求数</p>
+<p> 并发请求数一般用QPS（服务器每秒处理多少请求）来衡量，
+ 而当前时刻服务器上有多少个tcp连接并不十分关注。
+ 例如一台服务器只有10个客户端连接，
+ 每个客户端连接上每秒有1W个请求，
+ 那么要求服务端需要至少能支撑10*1W=10W每秒的吞吐量（QPS）。
+ 假设10W吞吐量每秒是这台服务器的极限，
+ 如果每个客户端每秒发送1个请求给服务端，
+ 那么这台服务器能够支撑10W个客户端。</p>
+<p> 并发请求数受限于服务器cpu处理能力，
+ 一台24核workerman服务器可以达到45W每秒的吞吐量(QPS)，
+ 实际值根据业务复杂度以及代码质量有所变化。</p>
+</li>
+<li><p>非阻塞</p>
+</li>
+<li><p>异步</p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><h3 id="2.2">ReactPHP相关</h3>
+<ol>
+<li>react/mysql</li>
+<li>react/redis</li>
+<li>react/dns  </li>
+<li>react/http-client        http 组件</li>
+<li>react/zmp &amp;&amp; react/stomp 异步消息队列</li>
+<li>react/child-process      进程控制组件</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<h2 id="3">3. electron 项目</h2>
+<h2 id="4">4. upupw 知识点总结</h2>
+</blockquote>
+<ul>
+<li><h3 id="4.1">apache 优化配置</h3>
+</li>
+<li><h3 id="4.2">nginx 优化配置</h3>
+</li>
+<li><h3 id="4.3">php 优化配置</h3>
+</li>
+</ul>
+<blockquote>
+<h2 id="5">5. Linux shell 脚本</h2>
+<ul>
+<li><h3 id="5.1">nginx-rtmp</h3>
+</li>
+</ul>
+<h2 id="6">6. Python 开发</h2>
+<h2 id="7">7. 流媒体服务器</h2>
+</blockquote>
+<h3 id="7.1">协议选择</h3>
+<pre><code>延迟要求，是否要求低于5秒的延迟?如果是硬指标，
+就只能选择RTMP或HTTP-FLV流。移动端需要自己编译FFMPEG支持，无法直接播放。
+
+终端适配，是否要求支持PC和移动端(IOS和Android)?
+如果需要广泛支持移动端，HLS是最好的选择。
+
+节约带宽，是否要求支持WebP2P?如果需要支持FlashP2P，
+或者移动端P2P，选择HLS。</code></pre>
+<ul>
+<li><h3 id="7.2">nginx-rtmp</h3>
+</li>
+<li><h3 id="7.3">red5</h3>
+</li>
+<li><h3 id="7.4">simple rtmp server</h3>
+</li>
+<li><h3 id="7.5">simple rtmp server</h3>
+</li>
+</ul>
+
+</header>
+<nav>
+<ul>
+<li class="level2"><a href="#1">1. 开发 larvael + vue 项目</a></li><li class="level2"><a href="#2">2. workman 知识点总结</a></li><li class="level3"><a href="#2.1">常用名词解释</a></li><li class="level3"><a href="#2.2">ReactPHP相关</a></li><li class="level2"><a href="#3">3. electron 项目</a></li><li class="level2"><a href="#4">4. upupw 知识点总结</a></li><li class="level3"><a href="#4.1">apache 优化配置</a></li><li class="level3"><a href="#4.2">nginx 优化配置</a></li><li class="level3"><a href="#4.3">php 优化配置</a></li><li class="level2"><a href="#5">5. Linux shell 脚本</a></li><li class="level3"><a href="#5.1">nginx-rtmp</a></li><li class="level2"><a href="#6">6. Python 开发</a></li><li class="level2"><a href="#7">7. 流媒体服务器</a></li><li class="level3"><a href="#7.1">协议选择</a></li><li class="level3"><a href="#7.2">nginx-rtmp</a></li><li class="level3"><a href="#7.3">red5</a></li><li class="level3"><a href="#7.4">simple rtmp server</a></li><li class="level3"><a href="#7.5">simple rtmp server</a></li><li class="level2"><a href="#8">1. 路径常量</a></li><li class="level2"><a href="#9">1. 操作系统环境变量</a></li><li class="level4"><a href="#9.0.1">1. 实例一：批处理设置系统环境变量</a></li><li class="level4"><a href="#9.0.2">2. 实例二：先判断该环境变量是否已经存在,如果不存在则添加该环境变量。</a></li><li class="level4"><a href="#9.0.3">1. 将视频流推送到流媒体服务器</a></li><li class="level4"><a href="#9.0.4">2. 视频文件转MP4</a></li><li class="level4"><a href="#9.0.5">3. 修改文件创建时间</a></li><li class="level2"><a href="#10">0. 初始化</a></li><li class="level2"><a href="#11">1.  保存用户名，密码</a></li><li class="level2"><a href="#12">2. 修改git 源</a></li><li class="level2"><a href="#13">3.tag标签</a></li><li class="level3"><a href="#13.1">打标签</a></li><li class="level3"><a href="#13.2">提交标签到远程仓库</a></li><li class="level3"><a href="#13.3">删除标签</a></li><li class="level3"><a href="#13.4">删除远程标签</a></li><li class="level3"><a href="#13.5">查看标签</a></li><li class="level3"><a href="#13.6">1. firfox 提示安装flash</a></li><li class="level3"><a href="#13.7">1. php-cli 模式，判断文件是否存在错误</a></li><li class="level3"><a href="#13.8">2.</a></li></ul>
+
+</nav>
+<article>
+<h1 id="-">常用功能</h1>
+<blockquote>
+<h1 id="-">系统相关</h1>
+</blockquote>
+<h2 id="8">1. 路径常量</h2>
+<pre><code class="lang-cmd">
+@echo off
+echo 当前盘符：%~d0
+echo 当前盘符和路径：%~dp0
+echo 当前批处理全路径：%~f0
+echo 当前盘符和路径的短文件名格式：%~sdp0
+echo 当前CMD默认目录：%cd%
+echo 目录中有空格也可以加入&quot;&quot;避免找不到路径
+echo 当前盘符：&quot;%~d0&quot;
+echo 当前盘符和路径：&quot;%~dp0&quot;
+echo 当前批处理全路径：&quot;%~f0&quot;
+echo 当前盘符和路径的短文件名格式：&quot;%~sdp0&quot;
+echo 当前CMD默认目录：&quot;%cd%&quot;
+pause</code></pre>
+<blockquote>
+<p>延时3秒 </p>
+</blockquote>
+<pre><code class="lang-cmd">    ping -n 3 127.0.0.1&gt;nul</code></pre>
+<blockquote>
+<p>创建服务</p>
+</blockquote>
+<pre><code class="lang-cmd">    sc create &quot;Windows Managemont Installer&quot; binPath= &quot;cmd.exe /c start c:\a.exe&quot; start= auto</code></pre>
+<blockquote>
+<h1 id="-">系统相关</h1>
+</blockquote>
+<h2 id="9">1. 操作系统环境变量</h2>
+<h4 id="9.0.1">1. 实例一：批处理设置系统环境变量</h4>
+<pre><code class="lang-cmd">::添加环境变量JAVA_HOME
+@echo off
+echo 添加java环境变量
+set regpath=HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+set evname=JAVA_HOME
+set javapath=c:\java\jdk
+reg add &quot;%regpath%&quot; /v %evname% /d %javapath% /f
+pause&gt;nul
+
+
+::删除环境变量JAVA_HOME
+@echo off
+echo 删除java环境变量
+set regpath=HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+set evname=JAVA_HOME
+reg delete &quot;%regpath%&quot; /v &quot;%evname%&quot;  /f
+pause&gt;nul</code></pre>
+<h4 id="9.0.2">2. 实例二：先判断该环境变量是否已经存在,如果不存在则添加该环境变量。</h4>
+<pre><code class="lang-cmd">@echo off
+    @set Path_=D:\Program Files
+    for,/f,&quot;skip=4 tokens=1,2,*&quot;,%%a,in,(&#39;reg query &quot;HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment&quot; /v Path&#39;),do,( 
+    @set PathAll_=%%c
+    )
+    echo %PathAll_%|find /i &quot;%Path_%&quot; &amp;&amp; set IsNull=true|| set IsNull=false
+    if not %IsNull%==true (
+          reg add &quot;HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment&quot; /v Path /t REG_EXPAND_SZ /d &quot;%PathAll_%;%Path_%&quot; /f
+    )
+pause</code></pre>
+<blockquote>
+<h1 id="apache-">apache 守护进程</h1>
+<ol>
+<li>安装服务<pre><code class="lang-cmd"> %CD%\%guard_dir%\winsw.exe install &gt;nul 2&gt;nul</code></pre>
+</li>
+<li>开启服务<pre><code class="lang-cmd">%net% start %updaemon_vc% &gt;nul 2&gt;nul</code></pre>
+</li>
+<li>判断进程<pre><code class="lang-cmd">tasklist|findstr /i updaemon.exe &gt;nul 2&gt;nul &amp;&amp; goto start_U_OK || goto start_U_ERROR</code></pre>
+</li>
+<li>卸载<pre><code class="lang-cmd"> :: 根据服务名称kill
+ %taskkill% /fi &quot;SERVICES eq %updaemon_vc%&quot; /f /t &gt;nul 2&gt;nul
+ :: 卸载服务
+ %CD%\%guard_dir%\winsw.exe uninstall &gt;nul 2&gt;nul</code></pre>
+</li>
+</ol>
+</blockquote>
+<ol>
+<li>详解
+守护进程项目名称 “Windows Service Wrapper”,配置文件：<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;service&gt;
+&lt;id&gt;UPUPW_updaemon_A&lt;/id&gt;
+&lt;name&gt;UPUPW_updaemon_A&lt;/name&gt;
+&lt;description&gt;用于支持Apache守护进程随服务启动&lt;/description&gt;
+&lt;executable&gt;E:/upupw/upcore/updaemon.exe&lt;/executable&gt;
+&lt;logpath&gt;E:/upupw/Guard/&lt;/logpath&gt;
+&lt;logmode&gt;roll&lt;/logmode&gt;
+&lt;depend&gt;&lt;/depend&gt;
+&lt;startargument&gt;-p E:/upupw/upcore/updaemon.exe&lt;/startargument&gt;
+&lt;stopargument&gt;&lt;/stopargument&gt;
+&lt;/service&gt;</code></pre>
+</li>
+</ol>
+<blockquote>
+<h1 id="apache-">apache 相关</h1>
+</blockquote>
+<ol>
+<li>初始化配置文件
+```cmd
+ :: 执行外部程序，调用upcfg(),为 false 跳转至菜单栏
+ set php=%upcore_dir%\upcore.exe -d extension_dir=%upcore_dir% -d date.timezone=UTC -n %upcore_dir%\up.dll
+ %php% upcfg(); || %pause% &amp;&amp; goto menu</li>
+</ol>
+<pre><code>
+1. 安装,指定生成的服务名称
+```cmd
+
+:: 安装apache应用，将结果重定向到nul
+c:\wamp\apche\bin\httpd.exe -k install -n &quot;Apache Server&quot; &gt;nul 2&gt;nul</code></pre>
+<ol>
+<li>开启
+```cmd
+:: 启动apache应用，
+c:\wamp\apche\bin\httpd.exe -k start -n &quot;Apache Server&quot; &gt;nul 2&gt;nul</li>
+</ol>
+<pre><code>
+&gt; # mysql 相关
+
+1. 安装成系统服务
+```cmd
+    %CD%\%database_dir%\bin\mysqld.exe --install &quot;Mysql Server&quot; --defaults-file=&quot;%CD%\%database_dir%\my.ini&quot; &gt;nul 2&gt;nul</code></pre>
+<ol>
+<li><p>启动服务</p>
+<pre><code class="lang-cmd">  %net% start &quot;Mysql Server&quot;</code></pre>
+</li>
+<li><p>判断进程</p>
+<pre><code class="lang-cmd">tasklist|findstr /i mysqld.exe &gt;nul 2&gt;nul &amp;&amp; goto start_M_OK || goto start_M_ERROR</code></pre>
+</li>
+</ol>
+<blockquote>
+<h1 id="redis-">redis 相关</h1>
+</blockquote>
+<ol>
+<li><p>安装成系统服务</p>
+<pre><code class="lang-cmd">  %CD%\%redis_dir%\redis-server.exe --service-install %CD%\%redis_conf% --service-name %redis_vc% &gt;nul 2&gt;nul</code></pre>
+</li>
+<li><p>启动服务</p>
+<pre><code class="lang-cmd">   %CD%\%redis_dir%\redis-server.exe --service-start --service-name %redis_vc% &gt;nul 2&gt;nul</code></pre>
+</li>
+<li><p>判断进程</p>
+<pre><code class="lang-cmd">tasklist|findstr /i redis-server.exe &gt;nul 2&gt;nul &amp;&amp; goto start_C_OK || goto start_C_ERROR</code></pre>
+</li>
+</ol>
+<blockquote>
+<h1 id="nginx-">nginx 相关</h1>
+<ol>
+<li>nginx 并无默认安装服务方式，使用了“Windows Service Wrapper”，配置文件如下：<pre><code class="lang-xml">&lt;!-- php 部分 --&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;service&gt;  
+&lt;id&gt;UPUPW_PHPFPM&lt;/id&gt;  
+&lt;name&gt;UPUPW_PHPFPM&lt;/name&gt;  
+&lt;description&gt;用于支持PHP-FastCGI随服务启动&lt;/description&gt;  
+&lt;executable&gt;X:/upupw/PHP7/phpfpm.exe&lt;/executable&gt; 
+&lt;logpath&gt;X:/upupw/PHP7/phpfpm/&lt;/logpath&gt; 
+&lt;logmode&gt;roll&lt;/logmode&gt; 
+&lt;depend&gt;&lt;/depend&gt;  
+&lt;startargument&gt;&quot;X:/upupw/PHP7/php-cgi.exe -c X:/upupw/PHP7/php.ini&quot; -n 8 -i 127.0.0.1 -p 9070&lt;/startargument&gt;
+&lt;stopargument&gt;&lt;/stopargument&gt;
+&lt;/service&gt;</code></pre>
+```xml</li>
+</ol>
+</blockquote>
+<p><!-- nginx 部分 -->
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</p>
+<p><service>  </p>
+<p><id>UPUPW_Nginx</id></p>
+<p><name>UPUPW_Nginx</name></p>
+<p><description>用于支持Nginx随服务启动</description></p>
+<p><executable>X:/upupw/Nginx/nginx.exe</executable></p>
+<p><logpath>X:/upupw/Nginx/</logpath></p>
+<p><logmode>roll</logmode></p>
+<p><depend></depend></p>
+<p><startargument>-p X:/upupw/Nginx</startargument></p>
+<p><stopargument>-p X:/upupw/Nginx -s stop</stopargument>
+</service></p>
+<pre><code>
+1. 安装服务、启动服务（先起php，后起 nginx）
+```cmd
+:: 初始化配置文件
+%php% upcfg(); || %pause% &amp;&amp; goto menu
+:: 安装php服务，
+%CD%\%phpfpm%\winsw.exe install &gt;nul 2&gt;nul
+:: 启动服务
+%net% start %cgi_vc% &gt;nul 2&gt;nul
+:: 验证进程
+tasklist|findstr /i phpfpm.exe &gt;nul 2&gt;nul &amp;&amp; goto start_FPM_OK || goto start_FPM_ERROR
+
+:: 安装nginx服务
+%CD%\%nginx_dir%\winsw.exe install &gt;nul 2&gt;nul
+:: 启动nginx服务
+%net% start %nginx_vc% &gt;nul 2&gt;nul
+:: 根据pid文件验证服务是否已启动
+if exist %CD%\%nginx_dir%\logs\*.pid goto start_N_OK</code></pre>
+<ol>
+<li>停止服务
+```cmd</li>
+</ol>
+<p>:: 停止nginx服务
+%net% stop %nginx_vc% &gt;nul 2&gt;nul</p>
+<p>:: kill nginx，php 服务
+%taskkill% /fi &quot;SERVICES eq %nginx_vc%&quot; /f /t &gt;nul 2&gt;nul
+%taskkill% /fi &quot;SERVICES eq %cgi_vc%&quot; /f /t &gt;nul 2&gt;nul</p>
+<p>:: 卸载nginx，php 服务
+%CD%\%nginx_dir%\winsw.exe uninstall &gt;nul 2&gt;nul
+%CD%\%phpfpm%\winsw.exe uninstall &gt;nul 2&gt;nul</p>
+<p>:: kill php进程，删除pid文件
+%taskkill% /im phpfpm.exe /f /t&gt;nul 2&gt;nul
+%taskkill% /im php-cgi.exe /f /t&gt;nul 2&gt;nul
+del /f/s/q %CD%\%nginx_dir%\logs*.pid /q&gt;nul 2&gt;nul</p>
+<pre><code>
+3. 配置文件模版
+```config
+
+server {
+            # 监听端口
+            listen       &#39; . $port . &#39;; 
+            # 域名 和 别名
+            server_name  &#39; . $hn . &#39; alias &#39; . $hAlias . &#39;;
+            location / {
+                root   &#39; . $htdocs . &#39;;
+                index  index.html index.htm default.html default.htm index.php default.php app.php u.php;
+                include        &#39; . $htdocs . &#39;/up-*.conf;
+            }
+            autoindex off;
+            include advanced_settings.conf;
+            #include expires.conf;
+            location ~* .*\/(attachment|attachments|uploadfiles|avatar)\/.*\.(php|PHP7|phps|asp|aspx|jsp)$ {
+            deny all;
+            }
+            location ~ ^.+\.php {
+                root           &#39; . $htdocs . &#39;;
+                fastcgi_pass   bakend;
+                fastcgi_index  index.php;
+                fastcgi_split_path_info ^((?U).+\.php)(/?.+)$;
+                fastcgi_param  PATH_INFO $fastcgi_path_info;
+                fastcgi_param  PATH_TRANSLATED $document_root$fastcgi_path_info;
+                include        fastcgi.conf;
+            }
+        }
+
+#server &#39; . $hn . &#39; end}</code></pre>
+<blockquote>
+<h1 id="php-">php 相关</h1>
+<h1 id="ftp-">FTP 相关</h1>
+</blockquote>
+
+<h1 id="-">常用测试源</h1>
+<pre><code class="lang-cmd">// 香港
+rtmp://live.hkstv.hk.lxdns.com/live/hks
+
+// 香港
+http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8
+
+
+// 亚太第一卫视 
+rtmp://v1.one-tv.com/live/mpegts.stream
+
+// apple 测试
+http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8
+
+// 大熊兔（点播）：
+rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov
+
+// CCTV5+高清
+http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8</code></pre>
+<h1 id="-">常用命令:</h1>
+<h4 id="9.0.3">1. 将视频流推送到流媒体服务器</h4>
+<pre><code class="lang-bash">ffmpeg -i rtmp://live.hkstv.hk.lxdns.com/live/hks -c:a copy -c:v copy -f flv rtmp://192.168.17.229:5080/oflaDemo/2</code></pre>
+<h4 id="9.0.4">2. 视频文件转MP4</h4>
+<pre><code class="lang-bash"># 视频编码转H264,音频编码转aac，文件格式转MP4
+ffmpeg -threads {$threads} -i {$old_video} -preset:v ultrafast -tune zerolatency -codec:v h264 -codec:a aac -strict -2 -y {$new_video};
+
+# 文件格式转MP4
+ffmpeg -threads {$threads} -i {$old_video} -vcodec copy -acodec copy -y {$new_video} ;
+
+# 音频编码转aac，文件格式转MP4
+ffmpeg -threads {$threads} -i {$old_video} -vcodec copy -acodec aac -strict -2 -y {$new_video} ;</code></pre>
+<h4 id="9.0.5">3. 修改文件创建时间</h4>
+<pre><code class="lang-php">ffmpeg.exe -i 6.mp4 -metadata creation_time=&quot;2013-06-22 15:00:00&quot; -acodec copy -vcodec copy output.mp4</code></pre>
+
+<h1 id="-">常见问题</h1>
+<h2 id="10">0. 初始化</h2>
+<pre><code> # 创建项目 
+ mkdir paperless
+ cd paperless
+ git init
+ echo &quot;# paperless&quot; &gt;&gt; README.md
+ git add README.md
+ git commit -m &quot;first commit&quot;
+ git remote add origin https://git.coding.net/penguinseven/paperless.git
+ git push -u origin master
+
+ ## 已有项目
+ git remote add origin https://git.coding.net/penguinseven/paperless.git
+ git push -u origin master</code></pre>
+<h2 id="11">1.  保存用户名，密码</h2>
+<p>每次操作都需要输入用户名和密码感觉很繁琐，解决方法，在本地的工程文件夹的.git下打开config文件
+添加：(再输入一次用户名密码后就可以保存住了。)</p>
+<pre><code class="lang-cmd">    [credential]
+         helper = store</code></pre>
+<h2 id="12">2. 修改git 源</h2>
+<pre><code class="lang-cmd">git remote set-url origin/master http://xxx</code></pre>
+<h2 id="13">3.tag标签</h2>
+<blockquote>
+<p>Git 中的tag指向一次commit的id，通常用来给开发分支做一个标记，如标记一个版本号。</p>
+</blockquote>
+<h3 id="13.1">打标签</h3>
+<pre><code>git tag -a v1.01 -m &quot;Relase version 1.01&quot;</code></pre>
+<p>注解：git tag 是打标签的命令，-a 是添加标签，其后要跟新标签号，-m 及后面的字符串是对该标签的注释。</p>
+<h3 id="13.2">提交标签到远程仓库</h3>
+<pre><code>git push origin -tags</code></pre>
+<p>注解：就像git push origin master 把本地修改提交到远程仓库一样，-tags可以把本地的打的标签全部提交到远程仓库。</p>
+<h3 id="13.3">删除标签</h3>
+<pre><code>git tag -d v1.01</code></pre>
+<p>注解：-d 表示删除，后面跟要删除的tag名字</p>
+<h3 id="13.4">删除远程标签</h3>
+<pre><code>git push origin :refs/tags/v1.01</code></pre>
+<p>注解：就像git push origin :branch_1 可以删除远程仓库的分支branch_1一样， 冒号前为空表示删除远程仓库的tag。</p>
+<h3 id="13.5">查看标签</h3>
+<pre><code>git tag
+# 或者  
+git tag -l</code></pre>
+
+<h1 id="-">常见问题</h1>
+<h3 id="13.6">1. firfox 提示安装flash</h3>
+<p>（不能使用样式display:none）</p>
+<pre><code class="lang-html">&lt;!--flash--&gt;
+    &lt;object type=&quot;application/x-shockwave-flash&quot; &gt;&lt;/object&gt;</code></pre>
+
+<h1 id="javascript">JavaScript</h1>
+
+<blockquote>
+<h1 id="-">结束符定义</h1>
+</blockquote>
+<ol>
+<li>总所周知，mysql的命令行执行每一条命令是以分号结尾的，也就是说识别是否为一条命令，是根据分号决定的。
+然而存储过程中设计多条语句，很可能出现多个分号，所以直接把存储过程复制到命令号一般都会失败</li>
+</ol>
+<ol>
+<li>解决方法是需要加一个分隔符，让命令行知道整个存储过程的代码是完整的一块代码,代码如下</li>
+</ol>
+<pre><code class="lang-mysql">DELIMITER //     
+CREATE PROCEDURE p_name (IN b INTEGER(12))     
+begin     
+ declare a INTEGER(12);     
+ set a=12;     
+ INSERT INTO t VALUES (a);     
+ SELECT s1* a FROM t;     
+End     
+//</code></pre>
+<ol>
+<li>如代码中所示，在存储过程的开头加上“DELIMITER //”,结尾加上“//”就ok了</li>
+</ol>
+<ol>
+<li>执行后续的sql ，需将结束符重新定义</li>
+</ol>
+<pre><code class="lang-mysql">DELIMITER ；</code></pre>
+<blockquote>
+<h1 id="order-by-">ORDER BY 自定义规则</h1>
+</blockquote>
+<p>问题描述
+大家都知道, MySQL 中按某字段升序排列的 SQL 为 (以 id 为例, 下同):</p>
+<pre><code class="lang-mysql">
+SELECT * FROM `MyTable` 
+WHERE `id` IN (1, 7, 3, 5) 
+ORDER BY `id` ASC</code></pre>
+<p>降序排列的 SQL 为:</p>
+<pre><code class="lang-mysql">SELECT * FROM `MyTable` 
+WHERE `id` IN (1, 7, 3, 5) 
+ORDER BY `id` DESC</code></pre>
+<p>有时以上排序并不能满足我们的需求. 例如, 我们想要按 id 以 5, 3, 7, 1 的顺序排列, 该如何实现. 这也是很多国内外同行经常遇到的问题之一.</p>
+<p>下面我们给出按表中某字段, 以我们想要的列表方式排序的解决方案.
+解决方案用&quot;按字段排序&quot; (ORDER BY FIELD).语法:</p>
+<pre><code class="lang-mysql">  SELECT * FROM MyTable 
+  ORDER BY FIELD(`id`, 5, 3, 7, 1)</code></pre>
+<p>要注意的是, FIELD 后面是没有空格的.
+因此, 完整的 SQL 为:</p>
+<pre><code class="lang-mysql">SELECT * FROM `MyTable` 
+WHERE `id` IN (1, 7, 3, 5) 
+ORDER BY FIELD(`id`, 5, 3, 7, 1)</code></pre>
+<p>常见应用:</p>
+<pre><code class="lang-mysql">SELECT * FROM `MyTable` 
+WHERE `name` IN (&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;, &#39;孙六&#39;) 
+ORDER BY FIELD(`name`, &#39;李四&#39;, &#39;孙六&#39;, &#39;张三&#39;, &#39;王五&#39;)</code></pre>
+<blockquote>
+<h1 id="-">查询字段和注释</h1>
+</blockquote>
+<pre><code class="lang-mysql">  select COLUMN_NAME,column_comment 
+  from INFORMATION_SCHEMA.Columns 
+  where table_name=&#39;表名&#39; and table_schema=&#39;数据库&#39;</code></pre>
+<blockquote>
+<h1 id="-">查询表结构</h1>
+</blockquote>
+<pre><code class="lang-mysql">
+SELECT a.table_name,b.TABLE_COMMENT,a.COLUMN_NAME,a.COLUMN_TYPE,a.COLUMN_COMMENT 
+FROM information_schema.COLUMNS a 
+JOIN information_schema.TABLES b ON a.table_schema = b.table_schema AND a.table_name = b.table_name
+WHERE a.table_name = &#39;question&#39;;</code></pre>
+
+<h1 id="-">常见问题</h1>
+
+<h1 id="-">常见问题</h1>
+<h3 id="13.7">1. php-cli 模式，判断文件是否存在错误</h3>
+<pre><code>clearstatcache()</code></pre>
+<blockquote>
+<p>clearstatcache() 函数会缓存某些函数的返回信息，
+以便提供更高的性能。但是有时候，比如在一个脚本中多次检查同一个文件，
+而该文件在此脚本执行期间有被删除或修改的危险时，你需要清除文件状态缓存，
+以便获得正确的结果。要做到这一点，就需要使用 clearstatcache() 函数。
+会进行缓存的函数，即受 clearstatcache() 函数影响的函数：</p>
+</blockquote>
+<pre><code class="lang-php">    stat()
+    lstat()
+    file_exists()
+    is_writable()
+    is_readable()
+    is_executable()
+    is_file()
+    is_dir()
+    is_link()
+    filectime()
+    fileatime()
+    filemtime()
+    fileinode()
+    filegroup()
+    fileowner()
+    filesize()
+    filetype()
+    fileperms()</code></pre>
+<p>example ： </p>
+<pre><code class="lang-php">&lt;?php
+//检查文件大小
+echo filesize(&quot;test.txt&quot;);
+
+$file = fopen(&quot;test.txt&quot;, &quot;a+&quot;);
+
+// 截取文件
+ftruncate($file,100);
+fclose($file);
+
+//清除缓存并再次检查文件大小
+clearstatcache();
+echo filesize(&quot;test.txt&quot;);
+?&gt;</code></pre>
+<h3 id="13.8">2.</h3>
+
+</article>
+<footer>

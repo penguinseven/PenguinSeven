@@ -1,4 +1,21 @@
  # 常见问题
+ 
+## 0. 初始化
+
+     # 创建项目 
+     mkdir paperless
+     cd paperless
+     git init
+     echo "# paperless" >> README.md
+     git add README.md
+     git commit -m "first commit"
+     git remote add origin https://git.coding.net/penguinseven/paperless.git
+     git push -u origin master
+     
+     ## 已有项目
+     git remote add origin https://git.coding.net/penguinseven/paperless.git
+     git push -u origin master
+     
 
 ## 1.  保存用户名，密码
 
@@ -44,5 +61,6 @@ git remote set-url origin/master http://xxx
     git tag
     # 或者  
     git tag -l
+
 
 
