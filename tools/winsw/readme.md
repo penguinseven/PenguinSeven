@@ -39,7 +39,7 @@ winsw.exe uninstall
 
 ```
 
-#### 4. 命令行下执行以下命令，以便将其安装成Windows服务
+4. 命令行下执行以下命令，以便将其安装成Windows服务
 
 ```cmd
 F:\nginx-0.9.4> myapp.exe install
