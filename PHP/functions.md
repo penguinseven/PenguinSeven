@@ -70,8 +70,8 @@ function ffmpeg_is_mp4($path ,$type = array('h264'))
     $task = array(
         'video' => '/^[\ ]{4}Stream\ #0:\d{1}(\(.*\))*:\ Video:\ /',
         'audio' => '/^[\ ]{4}Stream\ #0:\d{1}(\(.*\))*:\ Audio:\ /',
-        'h264' => '/^[\ ]{4}Stream\ #0:\d{1}(\(.*\))*:\ Video:\ h264*/',
-        'aac' =>  '/^[\ ]{4}Stream\ #0:\d{1}(\(.*\))*:\ Audio:\ aac*/',
+        'h264' => '/^[\ ]{4}Stream\ #0:\d{1}(\(.*\))*:\ Video:\ h264\ */',
+        'aac' =>  '/^[\ ]{4}Stream\ #0:\d{1}(\(.*\))*:\ Audio:\ aac\ */',
     );
 
     @exec('ffmpeg -i ' . $path . ' 2>&1', $output, $return_value);
