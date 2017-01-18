@@ -1,6 +1,6 @@
 ## 常用函数
 
->exe() 获取进程pid，仅linux下可以使用
+### 1.exe() 获取进程pid，仅linux下可以使用
 
 ```php
 
@@ -13,7 +13,7 @@ getmypid(); // 当前php进程
 
 ```
 
->使用ffmpeg 视频转码，注意事项
+### 2. 使用ffmpeg 视频转码，注意事项
 
 1. 日志文件记录
 
@@ -44,7 +44,7 @@ function async_task($ip, $url, $port = 80, $time = 30){
     }
 ```
 
-> 生成注册码常见问题
+### 3. 生成注册码常见问题
 
 1. 同一注册码重复注册 （保持到数据库）
 
@@ -55,7 +55,7 @@ function async_task($ip, $url, $port = 80, $time = 30){
 4. 混淆注册码
 
 
-> 判断视频文件
+### 4. 判断视频文件
 
 ```php
 
@@ -133,7 +133,7 @@ function ffmpeg_is_mp4($path ,$type = array('h264'))
 ```
 
 
-> zip函数
+### 5. zip函数
 
 ```php
        
@@ -164,6 +164,8 @@ function ffmpeg_is_mp4($path ,$type = array('h264'))
             if(file_exists($path)){
                 $zip->addFile( $path, trim(basename($val['filename']), "_"));
                 //第二个参数是放在压缩包中的文件名称，如果文件可能会有重复，就需要注意一下
+                // 文件夹方式
+                // $zip->addFile( $path, $val['datumid'] .'_'. $val['datumname'] .'/'.trim(basename($val['filename']), "_"));
             }
         }
     
