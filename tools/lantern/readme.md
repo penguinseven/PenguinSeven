@@ -1,0 +1,5 @@
+## 
+
+```bash
+dpkg -i filename
+```
