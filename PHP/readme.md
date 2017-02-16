@@ -99,3 +99,9 @@ fork调用后执行的代码将是并行的。
     - 共享内存，这种方式和线程间读写变量是一样的，需要加锁，会有同步、死锁问题。
     - 消息队列，可以采用多个子进程抢队列模式，性能很好
     - PIPE，UnixSock，TCP，UDP。可以使用read/write来传递数据，TCP/UDP方式使用socket来通信，子进程可以分布运行
+#### composer
+
+```shell
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+```

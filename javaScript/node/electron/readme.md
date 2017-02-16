@@ -42,7 +42,6 @@
  
  你可以使用 npm 来安装它:
     ```cmd
-     
      npm install -g devtool
     ```
  
