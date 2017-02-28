@@ -234,10 +234,14 @@ display: none;
 </style>
 </head>
 <body>
+<header>
+    <x-markdown src="../../header.md" />
+</header>
 <nav>
-<x-index />
+    <x-index />
 </nav>
-<x-markdown src="README.md" />
+<article>
+    <x-markdown src="README.md" />
 </article>
 <footer>
 
