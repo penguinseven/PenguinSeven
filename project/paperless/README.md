@@ -11,11 +11,40 @@
 
 ## web端运行环境
 
-*UPPUPW* 
+### 1. 服务器环境 : *UPPUPW* 
 - Apache2.4.18
 - PHP 7.0.1
 - MariaDB 10.1.9
 - Redis 2.8.2101
+
+### 2. 文件装换
+- soffice 
+
+### 3. 视频转码，直播推流
+- ffmpeg
+- MP4Box
+
+### 4. 图片截屏
+- phantomjs
+
+### 5. 文件编辑器
+- notepad++
+
+### 6. socket服务器框架 
+- workerman
+
+### 7. 视频服务器
+- Nginx-rtmp
+- Red5
+
+### 8.前端插件
+- layer
+- moment.js
+- jquery
+- highcharts
+- jwplayer
+- gridstack.js
+- easyui
 
 ## web 项目目录结构
 
