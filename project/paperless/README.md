@@ -1,4 +1,4 @@
-# 无纸化项目总结
+# 无纸化项目
 
 ## 基础信息
 
@@ -17,14 +17,14 @@
 - MariaDB 10.1.9
 - Redis 2.8.2101
 
-### 2. 文件装换
+### 2. 文件转换
 - soffice 
 
 ### 3. 视频转码，直播推流
 - ffmpeg
 - MP4Box
 
-### 4. 图片截屏
+### 4. 页面截屏
 - phantomjs
 
 ### 5. 文件编辑器
@@ -84,3 +84,10 @@
        |   └─ socket.php ----------------------------- socket文件
  
 ```
+
+## 工具及文档
+
+![image](http://ogve85gs3.bkt.clouddn.com/project_dir.png)
+
+### 1. web运行环境（upupw.zip解压后）
+![image](http://ogve85gs3.bkt.clouddn.com/dir.jpg)
