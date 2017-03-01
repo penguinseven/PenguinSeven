@@ -234,9 +234,6 @@ display: none;
 </style>
 </head>
 <body>
-<header>
-    <x-markdown src="../../header.md" />
-</header>
 <nav>
     <x-index />
 </nav>
