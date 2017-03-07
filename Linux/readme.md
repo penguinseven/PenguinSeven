@@ -1,5 +1,43 @@
 ## Linux  
 
+### 0. 源
+
+#### 1. debian 源
+    
+    # 163
+    deb http://mirrors.163.com/debian/ stable main non-free contrib
+
+    deb http://mirrors.163.com/debian/ jessie main non-free contrib
+    deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+    deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+    deb-src http://mirrors.163.com/debian/ jessie main non-free contrib
+    deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+    deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+    deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+    deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+      
+    # aliyun
+    deb http://mirrors.aliyun.com/debian wheezy main contrib non-free
+    deb-src http://mirrors.aliyun.com/debian wheezy main contrib non-free
+    
+    deb http://mirrors.aliyun.com/debian wheezy-updates main contrib non-free
+    deb-src http://mirrors.aliyun.com/debian wheezy-updates main contrib non-free
+    
+    deb http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free
+    deb-src http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free
+
+#### 2. kali 源
+
+        # 中科大kali源
+    　  deb http://mirrors.ustc.edu.cn/kali sana main non-free contrib
+    　　deb http://mirrors.ustc.edu.cn/kali-security/ sana/updates main contrib non-free
+    　　deb-src http://mirrors.ustc.edu.cn/kali-security/ sana/updates main contrib non-free
+    　　
+        # 阿里云kali源
+    　　deb http://mirrors.aliyun.com/kali sana main non-free contrib
+    　　deb http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free
+    　　deb-src http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free
+
 ### 1. screen ssh链接
 
 ```
@@ -57,3 +95,5 @@ Soft open files 是Linux系统参数，影响系统单个进程能够打开最�
     root hard nofile 1024000
     
 这种方法需要重启机器才能生效。
+
+### 4.
