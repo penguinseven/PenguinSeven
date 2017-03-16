@@ -319,8 +319,8 @@ root hard nofile 1024000</code></pre>
 <pre><code>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 700:800 -j ACCEPT</code></pre>
 <p>这样就搞定了，一句就可以了，下面再多讲几句iptables防火墙一些规则。</p>
 <ul>
-<li>一、 700:800 表示700到800之间的所有端口</li>
-<li></li>
+<li><p>一、 700:800 表示700到800之间的所有端口</p>
+</li>
 <li><p>二、 :800 表示800及以下所有端口</p>
 </li>
 <li><p>三、 700: 表示700以及以上所有端口</p>
