@@ -46,17 +46,27 @@
     
 ###优化
 
-虚拟机名称
+- 虚拟机名称
 
-    vb.name = "ubuntu_mooc"
-虚拟机主机名
+        vb.name = "ubuntu_mooc"
+            
+- 虚拟机主机名
 
-    config.vm.hostname = "mooc"
+        config.vm.hostname = "mooc"
     
-配置虚拟机内存和CPU
+- 配置虚拟机内存和CPU
 
-    vb.memory = "1024"
-    vb.cpus = 2
+        vb.memory = "1024"
+        vb.cpus = 2
+        
+- 配置IP
+            
+        config.vm.network "public_network", ip: "192.168.1.122", auto_config: true
+    
+- 配置共享目录
+
+        config.vm.synced_folder "/Users/vincent/code/", "/home/www", :nfs => true
+   
 ### 打包命令
 
     vagrant package --output xxx.box    
@@ -65,8 +75,17 @@
  
   - vagrant ssh 无法登录  （使用git bash 命令行模式，进入对应文件夹，vagrant ssh 登录）
    
-   - 
    
 ###　参考文献
  
  - git (https://github.com/apanly/mooc/tree/master/vagrant)
+ 
+ 
+ ## 常见问题
+ 
+ ### 1. mount: unknown filesystem type 'vboxsf'
+ 
+    sudo apt-get install virtualbox-guest-utils
+ 
+ vagrant reload后问题完美解决。
+ 
