@@ -2,7 +2,7 @@
 
 ### 负载均衡，权重，ip_hash
 
-#### ①新建一个proxy.conf文件
+####  新建一个proxy.conf文件
 
     proxy_redirect off;
     proxy_set_header Host $host;
@@ -16,7 +16,10 @@
     proxy_busy_buffers_size 64k;
     proxy_temp_file_write_size 64k;
 
-#### ② 两种负载均衡方式 
+####  两种负载均衡方式 
+
+> 这个配置文件,我们可以写到nginx.conf里面(如果只有一个web集群)，  
+如果有多个web集群,最好写到vhosts里面,以虚拟主机的方式,这里我写到nginx.conf里面
 
 - 轮询加权    
 (也可以不加权,就是1:1负载)
