@@ -102,8 +102,14 @@ fork调用后执行的代码将是并行的。
 #### 3. composer
 
 ```shell
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+# 下载
+$ curl -sS https://getcomposer.org/installer | php
+# 放入全局
+$ mv composer.phar /usr/local/bin/composer
+# 修改源
+$ composer config -g repo.packagist composer https://packagist.composer-proxy.org
+# 设置自动更新
+$ composer selfupdate
 ```
 
 #### 4. phpunit

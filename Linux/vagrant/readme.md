@@ -89,3 +89,11 @@
  
  vagrant reload后问题完美解决。
  
+ 
+ ### 2. VirtualBox: mount.vboxsf: mounting failed with the error: No such device
+        
+
+    apt-get install linux-headers-$(uname -r)
+    
+vagrant reload
+
