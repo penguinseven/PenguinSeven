@@ -3,16 +3,19 @@
 ## 1. 安装
 
 ### 下载VirtualBox
+ 
  https://www.virtualbox.org/wiki/Download_Old_Builds
  
 ### 下载vagrant 
+ 
  https://releases.hashicorp.com/vagrant/
  
- ## 下载 Ubuntu
+### 下载 Ubuntu
  
  链接一：http://pan.baidu.com/s/1i5BfL45 密码：himr
  
- ##　其他版本box
+### 其他版本box
+
  http://www.vagrantbox.es/
  
 *本文使用 vagrant 1.9.2 + VirtualBox 5.1 + ubunt 14.04*
