@@ -241,7 +241,7 @@ display: none;
 <x-index />
 </nav>
 <article>
-<x-markdown src="Linux/readme.md" />
+<x-markdown src="Linux/README.md" />
 <x-markdown src="CMD/readme.md" />
 <x-markdown src="FFMPEG/readme.md" />
 <x-markdown src="GIT/readme.md" />
