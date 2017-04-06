@@ -1,0 +1,310 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">1. 安装</a></li><li class="level3"><a href="#1.1">下载VirtualBox</a></li><li class="level3"><a href="#1.2">下载vagrant</a></li><li class="level2"><a href="#2">下载 Ubuntu</a></li><li class="level2"><a href="#3">　其他版本box</a></li><li class="level2"><a href="#4">2. 使用</a></li><li class="level3"><a href="#4.1">测试vagrant是否安装成功</a></li><li class="level3"><a href="#4.2">查看列表</a></li><li class="level3"><a href="#4.3">添加列表</a></li><li class="level3"><a href="#4.4">初始化虚拟机</a></li><li class="level3"><a href="#4.5">操作</a></li><li class="level3"><a href="#4.6">优化</a></li><li class="level3"><a href="#4.7">打包命令</a></li><li class="level3"><a href="#4.8">注意事项</a></li><li class="level3"><a href="#4.9">　参考文献</a></li><li class="level2"><a href="#5">常见问题</a></li><li class="level3"><a href="#5.1">1. mount: unknown filesystem type &#39;vboxsf&#39;</a></li><li class="level3"><a href="#5.2">2. VirtualBox: mount.vboxsf: mounting failed with the error: No such device</a></li></ul>
+
+</nav>
+<article>
+    <h1 id="vagrant">vagrant</h1>
+<h2 id="1">1. 安装</h2>
+<h3 id="1.1">下载VirtualBox</h3>
+<p> <a href="https://www.virtualbox.org/wiki/Download_Old_Builds">https://www.virtualbox.org/wiki/Download_Old_Builds</a></p>
+<h3 id="1.2">下载vagrant</h3>
+<p> <a href="https://releases.hashicorp.com/vagrant/">https://releases.hashicorp.com/vagrant/</a></p>
+<h2 id="2">下载 Ubuntu</h2>
+<p> 链接一：<a href="http://pan.baidu.com/s/1i5BfL45">http://pan.baidu.com/s/1i5BfL45</a> 密码：himr</p>
+<h2 id="3">　其他版本box</h2>
+<p> <a href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a></p>
+<p><em>本文使用 vagrant 1.9.2 + VirtualBox 5.1 + ubunt 14.04</em></p>
+<h2 id="4">2. 使用</h2>
+<h3 id="4.1">测试vagrant是否安装成功</h3>
+<pre><code>$ vagrant -v</code></pre>
+<h3 id="4.2">查看列表</h3>
+<pre><code>$ vagrant box list</code></pre>
+<h3 id="4.3">添加列表</h3>
+<pre><code>$ vagrant box add ubuntu1404 ubuntu1404.box</code></pre>
+<h3 id="4.4">初始化虚拟机</h3>
+<pre><code>$ mkdir ubuntu
+$ cd ubuntu
+$ vagrant box init ubuntu1404</code></pre>
+<h3 id="4.5">操作</h3>
+<pre><code>$ vagrant up // 开机
+$ vagrant halt // 关机
+$ vagrant status // 状态
+$ vagrant ssh  // ssh 登录</code></pre>
+<h3 id="4.6">优化</h3>
+<ul>
+<li><p>虚拟机名称</p>
+<pre><code>  vb.name = &quot;ubuntu_mooc&quot;</code></pre>
+</li>
+<li><p>虚拟机主机名</p>
+<pre><code>  config.vm.hostname = &quot;mooc&quot;</code></pre>
+</li>
+<li><p>配置虚拟机内存和CPU</p>
+<pre><code>  vb.memory = &quot;1024&quot;
+  vb.cpus = 2</code></pre>
+</li>
+<li><p>配置IP</p>
+<pre><code>  config.vm.network &quot;public_network&quot;, ip: &quot;192.168.1.122&quot;, auto_config: true</code></pre>
+</li>
+<li><p>配置共享目录</p>
+<pre><code>  config.vm.synced_folder &quot;/Users/vincent/code/&quot;, &quot;/home/www&quot;, :nfs =&gt; true</code></pre>
+</li>
+</ul>
+<h3 id="4.7">打包命令</h3>
+<pre><code>vagrant package --output xxx.box    </code></pre>
+<h3 id="4.8">注意事项</h3>
+<ul>
+<li>vagrant ssh 无法登录  （使用git bash 命令行模式，进入对应文件夹，vagrant ssh 登录）</li>
+</ul>
+<h3 id="4.9">　参考文献</h3>
+<ul>
+<li>git (<a href="https://github.com/apanly/mooc/tree/master/vagrant">https://github.com/apanly/mooc/tree/master/vagrant</a>)</li>
+</ul>
+<h2 id="5">常见问题</h2>
+<h3 id="5.1">1. mount: unknown filesystem type &#39;vboxsf&#39;</h3>
+<pre><code>sudo apt-get install virtualbox-guest-utils</code></pre>
+<p> vagrant reload后问题完美解决。</p>
+<h3 id="5.2">2. VirtualBox: mount.vboxsf: mounting failed with the error: No such device</h3>
+<pre><code>apt-get install linux-headers-$(uname -r)</code></pre>
+<p>vagrant reload</p>
+
+</article>
+<footer>
+
+</footer>
