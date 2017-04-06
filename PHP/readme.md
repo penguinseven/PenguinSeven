@@ -118,3 +118,22 @@ $ composer selfupdate
     
 全局安装PHPUnit。  
 然后在~/.bashrc文件末尾加一行PATH=$PATH:/home/feng/.composer/vendor/bin  （注意替换用户名），来将Composer的global bin目录加入PATH。
+
+
+#### 5.webBench
+ 
+ ```text
+wget http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz
+tar zxvf webbench-1.5.tar.gz
+cd webbench-1.5
+make
+make install
+```
+
+使用：
+    
+    # webbench -c 并发数 -t 运行测试时间 URL
+    $ webbench -c 1000 -t 60 http://192.168.80.157/phpinfo.php
+    
+    
+    

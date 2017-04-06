@@ -2,11 +2,50 @@
 
 本文仅仅是简单地介绍如何在Ubuntu/Debian系统上安装Node.js（任何版本）和npm（Node Package Manager的简写），其他类Linux系统安装步骤和这个类似。
 
-##　一、更新你的系统
+## window 安装 node.js
+
+### 1. 下载 
+  
+ windows下载 <http://nodejs.cn/>
+
+### 2. nodejs window下安装与配置淘宝镜像
+
+ - 前往nodejs官网下载安装软件，地址：https://nodejs.org/en/
+
+ - 点击下一步继续安装，安装完成，在命令输入：node -v,npm -v,查看版本，即是安装成功
+
+ - 随便在计算机哪个盘建一个全局目录，比如我的在E盘：E:\nodejs\node_global
+
+ - 设置nodejs全局目录，所有以全局安装的包都被安装在这，打开nodejs命令行窗口Node.js command prompt，
+
+    使用命令行设置：
+    
+    ```cmd
+    npm config set cache "E:\nodejs\node_cache"
+    
+    npm config set prefix "E:\nodejs\node_global"
+    ```
+
+ - 前往淘宝镜像官网 <http://npm.taobao.org/>，可查看安装cnpm包的命令
+
+    在命令行输入：
+    
+    ```cmd
+    npm install -g cnpm --registry=https://registry.npm.taobao.org
+    ```
+ - 安装完成
+ 
+    ```cmd
+     :: 将 cnpm.bat 路径添加到系统环境变量，就可以使用cnpm命令了
+    ```
+ 
+ 
+## Linux 安装 node.js
+
+###　更新你的系统
 
     iteblog# sudo apt-get update
     iteblog# sudo apt-get install git-core curl build-essential openssl libssl-dev
-##　二、安装Node.js
 
 ### 0. nvm 安装
 
