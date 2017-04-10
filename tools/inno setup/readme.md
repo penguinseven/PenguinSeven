@@ -2,10 +2,10 @@
 
 #### 1. 系统管理员运行
 
-> Inno Setup打包的程序安装完成后运行失败，
+> `Inno Setup`打包的程序安装完成后运行失败，
     这个是因为权限不够，我们可以通过下面的办法解决：
-  找到Inno Setup安装目录下的SetupLdr.e32文件，
-  然后用Resource Hacker软件打开，将Manifest改成
+  找到`Inno Setup`安装目录下的`SetupLdr.e32`文件，
+  然后用`Resource Hacker`软件打开，将`Manifest`改成
 
 ```
 <requestedExecutionLevel level="requireAdministrator"  uiAccess="false"/>
