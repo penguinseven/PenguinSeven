@@ -32,3 +32,99 @@
       
 ```
 
+## 项目实践
+
+### 1. 路由
+
+### 2. 中间件
+
+### 3. 分页
+
+- `Illuminate\Pagination\LengthAwarePaginator` 实例
+
+    ```php
+    // 传入数据，总数据条数，数据显示条数，当前页码
+    $list =  new LengthAwarePaginator( $userList['data'], $userList['total'], $userList['per_page'], $userList['current_page'], [
+                'path' => '/users'
+            ]);
+    
+    // 附加参数到分页链接
+    $list->appends([
+        'mobile' => $info['mobile'],
+        'status' => $info['status']
+    ])->links();
+  
+    ```
+    
+    返回结果：
+    
+    ```json
+      {
+         "total": 50,
+         "per_page": 15,
+         "current_page": 1,
+         "last_page": 4,
+         "next_page_url": "/users?mobile=13761598554&status=1&page=3",
+         "prev_page_url": "/users?mobile=13761598554&status=1&page=1",
+         "from": 1,
+         "to": 15,
+         "data":[
+              {
+                  // Result Object
+              },
+              {
+                  // Result Object
+              }
+         ]
+      }
+    ```
+    
+
+- `Illuminate\Pagination\Paginator` 实例
+
+    ```php
+    
+    // 传入数据，总数据条数，数据显示条数，当前页码
+    $list =  Paginator( $userList['data'], $userList['total'], $userList['per_page'], $userList['current_page'], [
+                'path' => '/users'
+            ]);
+    
+    // 附加参数到分页链接
+    $list->appends([
+        'mobile' => $info['mobile'],
+        'status' => $info['status']
+    ])->links();
+  
+   ```
+    
+    返回结果：
+    
+    ```json    
+        {
+        "per_page": 15,
+        "current_page": 2,
+        "next_page_url": null,
+        "prev_page_url": "/users?mobile=13761598554&status=1&page=1",
+        "from": 16,
+        "to": 18,
+        "data":[
+              {
+                  // Result Object
+              },
+              {
+                  // Result Object
+              }
+         ]
+        }
+    ```
+
+- 返回 JSON
+      
+  > Laravel 分页器结果类实现了 
+  Illuminate\Contracts\Support\Jsonable 
+  接口契约并且提供 toJson 方法，
+  所以它很容易将你的分页结果集转换为 Json。
+      
+  
+
+
