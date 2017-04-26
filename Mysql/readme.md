@@ -100,3 +100,13 @@ JOIN information_schema.TABLES b ON a.table_schema = b.table_schema AND a.table_
 WHERE a.table_name = 'question';
 
 ```
+
+#### 6.时间转换
+
+```mysql
+
+UNIX_TIMESTAMP('2017-04-21 08:30:00') - FLOOR(RAND()*100*3600*24);
+
+date_format();
+
+```
