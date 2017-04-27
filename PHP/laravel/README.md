@@ -190,6 +190,40 @@ Edit your app/Console/Kernel.php file and add your command to the `$commands` ar
     
     $content = urldecode($content);
     #即可避免反斜杠转义造成的无法解析。
+    
+
+#### 3. Controller 重写 validate方法,方便报错返回
+
+```php
+ /**
+     * 重写 validate，把自定义属性名称放到 rules
+     *
+     * @param Request $request
+     * @param array   $rules
+     * @param array   $messages
+     * @param array   $customAttributes
+     */
+    public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
+    {
+        $customAttributes = [];
+
+        if (is_array($rules)) {
+            foreach ($rules as $key => $rule) {
+                $ruleWithAttr = explode('#', $rule);
+                if (count($ruleWithAttr) == 2) {
+                    $customAttributes[$key] = $ruleWithAttr[0];
+                    $rules[$key] = $ruleWithAttr[1];
+                }
+            }
+        }
+
+        $validator = $this->getValidationFactory()->make($request->all(), $rules, $messages, $customAttributes);
+
+        if ($validator->fails()) {
+            $this->throwValidationException($request, $validator);
+        }
+    }
+```
 
     
 
