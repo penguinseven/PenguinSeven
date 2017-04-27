@@ -1,6 +1,6 @@
 ## Nginx
 
-### 负载均衡，权重，ip_hash
+### 1. 负载均衡，权重，ip_hash
 
 ####  新建一个proxy.conf文件
 
@@ -130,4 +130,56 @@
 - fail_timeout:  
 max_fails次失败后，暂停的时间
 
-## 常见问题
+### 2. 跨域请求配置
+
+```nginxconfig
+server {
+    listen  80;
+    server_name  swarm.singbada.test;
+
+    access_log  /data/logs/keys_test/access_swarm_test.log  main;
+
+    root  /data/web/swarm/public;
+
+    index index.php index.html;
+
+    location ~ .*\.(php|php5)?$ {
+
+        # 判断请求方式为“option”时
+        if ($request_method = 'OPTIONS') {
+            add_header 'Access-Control-Allow-Origin' '*';
+            add_header 'Access-Control-Allow-Headers' 'Origin, X-Requested-With, Content-Type, Access-Control-Allow-Origin, Authorization';
+            add_header 'Access-Control-Allow-Methods' 'POST, GET, OPTIONS, PUT, PATCH, DELETE';
+            add_header 'Access-Control-Max-Age' 1728000;
+            add_header 'Content-Type' 'text/plain charset=UTF-8';
+            add_header 'Content-Length' 0;
+            return 204;
+         }
+            
+        # 生成环境中，将“*” 替换为实际域名更安全    
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'POST, GET, OPTIONS, PUT, PATCH, DELETE';
+        add_header 'Access-Control-Allow-Headers' 'Origin, X-Requested-With, Content-Type, Access-Control-Allow-Origin, Authorization';
+
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        include fastcgi.conf;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location ~ /.ht {
+        deny  all;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+}  
+```
+
+### 常见问题
