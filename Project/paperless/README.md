@@ -7,7 +7,7 @@
 - 打包工具: inno setup
 
 ## 项目结构
-![结构图](http://ogve85gs3.bkt.clouddn.com/paperless.png)
+![结构图](./image/paperless.png)
 
 ## web端运行环境
 
