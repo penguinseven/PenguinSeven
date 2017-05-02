@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 遍历文件夹，查找README.mdfile
+# 遍历文件夹，查找README.md
 
 function getdir(){
     

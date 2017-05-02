@@ -230,7 +230,17 @@ display: none;
 }
 
 }
+table {
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin: 1.5em 0;
+}
+table th,table td {
+ border: 1px solid #E6E6E6;
+ padding: 5px 8px;
+ word-break: normal;
 
+}
 </style>
 </head>
 <body>
