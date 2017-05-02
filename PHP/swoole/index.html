@@ -234,30 +234,67 @@ display: none;
 </style>
 </head>
 <body>
-<header>
-<x-markdown src="header.md" />
-</header>
 <nav>
-<x-index />
+    <ul>
+<li class="level2"><a href="#1">安装</a></li><li class="level3"><a href="#1.1">pecl 安装</a></li><li class="level2"><a href="#2">示例</a></li><li class="level3"><a href="#2.1">　创建tcp服务器</a></li><li class="level3"><a href="#2.2">创建UDP连接</a></li><li class="level3"><a href="#2.3">　创建</a></li></ul>
+
 </nav>
 <article>
-<x-markdown src="Linux/README.md" />
-<x-markdown src="CMD/README.md" />
-<x-markdown src="FFMPEG/README.md" />
-<x-markdown src="GIT/README.md" />
-<x-markdown src="Html/README.md" />
-<x-markdown src="javaScript/README.md" />
-<x-markdown src="Mysql/README.md" />
-<x-markdown src="Nginx/README.md" />
-<x-markdown src="PHP/README.md" />
-<x-markdown src="tools/README.md" />
-<x-markdown src="tools/innoSetup/README.md" />
-<x-markdown src="tools/winsw/README.md" />
+    <h1 id="swoole">swoole</h1>
+<h2 id="1">安装</h2>
+<h3 id="1.1">pecl 安装</h3>
+<pre><code>pecl install swoole</code></pre>
+<p>然后将 “extension=swoole.so” 添加到php.ini文件</p>
+<h2 id="2">示例</h2>
+<h3 id="2.1">　创建tcp服务器</h3>
+<pre><code class="lang-php">&lt;?php
 
+    // 创建swoole对象
+    $serv = new swoole_server(&quot;127.0.0.1&quot;, 1920);
 
+    // 监听连接进入事件
+    $serv-&gt;on(&quot;connect&quot;, function($serv, $fd){
+        echo &quot;Client : connect&quot; .PHP_EOL;
+    });
 
+    // 监听连接数据接收事件
+    $serv-&gt;on(&quot;receive&quot;, function($serv, $fd, $fromID,$data){
 
-<x-markdown src="README.md" />
+        $serv-&gt;send($fd, &quot;Server : &quot; . $data);
+
+        var_dump($serv);
+        var_dump($fd);
+        var_dump($fromID);
+    });
+
+    // 监听连接关闭事件
+    $serv-&gt;on(&quot;close&quot;, function($serv, $fd){
+        echo &quot;Client : close &quot;.PHP_EOL;
+    });
+
+    $serv-&gt;start();</code></pre>
+<p>测试</p>
+<pre><code class="lang-shell">telnet 127.0.0.1 1920</code></pre>
+<h3 id="2.2">创建UDP连接</h3>
+<blockquote>
+<p>UDP服务器与TCP服务器不同，UDP没有连接的概念。启动Server后，<br>客户端无需Connect，直接可以向Server监听的端口发送数据包。
+对应的事件为onPacket
+```php
+&lt;?php</p>
+</blockquote>
+<pre><code>$serv = new swoole_server(&quot;127.0.0.1&quot;, 1930, SWOOLE_PROCESS, SWOOLE_SOCK_UDP);
+
+$serv-&gt;on(&quot;packet&quot;, function($serv, $data, $clientInfo){
+
+    $serv-&gt;sendTo($clientInfo[&#39;address&#39;], $clientInfo[&#39;port&#39;], &quot;Sever :&quot; .$data);
+});</code></pre>
+<pre><code>
+测试
+
+```shell
+netcat -u 127.0.0.1 1930</code></pre>
+<h3 id="2.3">　创建</h3>
+
 </article>
 <footer>
 

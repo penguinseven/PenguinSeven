@@ -19,7 +19,11 @@ function getdir(){
 
                     if [ -f $1"/index.tpl" ]
                     then 
-                        echo $dir_or_file;
+                        echo $dir_or_file
+                        tianshu $1'/index.tpl'
+                    else
+                        #  复制模板文件
+                        cp ./demo.tpl $1'/index.tpl'
                     fi
             fi    
         fi  

@@ -1,0 +1,310 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">FFMPEG 音视频处理</a></li><li class="level3"><a href="#1.1">常用测试源</a></li><li class="level3"><a href="#1.2">常用命令:</a></li><li class="level4"><a href="#1.2.1">1. 将视频流推送到流媒体服务器</a></li><li class="level4"><a href="#1.2.2">2. 视频文件转MP4</a></li><li class="level4"><a href="#1.2.3">3. 修改文件创建时间</a></li><li class="level4"><a href="#1.2.4">转成mp4</a></li><li class="level4"><a href="#1.2.5">ssegment点播</a></li><li class="level4"><a href="#1.2.6">ssegment直播（没找到参数只保留一个文件）</a></li><li class="level4"><a href="#1.2.7">hls转播</a></li></ul>
+
+</nav>
+<article>
+    <h2 id="1">FFMPEG 音视频处理</h2>
+<p><a href="http://elkpi.com/topics/ffmpeg-f-hls.html">http://elkpi.com/topics/ffmpeg-f-hls.html</a></p>
+<h3 id="1.1">常用测试源</h3>
+<pre><code class="lang-cmd">// 香港
+rtmp://live.hkstv.hk.lxdns.com/live/hks
+
+// 香港
+http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8
+
+
+// 亚太第一卫视 
+rtmp://v1.one-tv.com/live/mpegts.stream
+
+// apple 测试
+http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8
+
+// 大熊兔（点播）：
+rtsp://184.72.239.149/vod/mp4://BigBuckBunny_175k.mov
+
+// CCTV5+高清
+http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8</code></pre>
+<h3 id="1.2">常用命令:</h3>
+<h4 id="1.2.1">1. 将视频流推送到流媒体服务器</h4>
+<pre><code class="lang-bash">ffmpeg -i rtmp://live.hkstv.hk.lxdns.com/live/hks -c:a copy -c:v copy -f flv rtmp://192.168.17.229:5080/oflaDemo/2</code></pre>
+<h4 id="1.2.2">2. 视频文件转MP4</h4>
+<pre><code class="lang-bash"># 视频编码转H264,音频编码转aac，文件格式转MP4
+ffmpeg -threads {$threads} -i {$old_video} -preset:v ultrafast -tune zerolatency -codec:v h264 -codec:a aac -strict -2 -y {$new_video};
+
+# 文件格式转MP4
+ffmpeg -threads {$threads} -i {$old_video} -vcodec copy -acodec copy -y {$new_video} ;
+
+# 音频编码转aac，文件格式转MP4
+ffmpeg -threads {$threads} -i {$old_video} -vcodec copy -acodec aac -strict -2 -y {$new_video} ;
+
+# copy 
+ffmpeg -i {$input} -c:a copy -c:v copy -f flv {$out} ;</code></pre>
+<h4 id="1.2.3">3. 修改文件创建时间</h4>
+<pre><code class="lang-php">ffmpeg.exe -i 6.mp4 -metadata creation_time=&quot;2013-06-22 15:00:00&quot; -acodec copy -vcodec copy output.mp4</code></pre>
+<h4 id="1.2.4">转成mp4</h4>
+<p>转码mp4（资源占用很高，允许15个转码 300M*15 = 45000M）</p>
+<pre><code class="lang-bash">/home/webserver/server/ffmpeg -threads 8 -i /root/Desktop/name.mp4 \
+-r 25 -map 0 -codec:v h264 -b 500k -maxrate 50k -s 1280x720 \
+-codec:a aac -strict -2 -ar 44100 -ab 96k \
+-y output.mp4</code></pre>
+<h4 id="1.2.5">ssegment点播</h4>
+<p>点播切片（资源低，无需限制，可以多线程统一处理已转码视频）</p>
+<pre><code class="lang-bash">/home/webserver/server/ffmpeg -threads 8 -i output.mp4 \
+-map 0 -codec:v copy -bsf:v h264_mp4toannexb -codec:a copy \
+-f ssegment -segment_format mpegts -segment_list video_1.m3u8 -segment_time 15 video_1_%04d.ts</code></pre>
+<h4 id="1.2.6">ssegment直播（没找到参数只保留一个文件）</h4>
+<pre><code class="lang-bash">/home/webserver/server/ffmpeg -threads 8 -re -i /root/Desktop/name.mp4 \
+-profile:v baseline -level 3.0 -tune zerolatency \
+-r 25 -map 0 -codec:v h264 -b 500k -maxrate 50k -s 1280x720 \
+-codec:a aac -strict -2 -ar 44100 -ab 96k \
+-f ssegment -segment_format mpegts -segment_list_flags +live \
+-segment_list video_1.m3u8 -segment_time 5 -segment_list_size 1 -segment_size 1 video_1_%04d.ts</code></pre>
+<h4 id="1.2.7">hls转播</h4>
+<p>转播（资源占用较低，允许40个转播120M*40 = 4800M内存）</p>
+<pre><code class="lang-bash">/home/webserver/server/ffmpeg -threads 8 -re -i /root/Desktop/name.mp4 \
+-profile:v baseline -level 3.0 -tune zerolatency \
+-r 25 -map 0 -codec:v h264 -b 500k -maxrate 50k -s 1280x720 \
+-codec:a aac -strict -2 -ar 44100 -ab 96k \
+-f hls -hls_list_size 1 -hls_time 5 -hls_wrap 1 -start_number 1 video_1.m3u8</code></pre>
+
+</article>
+<footer>
+
+</footer>

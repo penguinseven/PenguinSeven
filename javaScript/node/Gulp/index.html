@@ -234,30 +234,27 @@ display: none;
 </style>
 </head>
 <body>
-<header>
-<x-markdown src="header.md" />
-</header>
 <nav>
-<x-index />
+    <ul>
+<li class="level2"><a href="#1">入门指南</a></li><li class="level3"><a href="#1.1">1. 全局安装 gulp：</a></li><li class="level3"><a href="#1.2">2. 作为项目的开发依赖（devDependencies）安装：</a></li><li class="level3"><a href="#1.3">3. 在项目根目录下创建一个名为 gulpfile.js 的文件：</a></li><li class="level3"><a href="#1.4">4. 运行 gulp：</a></li></ul>
+
 </nav>
 <article>
-<x-markdown src="Linux/README.md" />
-<x-markdown src="CMD/README.md" />
-<x-markdown src="FFMPEG/README.md" />
-<x-markdown src="GIT/README.md" />
-<x-markdown src="Html/README.md" />
-<x-markdown src="javaScript/README.md" />
-<x-markdown src="Mysql/README.md" />
-<x-markdown src="Nginx/README.md" />
-<x-markdown src="PHP/README.md" />
-<x-markdown src="tools/README.md" />
-<x-markdown src="tools/innoSetup/README.md" />
-<x-markdown src="tools/winsw/README.md" />
+    <h1 id="-">安装</h1>
+<h2 id="1">入门指南</h2>
+<h3 id="1.1">1. 全局安装 gulp：</h3>
+<pre><code>$ npm install --global gulp</code></pre>
+<h3 id="1.2">2. 作为项目的开发依赖（devDependencies）安装：</h3>
+<pre><code>$ npm install --save-dev gulp</code></pre>
+<h3 id="1.3">3. 在项目根目录下创建一个名为 gulpfile.js 的文件：</h3>
+<pre><code>var gulp = require(&#39;gulp&#39;);
 
+gulp.task(&#39;default&#39;, function() {
+  // 将你的默认的任务代码放在这
+});</code></pre>
+<h3 id="1.4">4. 运行 gulp：</h3>
+<pre><code>$ gulp</code></pre>
 
-
-
-<x-markdown src="README.md" />
 </article>
 <footer>
 

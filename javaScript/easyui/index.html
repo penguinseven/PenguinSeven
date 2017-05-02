@@ -234,30 +234,29 @@ display: none;
 </style>
 </head>
 <body>
-<header>
-<x-markdown src="header.md" />
-</header>
 <nav>
-<x-index />
+    <ul>
+</ul>
+
 </nav>
 <article>
-<x-markdown src="Linux/README.md" />
-<x-markdown src="CMD/README.md" />
-<x-markdown src="FFMPEG/README.md" />
-<x-markdown src="GIT/README.md" />
-<x-markdown src="Html/README.md" />
-<x-markdown src="javaScript/README.md" />
-<x-markdown src="Mysql/README.md" />
-<x-markdown src="Nginx/README.md" />
-<x-markdown src="PHP/README.md" />
-<x-markdown src="tools/README.md" />
-<x-markdown src="tools/innoSetup/README.md" />
-<x-markdown src="tools/winsw/README.md" />
+    <blockquote>
+<ol>
+<li>easyui datebox 限制时间 </li>
+</ol>
+</blockquote>
+<pre><code class="lang-javascript">
+$(function(){
+            $(&#39;#dd&#39;).datebox().datebox(&#39;calendar&#39;).calendar({
+                validator: function(date){
+                    var now = new Date();
+                    var d1 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                    var d2 = new Date(now.getFullYear(), now.getMonth(), now.getDate()+10);
+                    return d1&lt;=date &amp;&amp; date&lt;=d2;
+                }
+            });
+        });</code></pre>
 
-
-
-
-<x-markdown src="README.md" />
 </article>
 <footer>
 

@@ -1,0 +1,345 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level3"><a href="#0.1">inno setup 常见问题</a></li><li class="level4"><a href="#0.1.1">1. 系统管理员运行</a></li><li class="level4"><a href="#0.1.2">2. 添加程序到右键</a></li><li class="level4"><a href="#0.1.3">3.开机启动</a></li><li class="level3"><a href="#0.2">4.判断进程是否正在运行</a></li><li class="level3"><a href="#0.3">5. 判断安装 “.net 4.0”</a></li></ul>
+
+</nav>
+<article>
+    <h3 id="0.1">inno setup 常见问题</h3>
+<h4 id="0.1.1">1. 系统管理员运行</h4>
+<blockquote>
+<p><code>Inno Setup</code>打包的程序安装完成后运行失败，
+    这个是因为权限不够，我们可以通过下面的办法解决：
+  找到<code>Inno Setup</code>安装目录下的<code>SetupLdr.e32</code>文件，
+  然后用<code>Resource Hacker</code>软件打开，将<code>Manifest</code>改成</p>
+</blockquote>
+<pre><code>&lt;requestedExecutionLevel level=&quot;requireAdministrator&quot;  uiAccess=&quot;false&quot;/&gt;</code></pre>
+<p>然后保存，就行啦。</p>
+<h4 id="0.1.2">2. 添加程序到右键</h4>
+<pre><code class="lang-bash">[Registry]
+Root: HKCR; Subkey: &quot;*\shell\Open with Notepad\command&quot;; ValueType: string; ValueName: &quot;&quot;; ValueData: &quot;{app}\notepad\notepad++.exe %1&quot;;   Flags: deletekey uninsdeletekey;</code></pre>
+<h4 id="0.1.3">3.开机启动</h4>
+<pre><code class="lang-bash">[Registry]
+Root: HKLM; Subkey: &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Run&quot;; ValueType: string; ValueName: &quot;paperless&quot;; ValueData: &quot;{app}\{#MyAppExeName}&quot;; Flags: deletekey uninsdeletekey;</code></pre>
+<h3 id="0.2">4.判断进程是否正在运行</h3>
+<pre><code>[Code]
+
+function IsModuleLoaded(modulename: AnsiString ):  Boolean;
+external &#39;IsModuleLoaded@files:psvince.dll stdcall&#39;;
+
+var
+Page: TWizardPage;
+RadioButton1, RadioButton2: TRadioButton;
+Lbl1, Lbl2: TNewStaticText;
+TaskCode: Boolean;
+
+// PSVince控件在64位系统（Windows 7/Server 2008/Server 2012）下无法检测到进程，使用下面的函数可以解决。
+function IsAppRunning(const FileName : string): Boolean;
+var
+    FSWbemLocator: Variant;
+    FWMIService   : Variant;
+    FWbemObjectSet: Variant;
+begin
+    Result := false;
+    try
+      FSWbemLocator := CreateOleObject(&#39;WBEMScripting.SWBEMLocator&#39;);
+      FWMIService := FSWbemLocator.ConnectServer(&#39;&#39;, &#39;root\CIMV2&#39;, &#39;&#39;, &#39;&#39;);
+      FWbemObjectSet := FWMIService.ExecQuery(Format(&#39;SELECT Name FROM Win32_Process Where Name=&quot;%s&quot;&#39;,[FileName]));
+      Result := (FWbemObjectSet.Count &gt; 0);
+      FWbemObjectSet := Unassigned;
+      FWMIService := Unassigned;
+      FSWbemLocator := Unassigned;
+    except
+      if (IsModuleLoaded(FileName)) then
+        begin
+          Result := false;
+        end
+      else
+        begin
+          Result := true;
+        end
+      end;
+end;</code></pre>
+<h3 id="0.3">5. 判断安装 “.net 4.0”</h3>
+<pre><code>#define IncludeFramework true  
+
+
+[Files]
+#if IncludeFramework
+Source: &quot;E:\无纸化会议客户端\ext\dotNetFx40_Full_x86_x64.exe&quot;; DestDir: &quot;{tmp}&quot;; Flags: ignoreversion {#IsExternal}; Check: NeedsFramework
+#endif  
+
+[Run]
+#if IncludeFramework
+Filename: {tmp}\dotNetFx40_Full_x86_x64.exe; Parameters: &quot;/q:a /c:&quot;&quot;install /l /q&quot;&quot;&quot;; WorkingDir: {tmp}; Flags: skipifdoesntexist; StatusMsg: &quot;Installing .NET Framework if needed&quot;
+#endif
+
+
+[code]
+
+// Indicates whether .NET Framework 2.0 is installed.
+function IsDotNET40Detected(): boolean;
+var
+    success: boolean;
+    install: cardinal;
+begin
+    success := RegQueryDWordValue(HKLM, &#39;SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full&#39;, &#39;Install&#39;, install);
+     //success := RegQueryDWordValue(HKLM, &#39;SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727&#39;, &#39;Install&#39;, install);
+    Result :=  success and (install = 1);
+end;
+
+//RETURNS OPPOSITE OF IsDotNet20Detected FUNCTION
+//Remember this method from the Files section above
+function NeedsFramework(): Boolean;
+begin
+  Result := (IsDotNET40Detected = false);
+end;
+
+function GetCustomSetupExitCode(): Integer;
+begin
+  if (IsDotNET40Detected = false) then
+    begin
+      MsgBox(&#39;.NET Framework 未能正确安装!&#39;,mbError, MB_OK);
+      result := -1
+    end
+end;</code></pre>
+
+</article>
+<footer>
+
+</footer>

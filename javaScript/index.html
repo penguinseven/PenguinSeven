@@ -234,30 +234,21 @@ display: none;
 </style>
 </head>
 <body>
-<header>
-<x-markdown src="header.md" />
-</header>
 <nav>
-<x-index />
+    <ul>
+<li class="level2"><a href="#1">JavaScript</a></li><li class="level3"><a href="#1.1">常见问题</a></li><li class="level4"><a href="#1.1.1">1. 百度云盘web下载大文件</a></li><li class="level4"><a href="#1.1.2">2.浏览器复制</a></li></ul>
+
 </nav>
 <article>
-<x-markdown src="Linux/README.md" />
-<x-markdown src="CMD/README.md" />
-<x-markdown src="FFMPEG/README.md" />
-<x-markdown src="GIT/README.md" />
-<x-markdown src="Html/README.md" />
-<x-markdown src="javaScript/README.md" />
-<x-markdown src="Mysql/README.md" />
-<x-markdown src="Nginx/README.md" />
-<x-markdown src="PHP/README.md" />
-<x-markdown src="tools/README.md" />
-<x-markdown src="tools/innoSetup/README.md" />
-<x-markdown src="tools/winsw/README.md" />
+    <h2 id="1">JavaScript</h2>
+<h3 id="1.1">常见问题</h3>
+<h4 id="1.1.1">1. 百度云盘web下载大文件</h4>
+<pre><code class="lang-javascript">window.navigator.__defineGetter__ (&#39;platform&#39;, function () {return &#39;&#39;});</code></pre>
+<h4 id="1.1.2">2.浏览器复制</h4>
+<pre><code class="lang-javascript">var reg = document.querySelector(&#39;.register-str&#39;);
+    reg.select(); // 选中
+    document.execCommand(&quot;Copy&quot;); // 执行浏览器复制命令</code></pre>
 
-
-
-
-<x-markdown src="README.md" />
 </article>
 <footer>
 

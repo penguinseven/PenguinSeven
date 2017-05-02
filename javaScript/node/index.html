@@ -1,0 +1,370 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">window 安装 node.js</a></li><li class="level3"><a href="#1.1">1. 下载</a></li><li class="level3"><a href="#1.2">2. nodejs window下安装与配置淘宝镜像</a></li><li class="level2"><a href="#2">Linux 安装 node.js</a></li><li class="level3"><a href="#2.1">　更新你的系统</a></li><li class="level3"><a href="#2.2">0. nvm 安装</a></li><li class="level3"><a href="#2.3">1. git安装</a></li><li class="level3"><a href="#2.4">2.tar安装</a></li><li class="level4"><a href="#2.4.1">1、在官方网站下载 <a href="http://www.nodejs.org/download/">http://www.nodejs.org/download/</a></a></li><li class="level4"><a href="#2.4.2">2、查看版本</a></li><li class="level4"><a href="#2.4.3">3、将其建立建立链接</a></li><li class="level2"><a href="#3">三、安装NPM</a></li><li class="level2"><a href="#4">四、修改源</a></li><li class="level5"><a href="#4.0.0.1">Or alias it in .bashrc or .zshrc</a></li><li class="level2"><a href="#5">常见问题</a></li><li class="level4"><a href="#5.0.1">1. 安装webpack出现警告： fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):</a></li></ul>
+
+</nav>
+<article>
+    <h1 id="-">安装</h1>
+<p>本文仅仅是简单地介绍如何在Ubuntu/Debian系统上安装Node.js（任何版本）和npm（Node Package Manager的简写），其他类Linux系统安装步骤和这个类似。</p>
+<h2 id="1">window 安装 node.js</h2>
+<h3 id="1.1">1. 下载</h3>
+<p> windows下载 <a href="http://nodejs.cn/">http://nodejs.cn/</a></p>
+<h3 id="1.2">2. nodejs window下安装与配置淘宝镜像</h3>
+<ul>
+<li><p>前往nodejs官网下载安装软件，地址：<a href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
+</li>
+<li><p>点击下一步继续安装，安装完成，在命令输入：node -v,npm -v,查看版本，即是安装成功</p>
+</li>
+<li><p>随便在计算机哪个盘建一个全局目录，比如我的在E盘：E:\nodejs\node_global</p>
+</li>
+<li><p>设置nodejs全局目录，所有以全局安装的包都被安装在这，打开nodejs命令行窗口Node.js command prompt，</p>
+<p> 使用命令行设置：</p>
+<pre><code class="lang-cmd"> npm config set cache &quot;E:\nodejs\node_cache&quot;
+
+ npm config set prefix &quot;E:\nodejs\node_global&quot;</code></pre>
+</li>
+<li><p>前往淘宝镜像官网 <a href="http://npm.taobao.org/">http://npm.taobao.org/</a>，可查看安装cnpm包的命令</p>
+<p> 在命令行输入：</p>
+<pre><code class="lang-cmd"> npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
+</li>
+<li><p>安装完成</p>
+<pre><code class="lang-cmd">  :: 将 cnpm.bat 路径添加到系统环境变量，就可以使用cnpm命令了</code></pre>
+</li>
+</ul>
+<h2 id="2">Linux 安装 node.js</h2>
+<h3 id="2.1">　更新你的系统</h3>
+<pre><code>iteblog# sudo apt-get update
+iteblog# sudo apt-get install git-core curl build-essential openssl libssl-dev</code></pre>
+<h3 id="2.2">0. nvm 安装</h3>
+<pre><code>$ cd ~/git
+$ git clone https://github.com/creationix/nvm.git
+$ cd nvm
+$ ./install.sh</code></pre>
+<p>刷新.bashrc 文件</p>
+<pre><code>source ~/.bashrc</code></pre>
+<p><strong>通过 nvm 安装任意版本的 node</strong> </p>
+<p> nvm 默认是从 <a href="http://nodejs.org/dist/">http://nodejs.org/dist/</a> 下载的, 国外服务器, 必然很慢,
+ 好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载:</p>
+<pre><code>$ NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node nvm install 4</code></pre>
+<p> 于是你就会看到一段非常快速进度条:</p>
+<pre><code>############################################## 100.0%
+Now using node v4.3.2</code></pre>
+<p> 如果你不想每次都输入环境变量 NVM_NODEJS_ORG_MIRROR, 那么我建议你加入到 .bashrc 文件中:</p>
+<pre><code> # nvm
+ export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+ source ~/git/nvm/nvm.sh</code></pre>
+<p> 然后你可以继续非常方便地安装各个版本的 node 了, 你可以查看一下你当前已经安装的版本:</p>
+<pre><code> $ nvm ls
+          nvm
+      v0.8.26
+     v0.10.26
+     v0.11.11
+ -&gt;  v4.3.2</code></pre>
+<h3 id="2.3">1. git安装</h3>
+<p>首先我们先从github上将Node.js库克隆到本地：</p>
+<pre><code>iteblog# git clone https://github.com/nodejs/node.git
+iteblog# cd node</code></pre>
+<p>　　如果你需要安装特定版本的Node，可以如下操作：</p>
+<pre><code>iteblog# git tag # 这个命令将会显示Node的所有版本的列表
+iteblog# git checkout v0.10.33</code></pre>
+<p>　　然后可以编译和安装Node：</p>
+<pre><code>iteblog# ./configure
+iteblog# make
+iteblog# sudo make install</code></pre>
+<p>安装完毕，我们就可以在命令行里面输入以下命令以便确认Node是否安装完毕:</p>
+<pre><code>iteblog# node -v
+v0.10.33</code></pre>
+<p>这个命令会输出你安装Node版本信息，如果你电脑上面输出和下面的类似，那恭喜你了，安装Node成功。</p>
+<h3 id="2.4">2.tar安装</h3>
+<h4 id="2.4.1">1、在官方网站下载 <a href="http://www.nodejs.org/download/">http://www.nodejs.org/download/</a></h4>
+<p>下载后，在/home/hongwei有一个文件node-v0.10.32-linux-x86.tar.gz ，将其解压后，文件夹为 node-v0.10.32-linux-x86，
+或者运行命令  </p>
+<pre><code>wget -c nodejs.org/dist/v0.10.33/node-v0.10.33-linux-x86.tar.gz
+tar -zxvf node-v0.10.33-linux-x86.tar.gz</code></pre>
+<h4 id="2.4.2">2、查看版本</h4>
+<pre><code>cd node-v0.10.32-linux-x86
+ls
+cd bin
+./node -v</code></pre>
+<p>查看版本是 v0.10.32</p>
+<h4 id="2.4.3">3、将其建立建立链接</h4>
+<pre><code>ln -s /home/hongwei/node-v0.10.32-linux-x86/bin/node /usr/local/bin/node
+ln -s /home/hongwei/node-v0.10.32-linux-x86/bin/npm /usr/local/bin/npm</code></pre>
+<p>这样就安装好了，在终端输入 node 就可以查看相关信息了  </p>
+<p>说明：强烈不建议使用 apt-get 进行安装，因为安装后，不显示相关信息。</p>
+<pre><code>sudo apt-get install nodejs
+sudo apt-get install npm</code></pre>
+<p>如果安装的话，可以将其卸载</p>
+<pre><code>sudo apt-get remove nodejs
+sudo apt-get remove npm</code></pre>
+<h2 id="3">三、安装NPM</h2>
+<p>这个很简单，NPM官方提供了安装NPM的脚本，所以我们把这个脚本下载下来执行一下就可以：</p>
+<pre><code>iteblog# wget https://npmjs.org/install.sh --no-check-certificate
+iteblog# chmod 777 install.sh
+iteblog# ./install.sh
+iteblog# npm -v
+2.7.6</code></pre>
+<h2 id="4">四、修改源</h2>
+<p>你可以使用我们定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:</p>
+<pre><code>$ npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
+<p>或者你直接通过添加 npm 参数 alias 一个新命令:</p>
+<pre><code>  alias cnpm=&quot;npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc&quot;</code></pre>
+<h5 id="4.0.0.1">Or alias it in .bashrc or .zshrc</h5>
+<pre><code>  $ echo &#39;\n#alias for cnpm\nalias cnpm=&quot;npm --registry=https://registry.npm.taobao.org \
+    --cache=$HOME/.npm/.cache/cnpm \
+    --disturl=https://npm.taobao.org/dist \
+    --userconfig=$HOME/.cnpmrc&quot;&#39; &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc</code></pre>
+<h2 id="5">常见问题</h2>
+<h4 id="5.0.1">1. 安装webpack出现警告： fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):</h4>
+<blockquote>
+<p>警告如下：</p>
+</blockquote>
+<pre><code>npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.0.17: wanted {&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;} (current: {&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;})
+npm WARN vue-loader-demo@1.0.0 No description
+npm WARN vue-loader-demo@1.0.0 No repository field.</code></pre>
+<p> 原因是因为： fsevent是mac osx系统的，在win或者Linux下使用了 所以会有警告，忽略即可。意思就是你已经安装成功了。</p>
+
+</article>
+<footer>
+
+</footer>

@@ -234,30 +234,23 @@ display: none;
 </style>
 </head>
 <body>
-<header>
-<x-markdown src="header.md" />
-</header>
 <nav>
-<x-index />
+    <ul>
+</ul>
+
 </nav>
 <article>
-<x-markdown src="Linux/README.md" />
-<x-markdown src="CMD/README.md" />
-<x-markdown src="FFMPEG/README.md" />
-<x-markdown src="GIT/README.md" />
-<x-markdown src="Html/README.md" />
-<x-markdown src="javaScript/README.md" />
-<x-markdown src="Mysql/README.md" />
-<x-markdown src="Nginx/README.md" />
-<x-markdown src="PHP/README.md" />
-<x-markdown src="tools/README.md" />
-<x-markdown src="tools/innoSetup/README.md" />
-<x-markdown src="tools/winsw/README.md" />
+    <h1 id="mysql-">mysql 配置文件</h1>
+<blockquote>
+<p>注:并不是配置级别越高越好请根据流量和数据大小选择配置否则适得其反！</p>
+</blockquote>
+<ul>
+<li>0级配置：处理器-1/2线程  内存-512M  数据库-256M  日访问量-100/5000PV</li>
+<li>1级配置：处理器-2/8线程  内存-1/4G  数据库-1/2G  日访问量-5000/50000PV</li>
+<li>2级配置：处理器8/16线程  内存-4/8G  数据库-2/4G  日访问量-50000/100000PV</li>
+<li>3级配置：处理器16/64线程 内存-8/64G 数据库-4/16G 日访问量-100000/500000PV</li>
+</ul>
 
-
-
-
-<x-markdown src="README.md" />
 </article>
 <footer>
 

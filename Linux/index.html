@@ -1,0 +1,329 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">Linux</a></li><li class="level3"><a href="#1.1">0. 源</a></li><li class="level4"><a href="#1.1.1">1. debian 源</a></li><li class="level4"><a href="#1.1.2">2. kali 源</a></li><li class="level3"><a href="#1.2">1. screen ssh链接</a></li><li class="level3"><a href="#1.3">2. apt-get update 没有可用公钥，解决办法</a></li><li class="level3"><a href="#1.4">3.Linux内核调优</a></li><li class="level4"><a href="#1.4.1">打开文件数</a></li><li class="level4"><a href="#1.4.2">Soft open files 修改方法：</a></li><li class="level3"><a href="#1.5">4.iptables</a></li></ul>
+
+</nav>
+<article>
+    <h2 id="1">Linux</h2>
+<h3 id="1.1">0. 源</h3>
+<h4 id="1.1.1">1. debian 源</h4>
+<pre><code># 163
+deb http://mirrors.163.com/debian/ stable main non-free contrib
+
+deb http://mirrors.163.com/debian/ jessie main non-free contrib
+deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+
+# aliyun
+deb http://mirrors.aliyun.com/debian wheezy main contrib non-free
+deb-src http://mirrors.aliyun.com/debian wheezy main contrib non-free
+
+deb http://mirrors.aliyun.com/debian wheezy-updates main contrib non-free
+deb-src http://mirrors.aliyun.com/debian wheezy-updates main contrib non-free
+
+deb http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free
+deb-src http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free</code></pre>
+<h4 id="1.1.2">2. kali 源</h4>
+<pre><code>    # 中科大kali源
+　  deb http://mirrors.ustc.edu.cn/kali sana main non-free contrib
+　　deb http://mirrors.ustc.edu.cn/kali-security/ sana/updates main contrib non-free
+　　deb-src http://mirrors.ustc.edu.cn/kali-security/ sana/updates main contrib non-free
+　　
+    # 阿里云kali源
+　　deb http://mirrors.aliyun.com/kali sana main non-free contrib
+　　deb http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free
+　　deb-src http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free</code></pre>
+<h3 id="1.2">1. screen ssh链接</h3>
+<pre><code>screen -S oneinstack    
+#如果网路出现中断，可以执行命令`screen -r oneinstack`重新连接安装窗口</code></pre>
+<h3 id="1.3">2. apt-get update 没有可用公钥，解决办法</h3>
+<pre><code class="lang-shell">apt-get install debian-keyring debian-archive-keyring</code></pre>
+<h3 id="1.4">3.Linux内核调优</h3>
+<p>打开文件 /etc/sysctl.conf，增加以下设置</p>
+<pre><code># 1.该参数设置系统的TIME_WAIT的数量，如果超过默认值则会被立即清除
+net.ipv4.tcp_max_tw_buckets = 20000
+#定义了系统中每一个端口最大的监听队列的长度，这是个全局的参数
+net.core.somaxconn = 65535
+#对于还未获得对方确认的连接请求，可保存在队列中的最大数目
+net.ipv4.tcp_max_syn_backlog = 262144
+#在每个网络接口接收数据包的速率比内核处理这些包的速率快时，允许送到队列的数据包的最大数目
+net.core.netdev_max_backlog = 30000
+#能够更快地回收TIME-WAIT套接字。此选项会导致处于NAT网络的客户端超时，建议为0
+net.ipv4.tcp_tw_recycle = 0
+#系统所有进程一共可以打开的文件数量
+fs.file-max = 6815744
+#防火墙跟踪表的大小。注意：如果防火墙没开则会提示error: &quot;net.netfilter.nf_conntrack_max&quot; is an unknown key，忽略即可
+net.netfilter.nf_conntrack_max = 2621440</code></pre>
+<p>运行 sysctl -p即可生效。</p>
+<p>说明：</p>
+<p>/etc/sysctl.conf 可设置的选项很多，其它选项可以根据自己的环境需要进行设置</p>
+<h4 id="1.4.1">打开文件数</h4>
+<p>设置系统打开文件数设置，解决高并发下 too many open files 问题。此选项直接影响单个进程容纳的客户端连接数。</p>
+<p>Soft open files 是Linux系统参数，影响系统单个进程能够打开最大的文件句柄数量，这个值会影响到长链接应用如聊天中单个进程能够维持的用户连接数， 运行ulimit -n能看到这个参数值，如果是1024，就是代表单个进程只能同时最多只能维持1024甚至更少（因为有其它文件的句柄被打开）。如果开启4个进程维持用户链接，那么整个应用能够同时维持的连接数不会超过4*1024个，也就是说最多只能支持4x1024个用户在线可以增大这个设置以便服务能够维持更多的TCP连接。</p>
+<h4 id="1.4.2">Soft open files 修改方法：</h4>
+<p>（1）ulimit -HSn 102400    这只是在当前终端有效，退出之后，open files 又变为默认值。</p>
+<p>（2）将ulimit -HSn 102400写到/etc/profile中，这样每次登录终端时，都会自动执行/etc/profile。</p>
+<p>（3）令修改open files的数值永久生效，则必须修改配置文件：/etc/security/limits.conf. 在这个文件后加上：</p>
+<pre><code>* soft nofile 1024000
+* hard nofile 1024000
+root soft nofile 1024000
+root hard nofile 1024000</code></pre>
+<p>这种方法需要重启机器才能生效。</p>
+<h3 id="1.5">4.iptables</h3>
+<p>代码如下 复制代码 </p>
+<pre><code>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 700:800 -j ACCEPT</code></pre>
+<p>这样就搞定了，一句就可以了，下面再多讲几句iptables防火墙一些规则。</p>
+<ul>
+<li><p>一、 700:800 表示700到800之间的所有端口</p>
+</li>
+<li><p>二、 :800 表示800及以下所有端口</p>
+</li>
+<li><p>三、 700: 表示700以及以上所有端口</p>
+</li>
+</ul>
+
+</article>
+<footer>
+
+</footer>

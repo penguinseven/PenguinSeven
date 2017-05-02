@@ -1,0 +1,358 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">PHP</a></li><li class="level3"><a href="#1.1">　常见问题</a></li><li class="level4"><a href="#1.1.1">1. php-cli 模式，判断文件是否存在错误</a></li><li class="level4"><a href="#1.1.2">2. PHP并行 多进程/多线程</a></li><li class="level4"><a href="#1.1.3">3. composer</a></li><li class="level4"><a href="#1.1.4">4. phpunit</a></li><li class="level4"><a href="#1.1.5">5.webBench</a></li></ul>
+
+</nav>
+<article>
+    <h2 id="1">PHP</h2>
+<h3 id="1.1">　常见问题</h3>
+<h4 id="1.1.1">1. php-cli 模式，判断文件是否存在错误</h4>
+<pre><code>clearstatcache()</code></pre>
+<blockquote>
+<p>clearstatcache() 函数会缓存某些函数的返回信息，
+以便提供更高的性能。但是有时候，比如在一个脚本中多次检查同一个文件，
+而该文件在此脚本执行期间有被删除或修改的危险时，你需要清除文件状态缓存，
+以便获得正确的结果。要做到这一点，就需要使用 clearstatcache() 函数。
+会进行缓存的函数，即受 clearstatcache() 函数影响的函数：</p>
+</blockquote>
+<pre><code class="lang-php">    stat()
+    lstat()
+    file_exists()
+    is_writable()
+    is_readable()
+    is_executable()
+    is_file()
+    is_dir()
+    is_link()
+    filectime()
+    fileatime()
+    filemtime()
+    fileinode()
+    filegroup()
+    fileowner()
+    filesize()
+    filetype()
+    fileperms()</code></pre>
+<p>example :</p>
+<pre><code class="lang-php">&lt;?php
+//检查文件大小
+echo filesize(&quot;test.txt&quot;);
+
+$file = fopen(&quot;test.txt&quot;, &quot;a+&quot;);
+
+// 截取文件
+ftruncate($file,100);
+fclose($file);
+
+//清除缓存并再次检查文件大小
+clearstatcache();
+echo filesize(&quot;test.txt&quot;);
+?&gt;</code></pre>
+<h4 id="1.1.2">2. PHP并行 多进程/多线程</h4>
+<blockquote>
+<p>PHP中提供了一个扩展pcntl，可以利用操作系统的fork调用来实现多进程。
+fork调用后执行的代码将是并行的。</p>
+</blockquote>
+<p>注：pcntl仅支持linux平台，并且只能在cli模式下使用。</p>
+<pre><code class="lang-php">    $pid = pcntl_fork();
+
+    if($pid &gt; 0){
+
+        //父进程代码
+
+        exit(0);
+
+    } elseif($pid == 0) {
+
+        //子进程代码
+
+        exit(0);
+
+    }</code></pre>
+<ol>
+<li><p>此扩展仅在线程安全版本中可用,多线程扩展<a href="http://pecl.php.net/package/pthreads">http://pecl.php.net/package/pthreads</a></p>
+</li>
+<li><p>多进程和多线程其实是作用是相同的。区别是</p>
+<ul>
+<li>线程是在同一个进程内的，可以共享内存变量实现线程间通信</li>
+<li>线程比进程更轻量级，开很大量进程会比线程消耗更多系统资源</li>
+<li>多线程也存在一些问题：</li>
+</ul>
+</li>
+<li><p>线程读写变量存在同步问题，需要加锁</p>
+<ul>
+<li>锁的粒度过大会有性能问题，可能会导致只有1个线程在运行，其他线程都在等待锁。这样就不是并行了</li>
+<li>同时使用多个锁，逻辑复杂，一旦某个锁没被正确释放，可能会发生线程死锁</li>
+<li>某个线程发生致命错误会导致整个进程崩溃</li>
+</ul>
+</li>
+<li><p>多进程方式更加稳定，另外利用进程间通信（IPC）也可以实现数据共享。</p>
+<ul>
+<li>共享内存，这种方式和线程间读写变量是一样的，需要加锁，会有同步、死锁问题。</li>
+<li>消息队列，可以采用多个子进程抢队列模式，性能很好</li>
+<li>PIPE，UnixSock，TCP，UDP。可以使用read/write来传递数据，TCP/UDP方式使用socket来通信，子进程可以分布运行<h4 id="1.1.3">3. composer</h4>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="lang-shell"># 下载
+$ curl -sS https://getcomposer.org/installer | php
+# 放入全局
+$ mv composer.phar /usr/local/bin/composer
+# 修改源
+$ composer config -g repo.packagist composer https://packagist.composer-proxy.org
+# 设置自动更新
+$ composer selfupdate</code></pre>
+<h4 id="1.1.4">4. phpunit</h4>
+<pre><code>composer global require phpunit/phpunit</code></pre>
+<p>全局安装PHPUnit。<br>然后在~/.bashrc文件末尾加一行PATH=$PATH:/home/feng/.composer/vendor/bin  （注意替换用户名），来将Composer的global bin目录加入PATH。</p>
+<h4 id="1.1.5">5.webBench</h4>
+<pre><code class="lang-text">wget http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz
+tar zxvf webbench-1.5.tar.gz
+cd webbench-1.5
+make
+make install</code></pre>
+<p>使用：</p>
+<pre><code># webbench -c 并发数 -t 运行测试时间 URL
+$ webbench -c 1000 -t 60 http://192.168.80.157/phpinfo.php</code></pre>
+
+</article>
+<footer>
+
+</footer>

@@ -1,0 +1,441 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">运行环境</a></li><li class="level2"><a href="#2">安装</a></li><li class="level2"><a href="#3">项目目录结构</a></li><li class="level2"><a href="#4">项目实践</a></li><li class="level3"><a href="#4.1">1. 路由</a></li><li class="level3"><a href="#4.2">2. 中间件</a></li><li class="level3"><a href="#4.3">3. 分页</a></li><li class="level3"><a href="#4.4">常见问题</a></li><li class="level4"><a href="#4.4.1">0.Command is not defined exception</a></li><li class="level4"><a href="#4.4.2">1. 自定义函数</a></li><li class="level4"><a href="#4.4.3">2. PHP json_decode 函数解析 json 结果为 NULL 的解决方法</a></li><li class="level4"><a href="#4.4.4">3. Controller 重写 validate方法,方便报错返回</a></li></ul>
+
+</nav>
+<article>
+    <h1 id="laravel">laravel</h1>
+<h2 id="1">运行环境</h2>
+<h2 id="2">安装</h2>
+<h2 id="3">项目目录结构</h2>
+<pre><code class="lang-text">/ 根目录
+   └─ swarm ------------------------------------------ 项目目录
+       ├─ app --------------------------------- 核心代码目录
+       |   ├─ Console --------------------------------------- artisan 自定义命令
+       |   ├─ Events --------------------------------------- 应用公共模块
+       |   ├─ Exceptions --------------------------------------- 异常处理目录
+       |   ├─ Http --------------------------------------- 应用公共模块
+       |   ├─ Jobs --------------------------------------- 应用公共模块
+       |   ├─ Listeners --------------------------------------- 应用公共模块
+       |   ├─ Mail --------------------------------------- 应用公共模块
+       |   ├─ Notifications --------------------------------------- 应用公共模块
+       |   ├─ Policies --------------------------------------- 应用公共模块
+       |   └─ Providers --------------------------------------- 服务提供者
+       ├─ bootstrap --------------------------------- 框架启动和自动加载设置的目录
+       ├─ config --------------------------------- 配置文件目录
+       ├─ database --------------------------------- 数据迁移及填充目录
+       ├─ public --------------------------------- 入口目录
+       ├─ resources --------------------------------- 视图、原始资源文件目录
+       ├─ routes --------------------------------- 路由定义目录
+       ├─ storage --------------------------------- 编译后文件目录
+       ├─ tests --------------------------------- 自动测试目录
+       └─ vendor --------------------------------- composer依赖目录</code></pre>
+<h2 id="4">项目实践</h2>
+<h3 id="4.1">1. 路由</h3>
+<h3 id="4.2">2. 中间件</h3>
+<h3 id="4.3">3. 分页</h3>
+<ul>
+<li><p><code>Illuminate\Pagination\LengthAwarePaginator</code> 实例</p>
+<pre><code class="lang-php">  // 传入数据，总数据条数，数据显示条数，当前页码
+  $list =  new LengthAwarePaginator( $userList[&#39;data&#39;], $userList[&#39;total&#39;], $userList[&#39;per_page&#39;], $userList[&#39;current_page&#39;], [
+              &#39;path&#39; =&gt; &#39;/users&#39;
+          ]);
+
+  // 附加参数到分页链接
+  $list-&gt;appends([
+      &#39;mobile&#39; =&gt; $info[&#39;mobile&#39;],
+      &#39;status&#39; =&gt; $info[&#39;status&#39;]
+  ])-&gt;links();</code></pre>
+<p>  返回结果：</p>
+<pre><code class="lang-json">    {
+       &quot;total&quot;: 50,
+       &quot;per_page&quot;: 15,
+       &quot;current_page&quot;: 1,
+       &quot;last_page&quot;: 4,
+       &quot;next_page_url&quot;: &quot;/users?mobile=13761598554&amp;status=1&amp;page=3&quot;,
+       &quot;prev_page_url&quot;: &quot;/users?mobile=13761598554&amp;status=1&amp;page=1&quot;,
+       &quot;from&quot;: 1,
+       &quot;to&quot;: 15,
+       &quot;data&quot;:[
+            {
+                // Result Object
+            },
+            {
+                // Result Object
+            }
+       ]
+    }</code></pre>
+</li>
+</ul>
+<ul>
+<li><p><code>Illuminate\Pagination\Paginator</code> 实例</p>
+<pre><code class="lang-php">
+  // 传入数据，总数据条数，数据显示条数，当前页码
+  $list =  Paginator( $userList[&#39;data&#39;], $userList[&#39;total&#39;], $userList[&#39;per_page&#39;], $userList[&#39;current_page&#39;], [
+              &#39;path&#39; =&gt; &#39;/users&#39;
+          ]);
+
+  // 附加参数到分页链接
+  $list-&gt;appends([
+      &#39;mobile&#39; =&gt; $info[&#39;mobile&#39;],
+      &#39;status&#39; =&gt; $info[&#39;status&#39;]
+  ])-&gt;links();</code></pre>
+<p>  返回结果：</p>
+<pre><code class="lang-json">      {
+      &quot;per_page&quot;: 15,
+      &quot;current_page&quot;: 2,
+      &quot;next_page_url&quot;: null,
+      &quot;prev_page_url&quot;: &quot;/users?mobile=13761598554&amp;status=1&amp;page=1&quot;,
+      &quot;from&quot;: 16,
+      &quot;to&quot;: 18,
+      &quot;data&quot;:[
+            {
+                // Result Object
+            },
+            {
+                // Result Object
+            }
+       ]
+      }</code></pre>
+</li>
+<li><p>返回 JSON</p>
+<blockquote>
+<p>Laravel 分页器结果类实现了 
+Illuminate\Contracts\Support\Jsonable 
+接口契约并且提供 toJson 方法，
+所以它很容易将你的分页结果集转换为 Json。</p>
+</blockquote>
+<h3 id="4.4">常见问题</h3>
+</li>
+</ul>
+<h4 id="4.4.1">0.Command is not defined exception</h4>
+<ul>
+<li><p><strong>Laravel 4</strong></p>
+<p><a href="http://laravel.com/docs/4.2/commands#registering-commands">参见文档</a></p>
+<pre><code> Add this line to app/start/artisan.php:
+
+ Artisan::add(new NeighborhoodCommand);</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong>Laravel 5</strong></li>
+</ul>
+<p><a href="http://laravel.com/docs/master/artisan#registering-commands">参见文档</a></p>
+<p>Edit your app/Console/Kernel.php file and add your command to the <code>$commands</code> array:</p>
+<pre><code>protected $commands = [
+    Commands\NeighborhoodCommand::class,
+];</code></pre>
+<h4 id="4.4.2">1. 自定义函数</h4>
+<ul>
+<li><p>创建文件<code>app/Support/helpers.php</code></p>
+</li>
+<li><p>在<code>composer.json</code>中添加</p>
+</li>
+</ul>
+<pre><code class="lang-json">&quot;autoload&quot;: {
+    &quot;classmap&quot;: [
+      &quot;database&quot;
+    ],
+    &quot;psr-4&quot;: {
+      &quot;App\\&quot;: &quot;app/&quot;
+    },
+    &quot;files&quot;: [
+      &quot;app/Support/helpers.php&quot;
+    ]
+  }</code></pre>
+<ul>
+<li>执行 <code>composer dump-autoload</code></li>
+</ul>
+<h4 id="4.4.3">2. PHP json_decode 函数解析 json 结果为 NULL 的解决方法</h4>
+<ul>
+<li><p>打印错误</p>
+<pre><code> echo $errorinfo = json_last_error();   //输出4 语法错误</code></pre>
+</li>
+<li><p>情况一</p>
+</li>
+</ul>
+<blockquote>
+<p>出现这个问题是因为在 json 字符串中反斜杠被转义，只需要用 htmlspecialchars_decode() 函数处理一下 $content 即可：</p>
+</blockquote>
+<pre><code>$content = htmlspecialchars_decode($content);</code></pre>
+<ul>
+<li>情况二</li>
+</ul>
+<blockquote>
+<p>在保存 json 数据时使用 urlencode() 函数：</p>
+</blockquote>
+<pre><code>$content = urlencode(json_encode($content));
+#解析时使用 urldecode() 函数：
+
+$content = urldecode($content);
+#即可避免反斜杠转义造成的无法解析。</code></pre>
+<h4 id="4.4.4">3. Controller 重写 validate方法,方便报错返回</h4>
+<pre><code class="lang-php"> /**
+     * 重写 validate，把自定义属性名称放到 rules
+     *
+     * @param Request $request
+     * @param array   $rules
+     * @param array   $messages
+     * @param array   $customAttributes
+     */
+    public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
+    {
+        $customAttributes = [];
+
+        if (is_array($rules)) {
+            foreach ($rules as $key =&gt; $rule) {
+                $ruleWithAttr = explode(&#39;#&#39;, $rule);
+                if (count($ruleWithAttr) == 2) {
+                    $customAttributes[$key] = $ruleWithAttr[0];
+                    $rules[$key] = $ruleWithAttr[1];
+                }
+            }
+        }
+
+        $validator = $this-&gt;getValidationFactory()-&gt;make($request-&gt;all(), $rules, $messages, $customAttributes);
+
+        if ($validator-&gt;fails()) {
+            $this-&gt;throwValidationException($request, $validator);
+        }
+    }</code></pre>
+
+</article>
+<footer>
+
+</footer>

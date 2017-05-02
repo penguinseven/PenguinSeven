@@ -234,30 +234,58 @@ display: none;
 </style>
 </head>
 <body>
-<header>
-<x-markdown src="header.md" />
-</header>
 <nav>
-<x-index />
+    <ul>
+<li class="level3"><a href="#0.1">1. 安装node</a></li><li class="level3"><a href="#0.2">2. 调试工具</a></li><li class="level3"><a href="#0.3">3. 实例</a></li><li class="level3"><a href="#0.4">4. 单独安装electron</a></li></ul>
+
 </nav>
 <article>
-<x-markdown src="Linux/README.md" />
-<x-markdown src="CMD/README.md" />
-<x-markdown src="FFMPEG/README.md" />
-<x-markdown src="GIT/README.md" />
-<x-markdown src="Html/README.md" />
-<x-markdown src="javaScript/README.md" />
-<x-markdown src="Mysql/README.md" />
-<x-markdown src="Nginx/README.md" />
-<x-markdown src="PHP/README.md" />
-<x-markdown src="tools/README.md" />
-<x-markdown src="tools/innoSetup/README.md" />
-<x-markdown src="tools/winsw/README.md" />
+    <h1 id="electron">electron</h1>
+<h3 id="0.1">1. 安装node</h3>
+<h3 id="0.2">2. 调试工具</h3>
+<p> 该工具基于 Electron 
+ 将 Node.js 和 Chromium 的功能融合在了一起。
+ 它的目的在于为调试、分析和开发 Node.js 应用程序提供一个简单的界面。</p>
+<p> 你可以使用 npm 来安装它:</p>
+<pre><code>```cmd
+ npm install -g devtool
+```</code></pre>
+<h3 id="0.3">3. 实例</h3>
+<ul>
+<li><p>git检出项目</p>
+<pre><code class="lang-cmd"> git clone https://github.com/bojzi/sound-machine-electron-guide.git</code></pre>
+</li>
+<li><p>npm 安装</p>
+<pre><code class="lang-cmd"> npm install</code></pre>
+</li>
+<li><p>安装electron (当前安装)</p>
+<pre><code class="lang-cmd"> npm install --save-dev electron-prebuilt</code></pre>
+</li>
+<li><p>运行</p>
+<pre><code class="lang-cmd"> npm start</code></pre>
+<h3 id="0.4">4. 单独安装electron</h3>
+<p>安装Electron开发环境
+进行Electron开发之前，先要部署开发环境，在有node.js开发环境的基础上，可以通过npm进行开发环境的安装。</p>
+<p>安装有两种方式</p>
+</li>
+<li><p>全局安装</p>
+<pre><code class="lang-cmd"># Install the `electron` command globally
+npm install electron-prebuilt -g</code></pre>
+</li>
+<li><p>当前目录下安装</p>
+<pre><code class="lang-cmd"># Install as a development dependency
+npm install electron-prebuilt --save-dev</code></pre>
+<p>二者选一个即可。</p>
+<p>安装完成后建立app目录，
+然后将官网的quick-start中的内容分别拷贝到
+package.json，main.js，index.html下。</p>
+<p>运行命令</p>
+<pre><code class="lang-cmd">cd app
+electron .</code></pre>
+<p>即可看到程序运行。</p>
+</li>
+</ul>
 
-
-
-
-<x-markdown src="README.md" />
 </article>
 <footer>
 

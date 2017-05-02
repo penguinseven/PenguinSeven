@@ -1,5 +1,0 @@
-## 
-
-```bash
-dpkg -i filename
-```

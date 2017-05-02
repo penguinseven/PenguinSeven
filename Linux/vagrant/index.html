@@ -236,7 +236,7 @@ display: none;
 <body>
 <nav>
     <ul>
-<li class="level2"><a href="#1">1. 安装</a></li><li class="level3"><a href="#1.1">下载VirtualBox</a></li><li class="level3"><a href="#1.2">下载vagrant</a></li><li class="level2"><a href="#2">下载 Ubuntu</a></li><li class="level2"><a href="#3">　其他版本box</a></li><li class="level2"><a href="#4">2. 使用</a></li><li class="level3"><a href="#4.1">测试vagrant是否安装成功</a></li><li class="level3"><a href="#4.2">查看列表</a></li><li class="level3"><a href="#4.3">添加列表</a></li><li class="level3"><a href="#4.4">初始化虚拟机</a></li><li class="level3"><a href="#4.5">操作</a></li><li class="level3"><a href="#4.6">优化</a></li><li class="level3"><a href="#4.7">打包命令</a></li><li class="level3"><a href="#4.8">注意事项</a></li><li class="level3"><a href="#4.9">　参考文献</a></li><li class="level2"><a href="#5">常见问题</a></li><li class="level3"><a href="#5.1">1. mount: unknown filesystem type &#39;vboxsf&#39;</a></li><li class="level3"><a href="#5.2">2. VirtualBox: mount.vboxsf: mounting failed with the error: No such device</a></li></ul>
+<li class="level2"><a href="#1">1. 安装</a></li><li class="level3"><a href="#1.1">下载VirtualBox</a></li><li class="level3"><a href="#1.2">下载vagrant</a></li><li class="level3"><a href="#1.3">下载 Ubuntu</a></li><li class="level3"><a href="#1.4">其他版本box</a></li><li class="level2"><a href="#2">2. 使用</a></li><li class="level3"><a href="#2.1">测试vagrant是否安装成功</a></li><li class="level3"><a href="#2.2">查看列表</a></li><li class="level3"><a href="#2.3">添加列表</a></li><li class="level3"><a href="#2.4">初始化虚拟机</a></li><li class="level3"><a href="#2.5">操作</a></li><li class="level3"><a href="#2.6">优化</a></li><li class="level3"><a href="#2.7">打包命令</a></li><li class="level3"><a href="#2.8">注意事项</a></li><li class="level3"><a href="#2.9">　参考文献</a></li><li class="level2"><a href="#3">常见问题</a></li><li class="level3"><a href="#3.1">1. mount: unknown filesystem type &#39;vboxsf&#39;</a></li><li class="level3"><a href="#3.2">2. VirtualBox: mount.vboxsf: mounting failed with the error: No such device</a></li></ul>
 
 </nav>
 <article>
@@ -246,28 +246,28 @@ display: none;
 <p> <a href="https://www.virtualbox.org/wiki/Download_Old_Builds">https://www.virtualbox.org/wiki/Download_Old_Builds</a></p>
 <h3 id="1.2">下载vagrant</h3>
 <p> <a href="https://releases.hashicorp.com/vagrant/">https://releases.hashicorp.com/vagrant/</a></p>
-<h2 id="2">下载 Ubuntu</h2>
+<h3 id="1.3">下载 Ubuntu</h3>
 <p> 链接一：<a href="http://pan.baidu.com/s/1i5BfL45">http://pan.baidu.com/s/1i5BfL45</a> 密码：himr</p>
-<h2 id="3">　其他版本box</h2>
+<h3 id="1.4">其他版本box</h3>
 <p> <a href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a></p>
 <p><em>本文使用 vagrant 1.9.2 + VirtualBox 5.1 + ubunt 14.04</em></p>
-<h2 id="4">2. 使用</h2>
-<h3 id="4.1">测试vagrant是否安装成功</h3>
+<h2 id="2">2. 使用</h2>
+<h3 id="2.1">测试vagrant是否安装成功</h3>
 <pre><code>$ vagrant -v</code></pre>
-<h3 id="4.2">查看列表</h3>
+<h3 id="2.2">查看列表</h3>
 <pre><code>$ vagrant box list</code></pre>
-<h3 id="4.3">添加列表</h3>
+<h3 id="2.3">添加列表</h3>
 <pre><code>$ vagrant box add ubuntu1404 ubuntu1404.box</code></pre>
-<h3 id="4.4">初始化虚拟机</h3>
+<h3 id="2.4">初始化虚拟机</h3>
 <pre><code>$ mkdir ubuntu
 $ cd ubuntu
 $ vagrant box init ubuntu1404</code></pre>
-<h3 id="4.5">操作</h3>
+<h3 id="2.5">操作</h3>
 <pre><code>$ vagrant up // 开机
 $ vagrant halt // 关机
 $ vagrant status // 状态
 $ vagrant ssh  // ssh 登录</code></pre>
-<h3 id="4.6">优化</h3>
+<h3 id="2.6">优化</h3>
 <ul>
 <li><p>虚拟机名称</p>
 <pre><code>  vb.name = &quot;ubuntu_mooc&quot;</code></pre>
@@ -286,21 +286,21 @@ $ vagrant ssh  // ssh 登录</code></pre>
 <pre><code>  config.vm.synced_folder &quot;/Users/vincent/code/&quot;, &quot;/home/www&quot;, :nfs =&gt; true</code></pre>
 </li>
 </ul>
-<h3 id="4.7">打包命令</h3>
+<h3 id="2.7">打包命令</h3>
 <pre><code>vagrant package --output xxx.box    </code></pre>
-<h3 id="4.8">注意事项</h3>
+<h3 id="2.8">注意事项</h3>
 <ul>
 <li>vagrant ssh 无法登录  （使用git bash 命令行模式，进入对应文件夹，vagrant ssh 登录）</li>
 </ul>
-<h3 id="4.9">　参考文献</h3>
+<h3 id="2.9">　参考文献</h3>
 <ul>
 <li>git (<a href="https://github.com/apanly/mooc/tree/master/vagrant">https://github.com/apanly/mooc/tree/master/vagrant</a>)</li>
 </ul>
-<h2 id="5">常见问题</h2>
-<h3 id="5.1">1. mount: unknown filesystem type &#39;vboxsf&#39;</h3>
+<h2 id="3">常见问题</h2>
+<h3 id="3.1">1. mount: unknown filesystem type &#39;vboxsf&#39;</h3>
 <pre><code>sudo apt-get install virtualbox-guest-utils</code></pre>
 <p> vagrant reload后问题完美解决。</p>
-<h3 id="5.2">2. VirtualBox: mount.vboxsf: mounting failed with the error: No such device</h3>
+<h3 id="3.2">2. VirtualBox: mount.vboxsf: mounting failed with the error: No such device</h3>
 <pre><code>apt-get install linux-headers-$(uname -r)</code></pre>
 <p>vagrant reload</p>
 
