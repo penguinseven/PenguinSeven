@@ -15,15 +15,24 @@ function getdir(){
             # 判断是否存在readme文件
             if [ 'README.md' = $element ]
             then
-                # 判断是否存在 index.tpl 文件
-
-                if [ -f $1"/index.tpl" ]
+                echo 
+                # 判断是否存在 index.tpl 文件 
+                if [ ! -f $1"/index.tpl" ]
                 then
-                    echo $dir_or_file
-                    tianshu $1'/index.tpl'
-                else
                     #  复制模板文件
                     cp ./demo.tpl $1'/index.tpl'
+                    echo 'Copy file:'$1'/index.tpl'
+                fi
+                
+                # 生成html文件
+                echo 'Create file:'$dir_or_file 
+                tianshu $1'/index.tpl'
+
+                # 删除模板文件
+                if [ ! $1 = '.' ]
+                then
+                    rm $1'/index.tpl'
+                    echo 'Delete file:'$1'/index.tpl'
                 fi
             fi    
         fi  
