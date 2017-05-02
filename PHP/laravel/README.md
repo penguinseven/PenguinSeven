@@ -125,6 +125,106 @@
   接口契约并且提供 toJson 方法，
   所以它很容易将你的分页结果集转换为 Json。
       
+  ### 常见问题
   
+#### 0.Command is not defined exception
+      
+ - **Laravel 4**
+  
+ [参见文档](http://laravel.com/docs/4.2/commands#registering-commands)
+    
+        Add this line to app/start/artisan.php:
+        
+        Artisan::add(new NeighborhoodCommand);
+
+- **Laravel 5**
+
+[参见文档](http://laravel.com/docs/master/artisan#registering-commands)
+
+Edit your app/Console/Kernel.php file and add your command to the `$commands` array:
+
+    protected $commands = [
+        Commands\NeighborhoodCommand::class,
+    ];
+    
+#### 1. 自定义函数
+
+- 创建文件`app/Support/helpers.php`
+
+- 在`composer.json`中添加
+
+```json
+"autoload": {
+    "classmap": [
+      "database"
+    ],
+    "psr-4": {
+      "App\\": "app/"
+    },
+    "files": [
+      "app/Support/helpers.php"
+    ]
+  }
+```
+
+- 执行 `composer dump-autoload`
+
+#### 2. PHP json_decode 函数解析 json 结果为 NULL 的解决方法
+
+- 打印错误
+    
+       echo $errorinfo = json_last_error();   //输出4 语法错误
+       
+- 情况一
+    
+> 出现这个问题是因为在 json 字符串中反斜杠被转义，只需要用 htmlspecialchars_decode() 函数处理一下 $content 即可：
+    
+    $content = htmlspecialchars_decode($content);
+    
+- 情况二
+    
+> 在保存 json 数据时使用 urlencode() 函数：
+    
+    $content = urlencode(json_encode($content));
+    #解析时使用 urldecode() 函数：
+    
+    $content = urldecode($content);
+    #即可避免反斜杠转义造成的无法解析。
+    
+
+#### 3. Controller 重写 validate方法,方便报错返回
+
+```php
+ /**
+     * 重写 validate，把自定义属性名称放到 rules
+     *
+     * @param Request $request
+     * @param array   $rules
+     * @param array   $messages
+     * @param array   $customAttributes
+     */
+    public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
+    {
+        $customAttributes = [];
+
+        if (is_array($rules)) {
+            foreach ($rules as $key => $rule) {
+                $ruleWithAttr = explode('#', $rule);
+                if (count($ruleWithAttr) == 2) {
+                    $customAttributes[$key] = $ruleWithAttr[0];
+                    $rules[$key] = $ruleWithAttr[1];
+                }
+            }
+        }
+
+        $validator = $this->getValidationFactory()->make($request->all(), $rules, $messages, $customAttributes);
+
+        if ($validator->fails()) {
+            $this->throwValidationException($request, $validator);
+        }
+    }
+```
+
+    
 
 
