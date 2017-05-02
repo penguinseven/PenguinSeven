@@ -1,0 +1,399 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">Shell</a></li><li class="level3"><a href="#1.1">知识点</a></li><li class="level4"><a href="#1.1.1">1. 条件判断</a></li><li class="level4"><a href="#1.1.2">2. 函数</a></li><li class="level3"><a href="#1.2">常见问题</a></li></ul>
+
+</nav>
+<article>
+    <h2 id="1">Shell</h2>
+<h3 id="1.1">知识点</h3>
+<h4 id="1.1.1">1. 条件判断</h4>
+<ul>
+<li>if..else..fi</li>
+</ul>
+<blockquote>
+<p>测试字符串</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">条件</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$string1 = $string2</td>
+<td style="text-align:left">两个字符串是否相等。Shell 大小写敏感，因此 A 和 a 是不一样的。</td>
+</tr>
+<tr>
+<td style="text-align:left">$string1 != $string2</td>
+<td style="text-align:left">两个字符串是否不同。</td>
+</tr>
+<tr>
+<td style="text-align:left">-z $string</td>
+<td style="text-align:left">字符串 string 是否为空。z是 zero 的首字母，是英语「零」的意思。</td>
+</tr>
+<tr>
+<td style="text-align:left">-n $string</td>
+<td style="text-align:left">字符串 string 是否不为空。n 是英语 not 的首字母，是英语「不」的意思。</td>
+</tr>
+</tbody>
+</table>
+<p>EX:</p>
+<pre><code class="lang-bash">#!/bin/bash
+
+if [ -z $1 ]
+then
+    echo &quot;No parameter&quot;
+else
+    echo &quot;There is parameter&quot;
+fi</code></pre>
+<blockquote>
+<p>测试数字</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">条件</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$num1 -eq $num2</td>
+<td style="text-align:left">两个数字是否相等。和判断字符串所用的符号（ = ）不一样。eq 是 equal 的缩写，是英语「等于」的意思。</td>
+</tr>
+<tr>
+<td style="text-align:left">$num1 -ne $num2</td>
+<td style="text-align:left">两个数字是否不同。ne 是 not equal 的缩写，是英语「不等于」的意思。</td>
+</tr>
+<tr>
+<td style="text-align:left">$num1 -lt $num2</td>
+<td style="text-align:left">数字 num1 是否小于 num2。lt 是 lower than 的缩写，是英语「小于」的意思。</td>
+</tr>
+<tr>
+<td style="text-align:left">$num1 -le $num2</td>
+<td style="text-align:left">数字 num1 是否小于或等于 num2。le 是 lower or equal 的缩写，是英语「小于或等于」的意思。</td>
+</tr>
+<tr>
+<td style="text-align:left">$num1 -gt $num2</td>
+<td style="text-align:left">数字 num1 是否大于 num2。gt 是 greater than 的缩写，是英语「大于」的意思。</td>
+</tr>
+<tr>
+<td style="text-align:left">$num1 -ge $num2</td>
+<td style="text-align:left">数字 num1 是否大于或等于 num2。ge 是 greater or equal 的缩写，是英语「大于或等于」的意思。</td>
+</tr>
+</tbody>
+</table>
+<p>EX:</p>
+<pre><code class="lang-bash">#!/bin/bash
+
+if [ $1 -ge 10 ]
+then
+    echo &quot;You have entered 10 or more&quot;
+else
+    echo &quot;You have entered less than 10&quot;
+fi</code></pre>
+<blockquote>
+<p>测试文件</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">条件</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-e $file</td>
+<td style="text-align:left">文件是否存在。e 是 exist 的首字母，表示「存在」。</td>
+</tr>
+<tr>
+<td style="text-align:center">-d $file</td>
+<td style="text-align:left">文件是否是一个目录。因为 Linux 中所有都是文件，目录也是文件的一种。d 是 directory 的首字母，表示「目录」。</td>
+</tr>
+<tr>
+<td style="text-align:center">-f $file</td>
+<td style="text-align:left">文件是否是一个文件。f 是 file 的首字母，表示「文件」。</td>
+</tr>
+<tr>
+<td style="text-align:center">-L $file</td>
+<td style="text-align:left">文件是否是一个符号链接文件。L 是 link 的首字母，表示「链接」。</td>
+</tr>
+<tr>
+<td style="text-align:center">-r $file</td>
+<td style="text-align:left">文件是否可读。r 是 readable 的首字母，表示「可读的」。</td>
+</tr>
+<tr>
+<td style="text-align:center">-w $file</td>
+<td style="text-align:left">文件是否可写。w 是 writable 的首字母，表示「可写的」。</td>
+</tr>
+<tr>
+<td style="text-align:center">-x $file</td>
+<td style="text-align:left">文件是否可执行。x 是 executable 的首字母，表示「可执行的」。</td>
+</tr>
+<tr>
+<td style="text-align:center">$file1 -nt $file2</td>
+<td style="text-align:left">文件 file1 是否比 file2 更新。nt 是 newer than 的缩写，表示「更新的」。</td>
+</tr>
+<tr>
+<td style="text-align:center">$file1 -ot $file2</td>
+<td style="text-align:left">文件 file1 是否比 file2 更旧。ot 是 older than 的缩写，表示「更旧的」。</td>
+</tr>
+</tbody>
+</table>
+<p>EX:</p>
+<pre><code class="lang-bash">#!/bin/bash
+
+read -p &#39;Enter a directory : &#39; file
+
+if [ -d $file ]
+then
+    echo &quot;$file is a directory&quot;
+else
+    echo &quot;$file is not a directory&quot;
+fi</code></pre>
+<h4 id="1.1.2">2. 函数</h4>
+<h3 id="1.2">常见问题</h3>
+
+</article>
+<footer>
+
+</footer>
