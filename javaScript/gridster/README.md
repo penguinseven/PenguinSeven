@@ -1,23 +1,6 @@
+#gridster
 
-# gridster (未加入angular)
-
-- 动态添加模块（http://gridster.net/demos/adding-widgets-dynamically.html）：使用add_widget方法，通过数组创建一个gridster实例，产生的模块自动排列，无需指定相对位置。
-- 自定义模块内鼠标的拖动区域（http://gridster.net/demos/custom-drag-handle）：鼠标点住模块内指定的元素才可以开始拖动，这样做以免影响模块内其他鼠标动作，比如超链接。
-- 放大悬停模块（http://gridster.net/demos/expandable-widgets.html）：通过resize_widget方法改变鼠标悬停模块的大小
-- 通过JSON序列创建gridster实例（http://gridster.net/demos/grid-from-serialize.html）：通过JSON序列生成一个gridster实例（有了这个方法我们就可以方便的从数据库读取用户的模块位置定义等等）
-- 同一页面放多个拖拽实例（http://gridster.net/demos/multiple-grids.html）：通过配置参数namespace在同一个页面配置多个gridster实例
-- 改变模块大小（http://gridster.net/demos/resize.html）：可以通过拖动改变模块的大小
-- 改变模块大小时添加不同限制（http://gridster.net/demos/resize-limits.html）：你可以使用resize.max_size和resize.min_size配置，以及在模块html当中添加data属性data-max-sizex、data-max-sizey、data-min-sizex、data-min-sizey来限制拖动时模块大小的最大最小值。
-- 输出当前所有模块的位置排布（序列化）（http://gridster.net/demos/serialize.html）：通过serialize方法获取模块的位置信息，可以当作JSON对象使用（这样就可以方便的存储数据）
-- 拖动的回调函数（http://gridster.net/demos/using-drag-callbacks.html）：在开始拖动、拖动结束或位置已改变都可以通过回调函数调用相关的动作，实现一些需要的方法。
-- 改变模块大小后的回调函数（http://gridster.net/demos/using-resize-callbacks.html）：同上，改变模块大小时的回调函数，分为开始、改变、结束三个事件。
-- 动态改变gridster实例的宽度（http://gridster.net/demos/dynamic-grid-width.html）：gridster的列数可以自行定义，这样你可以把模块使劲的~~~往右边拖，直到你设定的最大值。
-
-
-
-
-（英文官方文档：http://gridster.net/#documentation）。
-
+## gridster (未加入angular)
 
 ### 1、widget_selector
 示例：
