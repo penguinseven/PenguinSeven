@@ -117,7 +117,7 @@ $ composer selfupdate
     composer global require phpunit/phpunit
     
 全局安装PHPUnit。  
-然后在~/.bashrc文件末尾加一行PATH=$PATH:/home/feng/.composer/vendor/bin  （注意替换用户名），来将Composer的global bin目录加入PATH。
+然后在`~/.bashrc`文件末尾加一行`PATH=$PATH:/home/feng/.composer/vendor/bin`  （注意替换用户名），来将`Composer`的`global bin`目录加入`PATH`。
 
 
 #### 5.webBench
@@ -136,4 +136,29 @@ make install
     $ webbench -c 1000 -t 60 http://192.168.80.157/phpinfo.php
     
     
-    
+#### 6. xdebug
+
+[下载](https://xdebug.org/download.php) ( 注意NTS | TS)
+
+```bash
+$ tar -zxvf xx.tgz
+$ cd xx
+$ phpize
+$ ./configure
+$ make && make install
+```
+
+修改配置文件：
+```ini
+[xdebug]
+zend_extension=xdebug.so
+xdebug.remote_enable = 1
+xdebug.remote_connect_back = 1
+xdebug.remote_port = 9000
+xdebug.max_nesting_level = 512
+```
+#### 7. phpstorm + vagrant + xdebug
+
+1. php  》 severs 》 目录映射
+
+1. run/debug configuration 》 PHP WEB Application 》
