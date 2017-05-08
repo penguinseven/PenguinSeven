@@ -246,7 +246,7 @@ table th,table td {
 <body>
 <nav>
     <ul>
-<li class="level2"><a href="#1">PHP</a></li><li class="level3"><a href="#1.1">　常见问题</a></li><li class="level4"><a href="#1.1.1">1. php-cli 模式，判断文件是否存在错误</a></li><li class="level4"><a href="#1.1.2">2. PHP并行 多进程/多线程</a></li><li class="level4"><a href="#1.1.3">3. composer</a></li><li class="level4"><a href="#1.1.4">4. phpunit</a></li><li class="level4"><a href="#1.1.5">5.webBench</a></li></ul>
+<li class="level2"><a href="#1">PHP</a></li><li class="level3"><a href="#1.1">　常见问题</a></li><li class="level4"><a href="#1.1.1">1. php-cli 模式，判断文件是否存在错误</a></li><li class="level4"><a href="#1.1.2">2. PHP并行 多进程/多线程</a></li><li class="level4"><a href="#1.1.3">3. composer</a></li><li class="level4"><a href="#1.1.4">4. phpunit</a></li><li class="level4"><a href="#1.1.5">5.webBench</a></li><li class="level4"><a href="#1.1.6">6. xdebug</a></li><li class="level4"><a href="#1.1.7">7. phpstorm + vagrant + xdebug</a></li></ul>
 
 </nav>
 <article>
@@ -351,7 +351,7 @@ $ composer config -g repo.packagist composer https://packagist.composer-proxy.or
 $ composer selfupdate</code></pre>
 <h4 id="1.1.4">4. phpunit</h4>
 <pre><code>composer global require phpunit/phpunit</code></pre>
-<p>全局安装PHPUnit。<br>然后在~/.bashrc文件末尾加一行PATH=$PATH:/home/feng/.composer/vendor/bin  （注意替换用户名），来将Composer的global bin目录加入PATH。</p>
+<p>全局安装PHPUnit。<br>然后在<code>~/.bashrc</code>文件末尾加一行<code>PATH=$PATH:/home/feng/.composer/vendor/bin</code>  （注意替换用户名），来将<code>Composer</code>的<code>global bin</code>目录加入<code>PATH</code>。</p>
 <h4 id="1.1.5">5.webBench</h4>
 <pre><code class="lang-text">wget http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz
 tar zxvf webbench-1.5.tar.gz
@@ -361,6 +361,27 @@ make install</code></pre>
 <p>使用：</p>
 <pre><code># webbench -c 并发数 -t 运行测试时间 URL
 $ webbench -c 1000 -t 60 http://192.168.80.157/phpinfo.php</code></pre>
+<h4 id="1.1.6">6. xdebug</h4>
+<p><a href="https://xdebug.org/download.php">下载</a> ( 注意NTS | TS)</p>
+<pre><code class="lang-bash">$ tar -zxvf xx.tgz
+$ cd xx
+$ phpize
+$ ./configure
+$ make &amp;&amp; make install</code></pre>
+<p>修改配置文件：</p>
+<pre><code class="lang-ini">[xdebug]
+zend_extension=xdebug.so
+xdebug.remote_enable = 1
+xdebug.remote_connect_back = 1
+xdebug.remote_port = 9000
+xdebug.max_nesting_level = 512</code></pre>
+<h4 id="1.1.7">7. phpstorm + vagrant + xdebug</h4>
+<ol>
+<li><p>php  》 severs 》 目录映射</p>
+</li>
+<li><p>run/debug configuration 》 PHP WEB Application 》</p>
+</li>
+</ol>
 
 </article>
 <footer>
