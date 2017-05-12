@@ -246,7 +246,7 @@ table th,table td {
 <body>
 <nav>
     <ul>
-<li class="level2"><a href="#1">window 安装 node.js</a></li><li class="level3"><a href="#1.1">1. 下载</a></li><li class="level3"><a href="#1.2">2. nodejs window下安装与配置淘宝镜像</a></li><li class="level2"><a href="#2">Linux 安装 node.js</a></li><li class="level3"><a href="#2.1">　更新你的系统</a></li><li class="level3"><a href="#2.2">0. nvm 安装</a></li><li class="level3"><a href="#2.3">1. git安装</a></li><li class="level3"><a href="#2.4">2.tar安装</a></li><li class="level4"><a href="#2.4.1">1、在官方网站下载 <a href="http://www.nodejs.org/download/">http://www.nodejs.org/download/</a></a></li><li class="level4"><a href="#2.4.2">2、查看版本</a></li><li class="level4"><a href="#2.4.3">3、将其建立建立链接</a></li><li class="level2"><a href="#3">三、安装NPM</a></li><li class="level2"><a href="#4">四、修改源</a></li><li class="level5"><a href="#4.0.0.1">Or alias it in .bashrc or .zshrc</a></li><li class="level2"><a href="#5">常见问题</a></li><li class="level4"><a href="#5.0.1">1. 安装webpack出现警告： fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):</a></li></ul>
+<li class="level2"><a href="#1">window 安装 node.js</a></li><li class="level3"><a href="#1.1">1. 下载</a></li><li class="level3"><a href="#1.2">2. nodejs window下安装与配置淘宝镜像</a></li><li class="level2"><a href="#2">Linux 安装 node.js</a></li><li class="level3"><a href="#2.1">　更新你的系统</a></li><li class="level3"><a href="#2.2">0. nvm 安装</a></li><li class="level3"><a href="#2.3">1. git安装</a></li><li class="level3"><a href="#2.4">2.tar安装</a></li><li class="level4"><a href="#2.4.1">1、在官方网站下载 <a href="http://www.nodejs.org/download/">http://www.nodejs.org/download/</a></a></li><li class="level4"><a href="#2.4.2">2、查看版本</a></li><li class="level4"><a href="#2.4.3">3、将其建立建立链接</a></li><li class="level2"><a href="#3">三、安装NPM</a></li><li class="level2"><a href="#4">四、修改源</a></li><li class="level5"><a href="#4.0.0.1">Or alias it in .bashrc or .zshrc</a></li><li class="level2"><a href="#5">Linux 安装 yarn</a></li><li class="level4"><a href="#5.0.1">1. 修改源</a></li><li class="level4"><a href="#5.0.2">2. 安装</a></li><li class="level2"><a href="#6">常见问题</a></li><li class="level4"><a href="#6.0.1">1. 安装webpack出现警告： fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):</a></li></ul>
 
 </nav>
 <article>
@@ -363,8 +363,14 @@ iteblog# npm -v
     --cache=$HOME/.npm/.cache/cnpm \
     --disturl=https://npm.taobao.org/dist \
     --userconfig=$HOME/.cnpmrc&quot;&#39; &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc</code></pre>
-<h2 id="5">常见问题</h2>
-<h4 id="5.0.1">1. 安装webpack出现警告： fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):</h4>
+<h2 id="5">Linux 安装 yarn</h2>
+<h4 id="5.0.1">1. 修改源</h4>
+<pre><code class="lang-bash">sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3 
+echo &quot;deb http://dl.yarnpkg.com/debian/ stable main&quot; | sudo tee /etc/apt/sources.list.d/yarn.list</code></pre>
+<h4 id="5.0.2">2. 安装</h4>
+<pre><code class="lang-bash">sudo apt-get update &amp;&amp; sudo apt-get install yarn</code></pre>
+<h2 id="6">常见问题</h2>
+<h4 id="6.0.1">1. 安装webpack出现警告： fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):</h4>
 <blockquote>
 <p>警告如下：</p>
 </blockquote>
