@@ -171,6 +171,22 @@
         --userconfig=$HOME/.cnpmrc"' >> ~/.zshrc && source ~/.zshrc
         
      
+     
+## Linux 安装 yarn
+     
+#### 1. 修改源
+
+```bash
+sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3 
+echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+```
+
+#### 2. 安装
+
+```bash
+sudo apt-get update && sudo apt-get install yarn
+```
     
 ##  常见问题
     
