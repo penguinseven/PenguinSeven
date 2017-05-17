@@ -225,6 +225,99 @@ Edit your app/Console/Kernel.php file and add your command to the `$commands` ar
     }
 ```
 
+#### 4. 创建门面 `Facades`，实现静态访问动态方法
+
+- 示例
+
+```php
+<?php
+
+CloudMusic::search('title');
+
+```
+
+-  创建服务提供者
+
+```php
+<?php
+/**
+ * @fileName   : CloudMusicServiceProvider.php
+ * @date       : 2017/5/16 17:33
+ * @author     : ManJi
+ * @description: File description...
+ */
+
+namespace App\Providers;
+
+use App\Repositories\CloudMusicRepositories;
+use Illuminate\Support\ServiceProvider;
+
+class CloudMusicServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        app()->singleton('CloudMusic', function () {
+            return new CloudMusicRepositories();
+        });
+    }
+}
+
+```
+
+- 创建门面
+
+```php
+<?php
+/**
+ * @fileName   : CloudMusic.php
+ * @date       : 2017/5/16 17:20
+ * @author     : ManJi
+ * @description: File description...
+ */
+
+namespace App\Facades;
+
+use Illuminate\Support\Facades\Facade;
+
+class CloudMusic extends Facade
+{
+    protected static function getFacadeAccessor()
+    {
+        return 'CloudMusic';
+    }
+}
+```
+
+- 修改文件`config/aap.php`
+
+```php
+<?php
+
+return [
+   'providers' => [
+        App\Providers\CloudMusicServiceProvider::class,
+    ],  
+   'alias' => [
+        'CloudMusic' => App\Facades\CloudMusic::class,
+    ],  
+];
+```
+
     
 
 
