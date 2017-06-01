@@ -82,6 +82,13 @@
  - ### simple rtmp server
  
  
+## 8. 账号
+
+- 订阅号 ： penguin71229@gmail.com
+- 小程序：penguinseven@sina.com
+- 开放平台：penguinseven@qq.com
+ 
+ 
 
  
  
