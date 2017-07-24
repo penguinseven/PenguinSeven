@@ -177,3 +177,27 @@ URL 命名规则，对于资源无法使用一个单数名词表示的情况，�
 - 资源列表，e.g：产品列表 url -> /products, verb -> GET
 - 资源关联关系，e.g：收藏产品 url -> /products/{id}/star, verb -> PUT
 - 资源关联关系，e.g：删除收藏产品 url -> /products/{id}/star, verb -> DELETE
+
+#### 9.composer http 提示：
+
+
+      Your configuration does not allow connection to http://packagist.phpcompose  
+      r.com. See https://getcomposer.org/doc/06-config.md#secure-http for details  
+
+
+
+网上查一下，说是因为镜像使用用的是http，而原地址是需要https，所以配置下关掉https就好了。
+
+- 修改composer.json文件
+
+         view plain copy
+        {  
+            "config": {  
+                "secure-http": false  
+            }  
+        }  
+        
+- 参数
+
+        composer config -g secure-http false
+
