@@ -109,3 +109,10 @@ Soft open files 是Linux系统参数，影响系统单个进程能够打开最�
 - 二、 :800 表示800及以下所有端口
 
 - 三、 700: 表示700以及以上所有端口
+
+
+### 5. 日志分析 goaccess
+
+```bash
+apt-get install goaccess
+```
