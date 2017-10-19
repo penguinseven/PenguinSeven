@@ -1,6 +1,6 @@
 ## Java
 
-## 安装jdk1.8
+### 安装jdk1.8
 
 - 下载jdk http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 ```bash
