@@ -3,13 +3,14 @@
 ###  1. 初始化
 
  - 成功安装jdk1.8
+ 
  - 下载、安装
  
-    ```bash
-        wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.tar.gz
-        # 解压
-        tar -zxvf elasticsearch-5.6.3.tar.gz
-    ```
+```bash
+    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.tar.gz
+    # 解压
+    tar -zxvf elasticsearch-5.6.3.tar.gz
+```
 
 ### 2. 启动
 
@@ -62,6 +63,7 @@ http.cors.allow-origin: "*"
 ### Finally.常见问题
 
 - 1、can not run elasticsearch as root 
+
 ```bash
 # 切换到非root用户
 ```
@@ -72,7 +74,9 @@ http.cors.allow-origin: "*"
 # 改变elasticsearch文件夹所有者到当前用户
 sudo chown -R noroot:noroot elasticsearch
 ```
+
 - 3、max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+
 ```bash
 sudo vi /etc/sysctl.conf 
 # 添加下面配置：
@@ -81,6 +85,7 @@ vm.max_map_count=655360
 sudo sysctl -p
 ```
 - 4、max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]
+
 ```bash
 
 sudo vi /etc/security/limits.conf

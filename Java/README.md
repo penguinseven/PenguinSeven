@@ -3,6 +3,7 @@
 ### 安装jdk1.8
 
 - 下载jdk http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 ```bash
 wget http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz
 # 解压
@@ -12,6 +13,7 @@ mv jdk /usr/java
 ```
 
 - 修改 `/etc/profile` 
+
 ```bash
 vi /etc/profile
 
