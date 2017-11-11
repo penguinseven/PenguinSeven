@@ -8,13 +8,6 @@ function getdir(){
     do
         dir_or_file=$1"/"$element
 
-        # 判断是否存在 header.md 文件
-        if [ ! -f $1"/header.md" ] && [ -f $1"/README.md" ]
-        then
-            # 创建md文件
-            touch $1'/header.md'
-        fi
-
         # 判断是否为文件夹
         if [ -d $dir_or_file  ]
         then
@@ -32,6 +25,13 @@ function getdir(){
             # 判断是否存在readme文件
             if [ 'README.md' = $element ]
             then
+
+                # 创建md文件, 避免模板报错
+                if [ ! -f $1"/header.md" ]
+                then
+                    touch $1'/header.md'
+                fi
+
 
                 # 判断是否存在 index.tpl 文件
                 if [ ! -f $1"/index.tpl" ]
