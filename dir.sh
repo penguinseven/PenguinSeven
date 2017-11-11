@@ -14,7 +14,7 @@ function getdir(){
 
             if [ -f $1"/README.md" ] && [ -f $1"/"$element"/README.md" ]
             then
-                echo "- <a href='./"$element"/index.html'>"$element"</a>" >> $1"/header.md"
+                echo "<li><a href='./"$element"/index.html'>"$element"</a></li>" >> $1"/header.md"
             fi
 
             # 递归文件夹

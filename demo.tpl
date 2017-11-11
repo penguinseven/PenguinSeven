@@ -10,7 +10,12 @@
     <x-index />
 </nav>
 <article>
-    <x-markdown src="header.md" />
+    <nav class="nav-ul">
+        <ul>
+            <x-markdown src="header.md" />
+        </ul>
+    </nav>
+
     <x-markdown src="README.md" />
 </article>
 <footer>
