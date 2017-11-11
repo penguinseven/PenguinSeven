@@ -246,17 +246,19 @@ table th,table td {
 <body>
 <nav>
     <ul>
-<li class="level2"><a href="#1">Tool 常用工具</a></li></ul>
+<li class="level2"><a href="#1">源</a></li><li class="level2"><a href="#2">常用操作</a></li><li class="level3"><a href="#2.1">更新</a></li><li class="level3"><a href="#2.2"> </a></li></ul>
 
 </nav>
 <article>
-    <ul>
-<li><a href='./innoSetup/index.html'>innoSetup</a></li>
-<li><a href='./lantern/index.html'>lantern</a></li>
-<li><a href='./winsw/index.html'>winsw</a></li>
-</ul>
-
-    <h2 id="1">Tool 常用工具</h2>
+    
+    <h1 id="centos">CentOS</h1>
+<h2 id="1">源</h2>
+<pre><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</code></pre>
+<h2 id="2">常用操作</h2>
+<h3 id="2.1">更新</h3>
+<pre><code>$ yum clean all
+$ yum makecache</code></pre>
+<h3 id="2.2"> </h3>
 
 </article>
 <footer>

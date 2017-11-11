@@ -1,0 +1,311 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>penguinSeven</title>
+<style>
+
+body {
+color: #333;
+font-family: sans-serif;
+font-size: 12pt;
+line-height: 170%;
+padding: 0 30px 0 270px;
+}
+
+header .banner {
+margin: 0 0 1em 0;
+}
+
+header .banner, nav .banner {
+color: #777;
+font-size: 10pt;
+font-weight: bold;
+}
+
+header h1 {
+background: #0c3;
+border-radius: 4px;
+color: #fff;
+font-size: 24pt;
+margin: 0;
+padding: 1.2em 0;
+text-align: center;
+}
+
+nav {
+font-size: 10pt;
+overflow-x: hidden;
+overflow-y: auto;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+width: 240px;
+}
+
+nav .menubar {
+border-bottom: solid 1px #ccc;
+display: none;
+height: 48px;
+line-height: 48px;
+padding: 0 10px;
+}
+
+nav .button {
+background: #777;
+border: 1px solid #333;
+color: #fff;
+font-size: 10pt;
+font-weight: bold;
+padding: 8px;
+border-radius: 4px;
+}
+
+nav ul {
+padding: 0 0 0 10px;
+}
+
+nav ul a {
+color: #333;
+text-decoration: none;
+}
+
+nav ul a:hover {
+text-decoration: underline;
+}
+
+nav li {
+line-height: 180%;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav .level2 {
+font-size: 11pt;
+font-weight: bold;
+}
+
+nav .level3 {
+padding-left: 1em;
+}
+
+nav .level3:before { 
+content: "» ";
+}
+
+nav .level4 {
+padding-left: 2em;
+}
+
+nav .level4:before {
+content: "› ";
+}
+
+article h2 {
+border-bottom: dotted 1px #777;
+font-size: 12pt;
+line-height: 100%;
+margin: 4em 0 1em 0;
+padding: 0 0 0.3em 0;
+}
+
+article h3 {
+font-size: 12pt;
+line-height: 100%;
+margin: 2em 0 1em 0;
+padding: 0;
+}
+
+article h4 {
+font-size: 12pt;
+font-style:italic;
+font-weight: normal;
+line-height: 100%;
+margin: 1.2em 0 1em 0;
+padding: 0;
+}
+
+article p {
+margin: 1em 0;
+}
+
+article p code {
+background: #eee;
+border: 1px solid #ccc;
+}
+
+article p strong {
+color: #f00;
+}
+
+article pre {
+background: #eee;
+border-left: solid 2px #3c0;
+font-size: 10pt;
+margin: 1em 0;
+padding: 0 0 0 1em;
+overflow-x: auto;
+overflow-y: padding;
+}
+
+article blockquote {
+background: #fff;
+border: dashed 1px #777;
+border-left: solid 2px #777;
+color: #000;
+margin: 0;
+padding: 0 0 0 1em;
+}
+
+article ul, article ol {
+padding-left: 2em;
+}
+
+footer {
+border-top: 1px solid #ccc;
+font-size: 10pt;
+margin-top: 4em;
+}
+
+@media (max-width: 768px) {
+
+body {
+padding: 0 10px 0 230px;
+}
+
+nav {
+width: 230px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+body {
+padding: 64px 10px 0 10px;
+}
+
+header .banner {
+display: none;
+}
+
+nav {
+position: absolute;
+width: 100%;
+}
+
+nav .menubar {
+display: block;
+}
+
+nav .banner {
+float: right;
+}
+
+nav ul {
+background: #fff;
+display: none;
+font-size: 14pt;
+margin: 0;
+padding: 0 0 0 8px;
+}
+
+nav .level2 {
+font-size: 16pt;
+font-weight: bold;
+}
+
+nav li {
+line-height: 240%;
+}
+
+.index nav ul {
+display: block;
+}
+
+.index article {
+display: none;
+}
+
+}
+table {
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin: 1.5em 0;
+}
+table th,table td {
+ border: 1px solid #E6E6E6;
+ padding: 5px 8px;
+ word-break: normal;
+
+}
+</style>
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">jekyll</a></li><li class="level3"><a href="#1.1">1.安装</a></li><li class="level3"><a href="#1.2">2. 初始化项目</a></li><li class="level3"><a href="#1.3">3. 启动项目</a></li></ul>
+
+</nav>
+<article>
+    
+    <h2 id="1">jekyll</h2>
+<h3 id="1.1">1.安装</h3>
+<pre><code class="lang-bash">gem install jekyll</code></pre>
+<h3 id="1.2">2. 初始化项目</h3>
+<pre><code class="lang-bash">jekyll new my-project</code></pre>
+<h3 id="1.3">3. 启动项目</h3>
+<pre><code class="lang-bash">cd my-project
+# 启动
+jekyll serve</code></pre>
+<ul>
+<li>报错</li>
+</ul>
+<pre><code class="lang-shell">/usr/local/ruby/lib/ruby/2.4.0/rubygems/core_ext/kernel_require.rb:55:in `require&#39;: cannot load such file -- bundler (LoadError)
+    from /usr/local/ruby/lib/ruby/2.4.0/rubygems/core_ext/kernel_require.rb:55:in `require&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/jekyll-3.6.2/lib/jekyll/plugin_manager.rb:48:in `require_from_bundler&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/jekyll-3.6.2/exe/jekyll:11:in `&lt;top (required)&gt;&#39;
+    from /usr/local/ruby/bin/jekyll:23:in `load&#39;
+    from /usr/local/ruby/bin/jekyll:23:in `&lt;main&gt;&#39;</code></pre>
+<ul>
+<li>解决</li>
+</ul>
+<pre><code class="lang-bash">
+gem install bundler
+
+gem update --system</code></pre>
+<ul>
+<li>报错</li>
+</ul>
+<pre><code class="lang-shell">/usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/resolver.rb:396:in `block in verify_gemfile_dependencies_are_found!&#39;: Could not find gem &#39;minima (~&gt; 2.0)&#39; in any of the gem sources listed in your Gemfile. (Bundler::GemNotFound)
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/resolver.rb:366:in `each&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/resolver.rb:366:in `verify_gemfile_dependencies_are_found!&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/resolver.rb:212:in `start&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/resolver.rb:191:in `resolve&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/definition.rb:235:in `resolve&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/definition.rb:159:in `specs&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/definition.rb:218:in `specs_for&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/definition.rb:207:in `requested_specs&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/runtime.rb:109:in `block in definition_method&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler/runtime.rb:21:in `setup&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/bundler-1.15.4/lib/bundler.rb:101:in `setup&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/jekyll-3.6.2/lib/jekyll/plugin_manager.rb:50:in `require_from_bundler&#39;
+    from /usr/local/ruby/lib/ruby/gems/2.4.0/gems/jekyll-3.6.2/exe/jekyll:11:in `&lt;top (required)&gt;&#39;
+    from /usr/local/ruby/bin/jekyll:23:in `load&#39;
+    from /usr/local/ruby/bin/jekyll:23:in `&lt;main&gt;&#39;</code></pre>
+<ul>
+<li>解决</li>
+</ul>
+<pre><code class="lang-shell"> bundle install</code></pre>
+<ul>
+<li>启动</li>
+</ul>
+<pre><code class="lang-bash"># 指定ip
+jekyll serve --host=0.0.0.0</code></pre>
+
+</article>
+<footer>
+
+</footer>

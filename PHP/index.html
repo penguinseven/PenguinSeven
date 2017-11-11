@@ -246,10 +246,15 @@ table th,table td {
 <body>
 <nav>
     <ul>
-<li class="level2"><a href="#1">PHP</a></li><li class="level3"><a href="#1.1">　常见问题</a></li><li class="level4"><a href="#1.1.1">1. php-cli 模式，判断文件是否存在错误</a></li><li class="level4"><a href="#1.1.2">2. PHP并行 多进程/多线程</a></li><li class="level4"><a href="#1.1.3">3. composer</a></li><li class="level4"><a href="#1.1.4">4. phpunit</a></li><li class="level4"><a href="#1.1.5">5.webBench</a></li><li class="level4"><a href="#1.1.6">6. xdebug</a></li><li class="level4"><a href="#1.1.7">7. phpstorm + vagrant + xdebug</a></li></ul>
+<li class="level2"><a href="#1">PHP</a></li><li class="level3"><a href="#1.1">　常见问题</a></li><li class="level4"><a href="#1.1.1">1. php-cli 模式，判断文件是否存在错误</a></li><li class="level4"><a href="#1.1.2">2. PHP并行 多进程/多线程</a></li><li class="level4"><a href="#1.1.3">3. composer</a></li><li class="level4"><a href="#1.1.4">4. phpunit</a></li><li class="level4"><a href="#1.1.5">5.webBench</a></li><li class="level4"><a href="#1.1.6">6. xdebug</a></li><li class="level4"><a href="#1.1.7">7. phpstorm + vagrant + xdebug</a></li><li class="level4"><a href="#1.1.8">8.API 设计理念</a></li><li class="level4"><a href="#1.1.9">9.composer http 提示：</a></li></ul>
 
 </nav>
 <article>
+    <ul>
+<li><a href='./laravel/index.html'>laravel</a></li>
+<li><a href='./swoole/index.html'>swoole</a></li>
+</ul>
+
     <h2 id="1">PHP</h2>
 <h3 id="1.1">　常见问题</h3>
 <h4 id="1.1.1">1. php-cli 模式，判断文件是否存在错误</h4>
@@ -382,6 +387,37 @@ xdebug.max_nesting_level = 512</code></pre>
 <li><p>run/debug configuration 》 PHP WEB Application 》</p>
 </li>
 </ol>
+<h4 id="1.1.8">8.API 设计理念</h4>
+<blockquote>
+<p>将涉及的实体抽象成资源，即按 id 访问资源，在 url 上做文章，以后再也不用为 url 起名字而苦恼了；<br>使用 HTTP 动词对资源进行 CRUD（增删改查）：get -&gt; 查, post -&gt; 增, put -&gt; 改, delete -&gt; 删<br>URL 命名规则，对于资源无法使用一个单数名词表示的情况，我使用中横线 - 连接  </p>
+</blockquote>
+<ul>
+<li>资源采用名词命名，e.g：产品 -&gt; product</li>
+<li>新增资源，e.g：新增产品 url -&gt; /product, verb -&gt; POST</li>
+<li>修改资源，e.g：修改产品 url -&gt; /products/{id}, verb -&gt; PUT</li>
+<li>资源详情，e.g：指定产品详情 url -&gt; /products/{id}, verb -&gt; GET</li>
+<li>删除资源，e.g：删除产品 url -&gt; /products/{id}, verb -&gt; DELETE</li>
+<li>资源列表，e.g：产品列表 url -&gt; /products, verb -&gt; GET</li>
+<li>资源关联关系，e.g：收藏产品 url -&gt; /products/{id}/star, verb -&gt; PUT</li>
+<li>资源关联关系，e.g：删除收藏产品 url -&gt; /products/{id}/star, verb -&gt; DELETE</li>
+</ul>
+<h4 id="1.1.9">9.composer http 提示：</h4>
+<pre><code>  Your configuration does not allow connection to http://packagist.phpcompose  
+  r.com. See https://getcomposer.org/doc/06-config.md#secure-http for details  </code></pre>
+<p>网上查一下，说是因为镜像使用用的是http，而原地址是需要https，所以配置下关掉https就好了。</p>
+<ul>
+<li><p>修改composer.json文件</p>
+<pre><code>   view plain copy
+  {  
+      &quot;config&quot;: {  
+          &quot;secure-http&quot;: false  
+      }  
+  }  </code></pre>
+</li>
+<li><p>参数</p>
+<pre><code>  composer config -g secure-http false</code></pre>
+</li>
+</ul>
 
 </article>
 <footer>

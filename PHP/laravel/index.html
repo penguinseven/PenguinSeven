@@ -246,10 +246,11 @@ table th,table td {
 <body>
 <nav>
     <ul>
-<li class="level2"><a href="#1">运行环境</a></li><li class="level2"><a href="#2">安装</a></li><li class="level2"><a href="#3">项目目录结构</a></li><li class="level2"><a href="#4">项目实践</a></li><li class="level3"><a href="#4.1">1. 路由</a></li><li class="level3"><a href="#4.2">2. 中间件</a></li><li class="level3"><a href="#4.3">3. 分页</a></li><li class="level3"><a href="#4.4">常见问题</a></li><li class="level4"><a href="#4.4.1">0.Command is not defined exception</a></li><li class="level4"><a href="#4.4.2">1. 自定义函数</a></li><li class="level4"><a href="#4.4.3">2. PHP json_decode 函数解析 json 结果为 NULL 的解决方法</a></li><li class="level4"><a href="#4.4.4">3. Controller 重写 validate方法,方便报错返回</a></li></ul>
+<li class="level2"><a href="#1">运行环境</a></li><li class="level2"><a href="#2">安装</a></li><li class="level2"><a href="#3">项目目录结构</a></li><li class="level2"><a href="#4">项目实践</a></li><li class="level3"><a href="#4.1">1. 路由</a></li><li class="level3"><a href="#4.2">2. 中间件</a></li><li class="level3"><a href="#4.3">3. 分页</a></li><li class="level3"><a href="#4.4">常见问题</a></li><li class="level4"><a href="#4.4.1">0.Command is not defined exception</a></li><li class="level4"><a href="#4.4.2">1. 自定义函数</a></li><li class="level4"><a href="#4.4.3">2. PHP json_decode 函数解析 json 结果为 NULL 的解决方法</a></li><li class="level4"><a href="#4.4.4">3. Controller 重写 validate方法,方便报错返回</a></li><li class="level4"><a href="#4.4.5">4. 创建门面 <code>Facades</code>，实现静态访问动态方法</a></li></ul>
 
 </nav>
 <article>
+    
     <h1 id="laravel">laravel</h1>
 <h2 id="1">运行环境</h2>
 <h2 id="2">安装</h2>
@@ -444,6 +445,88 @@ $content = urldecode($content);
             $this-&gt;throwValidationException($request, $validator);
         }
     }</code></pre>
+<h4 id="4.4.5">4. 创建门面 <code>Facades</code>，实现静态访问动态方法</h4>
+<ul>
+<li>示例</li>
+</ul>
+<pre><code class="lang-php">&lt;?php
+
+CloudMusic::search(&#39;title&#39;);</code></pre>
+<ul>
+<li>创建服务提供者</li>
+</ul>
+<pre><code class="lang-php">&lt;?php
+/**
+ * @fileName   : CloudMusicServiceProvider.php
+ * @date       : 2017/5/16 17:33
+ * @author     : ManJi
+ * @description: File description...
+ */
+
+namespace App\Providers;
+
+use App\Repositories\CloudMusicRepositories;
+use Illuminate\Support\ServiceProvider;
+
+class CloudMusicServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        app()-&gt;singleton(&#39;CloudMusic&#39;, function () {
+            return new CloudMusicRepositories();
+        });
+    }
+}</code></pre>
+<ul>
+<li>创建门面</li>
+</ul>
+<pre><code class="lang-php">&lt;?php
+/**
+ * @fileName   : CloudMusic.php
+ * @date       : 2017/5/16 17:20
+ * @author     : ManJi
+ * @description: File description...
+ */
+
+namespace App\Facades;
+
+use Illuminate\Support\Facades\Facade;
+
+class CloudMusic extends Facade
+{
+    protected static function getFacadeAccessor()
+    {
+        return &#39;CloudMusic&#39;;
+    }
+}</code></pre>
+<ul>
+<li>修改文件<code>config/aap.php</code></li>
+</ul>
+<pre><code class="lang-php">&lt;?php
+
+return [
+   &#39;providers&#39; =&gt; [
+        App\Providers\CloudMusicServiceProvider::class,
+    ],  
+   &#39;alias&#39; =&gt; [
+        &#39;CloudMusic&#39; =&gt; App\Facades\CloudMusic::class,
+    ],  
+];</code></pre>
 
 </article>
 <footer>

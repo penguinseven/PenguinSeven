@@ -246,17 +246,40 @@ table th,table td {
 <body>
 <nav>
     <ul>
-<li class="level2"><a href="#1">Tool 常用工具</a></li></ul>
+<li class="level2"><a href="#1">Ruby</a></li><li class="level3"><a href="#1.1">1. 安装</a></li></ul>
 
 </nav>
 <article>
     <ul>
-<li><a href='./innoSetup/index.html'>innoSetup</a></li>
-<li><a href='./lantern/index.html'>lantern</a></li>
-<li><a href='./winsw/index.html'>winsw</a></li>
+<li><a href='./jekyll/index.html'>jekyll</a></li>
 </ul>
 
-    <h2 id="1">Tool 常用工具</h2>
+    <h2 id="1">Ruby</h2>
+<h3 id="1.1">1. 安装</h3>
+<ul>
+<li><p>下载 （<a href="http://www.ruby-lang.org/en/downloads/）">http://www.ruby-lang.org/en/downloads/）</a> 教程版本：2.4.1</p>
+</li>
+<li><p>解压</p>
+</li>
+</ul>
+<pre><code class="lang-bash">tar -zxvf ruby-2.4.1.tar.gz</code></pre>
+<ul>
+<li>编译安装</li>
+</ul>
+<pre><code class="lang-shell">cd ruby-2.4.1
+# prefix是将ruby安装到指定目录，也可以自定义
+./configure –-prefix=/usr/local/ruby 
+# 安装
+make &amp;&amp; make install</code></pre>
+<ul>
+<li>Ruby环境变量配置</li>
+</ul>
+<pre><code class="lang-bash">vi /etc/profile
+
+# 添加路径
+export PATH=/usr/local/ruby/bin:$PATH
+# 刷新配置文件
+source /etc/profile</code></pre>
 
 </article>
 <footer>

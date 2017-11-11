@@ -12,7 +12,7 @@ function getdir(){
         if [ -d $dir_or_file  ]
         then
 
-            if [ -f $1"/README.md" ]
+            if [ -f $1"/README.md" ] && [ -f $1"/"$element"/README.md" ]
             then
                 echo "- <a href='./"$element"/index.html'>"$element"</a>" >> $1"/header.md"
             fi
