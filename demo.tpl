@@ -10,11 +10,11 @@
     <x-index />
 </nav>
 <article>
-    <nav class="nav-ul">
+    <div class="nav-ul">
         <ul>
             <x-markdown src="header.md" />
         </ul>
-    </nav>
+    </div>
 
     <x-markdown src="README.md" />
 </article>
