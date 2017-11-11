@@ -12,13 +12,14 @@ function getdir(){
         if [ -d $dir_or_file  ]
         then
 
-            # 递归文件夹
-            getdir $dir_or_file
-
-            if [ -e $element"/index.html" ]
+            if [ -f $1"/README.md" ]
             then
                 echo "- <a href='./"$element"/index.html'>"$element"</a>" >> $1"/header.md"
             fi
+
+            # 递归文件夹
+            getdir $dir_or_file
+
         else
             echo
             # 判断是否存在readme文件
