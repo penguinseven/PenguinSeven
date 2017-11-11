@@ -38,6 +38,11 @@
     　　deb http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free
     　　deb-src http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free
 
+#### 3. centos 源
+
+    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+
+
 ### 1. screen ssh链接
 
 ```

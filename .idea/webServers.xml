@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5bc25a51-d782-4d1c-b920-10743c1b4d5c" name="118.89.177.56" url="http://www.penguinseven.club">
+        <fileTransfer host="118.89.177.56" port="22" rootFolder="/data/release/penguinseven" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
