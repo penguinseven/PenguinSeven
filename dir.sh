@@ -41,21 +41,21 @@ function getdir(){
                     echo 'Copy file:'$1'/index.tpl'
                 fi
 
-                # 生成html文件
-                echo 'Create file:'$1'/index.html'
-                tianshu $1'/index.tpl'
-
-                # 删除模板文件
-                rm $1'/index.tpl'
-                echo 'Delete file:'$1'/index.tpl'
-
-                # 删导航栏
-                rm $1'/header.md'
-                echo 'Delete file:'$1'/header.md'
-
             fi
         fi
     done
+
+    # 生成html文件
+    echo 'Create file:'$1'/index.html'
+    tianshu $1'/index.tpl'
+
+    # 删除模板文件
+    rm $1'/index.tpl'
+    echo 'Delete file:'$1'/index.tpl'
+
+    # 删导航栏
+    rm $1'/header.md'
+    echo 'Delete file:'$1'/header.md'
 
 }
 
