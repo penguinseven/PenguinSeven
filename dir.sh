@@ -15,13 +15,12 @@ function getdir(){
             # 递归文件夹
             getdir $dir_or_file
 
-            # 判断文件是否存在，创建连接
-            if [ -f $dir_or_file"/index.html" ]
+            if [ -e $element"/index.html" ]
             then
                 echo "- <a href='./"$element"/index.html'>"$element"</a>" >> $1"/header.md"
             fi
         else
-
+            echo
             # 判断是否存在readme文件
             if [ 'README.md' = $element ]
             then
@@ -42,19 +41,17 @@ function getdir(){
                 fi
 
                 # 生成html文件
-                echo 'Create file:'$dir_or_file'/index.html'
+                echo 'Create file:'$1'/index.html'
                 tianshu $1'/index.tpl'
 
-                if [ ! $1 = '.' ]
-                then
-                    # 删除模板文件
-                    rm $1'/index.tpl'
-                    echo 'Delete file:'$1'/index.tpl'
+                # 删除模板文件
+                rm $1'/index.tpl'
+                echo 'Delete file:'$1'/index.tpl'
 
-                     # 删导航栏
-                    rm $1'/header.md'
-                    echo 'Delete file:'$1'/header.md'
-                fi
+                # 删导航栏
+                rm $1'/header.md'
+                echo 'Delete file:'$1'/header.md'
+
             fi
         fi
     done
