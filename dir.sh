@@ -32,7 +32,6 @@ function getdir(){
                     touch $1'/header.md'
                 fi
 
-
                 # 判断是否存在 index.tpl 文件
                 if [ ! -f $1"/index.tpl" ]
                 then
@@ -45,17 +44,21 @@ function getdir(){
         fi
     done
 
-    # 生成html文件
-    echo 'Create file:'$1'/index.html'
-    tianshu $1'/index.tpl'
+    # 一个文件夹内生成一次
+    if [ -e $1"/index.tpl" ]
+    then
+        # 生成html文件
+        echo 'Create file:'$1'/index.html'
+        tianshu $1'/index.tpl'
 
-    # 删除模板文件
-    rm $1'/index.tpl'
-    echo 'Delete file:'$1'/index.tpl'
+        # 删除模板文件
+        rm $1'/index.tpl'
+        echo 'Delete file:'$1'/index.tpl'
 
-    # 删导航栏
-    rm $1'/header.md'
-    echo 'Delete file:'$1'/header.md'
+        # 删导航栏
+        rm $1'/header.md'
+        echo 'Delete file:'$1'/header.md'
+    fi
 
 }
 
