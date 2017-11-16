@@ -121,3 +121,77 @@ Soft open files 是Linux系统参数，影响系统单个进程能够打开最�
 ```bash
 apt-get install goaccess
 ```
+
+### 6. 文件夹共享
+
+- 安装samba
+
+```bash
+apt-get install samba
+```
+
+- 备份配置文件
+
+```bash
+cp /etc/samba/samb.conf /etc/samba/samb.conf.bak
+```
+
+- 修改配置文件
+
+```bash
+vi /etc/samba/samba.conf
+# 添加用户验证
+security = user
+username map = /etc/samba/sambausers
+# 在文件末尾添加
+[Share]
+comment = Share Folder with username and password
+path = /home/www/share
+public = yes
+writable = yes
+vaild users = share
+create mask = 0700
+directory mask =0700
+force user = nobody
+force group = nogroup
+available = yes
+browerable = yes
+```
+
+- 创建用户，增加了share这个用户，却没有给用户赋予本机登录密码。
+所以这个用户将只能从远程访问，不能从本机登录。
+而且samba的登录密码能和本机登录密码不相同。 
+
+```bash
+userad share
+```
+
+- 新增网络使用者的帐号
+
+```bash
+smbpasswd -a share
+```
+
+- 创建并修改user map文件
+
+```bash
+ vi /etc/samba/smbusers
+ # 添加内容
+ share = "network username"  
+```
+
+- 更改share用户的网络访问密码，也用这个命令更改密码，
+> 删除网络使用者的帐号的命令把上面的 -a 改成 -x 
+
+```bash
+# 创建/修改
+smbpasswd -a share
+```
+
+- 检测参数,重启
+
+```bash
+testparm 
+/etc/init.d/samba restart 
+```
+

@@ -36,6 +36,7 @@ nav {
     left: 0;
     bottom: 0;
     width: 240px;
+    border-right: 4px solid #ccc;
 }
 
 nav .menubar {
@@ -237,7 +238,7 @@ table th,table td {
 }
 
 .nav-ul {
-    margin: 50px;
+    margin: 0 50px 50px 0px;
 }
 
 .nav-ul ul {
@@ -260,14 +261,14 @@ table th,table td {
 .nav-ul li a {
     text-decoration: none;
     color: #ccc;
-    font: 25px/1 Helvetica, Verdana, sans-serif;
+   /* font: 25px/1 Helvetica, Verdana, sans-serif;
     text-transform: uppercase;
 
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease;*/
 }
 
 .nav-ul li a:hover {
