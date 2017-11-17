@@ -150,8 +150,8 @@ path = /home/www/share
 public = yes
 writable = yes
 vaild users = share
-create mask = 0700
-directory mask =0700
+create mask = 0777
+directory mask =0777
 force user = nobody
 force group = nogroup
 available = yes
@@ -180,8 +180,7 @@ smbpasswd -a share
  share = "network username"  
 ```
 
-- 更改share用户的网络访问密码，也用这个命令更改密码，
-> 删除网络使用者的帐号的命令把上面的 -a 改成 -x 
+- 更改share用户的网络访问密码，也用这个命令更改密码，删除网络使用者的帐号的命令把上面的 -a 改成 -x 
 
 ```bash
 # 创建/修改
