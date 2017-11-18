@@ -218,7 +218,7 @@ $ composer require pda/pheanstalk
                     # 当前管道，reserve没响应的
                     [current-waiting] => 0
                     
-                    
+                    # 其他
                     [cmd-delete] => 0
                     [cmd-pause-tube] => 0
                     [pause] => 0
