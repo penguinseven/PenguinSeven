@@ -228,7 +228,7 @@ $ composer require pda/pheanstalk
         )
         ```
         
-        - useTube, 使用管道，添加任务
+       - useTube, 使用管道，添加任务
         
        ```php
        $phenstalk->useTube('default')->put('test');
