@@ -176,12 +176,14 @@ $ composer require pda/pheanstalk
         - listTubes 显示当前存在的管道列表
         
         ```php
-        $pheanstalk->listTubs();
+        <?php
+          $pheanstalk->listTubs();
         ```
         
         - statsTube 查看指定管道的状态
         
         ```bash
+        
         Pheanstalk\Response\ArrayResponse Object
         (
             [_name:Pheanstalk\Response\ArrayResponse:private] => OK
