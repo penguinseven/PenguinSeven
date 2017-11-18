@@ -85,9 +85,12 @@
  
 ```
 
-## 工具及文档
+## 其他
 
-![image](http://ogve85gs3.bkt.clouddn.com/project_dir.png)
+### 工具及文档
+
+![image](./image/project_dir.png)
 
 ### 1. web运行环境（upupw.zip解压后）
-![image](http://ogve85gs3.bkt.clouddn.com/dir.jpg)
+
+![image](./image/dir.jpg)
