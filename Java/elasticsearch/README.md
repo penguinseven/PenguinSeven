@@ -1,4 +1,6 @@
-## Elasticsearch
+# Elasticsearch
+
+## 安装/运行
 
 ###  1. 初始化
 
@@ -41,8 +43,10 @@ vi /usr/local/elasticsearch/config/elasticsearch.yml
 
 #### elasticsearch-head
 
+- 下载
+
 ```bash
-# 下载
+
 git clone https://github.com/mobz/elasticsearch-head.git
 
 # 成功安装node (大于6.0)
@@ -54,13 +58,21 @@ npm install
 # 启动
 npm run start
 
+```
+
+- 解决跨域问题
+
+```bash
 # 修改 elasticsearch.yml, 允许跨域, 在文件末尾添加
 http.cors.enabled: true
 http.cors.allow-origin: "*"
-
 ```
 
-### Finally.常见问题
+## 问题
+
+### 使用问题
+
+### 安装配置问题
 
 - 1、can not run elasticsearch as root 
 
