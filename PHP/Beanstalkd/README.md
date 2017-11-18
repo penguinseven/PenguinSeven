@@ -183,7 +183,6 @@ $ composer require pda/pheanstalk
         - statsTube 查看指定管道的状态
         
         ```bash
-        
         Pheanstalk\Response\ArrayResponse Object
         (
             [_name:Pheanstalk\Response\ArrayResponse:private] => OK
