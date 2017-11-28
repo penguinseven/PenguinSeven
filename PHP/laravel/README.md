@@ -2,7 +2,21 @@
 
 ## 运行环境
 
+- homestead, vagrant的box
+
 ## 安装
+
+- composer 安装
+
+```bash
+$ composer create-project laravel/laravel new-blog 
+```
+
+- laravel 安装
+
+```bash
+laravel new blog
+```
 
 ## 项目目录结构
 
@@ -34,11 +48,55 @@
 
 ## 项目实践
 
-### 1. 路由
+### migration
 
-### 2. 中间件
+- 创建
 
-### 3. 分页
+```bash
+$ php artisan make:migration create_articles_table --create='articles'
+```  
+
+- 修改文件,添加字段
+
+```php
+<?php
+# migrations/2017_11_19_061116_create_articles_table.php  “up” 方法下的
+Schema::create('articles', function (Blueprint $table) {
+            $table->increments('id');           
+            $table->string('title')->comment('标题');
+            $table->text('content')->comment('内容');
+            $table->timestamp('published_at')->comment('发布时间');
+            $table->timestamps();
+        });
+```
+
+- 创建数据表
+
+```bash
+$ php artisan migrate
+```
+
+### 路由
+
+
+
+### 中间件
+
+
+### 数据库操作
+
+- >  queryScope
+- > setAttribute
+
+#### DB facade
+
+#### 查询构造器 
+
+#### Eloquent ORM  
+
+
+
+### 分页
 
 - `Illuminate\Pagination\LengthAwarePaginator` 实例
 
@@ -125,7 +183,12 @@
   接口契约并且提供 toJson 方法，
   所以它很容易将你的分页结果集转换为 Json。
       
-  ### 常见问题
+      
+      
+      
+      
+      
+### 常见问题
   
 #### 0.Command is not defined exception
       
@@ -154,17 +217,19 @@ Edit your app/Console/Kernel.php file and add your command to the `$commands` ar
 - 在`composer.json`中添加
 
 ```json
+{
 "autoload": {
-    "classmap": [
-      "database"
-    ],
-    "psr-4": {
-      "App\\": "app/"
-    },
-    "files": [
-      "app/Support/helpers.php"
-    ]
-  }
+     "classmap": [
+       "database"
+     ],
+     "psr-4": {
+       "App": "app/"
+     },
+     "files": [
+       "app/Support/helpers.php"
+     ]
+   }
+ }
 ```
 
 - 执行 `composer dump-autoload`
@@ -177,13 +242,13 @@ Edit your app/Console/Kernel.php file and add your command to the `$commands` ar
        
 - 情况一
     
-> 出现这个问题是因为在 json 字符串中反斜杠被转义，只需要用 htmlspecialchars_decode() 函数处理一下 $content 即可：
+> 出现这个问题是因为在 json 字符串中反斜杠被转义，只需要用 `htmlspecialchars_decode()` 函数处理一下 $content 即可：
     
     $content = htmlspecialchars_decode($content);
     
 - 情况二
     
-> 在保存 json 数据时使用 urlencode() 函数：
+> 在保存 `json` 数据时使用 `urlencode()` 函数：
     
     $content = urlencode(json_encode($content));
     #解析时使用 urldecode() 函数：
@@ -192,7 +257,7 @@ Edit your app/Console/Kernel.php file and add your command to the `$commands` ar
     #即可避免反斜杠转义造成的无法解析。
     
 
-#### 3. Controller 重写 validate方法,方便报错返回
+#### 3. `Controller` 重写 `validate` 方法,方便报错返回
 
 ```php
  /**

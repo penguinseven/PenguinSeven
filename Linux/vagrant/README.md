@@ -24,55 +24,77 @@
 
 ### 测试vagrant是否安装成功
 
-    $ vagrant -v
+```bash
+$ vagrant -v
+```
     
 ### 查看列表
     
-    $ vagrant box list
+```bash
+$ vagrant box list
+```
     
 ### 添加列表
     
-    $ vagrant box add ubuntu1404 ubuntu1404.box
+```bash
+$ vagrant box add ubuntu1404 ubuntu1404.box
+```
     
 ### 初始化虚拟机
     
-    $ mkdir ubuntu
-    $ cd ubuntu
-    $ vagrant box init ubuntu1404
+```bash
+$ mkdir ubuntu
+$ cd ubuntu
+$ vagrant box init ubuntu1404
+```
    
 ### 操作
     
-    $ vagrant up // 开机
-    $ vagrant halt // 关机
-    $ vagrant status // 状态
-    $ vagrant ssh  // ssh 登录
+```bash
+$ vagrant up // 开机
+$ vagrant halt // 关机
+$ vagrant status // 状态
+$ vagrant ssh  // ssh 登录
+```
     
 ###优化
 
 - 虚拟机名称
 
-        vb.name = "ubuntu_mooc"
+```bash
+ vb.name = "ubuntu_mooc"
+```
             
 - 虚拟机主机名
 
-        config.vm.hostname = "mooc"
+```bash
+config.vm.hostname = "mooc"
+```
     
 - 配置虚拟机内存和CPU
 
-        vb.memory = "1024"
-        vb.cpus = 2
+```bash
+vb.memory = "1024"
+vb.cpus = 2
+```
         
 - 配置IP
-            
-        config.vm.network "public_network", ip: "192.168.1.122", auto_config: true
+
+```bash
+config.vm.network "public_network", ip: "192.168.1.122", auto_config: true
+```        
     
 - 配置共享目录
 
-        config.vm.synced_folder "/Users/vincent/code/", "/home/www", :nfs => true
+```bash
+config.vm.synced_folder "/Users/vincent/code/", "/home/www", :nfs => true
+```
    
 ### 打包命令
 
-    vagrant package --output xxx.box    
+```bash
+vagrant package --output xxx.box    
+```
  
 ### 注意事项
  
@@ -84,19 +106,36 @@
  - git (https://github.com/apanly/mooc/tree/master/vagrant)
  
  
- ## 常见问题
+## 常见问题
+
+### 1. mount: unknown filesystem type 'vboxsf'
  
- ### 1. mount: unknown filesystem type 'vboxsf'
- 
-    sudo apt-get install virtualbox-guest-utils
+```bash
+sudo apt-get install virtualbox-guest-utils
+```
  
  vagrant reload后问题完美解决。
  
  
- ### 2. VirtualBox: mount.vboxsf: mounting failed with the error: No such device
+### 2. VirtualBox: mount.vboxsf: mounting failed with the error: No such device
         
-
-    apt-get install linux-headers-$(uname -r)
+```bash
+# apt-get install linux-headers-$(uname -r)
     
 vagrant reload
+```
+
+### 3. 打包后启动失败
+
+- 打包时注释私有网络设置
+
+```bash
+# config.vm.network "public_network", ip: "192.168.1.125"
+```
+
+- 在新的box下，修改私有网络的配置,添加 **auto_config: true**
+
+```bash
+config.vm.network "public_network", ip: "192.168.1.125", auto_config: true
+```
 
