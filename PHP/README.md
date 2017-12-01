@@ -159,9 +159,11 @@ xdebug.max_nesting_level = 512
 ```
 #### 7. phpstorm + vagrant + xdebug
 
-1. php  》 severs 》 目录映射
+- php  》 severs 》 目录映射
 
-1. run/debug configuration 》 PHP WEB Application 》
+- run/debug configuration 》 PHP WEB Application 》
+
+- 重启php-fpm，必须重启
 
 
 #### 8.API 设计理念
