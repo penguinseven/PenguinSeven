@@ -1,0 +1,308 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>吧食笔记</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">介绍</a></li><li class="level3"><a href="#1.1">任务状态</a></li><li class="level3"><a href="#1.2">管道与任务</a></li><li class="level2"><a href="#2">安装/运行</a></li><li class="level3"><a href="#2.1">下载安装</a></li><li class="level2"><a href="#3">使用</a></li><li class="level3"><a href="#3.1">composer 引入pheanStalkd</a></li><li class="level3"><a href="#3.2">代码实现</a></li><li class="level2"><a href="#4">参考</a></li></ul>
+
+</nav>
+<article>
+    <div class="nav-ul">
+        <ul>
+            <li><a href="/">首页</a></li>
+            
+            <li><a href="javascript:history.go(-1)">返回</a></li>
+        </ul>
+    </div>
+
+    <h1 id="beanstalkd">BeanStalkd</h1>
+<h2 id="1">介绍</h2>
+<h3 id="1.1">任务状态</h3>
+<p><img src="./image/status.jpg" alt="image"></p>
+<h3 id="1.2">管道与任务</h3>
+<p><img src="./image/tube.jpg" alt="image"></p>
+<h2 id="2">安装/运行</h2>
+<h3 id="2.1">下载安装</h3>
+<ul>
+<li>包管理工具安装</li>
+</ul>
+<pre><code class="lang-bash">apt-get install beanstalkd</code></pre>
+<ul>
+<li>编译安装</li>
+</ul>
+<pre><code class="lang-bash">
+# 下载
+git clone https://github.com/kr/beanstalkd 
+
+ #QUICK START
+
+ $ make
+ $ ./beanstalkd
+
+
+ # also try,
+
+ $ ./beanstalkd -h
+ $ ./beanstalkd -VVV
+ $ make CFLAGS=-O2
+ $ make CC=clang
+ $ make check
+ $ make install
+ $ make install PREFIX=/usr</code></pre>
+<h2 id="3">使用</h2>
+<h3 id="3.1">composer 引入pheanStalkd</h3>
+<pre><code class="lang-bash">$ composer require pda/pheanstalk</code></pre>
+<h3 id="3.2">代码实现</h3>
+<pre><code class="lang-php">&lt;?php
+
+    require_once &quot;./vendor/autoload.php&quot;;
+
+   use Pheanstalk\Pheanstalk;
+
+  $pheanstalk = new Pheanstalk(&quot;127.0.0.1&quot;, &quot;11300&quot;);
+
+  print_r($pheanstalk-&gt;status());</code></pre>
+<ul>
+<li><p>类、方法清单</p>
+<ul>
+<li><p>维护类</p>
+<ul>
+<li><p>status, 当前beanstalkd的状态信息，<code>$pheanstalk-&gt;status()</code> 结果分析</p>
+<pre><code class="lang-bash">Pheanstalk\Response\ArrayResponse Object 
+(
+  [_name:Pheanstalk\Response\ArrayResponse:private] =&gt; OK
+  [storage:ArrayObject:private] =&gt; Array
+      (
+          # 当前存在优先级的任务数
+          [current-jobs-urgent] =&gt; 0
+
+          # ready 状态的任务数
+          [current-jobs-ready] =&gt; 0
+
+          # reserved 状态的任务数
+          [current-jobs-reserved] =&gt; 0
+
+          # delayed 延时的任务数
+          [current-jobs-delayed] =&gt; 0
+
+          # buried 预留状态的任务数
+          [current-jobs-buried] =&gt; 0
+
+          # cmd-(.*) 运行过 $1 命令的次数
+          [cmd-put] =&gt; 0
+          [cmd-peek] =&gt; 1
+          [cmd-peek-ready] =&gt; 0
+          [cmd-peek-delayed] =&gt; 0
+          [cmd-peek-buried] =&gt; 0
+          [cmd-reserve] =&gt; 0
+          [cmd-reserve-with-timeout] =&gt; 0
+          [cmd-delete] =&gt; 0
+          [cmd-release] =&gt; 0
+          [cmd-use] =&gt; 0
+          [cmd-watch] =&gt; 0
+          [cmd-ignore] =&gt; 0
+          [cmd-bury] =&gt; 0
+          [cmd-kick] =&gt; 0
+          [cmd-touch] =&gt; 0
+          [cmd-stats] =&gt; 2
+          [cmd-stats-job] =&gt; 0
+          [cmd-stats-tube] =&gt; 0
+          [cmd-list-tubes] =&gt; 0
+          [cmd-list-tube-used] =&gt; 0
+          [cmd-list-tubes-watched] =&gt; 0
+          [cmd-pause-tube] =&gt; 0
+
+          # 任务超时被重新放回管道的任务数，理应为0
+          [job-timeouts] =&gt; 0
+
+          # 任务累计数
+          [total-jobs] =&gt; 0
+
+          # 任务大小2^16
+          [max-job-size] =&gt; 65535
+
+          # 当前管道数
+          [current-tubes] =&gt; 1
+
+          # 当前连接数
+          [current-connections] =&gt; 1
+
+          # 当前生产者数，计数方式为至少发送一次put指令，算一个
+          [current-producers] =&gt; 0
+
+          # 当前消费者数，至少发送过reserv指令，算一个
+          [current-workers] =&gt; 0
+
+          # 发送过reserv指令但是没有得到相应的数量
+          [current-waiting] =&gt; 0
+
+          # 累计连接次数
+          [total-connections] =&gt; 2
+
+          # beanstalkd 当前pid
+          [pid] =&gt; 613
+
+          #版本
+          [version] =&gt; 1.10
+
+          # 以下两项反应负载情况，超过1需排查
+
+          # 记录执行用户代码的时间
+          [rusage-utime] =&gt; 0.008000
+
+          # 记录执行内核代码的时间
+          [rusage-stime] =&gt; 0.004000
+
+          # 运行时间 单位/秒
+          [uptime] =&gt; 35319
+
+          # 不常用
+          [binlog-oldest-index] =&gt; 0
+          [binlog-current-index] =&gt; 0
+          [binlog-records-migrated] =&gt; 0
+          [binlog-records-written] =&gt; 0
+          [binlog-max-size] =&gt; 10485760
+          [id] =&gt; a3da96b14d2abff9
+          [hostname] =&gt; penguinSeven
+      )
+
+)</code></pre>
+</li>
+<li><p>listTubes 显示当前存在的管道列表</p>
+<pre><code class="lang-php">&lt;?php
+$pheanstalk-&gt;listTubs();</code></pre>
+</li>
+<li><p>statsTube 查看指定管道的状态</p>
+<pre><code class="lang-bash">Pheanstalk\Response\ArrayResponse Object
+(
+  [_name:Pheanstalk\Response\ArrayResponse:private] =&gt; OK
+  [storage:ArrayObject:private] =&gt; Array
+      (
+           # 管道名称
+          [name] =&gt; default
+
+          # 当前管道urgent 优先级任务数
+          [current-jobs-urgent] =&gt; 0
+
+          # 当前管道ready 状态的任务数
+          [current-jobs-ready] =&gt; 0
+
+          # 当前管道reserved 状态的任务数
+          [current-jobs-reserved] =&gt; 0 
+
+          # 当前管道delayed 延时状态的任务数
+          [current-jobs-delayed] =&gt; 0 
+
+          # 当前管道buried 预留状态的任务数
+          [current-jobs-buried] =&gt; 0
+
+          # 当前管道累计的任务数
+          [total-jobs] =&gt; 0
+
+          # 当前管道生产者
+          [current-using] =&gt; 1
+
+          # 当前管道消费者
+          [current-watching] =&gt; 1
+
+          # 当前管道，reserve没响应的
+          [current-waiting] =&gt; 0
+
+          # 其他
+          [cmd-delete] =&gt; 0
+          [cmd-pause-tube] =&gt; 0
+          [pause] =&gt; 0
+          [pause-time-left] =&gt; 0
+      )
+
+)</code></pre>
+<ul>
+<li>useTube, 使用管道，添加任务</li>
+</ul>
+<pre><code class="lang-php">$phenstalk-&gt;useTube(&#39;default&#39;)-&gt;put(&#39;test&#39;);</code></pre>
+<ul>
+<li>watch , 使用管道，取任务</li>
+</ul>
+<pre><code class="lang-php">&lt;?php
+$job = $phenstalk-&gt;watch(&#39;default&#39;)-&gt;reserve();
+
+// 查看任务状态
+print_r($phenstalk-&gt;statsJob($job));
+
+/**
+* 
+Pheanstalk\Response\ArrayResponse Object
+(
+    [_name:Pheanstalk\Response\ArrayResponse:private] =&gt; OK
+    [storage:ArrayObject:private] =&gt; Array
+        (
+            #当前任务ID 唯一的
+            [id] =&gt; 1
+
+            # 当前任务所在的管道
+            [tube] =&gt; penguin
+
+            # 当前任务的状态
+            [state] =&gt; reserved
+
+            # 默认优先级1024, 0最大
+            [pri] =&gt; 1024
+
+            # 当前任务存在秒数
+            [age] =&gt; 0
+
+            # 当前任务延时秒数
+            [delay] =&gt; 0
+
+            # ttr时间时间，超出就会放回管道
+            [ttr] =&gt; 60
+
+            # ttr剩余时间
+            [time-left] =&gt; 59
+
+            # 没有开启持久化存储，所以数值为0
+            [file] =&gt; 0
+
+            # 当前任务被reserve的次数
+            [reserves] =&gt; 1
+
+            # ttr 超时的次数
+            [timeouts] =&gt; 0
+
+            # 重设release的次数
+            [releases] =&gt; 0
+
+            # 预留次数
+            [buries] =&gt; 0
+
+            # 踢回ready状态的次数
+            [kicks] =&gt; 0
+        )
+
+)
+*/</code></pre>
+<ul>
+<li>peek 直接使用任务id读取任务</li>
+</ul>
+<pre><code class="lang-php">&lt;?php
+$job = $pheanstalk-&gt;peek(1);</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4">参考</h2>
+<ul>
+<li><a href="http://www.imooc.com/learn/912">慕课网</a></li>
+</ul>
+
+</article>
+<footer>
+
+</footer>

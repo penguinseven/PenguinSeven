@@ -2,246 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>penguinSeven</title>
-<style>
-
-body {
-color: #333;
-font-family: sans-serif;
-font-size: 12pt;
-line-height: 170%;
-padding: 0 30px 0 270px;
-}
-
-header .banner {
-margin: 0 0 1em 0;
-}
-
-header .banner, nav .banner {
-color: #777;
-font-size: 10pt;
-font-weight: bold;
-}
-
-header h1 {
-background: #0c3;
-border-radius: 4px;
-color: #fff;
-font-size: 24pt;
-margin: 0;
-padding: 1.2em 0;
-text-align: center;
-}
-
-nav {
-font-size: 10pt;
-overflow-x: hidden;
-overflow-y: auto;
-position: fixed;
-top: 0;
-left: 0;
-bottom: 0;
-width: 240px;
-}
-
-nav .menubar {
-border-bottom: solid 1px #ccc;
-display: none;
-height: 48px;
-line-height: 48px;
-padding: 0 10px;
-}
-
-nav .button {
-background: #777;
-border: 1px solid #333;
-color: #fff;
-font-size: 10pt;
-font-weight: bold;
-padding: 8px;
-border-radius: 4px;
-}
-
-nav ul {
-padding: 0 0 0 10px;
-}
-
-nav ul a {
-color: #333;
-text-decoration: none;
-}
-
-nav ul a:hover {
-text-decoration: underline;
-}
-
-nav li {
-line-height: 180%;
-list-style: none;
-margin: 0;
-padding: 0;
-}
-
-nav .level2 {
-font-size: 11pt;
-font-weight: bold;
-}
-
-nav .level3 {
-padding-left: 1em;
-}
-
-nav .level3:before { 
-content: "» ";
-}
-
-nav .level4 {
-padding-left: 2em;
-}
-
-nav .level4:before {
-content: "› ";
-}
-
-article h2 {
-border-bottom: dotted 1px #777;
-font-size: 12pt;
-line-height: 100%;
-margin: 4em 0 1em 0;
-padding: 0 0 0.3em 0;
-}
-
-article h3 {
-font-size: 12pt;
-line-height: 100%;
-margin: 2em 0 1em 0;
-padding: 0;
-}
-
-article h4 {
-font-size: 12pt;
-font-style:italic;
-font-weight: normal;
-line-height: 100%;
-margin: 1.2em 0 1em 0;
-padding: 0;
-}
-
-article p {
-margin: 1em 0;
-}
-
-article p code {
-background: #eee;
-border: 1px solid #ccc;
-}
-
-article p strong {
-color: #f00;
-}
-
-article pre {
-background: #eee;
-border-left: solid 2px #3c0;
-font-size: 10pt;
-margin: 1em 0;
-padding: 0 0 0 1em;
-overflow-x: auto;
-overflow-y: padding;
-}
-
-article blockquote {
-background: #fff;
-border: dashed 1px #777;
-border-left: solid 2px #777;
-color: #000;
-margin: 0;
-padding: 0 0 0 1em;
-}
-
-article ul, article ol {
-padding-left: 2em;
-}
-
-footer {
-border-top: 1px solid #ccc;
-font-size: 10pt;
-margin-top: 4em;
-}
-
-@media (max-width: 768px) {
-
-body {
-padding: 0 10px 0 230px;
-}
-
-nav {
-width: 230px;
-}
-
-}
-
-@media (max-width: 480px) {
-
-body {
-padding: 64px 10px 0 10px;
-}
-
-header .banner {
-display: none;
-}
-
-nav {
-position: absolute;
-width: 100%;
-}
-
-nav .menubar {
-display: block;
-}
-
-nav .banner {
-float: right;
-}
-
-nav ul {
-background: #fff;
-display: none;
-font-size: 14pt;
-margin: 0;
-padding: 0 0 0 8px;
-}
-
-nav .level2 {
-font-size: 16pt;
-font-weight: bold;
-}
-
-nav li {
-line-height: 240%;
-}
-
-.index nav ul {
-display: block;
-}
-
-.index article {
-display: none;
-}
-
-}
-table {
-   border-collapse: collapse;
-   border-spacing: 0;
-   margin: 1.5em 0;
-}
-table th,table td {
- border: 1px solid #E6E6E6;
- padding: 5px 8px;
- word-break: normal;
-
-}
-</style>
+<title>吧食笔记</title>
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body>
 <nav>
@@ -250,7 +12,14 @@ table th,table td {
 
 </nav>
 <article>
-    
+    <div class="nav-ul">
+        <ul>
+            <li><a href="/">首页</a></li>
+            
+            <li><a href="javascript:history.go(-1)">返回</a></li>
+        </ul>
+    </div>
+
     <h1 id="koel-">koel 二次开发</h1>
 <h2 id="1">项目介绍</h2>
 <p>将koel 项目加入网易163音乐接口</p>
@@ -268,74 +37,79 @@ table th,table td {
 <h3 id="1.2">涉及相关</h3>
 <h4 id="1.2.1">1. 登录</h4>
 <ul>
-<li><p>AES 加密</p>
+<li>AES 加密</li>
+</ul>
 <blockquote>
-<p>AES加密的具体算法为:AES-128-CBC，输出格式为base64<br>  AES加密时需要指定iv：0102030405060708<br>  AES加密时需要padding</p>
+<p>AES加密的具体算法为:AES-128-CBC，输出格式为base64<br>AES加密时需要指定iv：0102030405060708<br>AES加密时需要padding</p>
 </blockquote>
 <ul>
 <li>python</li>
 </ul>
-<pre><code class="lang-python">  def aesEncrypt(text, secKey):
-      pad = 16 - len(text) % 16
-      text = text + pad * chr(pad)
-      encryptor = AES.new(secKey, 2, &#39;0102030405060708&#39;)
-      ciphertext = encryptor.encrypt(text)
-      ciphertext = base64.b64encode(ciphertext)
-      return ciphertext</code></pre>
+<pre><code class="lang-python">def aesEncrypt(text, secKey):
+pad = 16 - len(text) % 16
+text = text + pad * chr(pad)
+encryptor = AES.new(secKey, 2, &#39;0102030405060708&#39;)
+ciphertext = encryptor.encrypt(text)
+ciphertext = base64.b64encode(ciphertext)
+return ciphertext</code></pre>
 <ul>
 <li>node</li>
 </ul>
-<pre><code class="lang-node"> function aesEncrypt(text, secKey) {
-      const _text = text
-      const lv = new Buffer(&#39;0102030405060708&#39;, &quot;binary&quot;)
-      const _secKey = new Buffer(secKey, &quot;binary&quot;)
-      const cipher = crypto.createCipheriv(&#39;AES-128-CBC&#39;, _secKey, lv)
-      let encrypted = cipher.update(_text, &#39;utf8&#39;, &#39;base64&#39;)
-      encrypted += cipher.final(&#39;base64&#39;)
-      return encrypted
-  }</code></pre>
+<pre><code class="lang-node">function aesEncrypt(text, secKey) {
+const _text = text
+const lv = new Buffer(&#39;0102030405060708&#39;, &quot;binary&quot;)
+const _secKey = new Buffer(secKey, &quot;binary&quot;)
+const cipher = crypto.createCipheriv(&#39;AES-128-CBC&#39;, _secKey, lv)
+let encrypted = cipher.update(_text, &#39;utf8&#39;, &#39;base64&#39;)
+encrypted += cipher.final(&#39;base64&#39;)
+return encrypted
+}</code></pre>
 <ul>
 <li>php</li>
 </ul>
-<pre><code class="lang-php">        /**
-         * AES 加密
-         *
-         * @param $text
-         * @param $secKey
-         * @return string
-         * @author: ManJi
-         */
-        public function aesEncrypt($text, $secKey)
-        {
+<pre><code class="lang-php">/**
+* AES 加密
+*
+* @param $text
+* @param $secKey
+* @return string
+* @author: ManJi
+*/
+public function aesEncrypt($text, $secKey)
+{
 
-            $encrypted = openssl_encrypt($text, &#39;aes-128-cbc&#39;, $secKey, OPENSSL_RAW_DATA, self::IV);
-            return base64_encode($encrypted);
-        }</code></pre>
-</li>
-<li><p>RSA 加密 </p>
-<ul>
-<li><p>node</p>
-<pre><code class="lang-node">function rsaEncrypt(text, pubKey, modulus) {
-  var _text = text.split(&#39;&#39;).reverse().join(&#39;&#39;);
-  var biText = bigInt(new Buffer(_text).toString(&#39;hex&#39;), 16),
-  biEx = bigInt(pubKey, 16),
-  biMod = bigInt(modulus, 16),
-  biRet = biText.modPow(biEx, biMod);
-  return zfill(biRet.toString(16), 256);
+$encrypted = openssl_encrypt($text, &#39;aes-128-cbc&#39;, $secKey, OPENSSL_RAW_DATA, self::IV);
+return base64_encode($encrypted);
 }</code></pre>
-</li>
-<li><p>python </p>
-<pre><code class="lang-python">  def rsaEncrypt(text, pubKey, modulus):
-      text = text[::-1]
-      rs = int(text.encode(&#39;hex&#39;), 16)**int(pubKey, 16)%int(modulus, 16)
-      return format(rs, &#39;x&#39;).zfill(256)</code></pre>
-</li>
-<li><p>gmp 扩展 (失败)</p>
 <ul>
-<li><p>biginteger</p>
-<pre><code class="lang-bash">$ composer require phpmath/biginteger</code></pre>
+<li>RSA 加密 </li>
+<li>node</li>
+</ul>
+<pre><code class="lang-node">function rsaEncrypt(text, pubKey, modulus) {
+var _text = text.split(&#39;&#39;).reverse().join(&#39;&#39;);
+var biText = bigInt(new Buffer(_text).toString(&#39;hex&#39;), 16),
+biEx = bigInt(pubKey, 16),
+biMod = bigInt(modulus, 16),
+biRet = biText.modPow(biEx, biMod);
+return zfill(biRet.toString(16), 256);
+}</code></pre>
+<ul>
+<li>python </li>
+</ul>
+<pre><code class="lang-python">def rsaEncrypt(text, pubKey, modulus):
+text = text[::-1]
+rs = int(text.encode(&#39;hex&#39;), 16)**int(pubKey, 16)%int(modulus, 16)
+return format(rs, &#39;x&#39;).zfill(256)</code></pre>
+<ul>
+<li><p>gmp 扩展 (失败)</p>
 </li>
-<li><p>编译安装gmp （失败）</p>
+<li><p>biginteger</p>
+</li>
+</ul>
+<pre><code class="lang-bash">$ composer require phpmath/biginteger</code></pre>
+<ul>
+<li>编译安装gmp （失败）</li>
+</ul>
 <pre><code class="lang-bash"># 下载
 $ wget https://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
 #解压
@@ -344,27 +118,22 @@ $ tar -xvf gmp-6.1.2.tar
 #安装
 $ ./configure
 $ make &amp;&amp;　make install</code></pre>
-</li>
-<li><p><code>apt-get</code> 安装 <code>php7.1-gmp</code></p>
+<ul>
+<li><code>apt-get</code> 安装 <code>php7.1-gmp</code></li>
+</ul>
 <pre><code class="lang-bash"># 仅Ubuntu，debian(8.3)源只有 php5-gmp   
 $ apt-get install php7.1-gmp</code></pre>
 <blockquote>
 <p>扩展安装成功，<code>biginteger</code>可以使用，但是还是扛不住运算</p>
 </blockquote>
-<pre><code class="lang-php">      $biText =new BigInteger(base_convert(bin2hex($_text),16,10));
+<pre><code class="lang-php">$biText =new BigInteger(base_convert(bin2hex($_text),16,10));
 
-      $biEx = new BigInteger(base_convert($pubKey, 16, 10));
+$biEx = new BigInteger(base_convert($pubKey, 16, 10));
 
-      $biMod = new BigInteger(base_convert($modulus,16,10));
+$biMod = new BigInteger(base_convert($modulus,16,10));
 
-     // 求次方值，系统扛不住
-      $biText-&gt;pow($biEx-&gt;getValue());</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+// 求次方值，系统扛不住
+$biText-&gt;pow($biEx-&gt;getValue());</code></pre>
 <h2 id="2">项目结构</h2>
 <h2 id="3">项目</h2>
 

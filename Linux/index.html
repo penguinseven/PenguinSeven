@@ -2,258 +2,25 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>penguinSeven</title>
-<style>
-
-body {
-color: #333;
-font-family: sans-serif;
-font-size: 12pt;
-line-height: 170%;
-padding: 0 30px 0 270px;
-}
-
-header .banner {
-margin: 0 0 1em 0;
-}
-
-header .banner, nav .banner {
-color: #777;
-font-size: 10pt;
-font-weight: bold;
-}
-
-header h1 {
-background: #0c3;
-border-radius: 4px;
-color: #fff;
-font-size: 24pt;
-margin: 0;
-padding: 1.2em 0;
-text-align: center;
-}
-
-nav {
-font-size: 10pt;
-overflow-x: hidden;
-overflow-y: auto;
-position: fixed;
-top: 0;
-left: 0;
-bottom: 0;
-width: 240px;
-}
-
-nav .menubar {
-border-bottom: solid 1px #ccc;
-display: none;
-height: 48px;
-line-height: 48px;
-padding: 0 10px;
-}
-
-nav .button {
-background: #777;
-border: 1px solid #333;
-color: #fff;
-font-size: 10pt;
-font-weight: bold;
-padding: 8px;
-border-radius: 4px;
-}
-
-nav ul {
-padding: 0 0 0 10px;
-}
-
-nav ul a {
-color: #333;
-text-decoration: none;
-}
-
-nav ul a:hover {
-text-decoration: underline;
-}
-
-nav li {
-line-height: 180%;
-list-style: none;
-margin: 0;
-padding: 0;
-}
-
-nav .level2 {
-font-size: 11pt;
-font-weight: bold;
-}
-
-nav .level3 {
-padding-left: 1em;
-}
-
-nav .level3:before { 
-content: "» ";
-}
-
-nav .level4 {
-padding-left: 2em;
-}
-
-nav .level4:before {
-content: "› ";
-}
-
-article h2 {
-border-bottom: dotted 1px #777;
-font-size: 12pt;
-line-height: 100%;
-margin: 4em 0 1em 0;
-padding: 0 0 0.3em 0;
-}
-
-article h3 {
-font-size: 12pt;
-line-height: 100%;
-margin: 2em 0 1em 0;
-padding: 0;
-}
-
-article h4 {
-font-size: 12pt;
-font-style:italic;
-font-weight: normal;
-line-height: 100%;
-margin: 1.2em 0 1em 0;
-padding: 0;
-}
-
-article p {
-margin: 1em 0;
-}
-
-article p code {
-background: #eee;
-border: 1px solid #ccc;
-}
-
-article p strong {
-color: #f00;
-}
-
-article pre {
-background: #eee;
-border-left: solid 2px #3c0;
-font-size: 10pt;
-margin: 1em 0;
-padding: 0 0 0 1em;
-overflow-x: auto;
-overflow-y: padding;
-}
-
-article blockquote {
-background: #fff;
-border: dashed 1px #777;
-border-left: solid 2px #777;
-color: #000;
-margin: 0;
-padding: 0 0 0 1em;
-}
-
-article ul, article ol {
-padding-left: 2em;
-}
-
-footer {
-border-top: 1px solid #ccc;
-font-size: 10pt;
-margin-top: 4em;
-}
-
-@media (max-width: 768px) {
-
-body {
-padding: 0 10px 0 230px;
-}
-
-nav {
-width: 230px;
-}
-
-}
-
-@media (max-width: 480px) {
-
-body {
-padding: 64px 10px 0 10px;
-}
-
-header .banner {
-display: none;
-}
-
-nav {
-position: absolute;
-width: 100%;
-}
-
-nav .menubar {
-display: block;
-}
-
-nav .banner {
-float: right;
-}
-
-nav ul {
-background: #fff;
-display: none;
-font-size: 14pt;
-margin: 0;
-padding: 0 0 0 8px;
-}
-
-nav .level2 {
-font-size: 16pt;
-font-weight: bold;
-}
-
-nav li {
-line-height: 240%;
-}
-
-.index nav ul {
-display: block;
-}
-
-.index article {
-display: none;
-}
-
-}
-table {
-   border-collapse: collapse;
-   border-spacing: 0;
-   margin: 1.5em 0;
-}
-table th,table td {
- border: 1px solid #E6E6E6;
- padding: 5px 8px;
- word-break: normal;
-
-}
-</style>
+<title>吧食笔记</title>
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body>
 <nav>
     <ul>
-<li class="level2"><a href="#1">Linux</a></li><li class="level3"><a href="#1.1">0. 源</a></li><li class="level4"><a href="#1.1.1">1. debian 源</a></li><li class="level4"><a href="#1.1.2">2. kali 源</a></li><li class="level4"><a href="#1.1.3">3. centos 源</a></li><li class="level3"><a href="#1.2">1. screen ssh链接</a></li><li class="level3"><a href="#1.3">2. apt-get update 没有可用公钥，解决办法</a></li><li class="level3"><a href="#1.4">3.Linux内核调优</a></li><li class="level4"><a href="#1.4.1">打开文件数</a></li><li class="level4"><a href="#1.4.2">Soft open files 修改方法：</a></li><li class="level3"><a href="#1.5">4.iptables</a></li><li class="level3"><a href="#1.6">5. 日志分析 goaccess</a></li></ul>
+<li class="level2"><a href="#1">Linux</a></li><li class="level3"><a href="#1.1">0. 源</a></li><li class="level4"><a href="#1.1.1">1. debian 源</a></li><li class="level4"><a href="#1.1.2">2. kali 源</a></li><li class="level4"><a href="#1.1.3">3. centos 源</a></li><li class="level3"><a href="#1.2">1. screen ssh链接</a></li><li class="level3"><a href="#1.3">2. apt-get update 没有可用公钥，解决办法</a></li><li class="level3"><a href="#1.4">3.Linux内核调优</a></li><li class="level4"><a href="#1.4.1">打开文件数</a></li><li class="level4"><a href="#1.4.2">Soft open files 修改方法：</a></li><li class="level3"><a href="#1.5">4.iptables</a></li><li class="level3"><a href="#1.6">5. 日志分析 goaccess</a></li><li class="level3"><a href="#1.7">6. 文件夹共享</a></li></ul>
 
 </nav>
 <article>
-    <ul>
-<li><a href='./centos/index.html'>centos</a></li>
+    <div class="nav-ul">
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href='./centos/index.html'>centos</a></li>
 <li><a href='./vagrant/index.html'>vagrant</a></li>
-</ul>
+
+            <li><a href="javascript:history.go(-1)">返回</a></li>
+        </ul>
+    </div>
 
     <h2 id="1">Linux</h2>
 <h3 id="1.1">0. 源</h3>
@@ -341,6 +108,61 @@ root hard nofile 1024000</code></pre>
 </ul>
 <h3 id="1.6">5. 日志分析 goaccess</h3>
 <pre><code class="lang-bash">apt-get install goaccess</code></pre>
+<h3 id="1.7">6. 文件夹共享</h3>
+<ul>
+<li>安装samba</li>
+</ul>
+<pre><code class="lang-bash">apt-get install samba</code></pre>
+<ul>
+<li>备份配置文件</li>
+</ul>
+<pre><code class="lang-bash">cp /etc/samba/samb.conf /etc/samba/samb.conf.bak</code></pre>
+<ul>
+<li>修改配置文件</li>
+</ul>
+<pre><code class="lang-bash">vi /etc/samba/samba.conf
+# 添加用户验证
+security = user
+username map = /etc/samba/sambausers
+# 在文件末尾添加
+[Share]
+comment = Share Folder with username and password
+path = /home/www/share
+public = yes
+writable = yes
+vaild users = share
+create mask = 0777
+directory mask =0777
+force user = nobody
+force group = nogroup
+available = yes
+browerable = yes</code></pre>
+<ul>
+<li>创建用户，增加了share这个用户，却没有给用户赋予本机登录密码。
+所以这个用户将只能从远程访问，不能从本机登录。
+而且samba的登录密码能和本机登录密码不相同。 </li>
+</ul>
+<pre><code class="lang-bash">userad share</code></pre>
+<ul>
+<li>新增网络使用者的帐号</li>
+</ul>
+<pre><code class="lang-bash">smbpasswd -a share</code></pre>
+<ul>
+<li>创建并修改user map文件</li>
+</ul>
+<pre><code class="lang-bash"> vi /etc/samba/smbusers
+ # 添加内容
+ share = &quot;network username&quot;</code></pre>
+<ul>
+<li>更改share用户的网络访问密码，也用这个命令更改密码，删除网络使用者的帐号的命令把上面的 -a 改成 -x </li>
+</ul>
+<pre><code class="lang-bash"># 创建/修改
+smbpasswd -a share</code></pre>
+<ul>
+<li>检测参数,重启</li>
+</ul>
+<pre><code class="lang-bash">testparm 
+/etc/init.d/samba restart</code></pre>
 
 </article>
 <footer>

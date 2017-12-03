@@ -2,258 +2,38 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>penguinSeven</title>
-<style>
-
-body {
-color: #333;
-font-family: sans-serif;
-font-size: 12pt;
-line-height: 170%;
-padding: 0 30px 0 270px;
-}
-
-header .banner {
-margin: 0 0 1em 0;
-}
-
-header .banner, nav .banner {
-color: #777;
-font-size: 10pt;
-font-weight: bold;
-}
-
-header h1 {
-background: #0c3;
-border-radius: 4px;
-color: #fff;
-font-size: 24pt;
-margin: 0;
-padding: 1.2em 0;
-text-align: center;
-}
-
-nav {
-font-size: 10pt;
-overflow-x: hidden;
-overflow-y: auto;
-position: fixed;
-top: 0;
-left: 0;
-bottom: 0;
-width: 240px;
-}
-
-nav .menubar {
-border-bottom: solid 1px #ccc;
-display: none;
-height: 48px;
-line-height: 48px;
-padding: 0 10px;
-}
-
-nav .button {
-background: #777;
-border: 1px solid #333;
-color: #fff;
-font-size: 10pt;
-font-weight: bold;
-padding: 8px;
-border-radius: 4px;
-}
-
-nav ul {
-padding: 0 0 0 10px;
-}
-
-nav ul a {
-color: #333;
-text-decoration: none;
-}
-
-nav ul a:hover {
-text-decoration: underline;
-}
-
-nav li {
-line-height: 180%;
-list-style: none;
-margin: 0;
-padding: 0;
-}
-
-nav .level2 {
-font-size: 11pt;
-font-weight: bold;
-}
-
-nav .level3 {
-padding-left: 1em;
-}
-
-nav .level3:before { 
-content: "» ";
-}
-
-nav .level4 {
-padding-left: 2em;
-}
-
-nav .level4:before {
-content: "› ";
-}
-
-article h2 {
-border-bottom: dotted 1px #777;
-font-size: 12pt;
-line-height: 100%;
-margin: 4em 0 1em 0;
-padding: 0 0 0.3em 0;
-}
-
-article h3 {
-font-size: 12pt;
-line-height: 100%;
-margin: 2em 0 1em 0;
-padding: 0;
-}
-
-article h4 {
-font-size: 12pt;
-font-style:italic;
-font-weight: normal;
-line-height: 100%;
-margin: 1.2em 0 1em 0;
-padding: 0;
-}
-
-article p {
-margin: 1em 0;
-}
-
-article p code {
-background: #eee;
-border: 1px solid #ccc;
-}
-
-article p strong {
-color: #f00;
-}
-
-article pre {
-background: #eee;
-border-left: solid 2px #3c0;
-font-size: 10pt;
-margin: 1em 0;
-padding: 0 0 0 1em;
-overflow-x: auto;
-overflow-y: padding;
-}
-
-article blockquote {
-background: #fff;
-border: dashed 1px #777;
-border-left: solid 2px #777;
-color: #000;
-margin: 0;
-padding: 0 0 0 1em;
-}
-
-article ul, article ol {
-padding-left: 2em;
-}
-
-footer {
-border-top: 1px solid #ccc;
-font-size: 10pt;
-margin-top: 4em;
-}
-
-@media (max-width: 768px) {
-
-body {
-padding: 0 10px 0 230px;
-}
-
-nav {
-width: 230px;
-}
-
-}
-
-@media (max-width: 480px) {
-
-body {
-padding: 64px 10px 0 10px;
-}
-
-header .banner {
-display: none;
-}
-
-nav {
-position: absolute;
-width: 100%;
-}
-
-nav .menubar {
-display: block;
-}
-
-nav .banner {
-float: right;
-}
-
-nav ul {
-background: #fff;
-display: none;
-font-size: 14pt;
-margin: 0;
-padding: 0 0 0 8px;
-}
-
-nav .level2 {
-font-size: 16pt;
-font-weight: bold;
-}
-
-nav li {
-line-height: 240%;
-}
-
-.index nav ul {
-display: block;
-}
-
-.index article {
-display: none;
-}
-
-}
-table {
-   border-collapse: collapse;
-   border-spacing: 0;
-   margin: 1.5em 0;
-}
-table th,table td {
- border: 1px solid #E6E6E6;
- padding: 5px 8px;
- word-break: normal;
-
-}
-</style>
+<title>吧食笔记</title>
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body>
 <nav>
     <ul>
-<li class="level2"><a href="#1">运行环境</a></li><li class="level2"><a href="#2">安装</a></li><li class="level2"><a href="#3">项目目录结构</a></li><li class="level2"><a href="#4">项目实践</a></li><li class="level3"><a href="#4.1">1. 路由</a></li><li class="level3"><a href="#4.2">2. 中间件</a></li><li class="level3"><a href="#4.3">3. 分页</a></li><li class="level3"><a href="#4.4">常见问题</a></li><li class="level4"><a href="#4.4.1">0.Command is not defined exception</a></li><li class="level4"><a href="#4.4.2">1. 自定义函数</a></li><li class="level4"><a href="#4.4.3">2. PHP json_decode 函数解析 json 结果为 NULL 的解决方法</a></li><li class="level4"><a href="#4.4.4">3. Controller 重写 validate方法,方便报错返回</a></li><li class="level4"><a href="#4.4.5">4. 创建门面 <code>Facades</code>，实现静态访问动态方法</a></li></ul>
+<li class="level2"><a href="#1">运行环境</a></li><li class="level2"><a href="#2">安装</a></li><li class="level2"><a href="#3">项目目录结构</a></li><li class="level2"><a href="#4">项目实践</a></li><li class="level3"><a href="#4.1">migration</a></li><li class="level3"><a href="#4.2">路由</a></li><li class="level3"><a href="#4.3">中间件</a></li><li class="level3"><a href="#4.4">数据库操作</a></li><li class="level4"><a href="#4.4.1">DB facade</a></li><li class="level4"><a href="#4.4.2">查询构造器</a></li><li class="level4"><a href="#4.4.3">Eloquent ORM</a></li><li class="level3"><a href="#4.5">分页</a></li><li class="level3"><a href="#4.6">常见问题</a></li><li class="level4"><a href="#4.6.1">0.Command is not defined exception</a></li><li class="level4"><a href="#4.6.2">1. 自定义函数</a></li><li class="level4"><a href="#4.6.3">2. PHP json_decode 函数解析 json 结果为 NULL 的解决方法</a></li><li class="level4"><a href="#4.6.4">3. <code>Controller</code> 重写 <code>validate</code> 方法,方便报错返回</a></li><li class="level4"><a href="#4.6.5">4. 创建门面 <code>Facades</code>，实现静态访问动态方法</a></li></ul>
 
 </nav>
 <article>
-    
+    <div class="nav-ul">
+        <ul>
+            <li><a href="/">首页</a></li>
+            
+            <li><a href="javascript:history.go(-1)">返回</a></li>
+        </ul>
+    </div>
+
     <h1 id="laravel">laravel</h1>
 <h2 id="1">运行环境</h2>
+<ul>
+<li>homestead, vagrant的box</li>
+</ul>
 <h2 id="2">安装</h2>
+<ul>
+<li>composer 安装</li>
+</ul>
+<pre><code class="lang-bash">$ composer create-project laravel/laravel new-blog</code></pre>
+<ul>
+<li>laravel 安装</li>
+</ul>
+<pre><code class="lang-bash">laravel new blog</code></pre>
 <h2 id="3">项目目录结构</h2>
 <pre><code class="lang-text">/ 根目录
    └─ swarm ------------------------------------------ 项目目录
@@ -278,9 +58,44 @@ table th,table td {
        ├─ tests --------------------------------- 自动测试目录
        └─ vendor --------------------------------- composer依赖目录</code></pre>
 <h2 id="4">项目实践</h2>
-<h3 id="4.1">1. 路由</h3>
-<h3 id="4.2">2. 中间件</h3>
-<h3 id="4.3">3. 分页</h3>
+<h3 id="4.1">migration</h3>
+<ul>
+<li>创建</li>
+</ul>
+<pre><code class="lang-bash">$ php artisan make:migration create_articles_table --create=&#39;articles&#39;</code></pre>
+<ul>
+<li>修改文件,添加字段</li>
+</ul>
+<pre><code class="lang-php">&lt;?php
+# migrations/2017_11_19_061116_create_articles_table.php  “up” 方法下的
+Schema::create(&#39;articles&#39;, function (Blueprint $table) {
+            $table-&gt;increments(&#39;id&#39;);           
+            $table-&gt;string(&#39;title&#39;)-&gt;comment(&#39;标题&#39;);
+            $table-&gt;text(&#39;content&#39;)-&gt;comment(&#39;内容&#39;);
+            $table-&gt;timestamp(&#39;published_at&#39;)-&gt;comment(&#39;发布时间&#39;);
+            $table-&gt;timestamps();
+        });</code></pre>
+<ul>
+<li>创建数据表</li>
+</ul>
+<pre><code class="lang-bash">$ php artisan migrate</code></pre>
+<h3 id="4.2">路由</h3>
+<h3 id="4.3">中间件</h3>
+<h3 id="4.4">数据库操作</h3>
+<ul>
+<li><blockquote>
+<p> queryScope</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>setAttribute</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="4.4.1">DB facade</h4>
+<h4 id="4.4.2">查询构造器</h4>
+<h4 id="4.4.3">Eloquent ORM</h4>
+<h3 id="4.5">分页</h3>
 <ul>
 <li><p><code>Illuminate\Pagination\LengthAwarePaginator</code> 实例</p>
 <pre><code class="lang-php">  // 传入数据，总数据条数，数据显示条数，当前页码
@@ -352,10 +167,10 @@ Illuminate\Contracts\Support\Jsonable
 接口契约并且提供 toJson 方法，
 所以它很容易将你的分页结果集转换为 Json。</p>
 </blockquote>
-<h3 id="4.4">常见问题</h3>
 </li>
 </ul>
-<h4 id="4.4.1">0.Command is not defined exception</h4>
+<h3 id="4.6">常见问题</h3>
+<h4 id="4.6.1">0.Command is not defined exception</h4>
 <ul>
 <li><p><strong>Laravel 4</strong></p>
 <p><a href="http://laravel.com/docs/4.2/commands#registering-commands">参见文档</a></p>
@@ -372,28 +187,30 @@ Illuminate\Contracts\Support\Jsonable
 <pre><code>protected $commands = [
     Commands\NeighborhoodCommand::class,
 ];</code></pre>
-<h4 id="4.4.2">1. 自定义函数</h4>
+<h4 id="4.6.2">1. 自定义函数</h4>
 <ul>
 <li><p>创建文件<code>app/Support/helpers.php</code></p>
 </li>
 <li><p>在<code>composer.json</code>中添加</p>
 </li>
 </ul>
-<pre><code class="lang-json">&quot;autoload&quot;: {
-    &quot;classmap&quot;: [
-      &quot;database&quot;
-    ],
-    &quot;psr-4&quot;: {
-      &quot;App\\&quot;: &quot;app/&quot;
-    },
-    &quot;files&quot;: [
-      &quot;app/Support/helpers.php&quot;
-    ]
-  }</code></pre>
+<pre><code class="lang-json">{
+&quot;autoload&quot;: {
+     &quot;classmap&quot;: [
+       &quot;database&quot;
+     ],
+     &quot;psr-4&quot;: {
+       &quot;App&quot;: &quot;app/&quot;
+     },
+     &quot;files&quot;: [
+       &quot;app/Support/helpers.php&quot;
+     ]
+   }
+ }</code></pre>
 <ul>
 <li>执行 <code>composer dump-autoload</code></li>
 </ul>
-<h4 id="4.4.3">2. PHP json_decode 函数解析 json 结果为 NULL 的解决方法</h4>
+<h4 id="4.6.3">2. PHP json_decode 函数解析 json 结果为 NULL 的解决方法</h4>
 <ul>
 <li><p>打印错误</p>
 <pre><code> echo $errorinfo = json_last_error();   //输出4 语法错误</code></pre>
@@ -402,21 +219,21 @@ Illuminate\Contracts\Support\Jsonable
 </li>
 </ul>
 <blockquote>
-<p>出现这个问题是因为在 json 字符串中反斜杠被转义，只需要用 htmlspecialchars_decode() 函数处理一下 $content 即可：</p>
+<p>出现这个问题是因为在 json 字符串中反斜杠被转义，只需要用 <code>htmlspecialchars_decode()</code> 函数处理一下 $content 即可：</p>
 </blockquote>
 <pre><code>$content = htmlspecialchars_decode($content);</code></pre>
 <ul>
 <li>情况二</li>
 </ul>
 <blockquote>
-<p>在保存 json 数据时使用 urlencode() 函数：</p>
+<p>在保存 <code>json</code> 数据时使用 <code>urlencode()</code> 函数：</p>
 </blockquote>
 <pre><code>$content = urlencode(json_encode($content));
 #解析时使用 urldecode() 函数：
 
 $content = urldecode($content);
 #即可避免反斜杠转义造成的无法解析。</code></pre>
-<h4 id="4.4.4">3. Controller 重写 validate方法,方便报错返回</h4>
+<h4 id="4.6.4">3. <code>Controller</code> 重写 <code>validate</code> 方法,方便报错返回</h4>
 <pre><code class="lang-php"> /**
      * 重写 validate，把自定义属性名称放到 rules
      *
@@ -445,7 +262,7 @@ $content = urldecode($content);
             $this-&gt;throwValidationException($request, $validator);
         }
     }</code></pre>
-<h4 id="4.4.5">4. 创建门面 <code>Facades</code>，实现静态访问动态方法</h4>
+<h4 id="4.6.5">4. 创建门面 <code>Facades</code>，实现静态访问动态方法</h4>
 <ul>
 <li>示例</li>
 </ul>

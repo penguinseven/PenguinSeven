@@ -1,0 +1,163 @@
+<!doctype HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>吧食笔记</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+<nav>
+    <ul>
+<li class="level2"><a href="#1">安装</a></li><li class="level3"><a href="#1.1">下载文件</a></li><li class="level2"><a href="#2">数据库</a></li><li class="level3"><a href="#2.1">高级版，数据库信息</a></li><li class="level2"><a href="#3">项目详解</a></li><li class="level3"><a href="#3.1">YII模块化</a></li><li class="level2"><a href="#4">常见问题</a></li><li class="level3"><a href="#4.1">开启GII</a></li></ul>
+
+</nav>
+<article>
+    <div class="nav-ul">
+        <ul>
+            <li><a href="/">首页</a></li>
+            
+            <li><a href="javascript:history.go(-1)">返回</a></li>
+        </ul>
+    </div>
+
+    <h1 id="yii">YII</h1>
+<h2 id="1">安装</h2>
+<h3 id="1.1">下载文件</h3>
+<pre><code class="lang-bash"># 基础版
+$ wget https://github.com/yiisoft/yii2/releases/download/2.0.12/yii-basic-app-2.0.12.tgz
+#高级版
+$ wget https://github.com/yiisoft/yii2/releases/download/2.0.12/yii-advanced-app-2.0.12.tgz</code></pre>
+<h2 id="2">数据库</h2>
+<h3 id="2.1">高级版，数据库信息</h3>
+<pre><code class="lang-mysql">-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `auth_key` varchar(32) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `password_reset_token` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` smallint(6) NOT NULL DEFAULT &#39;10&#39;,
+  `status` smallint(6) NOT NULL DEFAULT &#39;10&#39;,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;</code></pre>
+<h2 id="3">项目详解</h2>
+<h3 id="3.1">YII模块化</h3>
+<ul>
+<li>新增模块, 注意在module下创建一个<strong>article</strong>文件夹，便于区分子模块</li>
+</ul>
+<pre><code class="lang-bash">
+# module class
+app\modules\article\Article
+
+# module id
+article</code></pre>
+<ul>
+<li>配置, 基础版将该内容复制的<strong>config\web.php</strong> 的 <strong>$config</strong>变量中，
+高级版，将内容复制到<strong>config\main.php</strong>中。</li>
+</ul>
+<pre><code class="lang-textmate">
+&lt;?php
+    ......
+    &#39;modules&#39; =&gt; [
+        &#39;article&#39; =&gt; [
+            &#39;class&#39; =&gt; &#39;frontend\modules\article\Article&#39;,
+        ],
+    ],
+    ......</code></pre>
+<ul>
+<li>使用</li>
+</ul>
+<blockquote>
+<p>父模块调用</p>
+</blockquote>
+<pre><code class="lang-php">// 获取子模块
+$article = Yii::$app-&gt;getModule(&#39;article&#39;);
+
+// 调用子模块的操作
+$article-&gt;runAction(&#39;default/index&#39;);</code></pre>
+<blockquote>
+<p>路径直接访问</p>
+</blockquote>
+<pre><code class="lang-textmate"># 基础版
+url : http://localhost/index.php?r=article/default/index
+
+# 高级版
+url : http://localhost/index.php?r=article/default/index</code></pre>
+<blockquote>
+<p>再次创建子模块</p>
+</blockquote>
+<pre><code class="lang-bash">
+# module class
+app\modules\article\modules\category\Category
+
+# module id
+category</code></pre>
+<blockquote>
+<p>配置，修改文件 <strong>frontend\module\article\Article.php</strong></p>
+</blockquote>
+<pre><code class="lang-text">
+ /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+
+        $this-&gt;modules = [
+            &#39;category&#39; =&gt; [
+                &#39;class&#39; =&gt; &#39;frontend\modules\article\modules\category\Category&#39;,
+            ],
+        ];
+        // custom initialization code goes here
+    }</code></pre>
+<blockquote>
+<p><strong>category</strong>模块的访问路径</p>
+</blockquote>
+<pre><code class="lang-textmate">url : http://localhost/index.php?r=article/category/default/index</code></pre>
+<h2 id="4">常见问题</h2>
+<h3 id="4.1">开启GII</h3>
+<ul>
+<li>基础版，修改config\web.php文件，<strong>allowedIPs</strong></li>
+</ul>
+<pre><code class="lang-php">if (YII_ENV_DEV) {
+    // configuration adjustments for &#39;dev&#39; environment
+    $config[&#39;bootstrap&#39;][] = &#39;debug&#39;;
+    $config[&#39;modules&#39;][&#39;debug&#39;] = [
+        &#39;class&#39; =&gt; &#39;yii\debug\Module&#39;,
+        &#39;allowedIPs&#39; =&gt; [&#39;*.*.*.*&#39;,&#39;127.0.0.1&#39;, &#39;::1&#39;], ,  // 新增
+    ];
+
+    $config[&#39;bootstrap&#39;][] = &#39;gii&#39;;
+    $config[&#39;modules&#39;][&#39;gii&#39;] = [
+        &#39;class&#39; =&gt; &#39;yii\gii\Module&#39;,
+        &#39;allowedIPs&#39; =&gt; [&#39;*.*.*.*&#39;,&#39;127.0.0.1&#39;, &#39;::1&#39;],  // 新增
+    ];
+}</code></pre>
+<ul>
+<li>高级版， 修改config\main-local.php文件，<strong>allowedIPs</strong></li>
+</ul>
+<pre><code class="lang-php">if (!YII_ENV_TEST) {
+    // configuration adjustments for &#39;dev&#39; environment
+    $config[&#39;bootstrap&#39;][] = &#39;debug&#39;;
+    $config[&#39;modules&#39;][&#39;debug&#39;] = [
+        &#39;class&#39; =&gt; &#39;yii\debug\Module&#39;,
+        &#39;allowedIPs&#39; =&gt; [&#39;*.*.*.*&#39;,&#39;127.0.0.1&#39;, &#39;::1&#39;],  // 新增
+    ];
+
+    $config[&#39;bootstrap&#39;][] = &#39;gii&#39;;
+    $config[&#39;modules&#39;][&#39;gii&#39;] = [
+        &#39;class&#39; =&gt; &#39;yii\gii\Module&#39;,
+        &#39;allowedIPs&#39; =&gt; [&#39;*.*.*.*&#39;,&#39;127.0.0.1&#39;, &#39;::1&#39;], // 新增
+    ];
+}</code></pre>
+
+</article>
+<footer>
+
+</footer>
