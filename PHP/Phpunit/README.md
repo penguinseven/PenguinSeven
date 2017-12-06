@@ -35,6 +35,7 @@ PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
 下载的版本是最新版本，根据下载的地址，找到了所有的历史版本，**https://phar.phpunit.de/**
 
 ![list](./phpunit-03.png)
+![list](./phpunit-05.png)
 
 由于我使用的是**PHP 5.6.32 (cli) (built: Nov 28 2017 17:52:20)**，我下载了对应的版本
 
