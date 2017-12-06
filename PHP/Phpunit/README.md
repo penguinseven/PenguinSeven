@@ -41,13 +41,13 @@ PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
 
 ```bash
  # 下载
- wget https://phar.phpunit.de/phpunit-5.6.2.phar
+ ➜ wget https://phar.phpunit.de/phpunit-5.6.2.phar
  # 加权限
- chmod +x phpunit-5.6.3.phar
+ ➜ chmod +x phpunit-5.6.3.phar
  # 移目录
- mv phpunit-5.6.3.phar /usr/local/bin/phpunit
+ ➜ mv phpunit-5.6.3.phar /usr/local/bin/phpunit
  # 查看版本
- phpuint --version
+ ➜ phpuint --version
 ```
 
 ## 测试项目
@@ -57,13 +57,13 @@ PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
 - 安装laravel 5.1 
 
 ```bash
-composer create-project laravel/laravel your-project-name --prefer-dist "5.1.*"
+➜ composer create-project laravel/laravel your-project-name --prefer-dist "5.1.*"
 ```
 
 - 执行测试demo
 
 ```bash
-phpunit tests
+➜ phpunit tests
 ```
 
 ![demo](./phpunit-04.png)
