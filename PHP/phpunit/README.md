@@ -70,3 +70,14 @@ PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
 
 ### yii 
 
+- 安装
+
+```bash
+➜ wget https://github.com/yiisoft/yii2/releases/download/2.0.12/yii-basic-app-2.0.12.tgz
+
+➜ tar -zxvf yii-basic-app-2.0.12.tgz
+```
+
+- 部署, nginx 文件指向 **basic/web/** 目录
+
+
