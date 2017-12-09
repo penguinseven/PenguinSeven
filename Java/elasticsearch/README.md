@@ -304,18 +304,18 @@ elasticsearch.url = 'http://localhost:9200'
 
 ### 功能介绍
 
-![kibana-config](./image/kibana-03.jpg =200x500)
+![kibana-config](./image/kibana-03.jpg)
 
 
 ## beat
 
 ### 介绍
 
-![beat](./image/beat-01.jpg =200x500)
+![beat](./image/beat-01.jpg)
 
 ### FileBeat 
 
-![fileBeat](./image/beat-02.jpg =200x500)
+![fileBeat](./image/beat-02.jpg)
 
 
 
