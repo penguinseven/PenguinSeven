@@ -1,5 +1,13 @@
 # Elasticsearch
 
+## 前言
+
+> 本是个web开发小生，在之前的公司接触到了Elasticsearch，出于对大数据的好奇，开始了自学，
+本文参看了部分博客，慕课网视频，本着对原创敬佩的态度，贴出参考路径...
+
+- 慕课网学习视频 **https://www.imooc.com/learn/920**
+- JDK安装 **http://blog.csdn.net/wangkuangs/article/details/54232681**
+
 ## 安装/运行
 
 ###  1. 初始化
@@ -35,8 +43,23 @@
 
 ### 3. 修改配置
 
+- 基础配置
+
 ```bash
 vi /usr/local/elasticsearch/config/elasticsearch.yml
+```
+
+![elasticsearch](./image/elasticsearch-01.jpg)
+
+
+- 内存配置
+
+```bash
+vi ./config/jvm.options
+
+#修改内存配置
+-Xms2g
+-Xmx2g
 ```
 
 ### 4. 安装插件 
@@ -67,6 +90,222 @@ npm run start
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 ```
+
+## 快速搭建集群
+
+### 启动
+
+- 启动第一个节点
+
+```bash
+./bin/elasticsearch 
+```
+
+- 启动第二个节点
+
+```bash
+./bin/elasticsearch -Ehttp.port=8200 -Epath.data=node2
+```
+
+- 启动第三个节点
+
+```bash
+./bin/elasticsearch -Ehttp.port=7200 -Epath.data=node3
+```
+
+### 查看
+
+- 查看启动集群状态 **http://localhost:9200/_cat/nodes**
+
+```bash
+192.168.1.111 11 97 5 0.22 0.54 0.52 mdi - P6j2v_c
+192.168.1.111 13 97 5 0.22 0.54 0.52 mdi - DQOqgiL
+192.168.1.111 17 97 5 0.22 0.54 0.52 mdi * JPWkmUG
+```
+
+
+- 集群详情 ： **http://192.168.1.111:9200/_cluster/stats**
+
+```json
+{
+    "_nodes": {
+        "total": 3,
+        "successful": 3,
+        "failed": 0
+    },
+    "cluster_name": "elasticsearch",
+    "timestamp": 1512828954692,
+    "status": "green",
+    "indices": {
+        "count": 2,
+        "shards": {
+            "total": 16,
+            "primaries": 8,
+            "replication": 1,
+            "index": {
+                "shards": {
+                    "min": 6,
+                    "max": 10,
+                    "avg": 8
+                },
+                "primaries": {
+                    "min": 3,
+                    "max": 5,
+                    "avg": 4
+                },
+                "replication": {
+                    "min": 1,
+                    "max": 1,
+                    "avg": 1
+                }
+            }
+        },
+        "docs": {
+            "count": 6,
+            "deleted": 0
+        },
+        "store": {
+            "size_in_bytes": 59706,
+            "throttle_time_in_millis": 0
+        },
+        "fielddata": {
+            "memory_size_in_bytes": 0,
+            "evictions": 0
+        },
+        "query_cache": {
+            "memory_size_in_bytes": 0,
+            "total_count": 0,
+            "hit_count": 0,
+            "miss_count": 0,
+            "cache_size": 0,
+            "cache_count": 0,
+            "evictions": 0
+        },
+        "completion": {
+            "size_in_bytes": 0
+        },
+        "segments": {
+            "count": 12,
+            "memory_in_bytes": 34228,
+            "terms_memory_in_bytes": 26796,
+            "stored_fields_memory_in_bytes": 3744,
+            "term_vectors_memory_in_bytes": 0,
+            "norms_memory_in_bytes": 2560,
+            "points_memory_in_bytes": 24,
+            "doc_values_memory_in_bytes": 1104,
+            "index_writer_memory_in_bytes": 0,
+            "version_map_memory_in_bytes": 0,
+            "fixed_bit_set_memory_in_bytes": 0,
+            "max_unsafe_auto_id_timestamp": -1,
+            "file_sizes": {}
+        }
+    },
+    "nodes": {
+        "count": {
+            "total": 3,
+            "data": 3,
+            "coordinating_only": 0,
+            "master": 3,
+            "ingest": 3
+        },
+        "versions": [
+            "5.6.2"
+        ],
+        "os": {
+            "available_processors": 6,
+            "allocated_processors": 6,
+            "names": [
+                {
+                    "name": "Linux",
+                    "count": 3
+                }
+            ],
+            "mem": {
+                "total_in_bytes": 11113943040,
+                "free_in_bytes": 400244736,
+                "used_in_bytes": 10713698304,
+                "free_percent": 4,
+                "used_percent": 96
+            }
+        },
+        "process": {
+            "cpu": {
+                "percent": 0
+            },
+            "open_file_descriptors": {
+                "min": 196,
+                "max": 204,
+                "avg": 199
+            }
+        },
+        "jvm": {
+            "max_uptime_in_millis": 1287394,
+            "versions": [
+                {
+                    "version": "1.8.0_144",
+                    "vm_name": "Java HotSpot(TM) 64-Bit Server VM",
+                    "vm_version": "25.144-b01",
+                    "vm_vendor": "Oracle Corporation",
+                    "count": 3
+                }
+            ],
+            "mem": {
+                "heap_used_in_bytes": 480286304,
+                "heap_max_in_bytes": 3168927744
+            },
+            "threads": 93
+        },
+        "fs": {
+            "total_in_bytes": 484573421568,
+            "free_in_bytes": 443235115008,
+            "available_in_bytes": 418596622336
+        },
+        "plugins": [],
+        "network_types": {
+            "transport_types": {
+                "netty4": 3
+            },
+            "http_types": {
+                "netty4": 3
+            }
+        }
+    }
+}
+```
+
+## 下载安装kibana
+
+### 下载
+
+- 地址**https://www.elastic.co/downloads/kibana**，目前我使用的是**Debian 64位**，根据自己的系统，对应下载。
+
+![kibana](./image/kibana-01.jpg)
+
+```bash
+wget https://artifacts.elastic.co/downloads/kibana/kibana-6.0.1-linux-x86_64.tar.gz
+```
+
+### 修改配置
+
+![kibana-config](./image/kibana-02.jpg)
+
+```bash
+vi ./config/kibana.yml
+
+# 修改 elasticsearch 路径地址
+elasticsearch.url = 'http://localhost:9200'
+```
+
+### 启动
+
+```bash
+./bin/kibana -H 0.0.0.0 -p 5601
+```
+
+### 功能介绍
+
+![kibana-config](./image/kibana-03.jpg)
+
 
 ## 问题
 
