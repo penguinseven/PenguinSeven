@@ -317,6 +317,239 @@ elasticsearch.url = 'http://localhost:9200'
 
 ![fileBeat](./image/beat-02.jpg)
 
+### 下载安装
+
+```bash
+wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.6.2-linux-x86_64.tar.gz
+```
+
+### 配置运行
+
+#### 配置**nginx.yml*
+
+```yaml
+#=========================== Filebeat prospectors =============================
+filebeat.prospectors:
+- input_type: stdin
+#================================ Outputs =====================================
+output.console:
+    pretty: true
+```
+
+#### 配合**nginx** 日志运行
+
+##### 运行
+
+```bash
+head -n 1 /data/wwwlogs/access_nginx.log | ./filebeat -e -c nginx.yml
+```
+
+##### 输出
+
+> 原数据 192.168.1.108 - - [10/Dec/2017:21:12:11 +0800] 
+"GET / HTTP/1.1" 200 21 "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) 
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
+
+
+```json
+{
+  "@timestamp": "2017-12-10T13:16:00.964Z",
+  "beat": {
+    "hostname": "penguinSeven",
+    "name": "penguinSeven",
+    "version": "5.6.2"
+  },
+  "input_type": "stdin",
+  "message": "192.168.1.108 - - [10/Dec/2017:21:12:11 +0800] \"GET / HTTP/1.1\" 200 21 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36\"",
+  "offset": 0,
+  "source": "",
+  "type": "log"
+}
+
+```
+
+
+
+## packetbeat
+
+> 实时抓取网络包
+
+### 下载
+
+```bash
+wget https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.6.2-linux-x86_64.tar.gz
+```
+
+### 配置运行
+
+#### 配置
+
+```yaml
+
+#============================== Network device ================================
+
+packetbeat.interfaces.device: eth0
+
+packetbeat.protocols.http:
+  # Configure the ports where to listen for HTTP traffic. You can disable
+  # the HTTP protocol by commenting out the list of ports.
+  ports: [9200]
+  send_request: true   
+  include_body_for: ["application/json", "x-www-form-urlencoded"]
+
+
+#================================ Outputs =====================================
+
+output.console:
+    pretty: true
+
+```
+
+#### 运行
+
+```bash
+./packetbeat -e -c es.yml -strict.perms=false
+```
+#### 输出结果
+
+```json
+{
+  "@timestamp": "2017-12-10T14:39:10.624Z",
+  "beat": {
+    "hostname": "penguinSeven",
+    "name": "penguinSeven",
+    "version": "5.6.2"
+  },
+  "bytes_in": 1250,
+  "bytes_out": 193,
+  "client_ip": "192.168.1.108",
+  "client_port": 14400,
+  "client_proc": "",
+  "client_server": "",
+  "direction": "in",
+  "http": {
+    "request": {
+      "headers": {
+        "content-length": 0
+      },
+      "params": ""
+    },
+    "response": {
+      "code": 200,
+      "headers": {
+        "content-length": 89,
+        "content-type": "text/plain; charset=UTF-8"
+      },
+      "phrase": "OK"
+    }
+  },
+  "ip": "192.168.1.111",
+  "method": "GET",
+  "path": "/_cat/nodes",
+  "port": 9200,
+  "proc": "",
+  "query": "GET /_cat/nodes",
+  "request": "GET /_cat/nodes HTTP/1.1\r\nHost: 192.168.1.111:9200\r\nConnection: keep-alive\r\nCache-Control: max-age=0\r\nUser-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36\r\nUpgrade-Insecure-Requests: 1\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8\r\nAccept-Encoding: gzip, deflate\r\nAccept-Language: zh-CN,zh;q=0.9,en;q=0.8\r\nCookie: _identity-frontend=687c0976b190b7123bf2d7a4bf9065cc490e67a1a4412a819deab9c077217034a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B3%2C%22j5gIPkp6dhRxGUdmbp3yfIihFr64u8IC%22%2C2592000%5D%22%3B%7D; XSRF-TOKEN=eyJpdiI6IlBaVnpucWQxTkRkNk5TWGg2d2RmWFE9PSIsInZhbHVlIjoiMzlqQkM3ZXZqVzF5M2F6Y2JvTDVsRmVGNDNDb2cxQzZRdGIxblFzOHZ6YmlpQUFNdE1MZG5TS0lDYmpcL21sRXhPV0RsM1hrcWlYYTRKNFJlTStWWHlBPT0iLCJtYWMiOiJmOWFjNWIwMWY1OThjMzQyZGQ2NGM4Y2RmZGM1YjM5ZjcxNzZjMGY1MTBkZDRlYzkxNzU4MTJlZDJiZTZlOTQ4In0%3D; laravel_session=eyJpdiI6IktaRFRNTXRkWTBob3Z1bTNFbnp5Z0E9PSIsInZhbHVlIjoiZkdqbngxSXN1eEFoY1d1R1wvMGUwTnBvOUp3VVwvaThUUkZHMXpwOXpTc0Z2cUdFeDhDSFhCZUhPSmpOVUU2MHpGcUxPYWszNmlkNGgxSXE4Rlg0bGZNQT09IiwibWFjIjoiZTFkMWZjNzY2YTgxN2ViMzgwYWE3N2FjM2NjODJkNGVmMWIwNDM0MTAwOTBlOGRiMjBmNzFmNjc2M2RhZDU0OSJ9\r\n\r\n",
+  "responsetime": 162,
+  "server": "",
+  "status": "OK",
+  "type": "http"
+}
+```
+
+## Logstash
+
+### 下载安装
+
+```bash
+wget https://artifacts.elastic.co/downloads/logstash/logstash-5.6.2.tar.gz
+```
+
+### 配置
+
+```conf
+input {
+  stdin { }
+}
+
+filter {
+  grok {
+    match => {
+      "message" => '%{IPORHOST:remote_ip} - %{DATA:user_name} \[%{HTTPDATE:time}\] "%{WORD:request_action} %{DATA:request} HTTP/%{NUMBER:http_version}" %{NUMBER:response} %{NUMBER:bytes} "%{DATA:referrer}" "%{DATA:agent}"'
+    }
+  }
+
+  date {
+    match => [ "time", "dd/MMM/YYYY:HH:mm:ss Z" ]
+    locale => en
+  }
+
+  geoip {
+    source => "remote_ip"
+    target => "geoip"
+  }
+
+  useragent {
+    source => "agent"
+    target => "user_agent"
+  }
+}
+
+output {
+stdout {
+ codec => rubydebug 
+ }
+}
+
+```
+
+### 运行与输出
+
+#### 运行
+
+```bash
+head -n 1 /data/wwwlogs/access_nginx.log | ./bin/logstash -f nginx.conf
+```
+
+####输出
+
+> 原数据 192.168.1.108 - - [10/Dec/2017:21:12:11 +0800] "GET / HTTP/1.1" 200 21 "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
+
+```txt
+{
+           "request" => "/",
+    "request_action" => "GET",
+             "agent" => "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36",
+             "geoip" => {},
+         "user_name" => "-",
+      "http_version" => "1.1",
+           "message" => "192.168.1.108 - - [10/Dec/2017:21:12:11 +0800] \"GET / HTTP/1.1\" 200 21 \"-\" \"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36\"",
+              "tags" => [
+        [0] "_geoip_lookup_failure"
+    ],
+          "referrer" => "-",
+        "@timestamp" => 2017-12-10T13:12:11.000Z,
+         "remote_ip" => "192.168.1.108",
+          "response" => "200",
+             "bytes" => "21",
+          "@version" => "1",
+              "host" => "penguinSeven",
+              "time" => "10/Dec/2017:21:12:11 +0800",
+        "user_agent" => {
+          "patch" => "3202",
+             "os" => "Windows 7",
+          "major" => "62",
+          "minor" => "0",
+          "build" => "",
+           "name" => "Chrome",
+        "os_name" => "Windows 7",
+         "device" => "Other"
+    }
+}
+
+```
+
+
 
 
 
