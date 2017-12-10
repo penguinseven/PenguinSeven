@@ -325,7 +325,7 @@ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.6.2-linux-
 
 ### 配置运行
 
-#### 配置**nginx.yml*
+#### 配置  **nginx.yml**
 
 ```yaml
 #=========================== Filebeat prospectors =============================
