@@ -552,7 +552,128 @@ head -n 1 /data/wwwlogs/access_nginx.log | ./bin/logstash -f nginx.conf
 
 
 
+## 实战目标
 
+### 方案
+
+- Production Cluster
+
+````bash
+# Elasticsearch http://127.0.0.1:9200
+su www
+./bin/elasticsearch
+
+# kibana http://127.0.0.1:5601
+./bin/kibana
+
+````
+
+- Monitoring Cluster
+
+````bash
+# elasticsearch http://127.0.0.1:9200
+su www
+./bin/elasticsearch -Ecluster.name=sniff_search -Ehttp.port=8200 -Epath.data=sniff
+
+# kibana http://127.0.0.1:8601
+./bin/kibana -e http://127.0.0.1:8200 -p 8601
+````
+
+> 请确保production和monitoring不是一个集群，否则会进入抓包死循环 。**-Ecluster.name=sniff_search** 设置
+
+![CLUSTER](./image/cluster-01.jpg)
+
+- Logstash 配置
+
+```conf
+input {
+    beats {
+        port => 5044
+    }
+}
+filter {
+    if "search" in [request]{
+        grok {
+            match => { "request" => ".*\n\{(?<query_body>.*)"} 
+        }
+        grok {
+            match => { "path" => "\/(?<index>.*)\/_search"}     
+        }
+     if [index] {
+      } else {
+            mutate {
+              add_field  => { "index" => "All" }
+        }
+      }
+
+      mutate {
+              update  => { "query_body" => "{%{query_body}"}}
+      }
+
+  #    mutate {
+  #        remove_field => [ "[http][response][body]" ]
+  #    }
+}
+
+output {
+  #stdout{codec=>rubydebug}
+
+  if "search" in [request]{
+        elasticsearch {
+        hosts => "127.0.0.1:8200"
+        }
+   }
+}
+
+```
+
+
+- packetbeat 配置
+
+```yaml
+
+#============================== Network device ================================
+
+# Select the network interface to sniff the data. On Linux, you can use the
+# "any" keyword to sniff on all connected interfaces.
+packetbeat.interfaces.device: eth0
+
+packetbeat.protocols.http:
+  # Configure the ports where to listen for HTTP traffic. You can disable
+  # the HTTP protocol by commenting out the list of ports.
+  ports: [9200]
+  send_request: true   
+  include_body_for: ["application/json", "x-www-form-urlencoded"]
+
+
+#================================ Outputs =====================================
+
+# Configure what outputs to use when sending the data collected by the beat.
+# Multiple outputs may be used.
+
+#-------------------------- Elasticsearch output ------------------------------
+
+output.console:
+    pretty: true
+
+output.logstash:
+    hosts: ["127.0.0.1:5044"]
+
+```
+
+- 启动 logstash 和 packetbeat
+
+```bash
+./bin/logstash -f ./config/sinff_search.conf 
+
+./packetbeat -e -c sniff_search.yml -strict.perms=false
+```
+
+- 启动效果图
+
+![cluster](./image/cluster-01.jpg)
+
+- 
 
 ## 问题
 
