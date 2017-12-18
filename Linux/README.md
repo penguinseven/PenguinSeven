@@ -1,9 +1,10 @@
-## Linux  
+# Linux  
 
-### 0. 源
+## 0. 源
 
-#### 1. debian 源
+### 1. debian 源
     
+```bash
     # 163
     deb http://mirrors.163.com/debian/ stable main non-free contrib
 
@@ -26,33 +27,59 @@
     deb http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free
     deb-src http://mirrors.aliyun.com/debian-security wheezy/updates main contrib non-free
 
-#### 2. kali 源
+```
+### 2. kali 源
 
-        # 中科大kali源
-    　  deb http://mirrors.ustc.edu.cn/kali sana main non-free contrib
-    　　deb http://mirrors.ustc.edu.cn/kali-security/ sana/updates main contrib non-free
-    　　deb-src http://mirrors.ustc.edu.cn/kali-security/ sana/updates main contrib non-free
-    　　
-        # 阿里云kali源
-    　　deb http://mirrors.aliyun.com/kali sana main non-free contrib
-    　　deb http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free
-    　　deb-src http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free
+```php
+    # 中科大kali源
+　  deb http://mirrors.ustc.edu.cn/kali sana main non-free contrib
+　　deb http://mirrors.ustc.edu.cn/kali-security/ sana/updates main contrib non-free
+　　deb-src http://mirrors.ustc.edu.cn/kali-security/ sana/updates main contrib non-free
+　　
+    # 阿里云kali源
+　　deb http://mirrors.aliyun.com/kali sana main non-free contrib
+　　deb http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free
+　　deb-src http://mirrors.aliyun.com/kali-security/ sana/updates main contrib non-free
 
-#### 3. centos 源
+```
 
-    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+### 3. centos 源
 
+```bash
+ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+```
+
+## VIM
+
+### 安装
+
+### 配置
+
+#### 1. 格式化代码
+
+- gg 跳转到第一行
+
+- shift+v 转到可视模式
+
+- shift+g 全选
+
+- 按下神奇的 =
+
+
+
+
+## 遇到的问题
 
 ### 1. screen ssh链接
 
-```
+```bash
 screen -S oneinstack    
 #如果网路出现中断，可以执行命令`screen -r oneinstack`重新连接安装窗口
 ```
 
 ### 2. apt-get update 没有可用公钥，解决办法
 
-```shell
+```bash
 apt-get install debian-keyring debian-archive-keyring
 ```
 
