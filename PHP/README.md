@@ -107,7 +107,7 @@ $ curl -sS https://getcomposer.org/installer | php
 # 放入全局
 $ mv composer.phar /usr/local/bin/composer
 # 修改源
-$ composer config -g repo.packagist composer https://packagist.composer-proxy.org
+$ composer config -g repo.packagist composer https://packagist.phpcomposer.com
 # 设置自动更新
 $ composer selfupdate
 ```
