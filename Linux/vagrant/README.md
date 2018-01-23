@@ -139,3 +139,39 @@ vagrant reload
 config.vm.network "public_network", ip: "192.168.1.125", auto_config: true
 ```
 
+
+## 制作自己的Vagrant Box
+
+### 摘自(https://segmentfault.com/a/1190000002507999)
+
+### 前置条件
+
+- 安装VirtualBox
+- 安装Vagrant
+- 在VirtualBox中安装操作系统，例如 CentOS
+
+### 想要将操作系统打包为可用的Vbox镜像要做以下工作
+- 创建vagrant用户和用户目录，密码为vagrant
+- 添加vagrant用户的公共密钥，文件为/home/vagrant/.ssh/authorized_keys
+- 在真实操作系统中执行vagrant package --base 虚拟机名称，这样会创建指定虚拟机的box
+- 将制作好的Box添加到Vagrant环境中，vagrant box add name package.box
+- 初始化运行环境,vagrant init name
+- 运行Vagrant虚拟机，vagrant up
+到此完成整个流程
+
+
+### authorized_keys 文件
+
+```bash
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbJuFDiLjyQM+p0cf2Edc46ibW3C2TYLU41DrFvxfeU2zWR3aE7NkPG9edIn94fWGKLfEUFfiiqN5+VDuJfMSKEyxVoXOGdFWBKkrR6oOXM0LfzPZCEiSswMj01RqCaY148nZOg7zvmNkAD/yX4o6jfsoZSGXE8rxRPwogFHhsDp0vqsibw4KW3b3ZhlVUQzHr0+eOqAsGiwqkDTgOfJGgrZykzYzho81HLQ48d1Doh6LQF90TZcVElpY7jtiMvaQKb2wrXlhZsrZZYJg5F/wi2ulc2ZmdrwP7lXn8MMwByR6f1xUvXRdmrU6pQPXIXYfLkZuSjYj485OxJhdXzus3 vagrant
+```
+
+### 问题
+
+#### 1. ssh登录不了
+
+```bash
+$ vagrant ssh
+ssh_exchange_identification: read: Software caused connection abort
+```
+
