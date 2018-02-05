@@ -221,3 +221,10 @@ testparm
 /etc/init.d/samba restart 
 ```
 
+### 7.apt-get The method driver /usr/lib/apt/methods/http could not be found错误解决
+
+-执行
+
+```bash
+sudo apt-get install apt-transport-https
+```
