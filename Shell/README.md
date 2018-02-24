@@ -1,8 +1,8 @@
-## Shell
+# Shell
 
-### 知识点
+## 知识点
 
-#### 1. 条件判断
+### 1. 条件判断
 
 - if..else..fi
 
@@ -66,6 +66,7 @@ $file1 -nt $file2      |	文件 file1 是否比 file2 更新。nt 是 newer than
 $file1 -ot $file2      |	文件 file1 是否比 file2 更旧。ot 是 older than 的缩写，表示「更旧的」。
 
 EX:
+
 ```bash
 #!/bin/bash
 
@@ -79,6 +80,114 @@ else
 fi
 
 ```
-#### 2. 函数
+### 2. 函数
+
+
+#### 批量下载文件
+
+```bash
+
+#!/bin/bash
+while read src_url des_file
+do
+    # 分离相对路径与文件名
+    dir_name=${des_file%/*}
+    if [ ! -d $dir_name ]
+    then
+        # 递归创建文件夹
+        mkdir -p $dir_name
+    fi
+	
+    # 下载文件， -O 指定路径重命名 -N 强制覆盖
+    wget -N -c "$src_url" -O $des_file
+    
+done < name.txt
+
+
+
+```
+
+name.txt
+
+```text
+http://oss.weixue100.com/wishare_test/toefl/speak/TPO-08-Q2.mp3    ./wishare_test/toefl/speak/TPO-08-Q2.mp3
+http://oss.weixue100.com/wishare/toefl/speak/TPO-08-Q3.mp3    ./wishare/toefl/speak/TPO-08-Q3.mp3
+http://oss.weixue100.com/wishare_test/toefl/speak/TPO-08-Q4.mp3    ./wishare_test/toefl/speak/TPO-08-Q4.mp3
+```
+
+#### 遍历文件夹，批量转码MP3
+
+```bash
+#!/bin/bash
+
+# 遍历文件夹，查找README.md
+
+function getdir(){
+
+    for element in `ls $1`
+    do
+        dir_or_file=$1"/"$element
+        
+        # 判断是否为文件夹
+        if [ -d $dir_or_file  ]
+        then
+        
+            # 递归文件夹
+            getdir $dir_or_file
+        
+        else
+        
+            # 判读文件后缀
+            if [ "${dir_or_file##*.}"x = "mp3"x ]||[ "${dir_or_file##*.}"x = "MP3"x ];then
+            
+                ffmpeg -y -i $dir_or_file -ab 32k $dir_or_file
+                
+                echo
+            
+            fi
+        
+        fi
+    done
+
+}
+
+root_dir=$1
+getdir $root_dir
+```
 
 ### 常见问题
+
+#### 赋值
+
+> 错误, 等于号中间不能有空格
+
+```bash
+#!/bin/bash
+dir_or_file = $1"/"$element
+```
+
+#### 字符串截取， 贪婪 & 非贪婪
+
+> %, %% 和 #，##
+
+示例2，定义变量 url="www.1987.name"
+
+```bash
+echo ${url%.*}      #移除 .* 所匹配的最右边的内容。
+www.1987
+```
+
+```bash
+echo ${url%%.*}     #将从右边开始一直匹配到最左边的 *. 移除，贪婪操作符。
+www
+```
+
+```bash
+echo ${url#*.}      #移除 *. 所有匹配的最左边的内容。
+1987.name
+```
+
+```bash
+echo ${url##*.}     #将从左边开始一直匹配到最右边的 *. 移除，贪婪操作符。
+name
+```
