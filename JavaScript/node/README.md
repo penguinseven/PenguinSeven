@@ -4,11 +4,11 @@
 
 ## window 安装
 
-### 1. 下载 
+### 下载 
   
 - windows下载 <http://nodejs.cn/>
 
-### 2. nodejs window下安装与配置淘宝镜像
+### nodejs window下安装与配置淘宝镜像
 
 - 前往nodejs官网下载安装软件，地址：https://nodejs.org/en/
 
@@ -40,7 +40,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
  
  
-## Linux 安装 node.js
+## Linux 安装
 
 ###　更新你的系统
 
@@ -49,7 +49,7 @@ root#  apt-get update
 root#  apt-get install git-core curl build-essential openssl libssl-dev
 ```
 
-### 0. nvm 安装
+### nvm 安装
 
 ```bash
 $ cd ~/git
@@ -100,7 +100,7 @@ source ~/git/nvm/nvm.sh
 ```
     
 
-## git安装 nodejs
+## git安装
 
 - 首先我们先从github上将Node.js库克隆到本地：
 
@@ -133,9 +133,9 @@ v0.10.33
 
 - 这个命令会输出你安装Node版本信息，如果你电脑上面输出和下面的类似，那恭喜你了，安装Node成功。
 
-## tar安装 nodejs
+## tar安装
 
-### 1、在官方网站下载 
+### 在官方网站下载 
 
 - 下载地址 <http://www.nodejs.org/download/>  
 
@@ -147,7 +147,7 @@ wget -c nodejs.org/dist/v0.10.33/node-v0.10.33-linux-x86.tar.gz
 tar -zxvf node-v0.10.33-linux-x86.tar.gz
 ```
       
-### 2、查看版本
+### 查看版本
 
 ```bash
 cd node-v0.10.32-linux-x86
@@ -158,7 +158,7 @@ cd bin
 
 查看版本是 v0.10.32
 
-### 3、将其建立建立链接
+### 将其建立建立链接
 
 - 这样就安装好了，在终端输入 node 就可以查看相关信息了  
 
@@ -224,15 +224,14 @@ $ echo '\n#alias for cnpm\nalias cnpm="npm --registry=https://registry.npm.taoba
      
 ## Linux 安装 yarn
      
-### 1. 修改源
+### 修改源
 
 ```bash
 sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3 
 echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
 ```
 
-### 2. 安装
+### 安装
 
 ```bash
 sudo apt-get update && sudo apt-get install yarn
@@ -240,9 +239,13 @@ sudo apt-get update && sudo apt-get install yarn
     
 ##  常见问题
     
-### 1. 安装webpack出现警告： fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):
+###  安装webpack出现警告： 
+
+```bash
+fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):
+```
     
-> 警告如下：
+警告如下：
     
 ```bash
 npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):
