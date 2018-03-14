@@ -228,3 +228,9 @@ testparm
 ```bash
 sudo apt-get install apt-transport-https
 ```
+
+### apt-get The method driver /usr/lib/apt/methods/http could not be found错误解决
+
+```bash
+sudo apt-get install apt-transport-https
+```

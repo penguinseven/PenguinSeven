@@ -2,6 +2,31 @@
 
 ##　常见问题
 
+### escapeshellarg 函数
+
+(PHP 4 >= 4.0.3, PHP 5, PHP 7)
+
+escapeshellarg — 把字符串转码为可以在 shell 命令里使用的参数
+
+When escapeshellarg() was stripping my non-ASCII characters from a UTF-8 string, adding the following fixed the problem:
+
+ex: 
+
+```php
+<?php
+system('ls '.escapeshellarg($dir));
+?>
+```
+
+fixed :
+
+```php
+<?php
+setlocale(LC_CTYPE, "en_US.UTF-8");
+system('ls '.escapeshellarg($dir));
+?>
+```
+
 ###  php-cli 模式，判断文件是否存在错误
     
     clearstatcache()

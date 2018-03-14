@@ -1,5 +1,19 @@
 # koel 二次开发 
 
+## 安装koel
+
+### 安装&初始化
+
+```bash
+cd PUBLIC_DIR
+git clone https://github.com/phanan/koel.git .
+git checkout v3.7.0 # Check out the latest version at https://github.com/phanan/koel/releases
+composer install
+php artisan koel:init # Populate credentials during the process
+
+php artisan serve
+```
+
 ## 项目介绍
 将koel 项目加入网易163音乐接口
 

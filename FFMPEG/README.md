@@ -1,8 +1,8 @@
-## FFMPEG 音视频处理
+# FFMPEG 音视频处理
 
 http://elkpi.com/topics/ffmpeg-f-hls.html
 
-### 常用测试源
+## 常用测试源
 
 ```cmd
 // 香港
@@ -26,15 +26,21 @@ http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8
 
 ```
 
-### 常用命令:
+## 常用命令:
 
-#### 1. 将视频流推送到流媒体服务器
+### flac 转MP3，动态流输出, 需指定响应头
+
+```bash
+ffmpeg -i '/data/wwwroot/cloudreve/public/uploads/20180309/1/1_aQ2p6suw.flac' -map 0:0 -v 0 -ab 128k -f mp3 -  
+```
+
+### 将视频流推送到流媒体服务器
 
 ```bash
 ffmpeg -i rtmp://live.hkstv.hk.lxdns.com/live/hks -c:a copy -c:v copy -f flv rtmp://192.168.17.229:5080/oflaDemo/2
 ```
 
-#### 2. 视频文件转MP4
+### 视频文件转MP4
 
 ```bash
 # 视频编码转H264,音频编码转aac，文件格式转MP4
@@ -50,13 +56,13 @@ ffmpeg -threads {$threads} -i {$old_video} -vcodec copy -acodec aac -strict -2 -
 ffmpeg -i {$input} -c:a copy -c:v copy -f flv {$out} ;
 ```
 
-#### 3. 修改文件创建时间
+### 修改文件创建时间
 
 ```php
 ffmpeg.exe -i 6.mp4 -metadata creation_time="2013-06-22 15:00:00" -acodec copy -vcodec copy output.mp4
 ```
 
-#### 转成mp4 
+### 转成mp4 
 
 转码mp4（资源占用很高，允许15个转码 300M*15 = 45000M）
 
@@ -67,7 +73,7 @@ ffmpeg.exe -i 6.mp4 -metadata creation_time="2013-06-22 15:00:00" -acodec copy -
 -y output.mp4
 ```
 
-#### ssegment点播   
+### ssegment点播   
 
 点播切片（资源低，无需限制，可以多线程统一处理已转码视频）
 
@@ -77,7 +83,7 @@ ffmpeg.exe -i 6.mp4 -metadata creation_time="2013-06-22 15:00:00" -acodec copy -
 -f ssegment -segment_format mpegts -segment_list video_1.m3u8 -segment_time 15 video_1_%04d.ts
 ```
 
-#### ssegment直播（没找到参数只保留一个文件）
+### ssegment直播（没找到参数只保留一个文件）
 
 ```bash
 /home/webserver/server/ffmpeg -threads 8 -re -i /root/Desktop/name.mp4 \
@@ -88,7 +94,7 @@ ffmpeg.exe -i 6.mp4 -metadata creation_time="2013-06-22 15:00:00" -acodec copy -
 -segment_list video_1.m3u8 -segment_time 5 -segment_list_size 1 -segment_size 1 video_1_%04d.ts
 ```
 
-#### hls转播       
+### hls转播       
 
 转播（资源占用较低，允许40个转播120M*40 = 4800M内存）
 
