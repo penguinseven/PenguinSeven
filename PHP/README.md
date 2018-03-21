@@ -1,6 +1,15 @@
 # PHP 
 
-##　常见问题
+## 开源项目
+
+### getID3()
+
+getID3()这个PHP脚本能够从MP3或其它媒体文件  
+(格式包括：Ogg，WMA，WMV，ASF，WAV，AVI，AAC，VQF，
+FLAC，MusePack，Real，QuickTime，Monkey's Audio，MIDI等)
+中提取有用的信息如：ID3标签,bitrate,播放时间等。
+
+## 常见问题
 
 ### escapeshellarg 函数
 
@@ -14,7 +23,7 @@ ex:
 
 ```php
 <?php
-system('ls '.escapeshellarg($dir));
+    system('ls '.escapeshellarg($dir));
 ?>
 ```
 
@@ -22,8 +31,8 @@ fixed :
 
 ```php
 <?php
-setlocale(LC_CTYPE, "en_US.UTF-8");
-system('ls '.escapeshellarg($dir));
+    setlocale(LC_CTYPE, "en_US.UTF-8");
+    system('ls '.escapeshellarg($dir));
 ?>
 ```
 
@@ -63,18 +72,18 @@ example :
 
 ```php
 <?php
-//检查文件大小
-echo filesize("test.txt");
-
-$file = fopen("test.txt", "a+");
-
-// 截取文件
-ftruncate($file,100);
-fclose($file);
-
-//清除缓存并再次检查文件大小
-clearstatcache();
-echo filesize("test.txt");
+    //检查文件大小
+    echo filesize("test.txt");
+    
+    $file = fopen("test.txt", "a+");
+    
+    // 截取文件
+    ftruncate($file,100);
+    fclose($file);
+    
+    //清除缓存并再次检查文件大小
+    clearstatcache();
+    echo filesize("test.txt");
 ?>
 ```
 
@@ -86,21 +95,23 @@ fork调用后执行的代码将是并行的。
 注：pcntl仅支持linux平台，并且只能在cli模式下使用。
 
 ```php
-    $pid = pcntl_fork();
-    
-    if($pid > 0){
-    
-        //父进程代码
-        
-        exit(0);
-    
-    } elseif($pid == 0) {
-    
-        //子进程代码
-        
-        exit(0);
-    
-    }
+    <?php
+        $pid = pcntl_fork();
+            
+            if($pid > 0){
+            
+                //父进程代码
+                
+                exit(0);
+            
+            } elseif($pid == 0) {
+            
+                //子进程代码
+                
+                exit(0);
+            
+            }
+    ?>
 ```
 
 
@@ -127,7 +138,7 @@ fork调用后执行的代码将是并行的。
 
 ### composer 安装配置
 
-```shell
+```bash
 # 下载
 $ curl -sS https://getcomposer.org/installer | php
 # 放入全局
@@ -148,18 +159,20 @@ $ composer selfupdate
 
 ### webBench 性能测试
  
- ```text
-wget http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz
-tar zxvf webbench-1.5.tar.gz
-cd webbench-1.5
-make
-make install
+ ```bash
+$ wget http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz
+$ tar zxvf webbench-1.5.tar.gz
+$ cd webbench-1.5
+$ make
+$ make install
 ```
 
 使用：
-    
-    # webbench -c 并发数 -t 运行测试时间 URL
-    $ webbench -c 1000 -t 60 http://192.168.80.157/phpinfo.php
+
+```bash
+# webbench -c 并发数 -t 运行测试时间 URL
+$ webbench -c 1000 -t 60 http://192.168.80.157/phpinfo.php
+```
     
     
 ### xdebug 下载安装
@@ -209,7 +222,7 @@ URL 命名规则，对于资源无法使用一个单数名词表示的情况，�
 
 ### composer http 提示：
 
-```text
+```textmate
  Your configuration does not allow connection to http://packagist.phpcomposer.com. See https://getcomposer.org/doc/06-config.md#secure-http for details  
 ```
 
@@ -218,7 +231,7 @@ URL 命名规则，对于资源无法使用一个单数名词表示的情况，�
 - 修改composer.json文件
 
 view plain copy
-```bash
+```json
         {  
             "config": {  
                 "secure-http": false  
@@ -229,6 +242,6 @@ view plain copy
 - 参数
 
 ```bash
-composer config -g secure-http false
+$ composer config -g secure-http false
 ```
 
