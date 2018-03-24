@@ -35,9 +35,9 @@
     3. 非阻塞
     
     4. 异步
+      
         
-        
-        
+    
 - ### ReactPHP相关
     1. react/mysql
     1. react/redis
@@ -49,11 +49,11 @@
 ## 3. electron 项目
 
 ## 4. upupw 知识点总结  
-    
+
  - ### apache 优化配置
  - ### nginx 优化配置
  - ### php 优化配置
- 
+
 ## 5. Linux shell 脚本
  - ### nginx-rtmp
 
@@ -62,7 +62,7 @@
 ## 7. 流媒体服务器
 
 ### 协议选择
- 
+
     延迟要求，是否要求低于5秒的延迟?如果是硬指标，
     就只能选择RTMP或HTTP-FLV流。移动端需要自己编译FFMPEG支持，无法直接播放。
     
@@ -71,9 +71,8 @@
     
     节约带宽，是否要求支持WebP2P?如果需要支持FlashP2P，
     或者移动端P2P，选择HLS。
- 
+
  - ### nginx-rtmp
  - ### red5
  - ### simple rtmp server
- 
- 
+
