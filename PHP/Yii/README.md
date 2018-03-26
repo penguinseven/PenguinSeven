@@ -131,6 +131,26 @@ url : http://localhost/index.php?r=article/category/default/index
 
 ##  常见问题
 
+### 数据查询
+
+- SQL 随机抽取十名幸运用户
+
+```php
+<?php
+
+$query = new Query;             
+$query->select('ID, City,State,StudentName')
+      ->from('student')                               
+      ->where(['IsActive' => 1])
+      ->andWhere(['not', ['State' => null]])
+      ->orderBy(['rand()' => SORT_DESC])
+      ->limit(10);
+
+ // updated orderBy('rand()') 可能查出重复数据，框架自动去重，追加条件 “->distinct()”, 正确查出10条
+ 
+ 
+```
+
 ### 开启GII
 
 - 基础版，修改config\web.php文件，**allowedIPs**
