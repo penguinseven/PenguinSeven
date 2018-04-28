@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/CMD/apache_upupw.cmd" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/CMD/clickme_20170327.bat" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/CMD/nginx_upupw.cmd" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/CMD/upcore/upc.cmd" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/tools/inno setup/script/20160905_paperless.iss" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/tools/inno setup/script/20160908_paperless.iss" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/tools/inno setup/script/20161122_paperless.iss" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/tools/inno setup/script/Paperless_meeting_setup.iss" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/docs/CMD/apache_upupw.cmd" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/docs/CMD/clickme_20170327.bat" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/docs/CMD/nginx_upupw.cmd" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/docs/CMD/upcore/upc.cmd" charset="GBK" />
   </component>
 </project>
