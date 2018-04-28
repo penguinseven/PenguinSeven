@@ -1,5 +1,19 @@
 # PHP 
 
+## 函数解析
+
+### **shell_exec()** 
+
+### **passthru()**
+
+### **exec()**
+
+### **system()**
+
+###  **escapeshellcmd()**
+
+###  **escapeshellarg()**
+
 ## 开源项目
 
 ### getID3()
