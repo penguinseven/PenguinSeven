@@ -1,3 +1,7 @@
+---
+sidebarDepth: 2
+---
+
 # 搭建nginx-rtmp-window 服务器
 
 ### 1.下载

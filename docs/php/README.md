@@ -1,12 +1,18 @@
+---
+sidebarDepth: 2
+---
+
 # PHP 
 
-##　常见问题
+## 常见问题
 
 ###  php-cli 模式，判断文件是否存在错误
     
-    clearstatcache()
+```php
+<?php 
+clearstatcache();
+```
     
-
 clearstatcache() 函数会缓存某些函数的返回信息，
 以便提供更高的性能。但是有时候，比如在一个脚本中多次检查同一个文件，
 而该文件在此脚本执行期间有被删除或修改的危险时，你需要清除文件状态缓存，
@@ -14,24 +20,25 @@ clearstatcache() 函数会缓存某些函数的返回信息，
 会进行缓存的函数，即受 clearstatcache() 函数影响的函数：
 
 ```php
-    stat()
-    lstat()
-    file_exists()
-    is_writable()
-    is_readable()
-    is_executable()
-    is_file()
-    is_dir()
-    is_link()
-    filectime()
-    fileatime()
-    filemtime()
-    fileinode()
-    filegroup()
-    fileowner()
-    filesize()
-    filetype()
-    fileperms()  
+<?php
+    stat();
+    lstat();
+    file_exists();
+    is_writable();
+    is_readable();
+    is_executable();
+    is_file();
+    is_dir();
+    is_link();
+    filectime();
+    fileatime();
+    filemtime();
+    fileinode();
+    filegroup();
+    fileowner();
+    filesize();
+    filetype();
+    fileperms();
 ```  
 
 example :
@@ -61,6 +68,8 @@ fork调用后执行的代码将是并行的。
 注：pcntl仅支持linux平台，并且只能在cli模式下使用。
 
 ```php
+<?php
+
     $pid = pcntl_fork();
     
     if($pid > 0){
@@ -102,7 +111,7 @@ fork调用后执行的代码将是并行的。
 
 ### composer 安装配置
 
-```shell
+```bash
 # 下载
 $ curl -sS https://getcomposer.org/installer | php
 # 放入全局
@@ -115,7 +124,9 @@ $ composer selfupdate
 
 ####  phpunit 单元测试
 
-    composer global require phpunit/phpunit
+```bash
+composer global require phpunit/phpunit
+```
     
 全局安装PHPUnit。  
 然后在`~/.bashrc`文件末尾加一行`PATH=$PATH:/home/feng/.composer/vendor/bin`  （注意替换用户名），来将`Composer`的`global bin`目录加入`PATH`。
@@ -123,7 +134,7 @@ $ composer selfupdate
 
 ### webBench 性能测试
  
- ```text
+ ```bash
 wget http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz
 tar zxvf webbench-1.5.tar.gz
 cd webbench-1.5
@@ -193,6 +204,7 @@ URL 命名规则，对于资源无法使用一个单数名词表示的情况，�
 - 修改composer.json文件
 
 view plain copy
+
 ```bash
         {  
             "config": {  
