@@ -1,6 +1,21 @@
 module.exports = {
-    title: 'PenguinSeven',
-    description: '吧食笔记',
+    base : '/',                             // 网站将在其部署的基本 URL
+    title: '吧食笔记',                      // 网站的标题
+    dest: 'dist',                    //指定 vuepress build 的输出目录
+    description: 'PenguinSeven',        //网站描述
+    head: [
+        ['link', { rel: 'icon', href: '/logo.png' }]
+    ],
+    port : '8080',              //指定用于 dev 服务器的端口
+
+    configureWebpack: {
+        resolve: {
+            alias: {
+                '@alias': 'docs/public'
+            }
+        }
+    },
+
     themeConfig: {
         nav: [
             { text: 'Home', link: '/' },
@@ -15,8 +30,10 @@ module.exports = {
                 'yii/',
                 'swoole/',
                 'workerman/',
+                'phpunit/',
                 'hash/register',
                 'libevent',
+                'functions',
                 'upcore',
                 'error'
             ],
@@ -27,5 +44,6 @@ module.exports = {
                 'four'
             ]
         }
-    }
+    },
+
 }
