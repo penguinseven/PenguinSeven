@@ -228,3 +228,34 @@ testparm
 ```bash
 sudo apt-get install apt-transport-https
 ```
+
+###  7. `oh-my-zsh`安装配置
+
+```bash
+sudoe aptitude install zsh
+```
+
+- 下载安装脚本
+
+```
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh 
+```
+
+- 配置
+
+```
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc 
+```
+
+- 设置默认sh 
+
+```
+chsh -s /bin/zsh 
+```
+
+- 切换到zsh
+
+```
+zsh
+```
+
