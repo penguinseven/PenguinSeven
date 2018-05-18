@@ -229,10 +229,10 @@ testparm
 sudo apt-get install apt-transport-https
 ```
 
-###  7. `oh-my-zsh`安装配置
+###  8. `oh-my-zsh`安装配置
 
 ```bash
-sudoe aptitude install zsh
+sudo aptitude install zsh
 ```
 
 - 下载安装脚本
