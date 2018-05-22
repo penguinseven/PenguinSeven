@@ -51,6 +51,11 @@ Github：<https://github.com/the-control-group/voyager>
   ```
   php artisan voyager:install
   ```
+  
+  ```
+  # 自动生成管理员
+  php artisan voyager:install --with-dummy
+  ```
 
 
 - 安装完成后，就可以进入后台查看效果了。最简单的方式是在项目根目录下运行`php artisan serve`，然后在浏览器中访问`http://localhost:8000/admin`，这样就可以进入登录认证页面，我们可以使用如下演示账户：
@@ -59,5 +64,69 @@ Github：<https://github.com/the-control-group/voyager>
   email: admin@admin.com
   password: password
   ```
+
+
+## 技巧
+
+
+### 覆盖view
+
+```text
+/ flug-info
+   ├─ browse.blade.php -------------------- 列表文件
+   ├─ edit-add.blade.php ------------------ 编辑文件
+  
+
+```
+
+### 自定义Controller
+
+- 配置config/voyager
+
+```php
+<?php
+ /*
+    |--------------------------------------------------------------------------
+    | Controllers config
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify voyager controller settings
+    |
+    */
+
+    'controllers' => [
+            // 'namespace' => 'TCG\\Voyager\\Http\\Controllers',
+            'namespace' => 'App\\Http\\Controllers\\Voyager',
+        ],
+```
+
+- 生成控制器
+
+```bash
+php artisan voyager:controllers
+```
+
+### 自定义路由& 路由覆盖
+
+```php
+<?php
+
+Route::group(['prefix' => 'admin'], function () {
+
+    // Custom
+   Route::group(['as'=>'custom.'], function (){
+
+       // 系统设置
+       Route::get('/system', ['uses' => 'SystemController@index', 'as' => 'system']);
+   });
+
+    // Voyager
+    Voyager::routes();
+
+    //Overriding Routes
+    // Route::post('login', ['uses' => 'MyAuthController@postLogin', 'as' => 'postlogin']);
+});
+```
+
 
   ​
