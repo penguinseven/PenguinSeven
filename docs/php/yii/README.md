@@ -54,7 +54,7 @@ article
 - 配置, 基础版将该内容复制的**config\web.php** 的 **$config**变量中，
 高级版，将内容复制到**config\main.php**中。
 
-```textmate
+```php
 
 <?php
     ......
@@ -68,9 +68,12 @@ article
 
 - 使用
 
-> 父模块调用
+父模块调用
 
 ```php
+
+<?php
+
 // 获取子模块
 $article = Yii::$app->getModule('article');
 
@@ -78,7 +81,7 @@ $article = Yii::$app->getModule('article');
 $article->runAction('default/index');
 ```
 
-> 路径直接访问
+路径直接访问
 
 ```textmate
 # 基础版
@@ -88,7 +91,7 @@ url : http://localhost/index.php?r=article/default/index
 url : http://localhost/index.php?r=article/default/index
 ```
 
-> 再次创建子模块
+再次创建子模块
 
 ```bash
 
@@ -99,10 +102,10 @@ app\modules\article\modules\category\Category
 category
 ```
 
-> 配置，修改文件 **frontend\module\article\Article.php**
+配置，修改文件 **frontend\module\article\Article.php**
 
-```text
-
+```php
+<?php
  /**
      * @inheritdoc
      */
@@ -120,22 +123,69 @@ category
     
 ```
 
-> **category**模块的访问路径
+**category**模块的访问路径
 
 ```textmate
 url : http://localhost/index.php?r=article/category/default/index
 ```
 
-
-
-
 ##  常见问题
+
+### 查询构建器使用**ifnull**会出错 `->select()` 
+
+如何为非数组
+
+```php
+<?php
+$query->select('id',"IFNULL(id,0)");
+```
+
+获取sql之后
+
+```php
+'id',ifnull(id, `0)` AS `sVIPChargeAmount`
+```
+
+`->select()` 值不是数组，会直接过滤,解决办法:
+
+```php
+<?php
+$columns = preg_split('/\s*,\s*/', trim($columns), -1, PREG_SPLIT_NO_EMPTY);
+```
+
+改为：
+```php
+<?php
+$query->select(['id',"IFNULL(id,0)"]);
+
+```
+
+### 数据查询 `orderBy rand()`
+
+- SQL 随机抽取十名幸运用户
+
+```php
+<?php
+
+$query = new Query;             
+$query->select('ID, City,State,StudentName')
+      ->from('student')                               
+      ->where(['IsActive' => 1])
+      ->andWhere(['not', ['State' => null]])
+      ->orderBy(['rand()' => SORT_DESC])
+      ->limit(10);
+
+ // updated orderBy('rand()') 可能查出重复数据，框架自动去重，追加条件 “->distinct()”, 正确查出10条
+ 
+ 
+```
 
 ### 开启GII
 
 - 基础版，修改config\web.php文件，**allowedIPs**
 
 ```php
+<?php
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
@@ -155,6 +205,7 @@ if (YII_ENV_DEV) {
 - 高级版， 修改config\main-local.php文件，**allowedIPs**
 
 ```php
+<?php
 if (!YII_ENV_TEST) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';

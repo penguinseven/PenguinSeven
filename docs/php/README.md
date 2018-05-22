@@ -4,7 +4,55 @@ sidebarDepth: 2
 
 # PHP 
 
+## 函数解析
+
+### **shell_exec()** 
+
+### **passthru()**
+
+### **exec()**
+
+### **system()**
+
+###  **escapeshellcmd()**
+
+###  **escapeshellarg()**
+
+## 开源项目
+
+### getID3()
+
+getID3()这个PHP脚本能够从MP3或其它媒体文件  
+(格式包括：Ogg，WMA，WMV，ASF，WAV，AVI，AAC，VQF，
+FLAC，MusePack，Real，QuickTime，Monkey's Audio，MIDI等)
+中提取有用的信息如：ID3标签,bitrate,播放时间等。
+
 ## 常见问题
+
+### escapeshellarg 函数
+
+(PHP 4 >= 4.0.3, PHP 5, PHP 7)
+
+escapeshellarg — 把字符串转码为可以在 shell 命令里使用的参数
+
+When escapeshellarg() was stripping my non-ASCII characters from a UTF-8 string, adding the following fixed the problem:
+
+ex: 
+
+```php
+<?php
+    system('ls '.escapeshellarg($dir));
+?>
+```
+
+fixed :
+
+```php
+<?php
+    setlocale(LC_CTYPE, "en_US.UTF-8");
+    system('ls '.escapeshellarg($dir));
+?>
+```
 
 ###  php-cli 模式，判断文件是否存在错误
     
@@ -13,6 +61,7 @@ sidebarDepth: 2
 clearstatcache();
 ```
     
+
 clearstatcache() 函数会缓存某些函数的返回信息，
 以便提供更高的性能。但是有时候，比如在一个脚本中多次检查同一个文件，
 而该文件在此脚本执行期间有被删除或修改的危险时，你需要清除文件状态缓存，
@@ -45,18 +94,18 @@ example :
 
 ```php
 <?php
-//检查文件大小
-echo filesize("test.txt");
-
-$file = fopen("test.txt", "a+");
-
-// 截取文件
-ftruncate($file,100);
-fclose($file);
-
-//清除缓存并再次检查文件大小
-clearstatcache();
-echo filesize("test.txt");
+    //检查文件大小
+    echo filesize("test.txt");
+    
+    $file = fopen("test.txt", "a+");
+    
+    // 截取文件
+    ftruncate($file,100);
+    fclose($file);
+    
+    //清除缓存并再次检查文件大小
+    clearstatcache();
+    echo filesize("test.txt");
 ?>
 ```
 
@@ -68,23 +117,23 @@ fork调用后执行的代码将是并行的。
 注：pcntl仅支持linux平台，并且只能在cli模式下使用。
 
 ```php
-<?php
-
-    $pid = pcntl_fork();
-    
-    if($pid > 0){
-    
-        //父进程代码
-        
-        exit(0);
-    
-    } elseif($pid == 0) {
-    
-        //子进程代码
-        
-        exit(0);
-    
-    }
+    <?php
+        $pid = pcntl_fork();
+            
+            if($pid > 0){
+            
+                //父进程代码
+                
+                exit(0);
+            
+            } elseif($pid == 0) {
+            
+                //子进程代码
+                
+                exit(0);
+            
+            }
+    ?>
 ```
 
 
@@ -111,7 +160,7 @@ fork调用后执行的代码将是并行的。
 
 ### composer 安装配置
 
-```bash
+```shell
 # 下载
 $ curl -sS https://getcomposer.org/installer | php
 # 放入全局
@@ -135,17 +184,18 @@ composer global require phpunit/phpunit
 ### webBench 性能测试
  
  ```bash
-wget http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz
-tar zxvf webbench-1.5.tar.gz
-cd webbench-1.5
-make
-make install
-```
+$ wget http://home.tiscali.cz/~cz210552/distfiles/webbench-1.5.tar.gz
+$ tar zxvf webbench-1.5.tar.gz
+$ cd webbench-1.5
+$ make
+$ make install
 
 使用：
-    
-    # webbench -c 并发数 -t 运行测试时间 URL
-    $ webbench -c 1000 -t 60 http://192.168.80.157/phpinfo.php
+
+```bash
+# webbench -c 并发数 -t 运行测试时间 URL
+$ webbench -c 1000 -t 60 http://192.168.80.157/phpinfo.php
+```
     
     
 ### xdebug 下载安装
@@ -195,7 +245,7 @@ URL 命名规则，对于资源无法使用一个单数名词表示的情况，�
 
 ### composer http 提示：
 
-```text
+```textmate
  Your configuration does not allow connection to http://packagist.phpcomposer.com. See https://getcomposer.org/doc/06-config.md#secure-http for details  
 ```
 
@@ -205,7 +255,7 @@ URL 命名规则，对于资源无法使用一个单数名词表示的情况，�
 
 view plain copy
 
-```bash
+```json
         {  
             "config": {  
                 "secure-http": false  
@@ -216,6 +266,6 @@ view plain copy
 - 参数
 
 ```bash
-composer config -g secure-http false
+$ composer config -g secure-http false
 ```
 

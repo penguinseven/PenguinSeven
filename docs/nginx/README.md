@@ -1,10 +1,6 @@
----
-sidebarDepth: 2
----
-
 # Nginx
 
-## 负载均衡，权重，ip_hash
+##  负载均衡，权重，ip_hash
 
 ###  新建一个proxy.conf文件
 
@@ -71,7 +67,7 @@ sidebarDepth: 2
 
 ### 示例
 
-#### 1、轮询（默认）
+#### 轮询（默认）
 每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。 
 
     upstream backserver {
@@ -79,7 +75,7 @@ sidebarDepth: 2
         server 192.168.0.15;
     }
     
-#### 2、指定权重
+#### 指定权重
 指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。 
 
     upstream backserver {
@@ -87,7 +83,7 @@ sidebarDepth: 2
         server 192.168.0.15 weight=10;
     }
     
-#### 3、IP绑定 ip_hash
+#### IP绑定 ip_hash
 每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。 
 
     upstream backserver {
@@ -96,7 +92,7 @@ sidebarDepth: 2
         server 192.168.0.15:80;
     }
     
-#### 4、fair（第三方）  
+#### fair（第三方）  
 按后端服务器的响应时间来分配请求，响应时间短的优先分配。 
 
     upstream backserver {
@@ -105,7 +101,7 @@ sidebarDepth: 2
         fair;
     }
     
-#### 5、url_hash（第三方）
+#### url_hash（第三方）
 按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。 
 
     upstream backserver {
@@ -134,7 +130,63 @@ sidebarDepth: 2
 - fail_timeout:  
 max_fails次失败后，暂停的时间
 
-### 2. 跨域请求配置
+- config
+
+```smartyconfig
+server {
+  listen 80;
+  listen 443 ssl http2;
+  ssl_certificate /usr/local/nginx/conf/ssl/cloud.penguinseven.club.crt;
+  ssl_certificate_key /usr/local/nginx/conf/ssl/cloud.penguinseven.club.key;
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers EECDH+CHACHA20:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
+  ssl_prefer_server_ciphers on;
+  ssl_session_timeout 10m;
+  ssl_session_cache builtin:1000 shared:SSL:10m;
+  ssl_buffer_size 1400;
+  add_header Strict-Transport-Security max-age=15768000;
+  ssl_stapling on;
+  ssl_stapling_verify on;
+  server_name cloud.penguinseven.club;
+  access_log /data/wwwlogs/cloud.penguinseven.club_nginx.log combined;
+  index index.html index.htm index.php;
+  root /data/wwwroot/cloudreve;
+  if ($ssl_protocol = "") { return 301 https://$host$request_uri; }
+  
+  include /usr/local/nginx/conf/rewrite/thinkphp.conf;
+  #error_page 404 /404.html;
+  #error_page 502 /502.html;
+  
+  location ~ \.php {
+    #fastcgi_pass remote_php_ip:9000;
+    fastcgi_pass unix:/dev/shm/php-cgi.sock;
+    fastcgi_index index.php;
+    include fastcgi_params;
+    set $real_script_name $fastcgi_script_name;
+    if ($fastcgi_script_name ~ "^(.+?\.php)(/.+)$") {
+      set $real_script_name $1;
+      #set $path_info $2;
+    }
+    fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;
+    fastcgi_param SCRIPT_NAME $real_script_name;
+    #fastcgi_param PATH_INFO $path_info;
+  }
+
+  location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)$ {
+    expires 30d;
+    access_log off;
+  }
+  location ~ .*\.(js|css)?$ {
+    expires 7d;
+    access_log off;
+  }
+  location ~ /\.ht {
+    deny all;
+  }
+}
+```
+
+### 跨域请求配置
 
 ```nginxconfig
 server {
