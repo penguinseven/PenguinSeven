@@ -229,8 +229,39 @@ testparm
 sudo apt-get install apt-transport-https
 ```
 
-### apt-get The method driver /usr/lib/apt/methods/http could not be found错误解决
+### 8. apt-get The method driver /usr/lib/apt/methods/http could not be found错误解决
 
 ```bash
 sudo apt-get install apt-transport-https
 ```
+
+###  9. `oh-my-zsh` 安装配置
+
+```bash
+sudo aptitude install zsh
+```
+
+- 下载安装脚本
+
+```
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh 
+```
+
+- 配置
+
+```
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc 
+```
+
+- 设置默认sh 
+
+```
+chsh -s /bin/zsh 
+```
+
+- 切换到zsh
+
+```
+zsh
+```
+
