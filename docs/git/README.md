@@ -1,4 +1,6 @@
-## Git 版本库
+# Git 版本库
+ 
+## 常用命令 
  
 ### 0. 初始化
 
@@ -38,35 +40,83 @@ git remote set-url origin/master http://xxx
 
 > Git 中的tag指向一次commit的id，通常用来给开发分支做一个标记，如标记一个版本号。
 
-#### 1. 打标签
+### 1. 打标签
 
     git tag -a v1.01 -m "Relase version 1.01"
     
 > 注解：git tag 是打标签的命令，-a 是添加标签，其后要跟新标签号，-m 及后面的字符串是对该标签的注释。
 
-#### 2. 提交标签到远程仓库
+### 2. 提交标签到远程仓库
 
     git push origin -tags
     
 > 注解：就像git push origin master 把本地修改提交到远程仓库一样，-tags可以把本地的打的标签全部提交到远程仓库。
 
-#### 3. 删除标签
+### 3. 删除标签
 
     git tag -d v1.01
     
 > 注解：-d 表示删除，后面跟要删除的tag名字
 
-#### 4. 删除远程标签
+### 4. 删除远程标签
 
     git push origin :refs/tags/v1.01
     
 > 注解：就像git push origin :branch_1 可以删除远程仓库的分支branch_1一样， 冒号前为空表示删除远程仓库的tag。
 
-#### 5. 查看标签
+### 5. 查看标签
 
     git tag
     # 或者  
     git tag -l
+    
 
+## 常见问题
 
+### 0. CentOS 系统，自带git不能用
 
+> error: The requested URL returned error: 400 Bad Request while accessing https://git.coding.net/linghuyong/youyiche.git/info/refsfatal: HTTP request failed
+
+- 编译安装2.4
+
+```bash
+→ yum -y install vim gcc-c++ gcc make openssl-devel openssl 
+→ rpm -e git perl-Git
+→wget https://www.kernel.org/pub/software/scm/git/git-2.8.1.tar.gz
+→ tar xf git-2.8.1.tar.gz
+→ cd git-2.8.1
+→ ./configure --prefix=/usr/local/git  --with-curl --with-expat
+→ make
+→ make install
+```
+
+- 错误一：
+
+> 　usr/bin/perl Makefile.PL PREFIX='/usr/local/git' INSTALL_BASE='' --localedir='/usr/local/git/share/locale'
+  　　Can't locate ExtUtils/MakeMaker.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 　　/usr/share/perl5 .) at Makefile.PL line 3.
+  　　BEGIN failed--compilation aborted at Makefile.PL line 3.
+  　　make[1]: *** [perl.mak] Error 2
+  　　make: *** [perl/perl.mak] Error 2
+  
+执行：
+
+```
+yum install perl-ExtUtils-MakeMaker package.
+```
+  
+- 出现错误二：
+
+> /bin/sh: msgfmt: command not found
+
+```bash
+yum install gettext-devel
+```
+
+- 软连接,加入全局变量
+
+```bash
+ln -s /usr/local/git/bin/* /usr/bin/
+```
+
+- [参考地址](http://blog.51cto.com/sandy521/1718236)
+- [参考地址](https://www.cnblogs.com/grimm/p/5368777.html)
