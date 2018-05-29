@@ -1,5 +1,5 @@
 
-# FRP
+# FRP 简单教程
 
 ## 声明
 本教程使用frp_0.17，各个版本下载地址[github](https://github.com/fatedier/frp/releases)

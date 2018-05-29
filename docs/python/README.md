@@ -30,6 +30,65 @@ $ ./configure --prefix=/usr/local/python3
 $ make &&　make install
 ```
 
+
+### 配置pip
+
+- 修改配置文件
+
+```bash
+$ cat /etc/profile
+
+$ echo 'export PYTHON_HOME=/usr/local/python3 \
+      export PATG=$PYTHON_HOME/bin:$PATH' >> /etc/profile
+
+$ source /etc/profile
+```
+
+- 更新pip
+
+```bash
+pip3 install --upgrade pip
+```
+
+- 检查pip
+
+```bash
+pip --version
+```
+
+### 安装pipenv
+
+- 新建虚拟环境  
+
+`pipenv`管理虚拟环境是按项目来的, 要为你的某个项目新建一个虚拟环境, 
+只需要在项目目录下运行如下命令:`pipenv --two`其中`--two`表示用`Python2`建立虚拟环境, 另外还有个`--three`表示用`Python3`建立. 
+
+
+- 安装
+
+```bash
+pip install pipenv
+```
+
+- 使用
+
+```bash
+pipenv install 
+```
+
+- 进入虚拟环境
+
+```bash
+$ pipenv shell
+```
+
+- 查看当前环境安装的包
+
+```bash
+$ pipenv graph
+```
+
+
 ### Python图像处理
  
  ---
@@ -53,7 +112,7 @@ $ make &&　make install
     
     #安装Pillow图像处理库
     sudo pip install pillow  
-```
+ ```
 
 - 参考链接
 [pillow](https://segmentfault.com/a/1190000003941588)
