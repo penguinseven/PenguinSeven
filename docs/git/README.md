@@ -120,3 +120,15 @@ ln -s /usr/local/git/bin/* /usr/bin/
 
 - [参考地址](http://blog.51cto.com/sandy521/1718236)
 - [参考地址](https://www.cnblogs.com/grimm/p/5368777.html)
+
+
+### 1.`fatal：refusing to merge unrelated histories` 
+
+- 更新项目
+
+```bash
+# 告诉系统我允许合并不相关历史的内容。
+git pull origin master --allow-unrelated-histories
+```
+
+- [参考地址](https://www.cnblogs.com/lulubai/p/6001334.html)
