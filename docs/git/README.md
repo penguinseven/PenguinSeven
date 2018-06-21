@@ -71,6 +71,54 @@ git remote set-url origin/master http://xxx
     git tag -l
     
 
+### 6.remote
+
+> 可以通过-all一次提交多个仓库
+
+- 配置远程仓库
+
+```bash
+git remote add origin https://url
+```
+
+- 再添加一个远程仓库
+
+```bash
+git remote set-url --add origin https://url
+```
+
+- 注意这里多次添加需要用
+
+```bash
+git remote set-url --add
+```
+
+- 不然会报错：
+
+```bash
+fatal: remote origin already exists.
+```
+
+- 或者改名
+
+```bash
+git remote add otherOrigin https://url
+```
+
+- 一次提交到所有远程仓库
+
+```bash
+git push --all
+```
+
+>注意  
+
+`git pull` 是 `git pull` (**from**) `origin` (**to**) `master`
+
+
+`git push` 是 `git push` (**to**) `origin` (**from**) `master`
+
+
 ## 常见问题
 
 ### 0. CentOS 系统，自带git不能用
