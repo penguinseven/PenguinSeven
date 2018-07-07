@@ -129,4 +129,53 @@ Route::group(['prefix' => 'admin'], function () {
 ```
 
 
+## 安装easyWechat
+
+### 引入扩展包
+
+- 使用`composer`进行安装
+
+```bash 
+$ composer require "overtrue/laravel-wechat:~4.0"
+```
+
+- 在 `config/app.php` 注册 `ServiceProvider` 和 `Facade` (Laravel 5.5 无需手动注册)
+  
+```php
+ 'providers' => [
+      // ...
+      Overtrue\LaravelWeChat\ServiceProvider::class,
+  ],
+  'aliases' => [
+      // ...
+      'EasyWeChat' => Overtrue\LaravelWeChat\Facade::class,
+  ],
+```
+
+- 创建配置文件：
+
+```bash
+$ php artisan vendor:publish --provider="Overtrue\LaravelWeChat\ServiceProvider"
+```
+
+- 修改应用根目录下的 `config/wechat.php` 中对应的参数即可。
+
+- 每个模块基本都支持多账号，默认为 `default`。
+
+
+
+## 常见问题
+
+### mysql数据库版本低于5.7.7，可能会出现 “Specified key was too long error.”的报错
+
+- 修改App/Providers/AppServiceProvider.php文件，代码如下；
+
+```php
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+```
   ​
