@@ -119,6 +119,41 @@ git push --all
 `git push` 是 `git push` (**to**) `origin` (**from**) `master`
 
 
+### 7. 撤销`commit`
+ 
+ [参考](https://blog.csdn.net/w958796636/article/details/53611133)
+ 
+```git
+$ git reset --soft HEAD^
+```
+
+`HEAD^`的意思是上一个版本，也可以写成`HEAD~1`
+
+如果你进行了2次`commit`，想都撤回，可以使用`HEAD~2`
+
+
+至于这几个参数：
+
+- --mixed   
+意思是：不删除工作空间改动代码，撤销`commit`，并且撤销`git add . `操作
+这个为默认参数,`git reset --mixed HEAD^` 和 `git reset HEAD^` 效果是一样的。
+
+
+- --soft    
+不删除工作空间改动代码，撤销`commit`，不撤销`git add .` 
+
+- --hard  
+删除工作空间改动代码，撤销`commit`，撤销`git add .` 
+注意完成这个操作后，就恢复到了上一次的commit状态。
+
+
+顺便说一下，如果`commit`注释写错了，只是想改一下注释，只需要：
+```bash
+$ git commit --amend
+```
+
+此时会进入默认`vim`编辑器，修改注释完毕后保存就好了。
+
 ## 常见问题
 
 ### 0. CentOS 系统，自带git不能用
