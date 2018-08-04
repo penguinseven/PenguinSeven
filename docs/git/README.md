@@ -154,6 +154,38 @@ $ git commit --amend
 
 此时会进入默认`vim`编辑器，修改注释完毕后保存就好了。
 
+### 8. 清除`git clean`
+
+```bash
+git clean -n
+```
+
+是一次clean的演习, 告诉你哪些文件会被删除. 记住他不会真正的删除文件, 只是一个提醒
+
+```bash
+git clean -f　　
+```
+
+删除当前目录下所有没有track过的文件. 他不会删除.gitignore文件里面指定的文件夹和文件, 不管这些文件有没有被track过
+
+```bash
+git clean -f <path>
+```
+
+删除指定路径下的没有被track过的文件
+
+```bash
+git clean -df
+```
+
+删除当前目录下没有被track过的文件和文件夹
+
+```bash
+git clean -xf
+```
+
+删除当前目录下所有没有track过的文件. 不管他是否是.gitignore文件里面指定的文件夹和文件
+
 ## 常见问题
 
 ### 0. CentOS 系统，自带git不能用
