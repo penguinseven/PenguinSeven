@@ -68,3 +68,19 @@ $ pip install Scrapy
 
 
 ## 常见问题
+
+###  读取文件时提示"UnicodeDecodeError: 'gbk' codec can't decode byte 0x80 in position 205: illegal multibyte sequence"
+
+- 解决办法1.
+
+```python
+FILE_OBJECT= open('order.log','r', encoding='UTF-8')
+```
+
+- 解决办法2.
+
+```python
+FILE_OBJECT= open('order.log','rb')
+```
+　　
+
