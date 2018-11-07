@@ -11,6 +11,116 @@ $ wget https://github.com/yiisoft/yii2/releases/download/2.0.12/yii-basic-app-2.
 $ wget https://github.com/yiisoft/yii2/releases/download/2.0.12/yii-advanced-app-2.0.12.tgz
 ```
 
+### 项目初始化
+
+- 解压文件
+
+```bash
+$ cd advanced 
+$ php init
+```
+输出
+```bash
+Yii Application Initialization Tool v1.0
+
+Which environment do you want the application to be initialized in?
+
+  [0] Development
+  [1] Production
+
+  Your choice [0-1, or "q" to quit] 0
+
+  Initialize the application under 'Development' environment? [yes|no] yes
+
+  Start initialization ...
+
+   generate backend/config/main-local.php
+   generate backend/config/params-local.php
+   generate backend/config/test-local.php
+   generate backend/web/index-test.php
+   generate backend/web/index.php
+   generate common/config/main-local.php
+   generate common/config/params-local.php
+   generate common/config/test-local.php
+   generate console/config/main-local.php
+   generate console/config/params-local.php
+   generate frontend/config/main-local.php
+   generate frontend/config/params-local.php
+   generate frontend/config/test-local.php
+   generate frontend/web/index-test.php
+   generate frontend/web/index.php
+   generate yii
+   generate yii_test
+   generate yii_test.bat
+   generate cookie validation key in backend/config/main-local.php
+   generate cookie validation key in frontend/config/main-local.php
+      chmod 0777 backend/runtime
+      chmod 0777 backend/web/assets
+      chmod 0777 frontend/runtime
+      chmod 0777 frontend/web/assets
+      chmod 0755 yii
+      chmod 0755 yii_test
+
+  ... initialization completed.
+
+```
+- 修改数据库配置文件
+
+```bash
+$ vi common/config/main-local.php
+```
+
+修改数据库，用户，密码
+```php
+<?php
+return [
+    'components' => [
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=advanced_yii',
+            'username' => 'root',
+            'password' => 'root',
+            'charset' => 'utf8',
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@common/mail',
+            // send all mails to a file by default. You have to set
+            // 'useFileTransport' to false and configure a transport
+            // for the mailer to send real emails.
+            'useFileTransport' => true,
+        ],
+    ],
+];
+
+```
+
+- 创建数据表
+
+```bash
+$ php yii migrate
+```
+
+输出
+```bash
+Yii Migration Tool (based on Yii v2.0.10)
+
+Creating migration history table "migration"...Done.
+Total 1 new migration to be applied:
+	m130524_201442_init
+
+Apply the above migration? (yes|no) [no]:yes
+*** applying m130524_201442_init
+    > create table {{%user}} ... done (time: 0.010s)
+*** applied m130524_201442_init (time: 0.048s)
+
+
+1 migration was applied.
+
+Migrated up successfully.
+
+```
+
 ## 数据库
 
 ### 高级版，数据库信息
