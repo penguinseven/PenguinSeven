@@ -22,3 +22,24 @@ OK，不知道讲清楚没有，在举一个例子。在我上面的实验过程
 
 > 来源：CSDN 
   原文：https://blog.csdn.net/hel12he/article/details/46911159 
+  
+
+## redis.set方法详解
+```bash
+String set(String key, String value, String nxxx, String expx, long time);
+```
+该方法是： 存储数据到缓存中，并制定过期时间和当Key存在时是否覆盖。
+
+`nxxx：` 只能取`NX`或者`XX`，如果取`NX`，则只有当key不存在是才进行set，如果取`XX`，则只有当key已经存在时才进行set  
+
+`expx：` 只能取EX或者PX，代表数据过期时间的单位，EX代表秒，PX代表毫秒。  
+
+`time：` 过期时间，单位是expx所代表的单位。  
+
+判断redis是否存在方法：  
+```bash
+# 的是否为-2，如果是-2,则不存在键。为-1键存在。
+1: jedis.get("ts1") 
+# 值为true,存在，否则不存在。
+2：jedis.exists("ts1") 
+```
