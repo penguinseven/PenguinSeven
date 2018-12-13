@@ -68,6 +68,51 @@ PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
 
 ![demo](./phpunit-04.png)
 
+#### 简单介绍
+
+- Laravel默认两个文件夹 Feature and Unit
+- Unit tests里面文件中的测试主要用来测试比较小，功能相对独立，通常是一个函数
+- Feature tests 用来测试比较大的，通常是测试一个完成的HTTP请求，返回一个JSON
+
+#### 使用方法
+
+- Laravel提供了命令行操作
+```bash 
+$ php artisan make:test UserTest                //创建Feature测试
+ 
+$ php artisan make:test UserTest --unit         //创建unit测试
+```
+
+- 然后phpstorm快捷键 `shift + Ctrl + F10`
+
+#### 测试Demo
+
+```php
+<?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testBasicTest()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
+}
+```
+
+
 ### yii 
 
 - 安装
