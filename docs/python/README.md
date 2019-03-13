@@ -152,3 +152,9 @@ url_path = 'http://xx.com/xx.jpg'
 save_file_name = './images/xx.jpg'
 request.urlretrieve(url_path, save_file_name)  # path为路径加名字
 ```
+
+- 获得一个url最后一个/后的字符串
+
+```python
+str.split('/')[-1]
+```
