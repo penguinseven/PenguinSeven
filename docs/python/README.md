@@ -117,3 +117,13 @@ $ pipenv graph
 - 参考链接
 [pillow](https://segmentfault.com/a/1190000003941588)
 
+### 代码片段
+
+- 将list存储到json文件中
+
+```python
+# 列表并保存为json
+with open("./demo.json", 'w', encoding='utf-8') as json_file:
+    json.dump(content, json_file, ensure_ascii=False)
+```
+
