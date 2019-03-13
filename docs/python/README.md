@@ -122,8 +122,33 @@ $ pipenv graph
 - 将list存储到json文件中
 
 ```python
-# 列表并保存为json
+import json
+
+# 列表
+content = [{name: 'test', age: 12}, {name: 'demo', age: 13}]
+# 保存为json
 with open("./demo.json", 'w', encoding='utf-8') as json_file:
     json.dump(content, json_file, ensure_ascii=False)
 ```
 
+- 判断目录是否存在，创建文件夹
+
+```python
+import os
+
+# 创建目录
+path = './images'
+isExists = os.path.exists(path)
+if not isExists:
+    os.mkdir(path, 0755)
+```
+
+- 下载图片，保存至本地
+
+```python
+from urllib import request
+
+url_path = 'http://xx.com/xx.jpg'
+save_file_name = './images/xx.jpg'
+request.urlretrieve(url_path, save_file_name)  # path为路径加名字
+```
