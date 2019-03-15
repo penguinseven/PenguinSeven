@@ -161,6 +161,6 @@ SELECT * FROM user_event WHERE PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'), DATE_FORM
 
 ### 8. 导出数据库结构和数据
 
-```mysql
-mysqldump -uroot -p dbname > dbname .sql
+```shell
+$ mysqldump -uroot -p dbname > dbname .sql
 ```
