@@ -158,3 +158,9 @@ SELECT * FROM user_event WHERE DATE_SUB(curdate(), INTERVAL 30 DAY) <= DATE(crea
 #查询上一月的信息记录：
 SELECT * FROM user_event WHERE PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'), DATE_FORMAT(create_time, '%Y%m')) =1;   
 ```
+
+### 8. 导出数据库结构和数据
+
+```mysql
+mysqldump -uroot -p dbname > dbname .sql
+```
