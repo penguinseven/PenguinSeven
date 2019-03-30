@@ -127,3 +127,25 @@ $   docker-compose up -d nginx mysql redis beanstalkd
 ```bash
 $  docker-compose exec workspace bash
 ```
+
+- 更改 mysql 版本
+
+```bash
+# 修改 .env 文件
+MYSQL_VERSION=5.7 # 默认为 latest
+
+#停止mysql容器
+docker-compose stop mysql
+
+# 删除旧数据库数据
+rm -rf ~/.laradock/data/mysql
+
+# ！注意重启docker应用，然后再构建新 mysql
+docker-compose build mysql
+
+ # 重新创建容器
+docker-compose up -d nginx mysql
+
+# 查看现有 mysql 版本
+docker inspect laradock_mysql_1
+```
