@@ -21,7 +21,7 @@
 
 机智的我找到了官网，查看**https://phpunit.de/**
 
-```bash
+```
 ➜ wget https://phar.phpunit.de/phpunit.phar
 
 ➜ chmod +x phpunit.phar
@@ -39,7 +39,7 @@ PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
 
 由于我使用的是**PHP 5.6.32 (cli) (built: Nov 28 2017 17:52:20)**，我下载了对应的版本
 
-```bash
+```
  # 下载
  ➜ wget https://phar.phpunit.de/phpunit-5.6.2.phar
  # 加权限
@@ -56,13 +56,13 @@ PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
 
 - 安装laravel 5.1 
 
-```bash
+```
 ➜ composer create-project laravel/laravel your-project-name --prefer-dist "5.1.*"
 ```
 
 - 执行测试demo
 
-```bash
+```
 ➜ phpunit tests
 ```
 
@@ -77,7 +77,7 @@ PHPUnit 6.5.0 by Sebastian Bergmann and contributors.
 #### 使用方法
 
 - Laravel提供了命令行操作
-```bash 
+``` 
 $ php artisan make:test UserTest                //创建Feature测试
  
 $ php artisan make:test UserTest --unit         //创建unit测试
@@ -115,14 +115,46 @@ class ExampleTest extends TestCase
 
 ### yii 
 
-- 安装
+### 安装
 
-```bash
+- 源码安装
+
+```
 ➜ wget https://github.com/yiisoft/yii2/releases/download/2.0.12/yii-basic-app-2.0.12.tgz
 
 ➜ tar -zxvf yii-basic-app-2.0.12.tgz
 ```
 
-- 部署, nginx 文件指向 **basic/web/** 目录
+- `composer` 安装
+
+```
+➜ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
+```
+
+### 部署 
+
+-  nginx 文件指向 **basic/web/** 目录, rewrite规则
+
+```nginxconfig
+location / {
+        # Redirect everything that isn't a real file to index.php
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+```
+
+### 执行
+
+```bash
+$ vendor/bin/codecept run
+```
+
+
+### 为指定模型创建测试用例
+
+```bash
+$ vendor/bin/codecept generate:test unit models/Subject
+```
+
+> 生成 `tests/unit/models/SubjectTest.php`
 
 
