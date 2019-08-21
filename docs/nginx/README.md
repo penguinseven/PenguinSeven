@@ -121,6 +121,27 @@
         server 127.0.0.1:6060;
         server 127.0.0.1:7070 backup; (其它所有的非backup机器down或者忙的时候，请求backup机器)
     }
+
+#### TCP转发
+
+> 需开启`stream`模块
+
+```nginxconfig
+stream {
+
+    upstream group1 {
+        hash $remote_addr consistent;
+        server 78.141.198.151:4677;
+    }
+
+    server {
+        listen 4677;
+        listen 4677 udp;
+        proxy_pass group1;
+    }
+}
+
+```
     
 ### 参数解析    
 

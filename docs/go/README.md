@@ -26,6 +26,34 @@ $ tar -C /usr/local -zxvf go1.10.3.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 ```
 
+- 配置`GOPATH`、`GOROOT`目录
+
+```bash
+# 修改 /etc/profile 文件
+export GOROOT=/usr/local/go
+export GOPATH=/data/wwwroot/go
+export PATH=$PATH:$GOROOT/bin
+
+```
+
+- 修改`GOPROXY` 开启代理
+
+> go1.11 的 module 功能是默认不会开启的, 必须配置开启，否则无效
+
+```bash
+# 修改 /etc/profile 文件
+export GO111MODULE=on
+export GOPROXY=https://goproxy.io
+```
+
+> 如果 Go version >= 1.13
+
+```bash
+$ go env -w GOPROXY=https://goproxy.io,direct
+# Set environment variable allow bypassing the proxy for selected modules
+$ go env -w GOPRIVATE=*.corp.example.com
+```
+
 - 测试，创建文件`test.go`
 
 ```go
@@ -113,4 +141,3 @@ $ go run --work test.go
 $ go build test.go
 ```
 
-  
