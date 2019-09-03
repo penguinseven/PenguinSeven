@@ -79,3 +79,11 @@ home: true
  - ### red5
  - ### simple rtmp server
 
+> 刻意练习，每日精进
+
+
+<center>
+
+[湘ICP备18022157号](http://www.beian.miit.gov.cn)
+
+</center>
