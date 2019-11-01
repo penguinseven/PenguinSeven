@@ -160,6 +160,8 @@ fork调用后执行的代码将是并行的。
 
 ### composer 安装配置
 
+- 第一种
+
 ```shell
 # 下载
 $ curl -sS https://getcomposer.org/installer | php
@@ -169,6 +171,24 @@ $ mv composer.phar /usr/local/bin/composer
 $ composer config -g repo.packagist composer https://packagist.phpcomposer.com
 # 设置自动更新
 $ composer selfupdate
+```
+
+- 第二种
+
+```shell script
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+```
+
+```shell script
+mv composer.phar /usr/local/bin/composer
+sudo chmod +x /usr/local/bin/composer
+```
+
+```shell script
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
 
 ####  phpunit 单元测试
