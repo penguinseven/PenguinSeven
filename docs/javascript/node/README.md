@@ -139,48 +139,35 @@ v0.10.33
 
 - 下载地址 <http://www.nodejs.org/download/>  
 
-- 下载后，在/home/hongwei有一个文件node-v0.10.32-linux-x86.tar.gz ，将其解压后，文件夹为 node-v0.10.32-linux-x86，
-或者运行命令  
+- 下载后，在/home/hongwei有一个文件 `node-v12.13.1-linux-x64` ，将其解压后,或者运行命令
 
 ```bash
-wget -c nodejs.org/dist/v0.10.33/node-v0.10.33-linux-x86.tar.gz
-tar -zxvf node-v0.10.33-linux-x86.tar.gz
-```
-  
-### 查看版本
-
-```bash
-cd node-v0.10.32-linux-x86
-ls
-cd bin
-./node -v
+wget -c https://nodejs.org/dist/latest-v12.x/node-v12.13.1-linux-x64.tar.xz
+tar -zxvf node-v12.13.1-linux-x64.tar.gz
+mv node-v12.13.1-linux-x64 /usr/local/node
 ```
 
-查看版本是 v0.10.32
+### 配置环境变量
 
-### 将其建立建立链接
+- 修改`/etc/profile`
 
-- 这样就安装好了，在终端输入 node 就可以查看相关信息了  
-
-```bash
-ln -s /home/hongwei/node-v0.10.32-linux-x86/bin/node /usr/local/bin/node
-ln -s /home/hongwei/node-v0.10.32-linux-x86/bin/npm /usr/local/bin/npm
+```
+# 新增配置
+export NODE_HOME=/usr/local/node
+export PATH=$NODE_HOME/bin:$PATH
 ```
 
-- 说明：强烈不建议使用 apt-get 进行安装，因为安装后，不显示相关信息。
+### 全局安装`yarn`
 
-```bash
-sudo apt-get install nodejs
-sudo apt-get install npm    
+```
+npm -g install yarn
 ```
 
-- 如果安装的话，可以将其卸载
+### 全局安装 `pm2`
 
-```bash
-sudo apt-get remove nodejs
-sudo apt-get remove npm
 ```
-
+npm -g install pm2
+```
 
 ## 安装NPM
 
@@ -255,3 +242,6 @@ npm WARN vue-loader-demo@1.0.0 No repository field.
 ```
 
 原因是因为： fsevent是mac osx系统的，在win或者Linux下使用了 所以会有警告，忽略即可。意思就是你已经安装成功了。
+
+
+
