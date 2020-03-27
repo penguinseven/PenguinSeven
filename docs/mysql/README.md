@@ -164,3 +164,25 @@ SELECT * FROM user_event WHERE PERIOD_DIFF(DATE_FORMAT(NOW(), '%Y%m'), DATE_FORM
 ```shell
 $ mysqldump -uroot -p dbname > dbname .sql
 ```
+
+### 9. 查看用户登录，限制ip
+
+```mysql
+SELECT user,host FROM mysql.user;
+```
+
+### 10. 新增用户限制ip
+
+```mysql
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'222.240.125.80'IDENTIFIED BY 'edu2019weft1' WITH GRANT OPTION;
+
+flush privileges;
+```
+
+
+### 11. 临时修改数据库`sql_mode`
+
+```mysql
+set global  sql_mode='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' ;
+set session  sql_mode='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' ;
+```
