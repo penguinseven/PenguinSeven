@@ -9,6 +9,18 @@ sudo apt-get install supervisor
 
 `Supervisor` 配置文件通常可用` /etc/supervisor/conf.d`。 你可以创建任意数量的配置文件。
 
+## web界面操作
+   
+需要在supervisor的配置文件里添加`[inet_http_server]`选项组：
+之后可以通过`http://10.211.55.11:9001`来访问控制子线程的管理。
+   
+```
+ [inet_http_server]
+   port=10.211.55.11:9001
+   username=user
+   password=123
+```
+
 ## 示例
 
 - 配置示例(Yii2-queue):
