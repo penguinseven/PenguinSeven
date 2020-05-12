@@ -54,3 +54,23 @@ stdout_logfile=/var/www/my_project/log/yii-queue-worker.log
  redirect_stderr=true
  stdout_logfile=/home/forge/app.com/horizon.log
 ```
+
+## 服务控制
+
+- 启动
+
+```
+service supervisord start
+```
+
+- 停止
+
+```
+service supervisord stop
+```
+
+- 重启
+
+```
+service supervisord restart
+```
