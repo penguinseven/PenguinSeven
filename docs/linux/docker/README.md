@@ -56,7 +56,13 @@ $ sudo add-apt-repository \
 ```shell script
 $ sudo apt-get update
 
-$ sudo apt-get install docker-ce # 安装最新版的docker
+# 查看各版本
+$ apt-cache madison docker-ce
+
+
+# 安装最新版的docker
+$ sudo apt-get install docker-ce
+
 ```
 
 ## mac 安装

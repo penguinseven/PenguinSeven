@@ -66,12 +66,43 @@ $ deactivate
 - 安装 `Sentry`
 
 ```shell script
+# 装环境
+$ apt-get install python-setuptools python-pip python-dev libxslt1-dev libxml2-dev libz-dev libffi-dev libssl-dev libpq-dev libyaml-dev
+```
+
+```shell script
 $ pip install sentry
 ```
 
+[镜像参考](https://www.cnblogs.com/yuki-nana/p/10898774.html)
+
+```shell script
+# 使用国内镜像
+pip install -U sentry -i http://mirrors.aliyun.com/pypi/simple/
+```
+
+- 报错信息
+
+`c/_cffi_backend.c:2:20: fatal error: Python.h: No such file or directory`
+
+```shell script
+$ apt-get install python-dev
+```
+
+`c/_cffi_backend.c:15:17: fatal error: ffi.h: No such file or directory`
+
+```shell script
+$ sudo apt-get install libffi-dev
+```
+
+`RuntimeError: cryptography requires setuptools 18.5 or newer, please upgrade to a newer version of setuptools`
+
+```shell script
+# setuptool 太老了，更新下: 
+$ pip install --upgrade setuptools
+```
+
 - 配置 `Sentry`
-
-
 
 ### Docker安装
 
