@@ -66,6 +66,8 @@ print(type(type)) --> function
 
 > Lua 变量有三种类型：全局变量、局部变量、表中的域。
 
+- 作用域
+
 ```lua
 
 a = 5           -- 全局变量
@@ -88,6 +90,33 @@ end
 
 print(a,b)      -- 输出 5,5
 
+```
+
+- 赋值语句
+
+```lua
+-- 拼接语句
+a = "hello" .. " " .. " word"
+
+-- 多个变量同时赋值
+a,b = 0,1
+
+-- 个数不匹配时
+a,b = 1     <--> a=1;b=nil
+a,b = 1,2,3   <--> a=1;b=2 多余的被忽略
+
+```
+
+- 索引
+
+> 对 table 的索引使用方括号 []。Lua 也提供了 . 操作。
+
+```lua
+site = {}
+site["key"] = "www.baidu.com"
+
+print(site['key'])
+print(site.key)
 ```
 
 
