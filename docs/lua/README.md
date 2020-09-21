@@ -47,13 +47,111 @@ print(type(10.4)) --> number
 - `string` 字符串
 
 ```lua
+
 print(type("hello world")) --> string
+
+-- -------
+-- string 定义方式
+-- -------
+
+a = "string 1"
+b = 'string 2'
+c = [[string 3]]
+
+
+-- ----------
+-- string 函数
+-- ----------
+
+-- 字符串转大写
+print(string.upper(a))
+
+-- 字符串转小写
+print(string.lower(b))
+
+-- 字符替换
+print(string.gsub(c, "str", "arr", 1))
+
+-- 字符查找
+print(string.find("this is lua test", "lua"))
+
+-- 字符反转
+print(string.reverse("lua"))
+
+-- 字符格式化
+print(string.format("this is : %d",3))
+
+-- 字符长度
+print(string.len("this is logo"))
+
+-- 字符截取
+print(string.sub("this is long", 3 , 9))
+
+-- ----------
+-- 杨辉三角
+-- ---------
+
+str = ""
+a = 24
+
+for i=0, a
+do
+   if i > (a/2) then
+        str = string.rep("*", 2*(a-i)+ 1)
+   else
+        str = string.rep("*", 2*i + 1)
+   end
+
+   space = string.rep(" ", math.abs(a/2-i))
+
+   print(space .. str)
+end
+
+
 ```
 
 - `function` 由 C 或 lua 编写的函数
 
 ```lua
 print(type(type)) --> function
+
+-- ---------
+-- 可变参数
+-- ---------
+
+function add(...)
+  local s = 0
+  for i,v in ipairs{...}
+  do
+          s = s + i
+  end
+  return s
+end
+
+
+print(add(4,5,6,7,8))
+
+
+-- --------------
+-- 最大值，多值返回
+-- --------------
+
+function maxValue(a)
+  local maxK = 1
+  local maxV = a[maxK]
+
+  for k,v in ipairs(a)
+  do
+      if v > maxV
+      then
+          maxK = k
+          maxV = v
+      end
+  end
+
+  return maxV,maxK
+end
+
 ```
 
 - `userdata` 存储在变量中的c数据结构
