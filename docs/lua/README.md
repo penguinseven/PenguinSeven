@@ -160,6 +160,52 @@ end
 
 - `table` 其实是一个“关联数组”， 数组的索引可以是数字、字符串、表类型
 
+```lua
+
+-- -----------
+-- 模块
+-- -----------
+
+require('module')
+
+print(module.constant)
+print(module.fun1())
+-- print(module.fun2())
+print(module.fun3())
+
+
+-- ----------
+-- 元表
+-- ---------
+
+mytable = {}
+
+mymetatable = {}
+
+setmetatable(mytable,mymetable)
+
+
+-- ---------------
+-- 元表，__index 元 方法
+-- ---------------
+
+other = {foo="fire"}
+my = {}
+setmetatable(my,{__index=other})
+print(my.foo)
+
+my = {key1="value1"}
+setmetatable(my, {__index = function(mytable, key)
+        if key == 'key2' then
+                return 'metatable-value2'
+        else
+                return nil
+        end
+end
+})
+
+```
+
 ## 变量以及作用域
 
 > Lua 变量有三种类型：全局变量、局部变量、表中的域。
