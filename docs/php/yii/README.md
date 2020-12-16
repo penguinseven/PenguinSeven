@@ -345,12 +345,15 @@ if (!YII_ENV_TEST) {
           'enablePrettyUrl' => true,
           'showScriptName' => false,
           'rules' => [
-
-              ['class' => 'yii\rest\UrlRule', 'pluralize' => false, 'controller' => [
-                  'mv1/user-address',                                  // 用户地址
-                  'mv1/subject',                                       //  科目
-                  'mv1/class-room',                                    //  套餐
-              ], 'extraPatterns' => [
+              [
+                'class' => 'yii\rest\UrlRule', 
+                'pluralize' => false, 
+                'controller' => [
+                      'mv1/user-address',                                  // 用户地址
+                      'mv1/subject',                                       //  科目
+                      'mv1/class-room',                                    //  套餐
+                ], 
+                'extraPatterns' => [
                   'OPTIONS <action:\w+>' => 'options'                 // 必须配置， 保证所有接口的options请求转发
               ]]
           ],
