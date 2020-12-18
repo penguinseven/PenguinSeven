@@ -8,6 +8,9 @@
 
 ### 跨域共享，option请求
 
+- 流程
+![圖片](./Flowchart_showing_Simple_and_Preflight_XHR_wps.png)
+
 - 跨域定义
 
 > 浏览器从一个域名的网页去请求另一个域名的资源时，域名、端口、协议任一不同，都是跨域
@@ -42,3 +45,5 @@
 > 所以，默认是不允许的，造成了客户端没办法拿到数据。
 
 [引用:一次跨域请求出现 OPTIONS 请求的问题及解决方法](https://www.cnblogs.com/xiaozengzeng/p/10852224.html)
+
+[CORS 跨域中的 preflight 请求](https://blog.csdn.net/u012207345/article/details/81449683)
